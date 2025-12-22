@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>我的部落格</title>
+  
+  
+  <link href="https://github.com/Boyce39/my-blog.git/atom.xml" rel="self"/>
+  
+  <link href="https://github.com/Boyce39/my-blog.git/"/>
+  <updated>2025-12-22T14:26:13.033Z</updated>
+  <id>https://github.com/Boyce39/my-blog.git/</id>
+  
+  <author>
+    <name>里肌肉</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://github.com/Boyce39/my-blog.git/2025/12/22/hello-world/"/>
+    <id>https://github.com/Boyce39/my-blog.git/2025/12/22/hello-world/</id>
+    <published>2025-12-22T14:26:13.033Z</published>
+    <updated>2025-12-22T14:26:13.033Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
