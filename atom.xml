@@ -3,11 +3,11 @@
   <title>里肌肉部落格</title>
   
   
-  <link href="http://boycework.eu.cc/my-blog/atom.xml" rel="self"/>
+  <link href="https://www.boycework.eu.cc/atom.xml" rel="self"/>
   
-  <link href="http://boycework.eu.cc/my-blog/"/>
+  <link href="https://www.boycework.eu.cc/"/>
   <updated>2025-12-22T17:04:24.831Z</updated>
-  <id>http://boycework.eu.cc/my-blog/</id>
+  <id>https://www.boycework.eu.cc/</id>
   
   <author>
     <name>李柏毅</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞</title>
-    <link href="http://boycework.eu.cc/my-blog/2025/08/13/AIS3-Full-Security-Record/"/>
-    <id>http://boycework.eu.cc/my-blog/2025/08/13/AIS3-Full-Security-Record/</id>
+    <link href="https://www.boycework.eu.cc/2025/08/13/AIS3-Full-Security-Record/"/>
+    <id>https://www.boycework.eu.cc/2025/08/13/AIS3-Full-Security-Record/</id>
     <published>2025-08-13T02:00:00.000Z</published>
     <updated>2025-12-22T17:04:24.831Z</updated>
     
@@ -34,21 +34,21 @@
     
     
     
-    <category term="Writeup" scheme="http://boycework.eu.cc/my-blog/categories/Writeup/"/>
+    <category term="Writeup" scheme="https://www.boycework.eu.cc/categories/Writeup/"/>
     
     
-    <category term="資安" scheme="http://boycework.eu.cc/my-blog/tags/%E8%B3%87%E5%AE%89/"/>
+    <category term="資安" scheme="https://www.boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/"/>
     
-    <category term="2025 AIS3 Junior" scheme="http://boycework.eu.cc/my-blog/tags/2025-AIS3-Junior/"/>
+    <category term="2025 AIS3 Junior" scheme="https://www.boycework.eu.cc/tags/2025-AIS3-Junior/"/>
     
-    <category term="Writeup" scheme="http://boycework.eu.cc/my-blog/tags/Writeup/"/>
+    <category term="Writeup" scheme="https://www.boycework.eu.cc/tags/Writeup/"/>
     
   </entry>
   
   <entry>
     <title>Filename Confusion | Writeup</title>
-    <link href="http://boycework.eu.cc/my-blog/2025/08/13/250813-filename-confusion/"/>
-    <id>http://boycework.eu.cc/my-blog/2025/08/13/250813-filename-confusion/</id>
+    <link href="https://www.boycework.eu.cc/2025/08/13/250813-filename-confusion/"/>
+    <id>https://www.boycework.eu.cc/2025/08/13/250813-filename-confusion/</id>
     <published>2025-08-12T16:00:00.000Z</published>
     <updated>2025-12-22T16:35:59.673Z</updated>
     
@@ -64,12 +64,12 @@
     
     
     
-    <category term="資安" scheme="http://boycework.eu.cc/my-blog/categories/%E8%B3%87%E5%AE%89/"/>
+    <category term="資安" scheme="https://www.boycework.eu.cc/categories/%E8%B3%87%E5%AE%89/"/>
     
     
-    <category term="資安" scheme="http://boycework.eu.cc/my-blog/tags/%E8%B3%87%E5%AE%89/"/>
+    <category term="資安" scheme="https://www.boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/"/>
     
-    <category term="技術" scheme="http://boycework.eu.cc/my-blog/tags/%E6%8A%80%E8%A1%93/"/>
+    <category term="技術" scheme="https://www.boycework.eu.cc/tags/%E6%8A%80%E8%A1%93/"/>
     
   </entry>
   
