@@ -3,11 +3,11 @@
   <title>我的部落格</title>
   
   
-  <link href="https://github.com/Boyce39/my-blog.git/atom.xml" rel="self"/>
+  <link href="https://boyce39.github.io/my-blog/atom.xml" rel="self"/>
   
-  <link href="https://github.com/Boyce39/my-blog.git/"/>
+  <link href="https://boyce39.github.io/my-blog/"/>
   <updated>2025-12-22T14:26:13.033Z</updated>
-  <id>https://github.com/Boyce39/my-blog.git/</id>
+  <id>https://boyce39.github.io/my-blog/</id>
   
   <author>
     <name>里肌肉</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://github.com/Boyce39/my-blog.git/2025/12/22/hello-world/"/>
-    <id>https://github.com/Boyce39/my-blog.git/2025/12/22/hello-world/</id>
+    <link href="https://boyce39.github.io/my-blog/2025/12/22/hello-world/"/>
+    <id>https://boyce39.github.io/my-blog/2025/12/22/hello-world/</id>
     <published>2025-12-22T14:26:13.033Z</published>
     <updated>2025-12-22T14:26:13.033Z</updated>
     
