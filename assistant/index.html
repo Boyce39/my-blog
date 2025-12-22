@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="false" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/my-blog/js/color.global.min.js" ></script>
+<script src="/my-blog/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>AI 助理 | 里肌肉部落格</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/my-blog/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/my-blog/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="維修中…">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 助理">
+<meta property="og:url" content="https://boyce39.github.io/my-blog/assistant/index.html">
+<meta property="og:site_name" content="里肌肉部落格">
+<meta property="og:description" content="維修中…">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-12-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-22T16:28:24.225Z">
+<meta property="article:author" content="李柏毅">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/my-blog/atom.xml" title="里肌肉部落格" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/my-blog/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/my-blog/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/my-blog/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/my-blog/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/my-blog/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/my-blog/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/my-blog/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/my-blog/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+  
+<link rel="stylesheet" href="/my-blog/css/style.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/my-blog/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>里肌肉部落格 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/my-blog/">首頁</a>
+    
+      <a class="main-nav-link" href="/my-blog/about">關於我</a>
+    
+      <a class="main-nav-link" href="/my-blog/archives">存檔</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/my-blog/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/my-blog/">首頁</a>
+    
+      <a class="nav-dropdown-link" href="/my-blog/about">關於我</a>
+    
+      <a class="nav-dropdown-link" href="/my-blog/archives">存檔</a>
+    
+    
+      <a class="nav-dropdown-link" href="/my-blog/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/my-blog/images/me.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">李柏毅 </div>
+      <div class="dot"></div>
+      <div class="subtitle">探索 AI｜Python 自動化｜創新專案 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://www.instagram.com/boyce_lee_0309?igsh=MWRjZWh1OHh3a2d0bQ==" title="instagram"><i class="fa-brands fa-instagram"></i></a>
+        
+          <a class="link-btn" href="mailto:Boyce9739@gmail.com" title="gmail"><i class="fa-regular fa-envelope"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/Boyce39" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">標籤</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/my-blog/tags/2025-AIS3-Junior/" rel="tag">2025 AIS3 Junior</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/my-blog/tags/Writeup/" rel="tag">Writeup</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/my-blog/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/my-blog/tags/%E8%B3%87%E5%AE%89/" rel="tag">資安</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        AI 助理
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-12-31T16:00:00.000Z" itemprop="datePublished">2025-01-01</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分類 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4 詞 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2 id="維修中…"><a href="#維修中…" class="headerlink" title="維修中…"></a>維修中…</h2><!-- ---
+title: AI 助理
+date: 2025-01-01
+---
+
+{% raw %}
+<div class='assistant-wrapper'>
+
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap');
+
+        :root {
+            --primary-glow: #00ffc8;
+            --secondary-glow: #7c3aed;
+            --accent-glow: #f59e0b;
+            --bg-dark: #0a0a0f;
+            --bg-gradient: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+.assistant-wrapper {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto Mono', monospace;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: var(--bg-gradient);
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0;
+            background: var(--bg-gradient);
+            border-radius: 20px;
+            box-shadow: 
+                0 8px 32px rgba(0, 255, 200, 0.1),
+                0 0 80px rgba(124, 58, 237, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-glow), var(--secondary-glow), transparent);
+            animation: scan 3s ease-in-out infinite;
+        }
+
+        @keyframes scan {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .chat-header {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .chat-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-glow), transparent);
+        }
+
+        .chat-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin: 0;
+            text-shadow: 0 0 20px var(--primary-glow);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px var(--primary-glow); }
+            to { text-shadow: 0 0 30px var(--primary-glow), 0 0 40px var(--primary-glow); }
+        }
+
+        .chat-subtitle {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0.5rem 0 0 0;
+            opacity: 0.8;
+        }
+
+        .chat-body {
+            padding: 1.5rem;
+        }
+
+        #chatWindow {
+            height: 65vh;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        #chatWindow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 255, 200, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            border-radius: 12px;
+        }
+
+        #chatWindow::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #chatWindow::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        #chatWindow::-webkit-scrollbar-thumb {
+            background: var(--primary-glow);
+            border-radius: 4px;
+            opacity: 0.6;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.5s ease-out;
+            position: relative;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-message.user {
+            text-align: right;
+        }
+
+        .chat-message.user .message-content {
+            background: linear-gradient(135deg, var(--primary-glow), #00d4aa);
+            color: var(--bg-dark);
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 255, 200, 0.3);
+        }
+
+        .chat-message.assistant {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-glow);
+            box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
+            animation: pulse 2s infinite;
+            background: var(--primary-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--bg-dark);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(0, 255, 200, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 200, 0.8); }
+            100% { box-shadow: 0 0 20px rgba(0, 255, 200, 0.5); }
+        }
+
+        .chat-message.assistant .message-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .chat-message.assistant .message-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-glow), transparent);
+            opacity: 0.5;
+        }
+
+        .message-content {
+            display: inline-block;
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+            position: relative;
+            white-space: pre-wrap;
+        }
+
+        .chat-timestamp {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+            font-family: 'Roboto Mono', monospace;
+            opacity: 0.7;
+        }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        #question {
+            width: 100%;
+            min-height: 60px;
+            padding: 1rem;
+            font-size: 1rem;
+            color: var(--text-primary);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            resize: vertical;
+            font-family: 'Roboto Mono', monospace;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        #question:focus {
+            outline: none;
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 20px rgba(0, 255, 200, 0.3);
+        }
+
+        #question::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .btn-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #askBtn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary-glow), #00d4aa);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #askBtn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        #askBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 255, 200, 0.4);
+        }
+
+        #askBtn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        #askBtn:active {
+            transform: translateY(0);
+        }
+
+        #askBtn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .thinking-animation {
+            display: inline-block;
+            position: relative;
+        }
+
+        .thinking-animation::after {
+            content: '';
+            display: inline-block;
+            animation: thinking 1.5s infinite;
+        }
+
+        @keyframes thinking {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-glow);
+            animation: pulse 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .chat-container {
+                margin: 1rem;
+                border-radius: 16px;
+            }
+            
+            .chat-title {
+                font-size: 1.5rem;
+            }
+            
+            #chatWindow {
+                height: 50vh;
+            }
+            
+            .message-content {
+                max-width: 90%;
+            }
+        }
+
+        /* 特殊效果 */
+        .loading-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-glow);
+            border-radius: 50%;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: 'Roboto Mono', monospace;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .connection-status.connected {
+            background: rgba(0, 255, 200, 0.2);
+            border: 1px solid var(--primary-glow);
+            color: var(--primary-glow);
+        }
+
+        .connection-status.disconnected {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff4444;
+            color: #ff4444;
+        }
+    </style>
+
+
+    <div class="connection-status" id="connectionStatus">🟢 已連線</div>
+    
+    <div class="chat-container">
+        <div class="status-indicator"></div>
+        
+        <div class="chat-header">
+            <h2 class="chat-title">🤖 Boyce AI</h2>
+            <p class="chat-subtitle">希望可以透過聊天更了解我 BW v2 model「BoyceWork」此模型不會記錄前一個聊天內容</p>
+        </div>
+        
+        <div class="chat-body">
+            <div id="chatWindow">
+                <div class="loading-particles"></div>
+            </div>
+            
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <textarea id="question" placeholder="輸入您的指令..." rows="2"></textarea>
+                </div>
+                <div class="btn-wrapper">
+                    <button id="askBtn">◈ 執行查詢 ◈</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://webpython-h2y7.onrender.com/ask';
+        const SHOW_TIMESTAMP = true;
+        const PERSIST = false;
+        const STORAGE_KEY = 'ai_nexus_conversation';
+
+        let conversation = [];
+        let isTyping = false;
+
+        // 檢查連線狀態
+        async function checkConnection() {
+            const statusEl = document.getElementById('connectionStatus');
+            try {
+                const response = await fetch('https://webpython-h2y7.onrender.com/', {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                
+                if (response.ok) {
+                    statusEl.textContent = '🟢 已連線';
+                    statusEl.className = 'connection-status connected';
+                } 
+            } catch (error) {
+                statusEl.textContent = '🔴 連線失敗';
+                statusEl.className = 'connection-status disconnected';
+            }
+        }
+
+        if (PERSIST) {
+            try { 
+                conversation = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; 
+            } catch { 
+                conversation = []; 
+            }
+        } else {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        // 初始化粒子效果
+        function initParticles() {
+            const particlesContainer = document.querySelector('.loading-particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        function saveConversation() {
+            if (PERSIST) localStorage.setItem(STORAGE_KEY, JSON.stringify(conversation));
+        }
+
+        function formatTime(date) {
+            return date.toLocaleTimeString('zh-TW', { 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        async function renderConversation() {
+            const chatWindowEl = document.getElementById('chatWindow');
+            const particlesEl = chatWindowEl.querySelector('.loading-particles');
+            
+            chatWindowEl.innerHTML = '';
+            chatWindowEl.appendChild(particlesEl);
+            
+            for (const msg of conversation) {
+                const messageDiv = document.createElement('div');
+                const timePart = SHOW_TIMESTAMP && msg.time ? `<div class="chat-timestamp">${msg.time}</div>` : '';
+                
+                if (msg.role === 'user') {
+                    messageDiv.className = 'chat-message user';
+                    messageDiv.innerHTML = `<div class="message-content">${msg.content}</div>${timePart}`;
+                } else {
+                    messageDiv.className = 'chat-message assistant';
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'message-content';
+                    
+                    if (msg.content === '助理思考中…') {
+                        contentDiv.innerHTML = '<span class="thinking-animation">系統處理中</span>';
+                    } else {
+                        contentDiv.innerHTML = msg.content;
+                    }
+                    
+                    messageDiv.innerHTML = `<div class="chat-avatar">🤖</div>`;
+                    messageDiv.appendChild(contentDiv);
+                    
+                    if (timePart) {
+                        messageDiv.insertAdjacentHTML('beforeend', timePart);
+                    }
+                }
+                
+                chatWindowEl.appendChild(messageDiv);
+            }
+            
+            chatWindowEl.scrollTop = chatWindowEl.scrollHeight;
+        }
+
+        async function askAI() {
+            const questionEl = document.getElementById('question');
+            const askBtn = document.getElementById('askBtn');
+            const q = questionEl.value.trim();
+            
+            if (!q || isTyping) return;
+            
+            isTyping = true;
+            
+            // 添加用戶消息
+            conversation.push({ 
+                role: 'user', 
+                content: q, 
+                time: formatTime(new Date()) 
+            });
+            
+            // 添加思考中狀態
+            conversation.push({ 
+                role: 'assistant', 
+                content: '助理思考中…', 
+                time: '' 
+            });
+            
+            await renderConversation();
+            saveConversation();
+            
+            questionEl.value = '';
+            questionEl.disabled = true;
+            askBtn.disabled = true;
+            askBtn.innerHTML = '◈ 處理中... ◈';
+            
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: q })
+                });
+                
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                
+                // 移除思考中狀態
+                if (conversation[conversation.length - 1].content === '助理思考中…') {
+                    conversation.pop();
+                }
+                
+                // 添加AI回應
+                conversation.push({ 
+                    role: 'assistant', 
+                    content: data.answer, 
+                    time: formatTime(new Date()) 
+                });
+                
+            } catch (err) {
+                // 移除思考中狀態
+                if (conversation[conversation.length - 1].content === '助理思考中…') {
+                    conversation.pop();
+                }
+                
+                conversation.push({ 
+                    role: 'assistant', 
+                    content: `⚠️ 系統錯誤：${err.message}`, 
+                    time: formatTime(new Date()) 
+                });
+                
+                console.error('AI Assistant Error:', err);
+            } finally {
+                await renderConversation();
+                saveConversation();
+                
+                questionEl.disabled = false;
+                askBtn.disabled = false;
+                askBtn.innerHTML = '◈ 執行查詢 ◈';
+                questionEl.focus();
+                isTyping = false;
+            }
+        }
+
+        // 事件監聽器
+        document.getElementById('askBtn').addEventListener('click', askAI);
+        document.getElementById('question').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                askAI();
+            }
+        });
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initParticles();
+            renderConversation();
+            checkConnection();
+            document.getElementById('question').focus();
+        });
+
+        // 定期檢查連線狀態
+        setInterval(checkConnection, 30000);
+    </script>
+
+</div>
+{% endraw %} -->
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+
+  
+</article>
+
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 李柏毅<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/my-blog/js/light-dark-switch.js"></script>
+</body>
+</html>

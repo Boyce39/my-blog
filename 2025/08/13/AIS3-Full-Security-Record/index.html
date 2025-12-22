@@ -14,20 +14,25 @@
   
 
   
-  <title>彙整: 2025 | 里肌肉部落格</title>
+  <title>2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞 | 里肌肉部落格</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/my-blog/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/my-blog/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="紀錄每一次努力，打造屬於自己的技術世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="里肌肉部落格">
-<meta property="og:url" content="https://boyce39.github.io/my-blog/archives/2025/index.html">
+  <meta name="description" content="前言這篇文章紀錄我在 2025 AIS3 Junior 中的學習歷程，從基礎 Web 題目開始，一路接觸到前端 XSS 與後端常見漏洞（PHP、SQL Injection、SSRF 等）。 這份內容除了當下的解題紀錄，也整理了我對每一類題目的理解與反思，作為自己之後複習 Web Security 與 CTF 的學習筆記。  一、基礎 Web 題目：培養觀察力GET aHEAD — HTTP Met">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞">
+<meta property="og:url" content="https://boyce39.github.io/my-blog/2025/08/13/AIS3-Full-Security-Record/index.html">
 <meta property="og:site_name" content="里肌肉部落格">
-<meta property="og:description" content="紀錄每一次努力，打造屬於自己的技術世界">
+<meta property="og:description" content="前言這篇文章紀錄我在 2025 AIS3 Junior 中的學習歷程，從基礎 Web 題目開始，一路接觸到前端 XSS 與後端常見漏洞（PHP、SQL Injection、SSRF 等）。 這份內容除了當下的解題紀錄，也整理了我對每一類題目的理解與反思，作為自己之後複習 Web Security 與 CTF 的學習筆記。  一、基礎 Web 題目：培養觀察力GET aHEAD — HTTP Met">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2025-08-13T02:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-22T17:04:24.831Z">
 <meta property="article:author" content="李柏毅">
+<meta property="article:tag" content="2025 AIS3 Junior">
+<meta property="article:tag" content="Writeup">
+<meta property="article:tag" content="資安">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/my-blog/atom.xml" title="里肌肉部落格" type="application/atom+xml">
@@ -158,63 +163,166 @@
     <div id="content-body">
        
 
-<div class="archive-main-card">
-    <div class="archive-top">
-      <div class="main-title-bar">
-        <div class="main-title-dot"></div>
-        <h1 class="article-title">彙整</h1>
-      </div>    
+
+<article id="post-AIS3-Full-Security-Record" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-08-13T02:00:00.000Z" itemprop="datePublished">2025-08-13</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/my-blog/categories/Writeup/">Writeup</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.7k 詞 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-blog/tags/2025-AIS3-Junior/" rel="tag">2025 AIS3 Junior</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-blog/tags/Writeup/" rel="tag">Writeup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-blog/tags/%E8%B3%87%E5%AE%89/" rel="tag">資安</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這篇文章紀錄我在 <strong>2025 AIS3 Junior</strong> 中的學習歷程，從基礎 Web 題目開始，一路接觸到前端 XSS 與後端常見漏洞（PHP、SQL Injection、SSRF 等）。</p>
+<p>這份內容除了當下的解題紀錄，也整理了我對每一類題目的理解與反思，作為自己之後複習 Web Security 與 CTF 的學習筆記。</p>
+<hr>
+<h2 id="一、基礎-Web-題目：培養觀察力"><a href="#一、基礎-Web-題目：培養觀察力" class="headerlink" title="一、基礎 Web 題目：培養觀察力"></a>一、基礎 Web 題目：培養觀察力</h2><h3 id="GET-aHEAD-—-HTTP-Method-的差異"><a href="#GET-aHEAD-—-HTTP-Method-的差異" class="headerlink" title="GET aHEAD — HTTP Method 的差異"></a>GET aHEAD — HTTP Method 的差異</h3><p>這題讓我第一次明確感受到，<strong>HTTP Method 本身就可能是漏洞來源</strong>。</p>
+<p>我使用 Burp Suite 攔截請求，將原本的 <code>POST</code> 改成 <code>HEAD</code>，結果在回應標頭中直接看到 flag。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">HEAD</span> <span class="string">/index.php</span> <span class="meta">HTTP/1.1</span></span><br></pre></td></tr></table></figure>
+
+<p>這題讓我學到：<br>有些伺服器會把敏感資訊放在 header，而 <code>HEAD</code> 請求因為不回傳 body，反而更容易被忽略。</p>
+<hr>
+<h3 id="Cookies-—-修改-Cookie-value"><a href="#Cookies-—-修改-Cookie-value" class="headerlink" title="Cookies — 修改 Cookie value"></a>Cookies — 修改 Cookie value</h3><p>在瀏覽器中開啟 <code>F12 → Application → Cookies</code>，可以直接修改 Cookie 的 value。這題透過不斷嘗試不同數值，最後在特定值時直接顯示 flag。</p>
+<p>這提醒我：<br><strong>只要沒有在後端驗證，Cookie 就永遠不能被信任。</strong></p>
+<hr>
+<h3 id="Inspect-HTML-Web-Inspector"><a href="#Inspect-HTML-Web-Inspector" class="headerlink" title="Inspect HTML &#x2F; Web Inspector"></a>Inspect HTML &#x2F; Web Inspector</h3><p>這幾題都圍繞在一個核心概念：</p>
+<blockquote>
+<p>使用者看到的畫面，往往只是實際 HTML 與 DOM 的一小部分。</p>
+</blockquote>
+<p>包含：</p>
+<ul>
+<li>HTML 註解中藏 flag</li>
+<li>DOM 深層節點藏 Base64 編碼字串</li>
+<li>將 Base64 解碼後取得 flag</li>
+</ul>
+<p>也再次驗證了一件事：<strong>Web 題目一定要先打開 F12 看一輪。</strong></p>
+<hr>
+<h2 id="二、Linux-基礎操作：CTF-的基本功"><a href="#二、Linux-基礎操作：CTF-的基本功" class="headerlink" title="二、Linux 基礎操作：CTF 的基本功"></a>二、Linux 基礎操作：CTF 的基本功</h2><p>在 Linux 題目中，大多數考的不是複雜技巧，而是對基本指令的熟悉度，例如：</p>
+<ul>
+<li><code>ls -la</code>：查看隱藏檔案</li>
+<li><code>cat</code>：讀取檔案內容</li>
+<li><code>touch</code>：建立檔案</li>
+<li><code>mv</code>：移動檔案</li>
+<li><code>rm</code>：刪除檔案</li>
+</ul>
+<p>這些指令看似簡單，但在 CTF 中就是最重要的「肌肉記憶」。</p>
+<hr>
+<h2 id="三、前端題目：XSS-攻擊實作"><a href="#三、前端題目：XSS-攻擊實作" class="headerlink" title="三、前端題目：XSS 攻擊實作"></a>三、前端題目：XSS 攻擊實作</h2><h3 id="Stored-XSS-—-Note-Sharing"><a href="#Stored-XSS-—-Note-Sharing" class="headerlink" title="Stored XSS — Note Sharing"></a>Stored XSS — Note Sharing</h3><p>當使用者輸入的內容沒有經過過濾就被直接渲染成 HTML，就可能導致 Stored XSS。</p>
+<p>透過插入 <code>&lt;script&gt;</code>，確認可以執行 JavaScript 後，再將 cookie 透過 <code>fetch</code> 傳送到自己的 webhook。</p>
+<p>這類題目讓我清楚理解：<br><strong>只要惡意內容會被存起來並再次顯示，就有機會影響其他使用者。</strong></p>
+<hr>
+<h3 id="DOM-XSS-—-innerHTML"><a href="#DOM-XSS-—-innerHTML" class="headerlink" title="DOM XSS — innerHTML"></a>DOM XSS — innerHTML</h3><p>這題使用 <code>innerHTML</code> 將使用者輸入直接插入 DOM，導致事件屬性（如 <code>onerror</code>）仍可執行。</p>
+<p>即使不能直接使用 <code>&lt;script&gt;</code>，仍可以透過圖片錯誤事件來觸發 JavaScript。</p>
+<hr>
+<h3 id="javascript-URL-與-利用"><a href="#javascript-URL-與-利用" class="headerlink" title="javascript: URL 與 &lt;base&gt; 利用"></a>javascript: URL 與 <code>&lt;base&gt;</code> 利用</h3><p>在某些題目中，使用者輸入會被放入按鈕連結或相對路徑中：</p>
+<ul>
+<li><code>javascript:</code> URL 可在點擊時執行程式碼</li>
+<li><code>&lt;base&gt;</code> 標籤可以改變整個頁面的相對路徑解析方式</li>
+</ul>
+<p>這些技巧讓我理解到：<br><strong>XSS 不只存在於 <code>&lt;script&gt;</code>，而是存在於所有「可被解譯的位置」。</strong></p>
+<hr>
+<h2 id="四、後端漏洞：邏輯錯誤比技巧更重要"><a href="#四、後端漏洞：邏輯錯誤比技巧更重要" class="headerlink" title="四、後端漏洞：邏輯錯誤比技巧更重要"></a>四、後端漏洞：邏輯錯誤比技巧更重要</h2><h3 id="PHP-鬆散比較（Loose-Comparison）"><a href="#PHP-鬆散比較（Loose-Comparison）" class="headerlink" title="PHP 鬆散比較（Loose Comparison）"></a>PHP 鬆散比較（Loose Comparison）</h3><p>透過陣列傳參，讓 <code>strcmp</code> 與 <code>md5</code> 發生型別錯誤回傳 <code>null</code>，再搭配鬆散比較 (<code>==</code>) 繞過條件判斷。</p>
+<p>這類題目不需要高深技巧，只要理解 PHP 的型別系統就能突破。</p>
+<hr>
+<h3 id="檔案上傳與-WAF-繞過"><a href="#檔案上傳與-WAF-繞過" class="headerlink" title="檔案上傳與 WAF 繞過"></a>檔案上傳與 WAF 繞過</h3><p>利用：</p>
+<ul>
+<li>偽造 <code>Content-Type</code></li>
+<li>副檔名大小寫差異（<code>.phP</code>）</li>
+</ul>
+<p>即可繞過簡單檢查並成功上傳可執行檔案。</p>
+<hr>
+<h3 id="LFI、SQL-Injection-與-SSRF"><a href="#LFI、SQL-Injection-與-SSRF" class="headerlink" title="LFI、SQL Injection 與 SSRF"></a>LFI、SQL Injection 與 SSRF</h3><p>後端題目涵蓋：</p>
+<ul>
+<li>路徑回跳繞過白名單</li>
+<li><code>include()</code> 導致的 LFI 轉 RCE</li>
+<li>UNION-based SQL Injection</li>
+<li>利用 open redirect 繞過 SSRF 主機名檢查</li>
+</ul>
+<p>這些題目讓我最大的收穫是：<br><strong>很多漏洞並不是因為少了 WAF，而是因為「邏輯假設錯誤」。</strong></p>
+<hr>
+<h2 id="收穫與反思"><a href="#收穫與反思" class="headerlink" title="收穫與反思"></a>收穫與反思</h2><p>這次 2025 AIS3 Junior 對我來說，不只是解題，而是一個完整的 Web Security 入門體驗。</p>
+<p>我學到的關鍵包括：</p>
+<ul>
+<li>永遠不要相信使用者輸入</li>
+<li>前端與後端的每一個假設，都可能成為漏洞</li>
+<li>比起背 payload，更重要的是理解程式怎麼「想錯了」</li>
+</ul>
+<p>這些經驗也讓我更確定，未來想繼續往資安與系統安全方向深入學習。</p>
+
+        
+      </div>
+
+         
     </div>
     
-    
-      
-      
-        
-        <div class="year-line">
-            <div class="year-num">2025</div>
-            <div class="dot-wrapper">
-                <div class="dot"></div>
-            </div>
-            <div class="article-count">2 篇文章</div>
-        </div>
-      
-      <a class="archive-article-link" href="/my-blog/2025/08/13/AIS3-Full-Security-Record/" title="2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞">
-        <div class="date">08-13</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞
-                
-            </div>
-        </div>
-        <div class="tags">
-            #資安 #2025 AIS3 Junior #Writeup
-        </div>
-      </a>
-    
-      
-      
-      <a class="archive-article-link" href="/my-blog/2025/08/13/250813-filename-confusion/" title="Filename Confusion | Writeup">
-        <div class="date">08-13</div>
-        <div class="line">
-            <div class="dot"></div>
-        </div>
-        <div class="title">
-            <div class="title-inner">
-                
-                    Filename Confusion | Writeup
-                
-            </div>
-        </div>
-        <div class="tags">
-            #資安 #技術
-        </div>
-      </a>
-    
+     
   </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/my-blog/2025/08/13/250813-filename-confusion/"
+      title="Filename Confusion | Writeup"
+     >
+
+    <p class="title-text">
+      
+        Filename Confusion | Writeup
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
     </div>
     <div id="footer-wrapper">
       <footer id="footer">

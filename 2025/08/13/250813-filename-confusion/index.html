@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="false" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/my-blog/js/color.global.min.js" ></script>
+<script src="/my-blog/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>Filename Confusion | Writeup | 里肌肉部落格</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/my-blog/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/my-blog/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="Apache 是什麼？模組是幹嘛？ Apache 是高度模組化的 Web 伺服器；處理一個 HTTP 請求時，很多模組會共同讀寫 request_rec 的欄位（如 r-&gt;filename、r-&gt;args）。不同模組對同一欄位的「語意」若不一致，就可能誤判。Orange Tsai 的研究把這些不一致系統化，歸納出三大類 Confusion 攻擊，其中之一就是 Filename Con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Filename Confusion | Writeup">
+<meta property="og:url" content="https://boyce39.github.io/my-blog/2025/08/13/250813-filename-confusion/index.html">
+<meta property="og:site_name" content="里肌肉部落格">
+<meta property="og:description" content="Apache 是什麼？模組是幹嘛？ Apache 是高度模組化的 Web 伺服器；處理一個 HTTP 請求時，很多模組會共同讀寫 request_rec 的欄位（如 r-&gt;filename、r-&gt;args）。不同模組對同一欄位的「語意」若不一致，就可能誤判。Orange Tsai 的研究把這些不一致系統化，歸納出三大類 Confusion 攻擊，其中之一就是 Filename Con">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2025-08-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-22T16:35:59.673Z">
+<meta property="article:author" content="李柏毅">
+<meta property="article:tag" content="技術">
+<meta property="article:tag" content="資安">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/my-blog/atom.xml" title="里肌肉部落格" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/my-blog/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/my-blog/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/my-blog/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/my-blog/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/my-blog/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/my-blog/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/my-blog/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/my-blog/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+  
+<link rel="stylesheet" href="/my-blog/css/style.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/my-blog/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>里肌肉部落格 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/my-blog/">首頁</a>
+    
+      <a class="main-nav-link" href="/my-blog/about">關於我</a>
+    
+      <a class="main-nav-link" href="/my-blog/archives">存檔</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/my-blog/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/my-blog/">首頁</a>
+    
+      <a class="nav-dropdown-link" href="/my-blog/about">關於我</a>
+    
+      <a class="nav-dropdown-link" href="/my-blog/archives">存檔</a>
+    
+    
+      <a class="nav-dropdown-link" href="/my-blog/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/my-blog/images/me.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">李柏毅 </div>
+      <div class="dot"></div>
+      <div class="subtitle">探索 AI｜Python 自動化｜創新專案 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://www.instagram.com/boyce_lee_0309?igsh=MWRjZWh1OHh3a2d0bQ==" title="instagram"><i class="fa-brands fa-instagram"></i></a>
+        
+          <a class="link-btn" href="mailto:Boyce9739@gmail.com" title="gmail"><i class="fa-regular fa-envelope"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/Boyce39" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">標籤</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/my-blog/tags/2025-AIS3-Junior/" rel="tag">2025 AIS3 Junior</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/my-blog/tags/Writeup/" rel="tag">Writeup</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/my-blog/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/my-blog/tags/%E8%B3%87%E5%AE%89/" rel="tag">資安</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-250813-filename-confusion" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        Filename Confusion | Writeup
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-08-12T16:00:00.000Z" itemprop="datePublished">2025-08-13</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/my-blog/categories/%E8%B3%87%E5%AE%89/">資安</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.8k 詞 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-blog/tags/%E6%8A%80%E8%A1%93/" rel="tag">技術</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-blog/tags/%E8%B3%87%E5%AE%89/" rel="tag">資安</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <hr>
+<h2 id="Apache-是什麼？模組是幹嘛？"><a href="#Apache-是什麼？模組是幹嘛？" class="headerlink" title="Apache 是什麼？模組是幹嘛？"></a>Apache 是什麼？模組是幹嘛？</h2><blockquote>
+<p>Apache 是<strong>高度模組化</strong>的 Web 伺服器；處理一個 HTTP 請求時，很多模組會共同讀寫 <code>request_rec</code> 的欄位（如 <code>r-&gt;filename</code>、<code>r-&gt;args</code>）。<strong>不同模組對同一欄位的「語意」若不一致，就可能誤判</strong>。Orange Tsai 的研究把這些不一致系統化，歸納出三大類 Confusion 攻擊，其中之一就是 <strong>Filename Confusion</strong>。</p>
+</blockquote>
+<p><strong>Filename Confusion 的核心</strong>：</p>
+<blockquote>
+<p>多個模組對 <code>r-&gt;filename</code> 的理解不同——有的把它當<strong>檔案路徑</strong>，有的把它當<strong>URL</strong>。這種不一致會造成安全問題。</p>
+</blockquote>
+<p><strong>關鍵：URL 編碼 <code>%3F</code></strong></p>
+<blockquote>
+<ul>
+<li>在網址裡 <code>?</code> 代表「後面是 query string」。</li>
+<li>如果要在網址中表示字面上的 <code>?</code>，需要 URL 編碼：<code>?</code> → <code>%3F</code>。</li>
+<li>Apache 在不同處理階段可能把 <code>%3F</code> 解回 <code>?</code>，這就是漏洞能被利用的<strong>時機差</strong>。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="1-RewriteRule（mod-rewrite）"><a href="#1-RewriteRule（mod-rewrite）" class="headerlink" title="1. RewriteRule（mod_rewrite）"></a>1. RewriteRule（<code>mod_rewrite</code>）</h2><p><code>RewriteRule</code> 是 <code>mod_rewrite</code> 用來<strong>改寫 URL</strong>的指令。語法：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">RewriteRule</span> Pattern Substitution<span class="meta"> [Flags]</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><strong>Pattern（樣式）</strong>：正則表達式，用來比對目前請求的 URL 路徑。</li>
+<li><strong>Substitution（替換結果）</strong>：匹配後要改到哪裡（可為檔案路徑或 URL）。可用 <code>$1</code>、<code>$2</code> 這類反向引用插入 Pattern 抓到的內容。</li>
+<li><strong>Flags（旗標，可選）</strong>：放在 <code>[]</code> 內，調整這條規則的行為，例如：</li>
+</ul>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><code>L</code>：命中後停止再處理後續規則（Last）。<br><code>QSA</code>：保留原始 query string 並附加到新 URL。<br><code>H=…</code>：指定處理器（Handler），例如 <code>H=application/x-httpd-php</code>。</p>
+</blockquote>
+</blockquote>
+<h3 id="小例子（Pattern-Substitution-Flags）"><a href="#小例子（Pattern-Substitution-Flags）" class="headerlink" title="小例子（Pattern &#x2F; Substitution &#x2F; Flags）"></a>小例子（Pattern &#x2F; Substitution &#x2F; Flags）</h3><blockquote>
+<p>想把 <code>https://example.com/user/orange</code> 對應到伺服器檔案 <code>/var/www/user/orange/profile.yml</code>：</p>
+</blockquote>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">RewriteEngine</span> <span class="literal">On</span></span><br><span class="line"><span class="attribute">RewriteRule</span> <span class="string">&quot;^/user/(.+)$&quot;</span> <span class="string">&quot;/var/www/user/$1/profile.yml&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>Pattern：<code>^/user/(.+)$</code> 會抓到 <code>/user/</code> 後面的使用者名稱到 <code>$1</code>。</li>
+<li>Substitution：<code>/var/www/user/$1/profile.yml</code> → 例如 <code>$1=orange</code> 就是 <code>/var/www/user/orange/profile.yml</code>。</li>
+<li>這裡沒寫 Flags，使用預設行為。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="1‑1-1-Path-Truncation（路徑截斷）"><a href="#1‑1-1-Path-Truncation（路徑截斷）" class="headerlink" title="1‑1-1 Path Truncation（路徑截斷）"></a>1‑1-1 Path Truncation（路徑截斷）</h2><p><strong>成因</strong>：</p>
+<blockquote>
+<p><code>mod_rewrite</code> 在套用 RewriteRule 後，會把<strong>替換結果</strong>當「URL」處理，呼叫 <code>splitout_queryargs()</code> 把 <code>?</code> 後的部分視為 query 分離。當替換結果其實是<strong>檔案路徑</strong>時，還是會被「當 URL 來切」，於是產生<strong>可控截斷</strong>。</p>
+</blockquote>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">RewriteEngine</span> <span class="literal">On</span></span><br><span class="line"><span class="attribute">RewriteRule</span> <span class="string">&quot;^/user/(.+)$&quot;</span> <span class="string">&quot;/var/user/$1/profile.yml&quot;</span></span><br><span class="line"><span class="comment"># 攻擊請求（%2F = /, %3F = ?）</span></span><br><span class="line"><span class="comment"># /user/orange%2Fsecret.yml%3F  → 讀到 /var/user/orange/secret.yml</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因為 <code>%3F</code> 在後續階段被視為 <code>?</code>，<code>/profile.yml</code> 被當作 query 切掉了。</p>
+</blockquote>
+<h3 id="splitout-queryargs-在幹嘛？"><a href="#splitout-queryargs-在幹嘛？" class="headerlink" title="splitout_queryargs() 在幹嘛？"></a><code>splitout_queryargs()</code> 在幹嘛？</h3><blockquote>
+<p>它把替換結果中的 <code>?</code> 後段剝離到 <code>r-&gt;args</code>（query），<code>?</code> 前面留在 <code>r-&gt;filename</code>：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r-&gt;filename = &quot;/var/user/orange/profile.yml?debug=1&quot;</span><br><span class="line">               └─── 路徑 ───┘ └─ query ─┘</span><br><span class="line">r-&gt;args     = &quot;debug=1&quot;   ← 被 splitout_queryargs() 剝出去</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="1‑1‑2-Mislead-RewriteFlag-Assignment（誤導旗標設定）"><a href="#1‑1‑2-Mislead-RewriteFlag-Assignment（誤導旗標設定）" class="headerlink" title="1‑1‑2 Mislead RewriteFlag Assignment（誤導旗標設定）"></a>1‑1‑2 Mislead RewriteFlag Assignment（誤導旗標設定）</h2><p><strong>利用點</strong>：</p>
+<blockquote>
+<p><strong>先 Pattern 比對 → 套 Flags → 再把結果當 URL 拆 query</strong>。</p>
+</blockquote>
+<blockquote>
+<p>在<strong>比對階段</strong>使用 <code>%3F</code>（編碼的 <code>?</code>）讓請求看起來像是 <code>.php</code>，使規則套上不該有的 Flag（例如指定 PHP Handler）。等到<strong>拆 query</strong>之後，實際要處理的檔案變回 <code>.gif</code>，但 <strong>Flag 不會被移除</strong>，導致圖片被當作 PHP 來跑。</p>
+</blockquote>
+<h3 id="規則長這樣"><a href="#規則長這樣" class="headerlink" title="規則長這樣"></a>規則長這樣</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">RewriteEngine</span> <span class="literal">On</span></span><br><span class="line"><span class="attribute">RewriteRule</span> ^(.+\.php)$ $<span class="number">1</span><span class="meta"> [H=application/x-httpd-php]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="攻擊步驟"><a href="#攻擊步驟" class="headerlink" title="攻擊步驟"></a>攻擊步驟</h3><ol>
+<li><p>上傳看似普通的圖片 <code>/upload/1.gif</code>，實際內容藏有 PHP<br>例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="title function_ invoke__">shell_exec</span>(<span class="string">&#x27;id&#x27;</span>); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>送出請求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/upload/1.gif%3Faaa.php</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Pattern 比對</strong>：<code>%3F</code> 尚未解碼，<code>/upload/1.gif%3Faaa.php</code> 尾端看起來是 <code>.php</code> → 命中 → 套上 <code>H=application/x-httpd-php</code>。</p>
+</li>
+<li><p><strong>拆 query</strong>：<code>%3F</code> 解為 <code>?</code>，<code>?aaa.php</code> 被分離到 <code>r-&gt;args</code>，留下 <code>/upload/1.gif</code>。</p>
+</li>
+<li><p><strong>實際處理</strong>：雖然是 <code>.gif</code>，但已指定 PHP Handler → 由 PHP 執行圖片內的程式碼。</p>
+</li>
+</ol>
+<h3 id="對照表"><a href="#對照表" class="headerlink" title="對照表"></a>對照表</h3><table>
+<thead>
+<tr>
+<th>步驟</th>
+<th>正常（安全）</th>
+<th>漏洞利用（1‑1‑2）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 上傳檔案</td>
+<td>只能上傳圖片；<code>.php</code> 拒絕</td>
+<td>上傳 <code>.gif</code>（內藏 PHP）通過檢查</td>
+</tr>
+<tr>
+<td>2. 發送請求</td>
+<td><code>/upload/1.gif</code> → 回傳圖片</td>
+<td><code>/upload/1.gif%3Faaa.php</code></td>
+</tr>
+<tr>
+<td>3. Rewrite 比對</td>
+<td><code>.gif</code> 不匹配 <code>^(.+\.php)$</code>，不套 Flag</td>
+<td><code>%3Faaa.php</code> 讓 Pattern 命中，套 <code>H=application/x-httpd-php</code></td>
+</tr>
+<tr>
+<td>4. <code>splitout_queryargs</code></td>
+<td>無變化</td>
+<td><code>%3F</code>→<code>?</code>；<code>?aaa.php</code> 被拆到 <code>r-&gt;args</code>，目標成 <code>/upload/1.gif</code></td>
+</tr>
+<tr>
+<td>5. 處理器</td>
+<td>靜態檔案處理器</td>
+<td>仍由 PHP Handler 處理 <code>.gif</code></td>
+</tr>
+<tr>
+<td>6. 結果</td>
+<td>顯示圖片</td>
+<td>圖片被當 PHP 執行（RCE 風險）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="1-2-ACL（Access-Control-List）與-PHP‑FPM"><a href="#1-2-ACL（Access-Control-List）與-PHP‑FPM" class="headerlink" title="1-2. ACL（Access Control List）與 &lt;Files&gt; &#x2F; PHP‑FPM"></a>1-2. ACL（Access Control List）與 <code>&lt;Files&gt;</code> &#x2F; PHP‑FPM</h2><h3 id="要先了解以下三個角色"><a href="#要先了解以下三個角色" class="headerlink" title="要先了解以下三個角色:"></a>要先了解以下三個角色:</h3><blockquote>
+<ul>
+<li><strong><code>mod_proxy</code></strong>：代理模組，負責把請求轉送到別的服務。</li>
+</ul>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>  <code>mod_proxy_fcgi</code>：把請求用 FastCGI 協定轉給 PHP‑FPM。</p>
+</blockquote>
+<ul>
+<li><strong>PHP‑FPM</strong>：<code>PHP FastCGI Process Manager</code>，Apache 把 <code>.php</code> 請求交給它執行。</li>
+<li><strong><code>&lt;Files&gt;</code>（ACL）</strong>：針對「檔案名稱」設定限制，例如特定檔案需登入才可訪問。</li>
+</ul>
+</blockquote>
+<h3 id="常見把-php-交給-PHP‑FPM-的做法"><a href="#常見把-php-交給-PHP‑FPM-的做法" class="headerlink" title="常見把 .php 交給 PHP‑FPM 的做法"></a>常見把 <code>.php</code> 交給 PHP‑FPM 的做法</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;FilesMatch <span class="string">&quot;.+\.ph(?:ar|p|tml)$&quot;</span>&gt;</span></span><br><span class="line">  <span class="attribute">SetHandler</span> <span class="string">&quot;proxy:unix:/run/php/php8.2-fpm.sock|fcgi://localhost&quot;</span></span><br><span class="line"><span class="section">&lt;/FilesMatch&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>意思是：</p>
+<blockquote>
+<p>遇到 <code>.php</code>、<code>.phtml</code>… 就<strong>不要由 Apache 直接讀檔</strong>，而是交給 <code>mod_proxy_fcgi</code> → PHP‑FPM。</p>
+</blockquote>
+<hr>
+<h2 id="1‑2-1-ACL-Bypass（存取控制繞過）"><a href="#1‑2-1-ACL-Bypass（存取控制繞過）" class="headerlink" title="1‑2-1 ACL Bypass（存取控制繞過）"></a>1‑2-1 ACL Bypass（存取控制繞過）</h2><blockquote>
+<p><strong>情境</strong>：用 <code>&lt;Files&gt;</code> 來保護單一檔案，例如：</p>
+</blockquote>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;Files <span class="string">&quot;admin.php&quot;</span>&gt;</span></span><br><span class="line">  <span class="attribute">AuthType</span> Basic</span><br><span class="line">  <span class="attribute">AuthName</span> <span class="string">&quot;Admin Panel&quot;</span></span><br><span class="line">  <span class="attribute">AuthUserFile</span> <span class="string">&quot;/etc/apache2/.htpasswd&quot;</span></span><br><span class="line">  <span class="attribute">Require</span> valid-user</span><br><span class="line"><span class="section">&lt;/Files&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="正常流程（安全）"><a href="#正常流程（安全）" class="headerlink" title="正常流程（安全）"></a>正常流程（安全）</h3><ol>
+<li>請求 <code>/admin.php</code>。</li>
+<li>ACL 檢查：<code>r-&gt;filename = admin.php</code> → 命中 <code>&lt;Files &quot;admin.php&quot;&gt;</code> → 要求驗證。</li>
+<li>驗證通過後，交給 PHP‑FPM 執行 <code>admin.php</code>。</li>
+</ol>
+<h3 id="漏洞流程（繞過）"><a href="#漏洞流程（繞過）" class="headerlink" title="漏洞流程（繞過）"></a>漏洞流程（繞過）</h3><ol>
+<li><p>請求：<code>/admin.php%3Fooo.php</code>（<code>%3F</code> 是 <code>?</code>）</p>
+</li>
+<li><p><strong>ACL 檢查</strong>：此時尚未解碼 → <code>r-&gt;filename = admin.php%3Fooo.php</code>，<strong>不等於</strong> <code>admin.php</code> → 不要求驗證。</p>
+</li>
+<li><p><strong>SetHandler 命中</strong>：仍視為 <code>.php</code> → 交給 <code>mod_proxy_fcgi</code>。</p>
+</li>
+<li><p><strong>mod_proxy_fcgi 轉交</strong>：把 <code>r-&gt;filename</code> 改寫為：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxy:fcgi://127.0.0.1:9000/var/www/html/admin.php?ooo.php</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>PHP‑FPM 行為</strong>：</p>
+</li>
+</ol>
+<blockquote>
+<blockquote>
+<ul>
+<li>去掉 <code>proxy:fcgi://…</code> 前綴與主機資訊，只留 <code>/var/www/html/admin.php?ooo.php</code>。</li>
+<li>找到第一個 <code>?</code>，<strong>截斷</strong>為 <code>/var/www/html/admin.php</code>。</li>
+<li>實際執行 <code>admin.php</code>。</li>
+</ul>
+<ol start="6">
+<li><strong>結果</strong>：受保護的 <code>admin.php</code> 被直接執行，<strong>完全跳過 ACL</strong>。</li>
+</ol>
+</blockquote>
+</blockquote>
+<h3 id="對照表-1"><a href="#對照表-1" class="headerlink" title="對照表"></a>對照表</h3><table>
+<thead>
+<tr>
+<th>步驟</th>
+<th>正常（安全）</th>
+<th>漏洞利用（ACL Bypass）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 請求 URL</td>
+<td><code>/admin.php</code></td>
+<td><code>/admin.php%3Fooo.php</code></td>
+</tr>
+<tr>
+<td>2. ACL 檢查（<code>&lt;Files&gt;</code>）</td>
+<td><code>r-&gt;filename = admin.php</code> → 要驗證</td>
+<td><code>r-&gt;filename = admin.php%3Fooo.php</code> → 覺得不需驗證</td>
+</tr>
+<tr>
+<td>3. SetHandler</td>
+<td>命中 → 交給 <code>mod_proxy_fcgi</code></td>
+<td>同左</td>
+</tr>
+<tr>
+<td>4. <code>mod_proxy_fcgi</code></td>
+<td><code>proxy:fcgi://…/admin.php</code></td>
+<td><code>proxy:fcgi://…/admin.php?ooo.php</code></td>
+</tr>
+<tr>
+<td>5. PHP‑FPM</td>
+<td>執行 <code>admin.php</code>（無 query）</td>
+<td>截斷 <code>?ooo.php</code> 後仍執行 <code>admin.php</code></td>
+</tr>
+<tr>
+<td>6. 結果</td>
+<td>驗證通過者才能執行</td>
+<td>未驗證也能執行（ACL 被繞過）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>受影響的常見保護寫法</strong>（都可能被 <code>%3F</code> 打穿）：</p>
+</blockquote>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;Files <span class="string">&quot;php-info.php&quot;</span>&gt;</span>   </span><br><span class="line"><span class="attribute">Require</span> ip <span class="number">127.0.0.1</span>   </span><br><span class="line"><span class="section">&lt;/Files&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="section">&lt;Files <span class="string">&quot;adminer.php&quot;</span>&gt;</span>    </span><br><span class="line"><span class="attribute">Deny</span> from <span class="literal">all</span>          </span><br><span class="line"><span class="section">&lt;/Files&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="section">&lt;Files <span class="string">&quot;xmlrpc.php&quot;</span>&gt;</span>     </span><br><span class="line"><span class="attribute">Deny</span> from <span class="literal">all</span>          </span><br><span class="line"><span class="section">&lt;/Files&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="section">&lt;Files <span class="string">&quot;cron.php&quot;</span>&gt;</span>       </span><br><span class="line"><span class="attribute">Deny</span> from <span class="literal">all</span>          </span><br><span class="line"><span class="section">&lt;/Files&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="修補辦法"><a href="#修補辦法" class="headerlink" title="修補辦法"></a>修補辦法</h2><blockquote>
+<ul>
+<li><strong>升級 Apache 至 2.4.60+</strong>：新版本把舊有危險行為改為預設拒絕；請勿開啟 <code>RewriteOptions UnsafeAllow3F</code>（除非完全理解風險）。</li>
+<li><strong>避免用 <code>&lt;Files&gt;</code> 保護單一 PHP 檔</strong>（在 PHP‑FPM 架構下）。改用 <strong><code>&lt;Location&gt;</code> &#x2F; <code>&lt;LocationMatch&gt;</code></strong>（比對 URL 而非檔名），或把敏感腳本移出 <strong>DocumentRoot</strong>，只透過應用層載入。</li>
+<li><strong>Rewrite 規則審視</strong>：不要讓「使用者可控片段」直接拼到檔案路徑；能用 <code>mod_alias</code>（<code>Alias</code>&#x2F;<code>Redirect</code>）就避免過度使用 <code>mod_rewrite</code> 做檔案映射。</li>
+<li><strong>監控與偵測</strong>：</li>
+</ul>
+</blockquote>
+<blockquote>
+<blockquote>
+<ul>
+<li>日誌尋找可疑編碼：<code>%3F</code>、<code>%2F</code>；</li>
+<li>特別是「非 <code>.php</code> 路徑 + <code>%3F...php</code>」的請求模式；</li>
+<li>除錯時可暫時開 <code>LogLevel rewrite:trace2</code> 觀察改寫流程（完畢務必關閉）。</li>
+</ul>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="誤區／備註"><a href="#誤區／備註" class="headerlink" title="誤區／備註"></a>誤區／備註</h2><blockquote>
+<ul>
+<li>不是「PHP Handler 會神奇多做什麼」，而是<strong>被錯誤套用</strong>到不該由 PHP 處理的檔案上。</li>
+<li><code>%3F</code> 的解碼與處理<strong>發生在不同階段</strong>；理解「哪一步解、何時解」是這類漏洞的核心。</li>
+<li>範例程式碼僅用於安全測試與理解機制，<strong>請勿</strong>在生產環境或未授權系統操作。</li>
+</ul>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.orange.tw/posts/2024-08-confusion-attacks-ch/">文獻來源:Orange Tsai (Orange Tsai)</a></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/my-blog/2025/08/13/AIS3-Full-Security-Record/"
+      title="2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right  disabled "
+     >
+
+    <p class="title-text">
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 李柏毅<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/my-blog/js/light-dark-switch.js"></script>
+</body>
+</html>
