@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.boycework.eu.cc/google98149f1d43799c31.html</loc>
-    
-    <lastmod>2025-12-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.boycework.eu.cc/2025/12/23/115-special/</loc>
     
     <lastmod>2025-12-24</lastmod>
@@ -83,20 +74,6 @@
 
   
   <url>
-    <loc>https://www.boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycework.eu.cc/tags/%E6%8A%80%E8%A1%93/</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.boycework.eu.cc/tags/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -118,20 +95,27 @@
   </url>
   
   <url>
+    <loc>https://www.boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.boycework.eu.cc/tags/Writeup/</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://www.boycework.eu.cc/categories/%E8%B3%87%E5%AE%89/</loc>
+    <loc>https://www.boycework.eu.cc/tags/%E6%8A%80%E8%A1%93/</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
+  
+
   
   <url>
     <loc>https://www.boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/</loc>
@@ -142,6 +126,13 @@
   
   <url>
     <loc>https://www.boycework.eu.cc/categories/Writeup/</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycework.eu.cc/categories/%E8%B3%87%E5%AE%89/</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
