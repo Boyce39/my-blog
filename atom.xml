@@ -6,7 +6,7 @@
   <link href="https://www.boycework.eu.cc/atom.xml" rel="self"/>
   
   <link href="https://www.boycework.eu.cc/"/>
-  <updated>2025-12-22T17:04:24.831Z</updated>
+  <updated>2025-12-24T08:37:18.690Z</updated>
   <id>https://www.boycework.eu.cc/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>115 特殊選才心得｜資工特選的現實與轉彎</title>
+    <link href="https://www.boycework.eu.cc/2025/12/23/115-special/"/>
+    <id>https://www.boycework.eu.cc/2025/12/23/115-special/</id>
+    <published>2025-12-23T02:00:00.000Z</published>
+    <updated>2025-12-24T08:37:18.690Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;📊-特殊選才報名學校與結果一覽&quot;&gt;&lt;a href=&quot;#📊-特殊選才報名學校與結果一覽&quot; class=&quot;headerlink&quot; title=&quot;📊 特殊選才報名學校與結果一覽&quot;&gt;&lt;/a&gt;📊</summary>
+        
+      
+    
+    
+    
+    <category term="心得" scheme="https://www.boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/"/>
+    
+    
+    <category term="特殊選才" scheme="https://www.boycework.eu.cc/tags/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/"/>
+    
+    <category term="升學" scheme="https://www.boycework.eu.cc/tags/%E5%8D%87%E5%AD%B8/"/>
+    
+  </entry>
   
   <entry>
     <title>2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞</title>
@@ -37,9 +64,9 @@
     <category term="Writeup" scheme="https://www.boycework.eu.cc/categories/Writeup/"/>
     
     
-    <category term="2025 AIS3 Junior" scheme="https://www.boycework.eu.cc/tags/2025-AIS3-Junior/"/>
-    
     <category term="資安" scheme="https://www.boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/"/>
+    
+    <category term="2025 AIS3 Junior" scheme="https://www.boycework.eu.cc/tags/2025-AIS3-Junior/"/>
     
     <category term="Writeup" scheme="https://www.boycework.eu.cc/tags/Writeup/"/>
     
