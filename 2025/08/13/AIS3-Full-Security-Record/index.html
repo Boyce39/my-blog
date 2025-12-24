@@ -10,17 +10,23 @@
 <head>
   <meta charset="utf-8">
   
-  
-  
+    
+      
 
-  
-  <title>2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞 | 里肌肉部落格</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+          <title>
+            
+              2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞 | 
+                  里肌肉部落格
+          </title>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+          <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf"
+            crossorigin="anonymous">
+          <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf"
+            crossorigin="anonymous">
 
-  <meta name="description" content="前言這篇文章紀錄我在 2025 AIS3 Junior 中的學習歷程，從基礎 Web 題目開始，一路接觸到前端 XSS 與後端常見漏洞（PHP、SQL Injection、SSRF 等）。 這份內容除了當下的解題紀錄，也整理了我對每一類題目的理解與反思，作為自己之後複習 Web Security 與 CTF 的學習筆記。  一、基礎 Web 題目：培養觀察力GET aHEAD — HTTP Met">
+          <meta name="description" content="前言這篇文章紀錄我在 2025 AIS3 Junior 中的學習歷程，從基礎 Web 題目開始，一路接觸到前端 XSS 與後端常見漏洞（PHP、SQL Injection、SSRF 等）。 這份內容除了當下的解題紀錄，也整理了我對每一類題目的理解與反思，作為自己之後複習 Web Security 與 CTF 的學習筆記。  一、基礎 Web 題目：培養觀察力GET aHEAD — HTTP Met">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞">
 <meta property="og:url" content="https://www.boycework.eu.cc/2025/08/13/AIS3-Full-Security-Record/index.html">
@@ -34,25 +40,34 @@
 <meta property="article:tag" content="Writeup">
 <meta property="article:tag" content="資安">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="里肌肉部落格" type="application/atom+xml">
-  
-  
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
-    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
-  
-  
-  
+            
+              <link rel="alternate" href="/atom.xml" title="里肌肉部落格" type="application/atom+xml">
+                
+                      
+                            <link rel="icon" media="(prefers-color-scheme: light)"
+                              href="/images/favicon-light-32.png" sizes="32x32">
+                            <link rel="icon" media="(prefers-color-scheme: light)"
+                              href="/images/favicon-light-128.png" sizes="128x128">
+                            <link rel="icon" media="(prefers-color-scheme: light)"
+                              href="/images/favicon-light-180.png" sizes="180x180">
+                            <link rel="icon" media="(prefers-color-scheme: light)"
+                              href="/images/favicon-light-192.png" sizes="192x192">
+                            <link rel="icon" media="(prefers-color-scheme: dark)"
+                              href="/images/favicon-dark-32.png" sizes="32x32">
+                            <link rel="icon" media="(prefers-color-scheme: dark)"
+                              href="/images/favicon-dark-128.png" sizes="128x128">
+                            <link rel="icon" media="(prefers-color-scheme: dark)"
+                              href="/images/favicon-dark-180.png" sizes="180x180">
+                            <link rel="icon" media="(prefers-color-scheme: dark)"
+                              href="/images/favicon-dark-192.png" sizes="192x192">
+                            
+                              
+                                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                                
+                                  
 <link rel="stylesheet" href="/css/style.css">
 
 <meta name="generator" content="Hexo 8.1.1"></head>
-
 <body>
   
    
@@ -169,17 +184,18 @@
 </sidebar>
     </div>
     <div id="content-body">
-       
-
-
-<article id="post-AIS3-Full-Security-Record" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+      
   
-    
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
+
+    <article id="post-AIS3-Full-Security-Record" class="h-entry article article-type-post"
+      itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+      
         
+          
+            <div class="article-inner">
+              <div class="article-main">
+                <header class="article-header">
+                  
 <div class="main-title-bar">
   <div class="main-title-dot"></div>
   
@@ -191,29 +207,34 @@
   
 </div>
 
-        <div class='meta-info-bar'>
-          <div class="meta-info">
+                    <div class='meta-info-bar'>
+                      <div class="meta-info">
   <time class="dt-published" datetime="2025-08-13T02:00:00.000Z" itemprop="datePublished">2025-08-13</time>
 </div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
+                        <div class="need-seperator meta-info">
+                          <div class="meta-cate-flex">
   
   <a class="meta-cate-link" href="/categories/Writeup/">Writeup</a>
    
 </div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.7k 詞 
-          </div>
-        </div>
-        
+
+                        </div>
+                        <div class="wordcount need-seperator meta-info">
+                          1.7k 詞
+                        </div>
+                        
+                          <div class="need-seperator meta-info">
+                            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span> 瀏覽次數</span>
+                          </div>
+                          
+                    </div>
+                    
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2025-AIS3-Junior/" rel="tag">2025 AIS3 Junior</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Writeup/" rel="tag">Writeup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B3%87%E5%AE%89/" rel="tag">資安</a></li></ul>
 
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這篇文章紀錄我在 <strong>2025 AIS3 Junior</strong> 中的學習歷程，從基礎 Web 題目開始，一路接觸到前端 XSS 與後端常見漏洞（PHP、SQL Injection、SSRF 等）。</p>
+                </header>
+                <div class="e-content article-entry" itemprop="articleBody">
+                  
+                          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這篇文章紀錄我在 <strong>2025 AIS3 Junior</strong> 中的學習歷程，從基礎 Web 題目開始，一路接觸到前端 XSS 與後端常見漏洞（PHP、SQL Injection、SSRF 等）。</p>
 <p>這份內容除了當下的解題紀錄，也整理了我對每一類題目的理解與反思，作為自己之後複習 Web Security 與 CTF 的學習筆記。</p>
 <hr>
 <h2 id="一、基礎-Web-題目：培養觀察力"><a href="#一、基礎-Web-題目：培養觀察力" class="headerlink" title="一、基礎 Web 題目：培養觀察力"></a>一、基礎 Web 題目：培養觀察力</h2><h3 id="GET-aHEAD-—-HTTP-Method-的差異"><a href="#GET-aHEAD-—-HTTP-Method-的差異" class="headerlink" title="GET aHEAD — HTTP Method 的差異"></a>GET aHEAD — HTTP Method 的差異</h3><p>這題讓我第一次明確感受到，<strong>HTTP Method 本身就可能是漏洞來源</strong>。</p>
@@ -289,16 +310,16 @@
 </ul>
 <p>這些經驗也讓我更確定，未來想繼續往資安與系統安全方向深入學習。</p>
 
-        
-      </div>
+                            
+                </div>
 
-         
-    </div>
-    
-     
-  </div>
-  
-    
+                
+              </div>
+
+              
+            </div>
+            
+              
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
@@ -328,25 +349,33 @@
 </nav>
 
 
-  
-</article>
+                
+    </article>
 
+    
 
-
-
-
-
+          
     </div>
     <div id="footer-wrapper">
       <footer id="footer">
   
-  <div id="footer-info" class="inner">
-    
-    &copy; 2025 李柏毅<br>
-    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
-  </div>
+        <div id="footer-info" class="inner">
+          
+                &copy; 2025
+                  李柏毅<br>
+                    
+                      <span id="busuanzi_container_site_pv">
+                        本站總瀏覽量 <span id="busuanzi_value_site_pv"></span> 次
+                      </span>
+                      <span class="post-meta-divider">|</span>
+                      <span id="busuanzi_container_site_uv">
+                        本站訪客數 <span id="busuanzi_value_site_uv"></span> 人
+                      </span><br>
+                      
+                        Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a
+                            target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+        </div>
 </footer>
-
     </div>
     <div class="back-to-top-wrapper">
     <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
