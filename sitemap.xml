@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.boycework.eu.cc/assistant/index.html</loc>
+    
+    <lastmod>2025-12-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.boycework.eu.cc/2025/12/24/115-special/</loc>
     
     <lastmod>2025-12-26</lastmod>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>https://www.boycework.eu.cc/chat/index.html</loc>
-    
-    <lastmod>2025-12-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycework.eu.cc/assistant/index.html</loc>
     
     <lastmod>2025-12-24</lastmod>
     
@@ -83,21 +83,21 @@
 
   
   <url>
+    <loc>https://www.boycework.eu.cc/tags/P-X/</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycework.eu.cc/tags/%E5%B0%88%E6%A1%88/</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.boycework.eu.cc/tags/%E6%8B%8D%E8%B2%BC/</loc>
-    <lastmod>2025-12-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/</loc>
-    <lastmod>2025-12-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycework.eu.cc/tags/%E6%8A%80%E8%A1%93/</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -118,6 +118,27 @@
   </url>
   
   <url>
+    <loc>https://www.boycework.eu.cc/tags/%E5%BF%83%E5%BE%97/</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycework.eu.cc/tags/%E6%8A%80%E8%A1%93/</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.boycework.eu.cc/tags/2025-AIS3-Junior/</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -126,27 +147,6 @@
   
   <url>
     <loc>https://www.boycework.eu.cc/tags/Writeup/</loc>
-    <lastmod>2025-12-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycework.eu.cc/tags/P-X/</loc>
-    <lastmod>2025-12-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycework.eu.cc/tags/%E5%B0%88%E6%A1%88/</loc>
-    <lastmod>2025-12-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycework.eu.cc/tags/%E5%BF%83%E5%BE%97/</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -162,14 +162,14 @@
   </url>
   
   <url>
-    <loc>https://www.boycework.eu.cc/categories/%E8%B3%87%E5%AE%89/</loc>
+    <loc>https://www.boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/</loc>
+    <loc>https://www.boycework.eu.cc/categories/%E8%B3%87%E5%AE%89/</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
