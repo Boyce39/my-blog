@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>里肌肉部落格</title>
+  <title>里肌肉的資安技術站 | Boyce&#39;s Tech Blog</title>
   
-  
+  <subtitle>Tech Journey // Cyber Security // Innovation</subtitle>
   <link href="https://www.boycework.eu.cc/atom.xml" rel="self"/>
   
   <link href="https://www.boycework.eu.cc/"/>
@@ -10,7 +10,7 @@
   <id>https://www.boycework.eu.cc/</id>
   
   <author>
-    <name>李柏毅</name>
+    <name>李柏毅 (Boyce)</name>
     
   </author>
   
