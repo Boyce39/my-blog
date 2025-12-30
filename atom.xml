@@ -3,11 +3,11 @@
   <title>里肌肉的資安技術站 | Boyce&#39;s Tech Blog</title>
   
   <subtitle>Tech Journey // Cyber Security // Innovation</subtitle>
-  <link href="https://www.boycework.eu.cc/atom.xml" rel="self"/>
+  <link href="https://boycework.eu.cc/atom.xml" rel="self"/>
   
-  <link href="https://www.boycework.eu.cc/"/>
+  <link href="https://boycework.eu.cc/"/>
   <updated>2025-12-26T14:34:02.242Z</updated>
-  <id>https://www.boycework.eu.cc/</id>
+  <id>https://boycework.eu.cc/</id>
   
   <author>
     <name>李柏毅 (Boyce)</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>115 特殊選才心得｜資工特選的現實與轉彎</title>
-    <link href="https://www.boycework.eu.cc/2025/12/24/115-special/"/>
-    <id>https://www.boycework.eu.cc/2025/12/24/115-special/</id>
+    <link href="https://boycework.eu.cc/2025/12/24/115-special/"/>
+    <id>https://boycework.eu.cc/2025/12/24/115-special/</id>
     <published>2025-12-24T02:00:00.000Z</published>
     <updated>2025-12-26T14:34:02.242Z</updated>
     
@@ -33,21 +33,21 @@
     
     
     
-    <category term="心得" scheme="https://www.boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/"/>
+    <category term="心得" scheme="https://boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/"/>
     
     
-    <category term="特殊選才" scheme="https://www.boycework.eu.cc/tags/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/"/>
+    <category term="特殊選才" scheme="https://boycework.eu.cc/tags/%E7%89%B9%E6%AE%8A%E9%81%B8%E6%89%8D/"/>
     
-    <category term="升學" scheme="https://www.boycework.eu.cc/tags/%E5%8D%87%E5%AD%B8/"/>
+    <category term="升學" scheme="https://boycework.eu.cc/tags/%E5%8D%87%E5%AD%B8/"/>
     
-    <category term="心得" scheme="https://www.boycework.eu.cc/tags/%E5%BF%83%E5%BE%97/"/>
+    <category term="心得" scheme="https://boycework.eu.cc/tags/%E5%BF%83%E5%BE%97/"/>
     
   </entry>
   
   <entry>
     <title>2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞</title>
-    <link href="https://www.boycework.eu.cc/2025/08/13/AIS3-Full-Security-Record/"/>
-    <id>https://www.boycework.eu.cc/2025/08/13/AIS3-Full-Security-Record/</id>
+    <link href="https://boycework.eu.cc/2025/08/13/AIS3-Full-Security-Record/"/>
+    <id>https://boycework.eu.cc/2025/08/13/AIS3-Full-Security-Record/</id>
     <published>2025-08-13T02:00:00.000Z</published>
     <updated>2025-12-22T17:04:24.831Z</updated>
     
@@ -61,21 +61,21 @@
     
     
     
-    <category term="Writeup" scheme="https://www.boycework.eu.cc/categories/Writeup/"/>
+    <category term="Writeup" scheme="https://boycework.eu.cc/categories/Writeup/"/>
     
     
-    <category term="資安" scheme="https://www.boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/"/>
+    <category term="資安" scheme="https://boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/"/>
     
-    <category term="2025 AIS3 Junior" scheme="https://www.boycework.eu.cc/tags/2025-AIS3-Junior/"/>
+    <category term="2025 AIS3 Junior" scheme="https://boycework.eu.cc/tags/2025-AIS3-Junior/"/>
     
-    <category term="Writeup" scheme="https://www.boycework.eu.cc/tags/Writeup/"/>
+    <category term="Writeup" scheme="https://boycework.eu.cc/tags/Writeup/"/>
     
   </entry>
   
   <entry>
     <title>Filename Confusion | Writeup</title>
-    <link href="https://www.boycework.eu.cc/2025/08/13/250813-filename-confusion/"/>
-    <id>https://www.boycework.eu.cc/2025/08/13/250813-filename-confusion/</id>
+    <link href="https://boycework.eu.cc/2025/08/13/250813-filename-confusion/"/>
+    <id>https://boycework.eu.cc/2025/08/13/250813-filename-confusion/</id>
     <published>2025-08-12T16:00:00.000Z</published>
     <updated>2025-12-22T16:35:59.673Z</updated>
     
@@ -90,19 +90,19 @@
     
     
     
-    <category term="資安" scheme="https://www.boycework.eu.cc/categories/%E8%B3%87%E5%AE%89/"/>
+    <category term="資安" scheme="https://boycework.eu.cc/categories/%E8%B3%87%E5%AE%89/"/>
     
     
-    <category term="資安" scheme="https://www.boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/"/>
+    <category term="資安" scheme="https://boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/"/>
     
-    <category term="技術" scheme="https://www.boycework.eu.cc/tags/%E6%8A%80%E8%A1%93/"/>
+    <category term="技術" scheme="https://boycework.eu.cc/tags/%E6%8A%80%E8%A1%93/"/>
     
   </entry>
   
   <entry>
     <title>拍貼機系統 P!X 印一下</title>
-    <link href="https://www.boycework.eu.cc/2025/07/26/Photobooth_Post/"/>
-    <id>https://www.boycework.eu.cc/2025/07/26/Photobooth_Post/</id>
+    <link href="https://boycework.eu.cc/2025/07/26/Photobooth_Post/"/>
+    <id>https://boycework.eu.cc/2025/07/26/Photobooth_Post/</id>
     <published>2025-07-26T02:00:00.000Z</published>
     <updated>2025-12-24T16:46:28.833Z</updated>
     
@@ -117,14 +117,14 @@
     
     
     
-    <category term="專案" scheme="https://www.boycework.eu.cc/categories/%E5%B0%88%E6%A1%88/"/>
+    <category term="專案" scheme="https://boycework.eu.cc/categories/%E5%B0%88%E6%A1%88/"/>
     
     
-    <category term="P!X" scheme="https://www.boycework.eu.cc/tags/P-X/"/>
+    <category term="P!X" scheme="https://boycework.eu.cc/tags/P-X/"/>
     
-    <category term="專案" scheme="https://www.boycework.eu.cc/tags/%E5%B0%88%E6%A1%88/"/>
+    <category term="專案" scheme="https://boycework.eu.cc/tags/%E5%B0%88%E6%A1%88/"/>
     
-    <category term="拍貼" scheme="https://www.boycework.eu.cc/tags/%E6%8B%8D%E8%B2%BC/"/>
+    <category term="拍貼" scheme="https://boycework.eu.cc/tags/%E6%8B%8D%E8%B2%BC/"/>
     
   </entry>
   
