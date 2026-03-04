@@ -96,247 +96,236 @@
                                                 
 <link rel="stylesheet" href="/css/style.css">
 
+                                                  <link rel="stylesheet" href="/css/custom-tech.css">
 <meta name="generator" content="Hexo 8.1.1"></head>
-        <!-- Force FontAwesome Load -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap');
 
+            /* ── CSS Variables ── */
             :root {
-                /* Dark Mode Defaults */
-                --bg-color: #050508;
-                --text-primary: #e0e0e0;
-                --text-secondary: #a0a0a0;
-                --neon-primary: #00ffc8;
-                --neon-secondary: #7c3aed;
-                --glass-bg: rgba(20, 20, 25, 0.6);
-                --glass-border: rgba(0, 255, 200, 0.2);
-                --card-shadow: 0 0 50px rgba(0, 255, 200, 0.1);
-                --scanline-color: rgba(0, 255, 0, 0.02);
-                --particle-color: "#00ffc8";
+                --bg: #050810;
+                --surface: rgba(12, 18, 35, 0.7);
+                --border: rgba(0, 210, 255, 0.18);
+                --cyan: #00d4ff;
+                --cyan-glow: rgba(0, 212, 255, 0.25);
+                --purple: #6c5ce7;
+                --text-hi: #e8edf5;
+                --text-mid: #8fa0b8;
+                --text-lo: #4a5a72;
+                --card-bg: rgba(10, 18, 38, 0.75);
+                --scan: rgba(0, 212, 255, 0.015);
+                --radius: 16px;
+                --radius-sm: 10px;
             }
 
-            /* Light Mode Override */
             html[theme='light'] {
-                --bg-color: #f0f2f5;
-                --text-primary: #2c3e50;
-                --text-secondary: #596275;
-                --neon-primary: #00b894;
-                --neon-secondary: #6c5ce7;
-                --glass-bg: rgba(255, 255, 255, 0.7);
-                --glass-border: rgba(0, 0, 0, 0.1);
-                --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                --scanline-color: rgba(0, 0, 0, 0.02);
-                --particle-color: "#00b894";
+                --bg: #080e1e;
+                --surface: rgba(8, 16, 32, 0.75);
+                --border: rgba(0, 210, 255, 0.2);
+                --text-hi: #d8e4f0;
+                --text-mid: #7a90a8;
             }
 
+            /* ── Reset / Base ── */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            html,
             body {
                 margin: 0;
                 padding: 0;
-                background-color: var(--bg-color);
-                color: var(--text-primary);
-                font-family: 'Roboto Mono', monospace;
-                overflow-x: hidden;
-                display: flex;
-                flex-direction: column;
                 min-height: 100vh;
-                transition: background-color 0.5s ease, color 0.5s ease;
             }
 
-            /* CRT Scanline Effect */
+            body {
+                background: var(--bg);
+                color: var(--text-hi);
+                font-family: 'Inter', -apple-system, sans-serif;
+                overflow-x: hidden;
+            }
+
+            /* CRT scanlines */
             body::before {
-                content: " ";
-                display: block;
+                content: '';
                 position: fixed;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                background: linear-gradient(rgba(18, 16, 16, 0) 50%, var(--scanline-color) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-                z-index: 999;
-                background-size: 100% 2px, 3px 100%;
+                inset: 0;
+                z-index: 998;
                 pointer-events: none;
+                background:
+                    linear-gradient(rgba(0, 0, 0, 0) 50%, var(--scan) 50%),
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 200, 0.01), rgba(0, 0, 255, 0.03));
+                background-size: 100% 3px, 4px 100%;
             }
 
-            /* Dynamic Background */
-            #particles-js {
+            /* Particle background */
+            #bg-canvas {
                 position: fixed;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
+                inset: 0;
                 z-index: 0;
                 pointer-events: none;
-                opacity: 0.6;
             }
 
-            .landing-wrapper {
+            /* ── Layout ── */
+            .page-wrap {
                 position: relative;
                 z-index: 1;
-                flex: 1;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0 20px 60px;
+            }
+
+            /* ── Navbar override for landing ── */
+            #landing-header {
+                position: relative;
+                z-index: 100;
+            }
+
+            /* ── Section commons ── */
+            section {
+                margin-bottom: 56px;
+            }
+
+            .section-label {
+                font-family: 'Roboto Mono', monospace;
+                font-size: 0.72rem;
+                letter-spacing: 0.2em;
+                color: var(--cyan);
+                text-transform: uppercase;
+                margin-bottom: 6px;
+                opacity: 0.8;
+            }
+
+            .section-title {
+                font-family: 'Orbitron', monospace;
+                font-size: 1.35rem;
+                font-weight: 700;
+                color: var(--text-hi);
+                margin: 0 0 28px;
+                padding-bottom: 12px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .section-title span {
+                color: var(--cyan);
+            }
+
+            /* ── HERO ── */
+            .hero {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                padding: 2rem;
                 text-align: center;
+                padding: 72px 0 40px;
+                gap: 0;
             }
 
-            /* 3D Hero Container */
-            .hero-container {
-                background: var(--glass-bg);
-                backdrop-filter: blur(15px);
-                border: 1px solid var(--glass-border);
-                border-radius: 20px;
-                padding: 3rem 2rem;
-                max-width: 800px;
-                width: 100%;
-                box-shadow: var(--card-shadow);
+            .avatar-wrap {
                 position: relative;
-                transform-style: preserve-3d;
-                perspective: 1000px;
-                transition: transform 0.1s ease, box-shadow 0.3s ease;
+                width: 130px;
+                height: 130px;
+                margin-bottom: 28px;
             }
 
-            /* Avatar with Pulsing Ring */
-            .avatar-container {
-                margin-bottom: 2rem;
-                position: relative;
-                display: inline-block;
-            }
-
-            .avatar-img {
-                width: 160px;
-                height: 160px;
+            .avatar-wrap img {
+                width: 130px;
+                height: 130px;
                 border-radius: 50%;
-                border: 3px solid var(--neon-primary);
-                box-shadow: 0 0 20px var(--neon-primary);
                 object-fit: cover;
-                transition: transform 0.5s ease;
+                border: 2px solid var(--cyan);
+                box-shadow: 0 0 24px var(--cyan-glow);
                 position: relative;
                 z-index: 2;
             }
 
-            .avatar-img:hover {
-                transform: scale(1.05) rotate(5deg);
-            }
-
             .avatar-ring {
                 position: absolute;
-                top: -15px;
-                left: -15px;
-                right: -15px;
-                bottom: -15px;
+                inset: -12px;
                 border-radius: 50%;
-                border: 2px dashed var(--neon-secondary);
+                border: 1.5px dashed rgba(108, 92, 231, 0.55);
                 border-top-color: transparent;
-                border-bottom-color: transparent;
-                animation: spin 8s linear infinite;
+                animation: spin 10s linear infinite;
                 z-index: 1;
             }
 
-            .avatar-ring::before {
-                content: '';
+            .avatar-dot {
                 position: absolute;
-                top: 5px;
-                left: 5px;
-                right: 5px;
-                bottom: 5px;
+                inset: -20px;
                 border-radius: 50%;
-                border: 1px solid var(--neon-primary);
-                opacity: 0.3;
-                animation: pulse-ring 2s ease-out infinite;
+                border: 1px solid rgba(0, 212, 255, 0.12);
+                animation: spin 18s linear infinite reverse;
             }
 
             @keyframes spin {
-                100% {
+                to {
                     transform: rotate(360deg);
                 }
             }
 
-            @keyframes pulse-ring {
-                0% {
-                    transform: scale(0.9);
-                    opacity: 0.5;
+            .hero-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: rgba(0, 212, 255, 0.08);
+                border: 1px solid var(--border);
+                border-radius: 100px;
+                padding: 5px 14px;
+                font-family: 'Roboto Mono', monospace;
+                font-size: 0.75rem;
+                color: var(--cyan);
+                margin-bottom: 16px;
+                letter-spacing: 0.05em;
+            }
+
+            .hero-badge::before {
+                content: '';
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: var(--cyan);
+                box-shadow: 0 0 6px var(--cyan);
+                animation: pulse-dot 2s ease-in-out infinite;
+            }
+
+            @keyframes pulse-dot {
+
+                0%,
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
                 }
 
-                100% {
-                    transform: scale(1.1);
-                    opacity: 0;
+                50% {
+                    opacity: 0.4;
+                    transform: scale(0.8);
                 }
             }
 
-            /* Glitch Title */
-            .hero-title {
-                font-family: 'Orbitron', sans-serif;
-                font-size: 3.5rem;
+            .hero-name {
+                font-family: 'Orbitron', monospace;
+                font-size: clamp(2rem, 6vw, 3.2rem);
                 font-weight: 900;
-                margin: 0;
-                color: var(--text-primary);
-                text-transform: uppercase;
-                letter-spacing: 4px;
-                position: relative;
-                text-shadow: 2px 2px 0px var(--neon-secondary);
+                margin: 0 0 10px;
+                color: var(--text-hi);
+                letter-spacing: 0.05em;
+                text-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
             }
 
-            .hero-title::before,
-            .hero-title::after {
-                content: attr(data-text);
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: var(--bg-color);
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-            }
-
-            .hero-title::before {
-                left: -2px;
-                text-shadow: -1px 0 #ff00c1;
-                animation: glitch-anim-1 2s infinite linear alternate-reverse;
-            }
-
-            .hero-title::after {
-                left: 2px;
-                text-shadow: -1px 0 #00fff9;
-                animation: glitch-anim-2 3s infinite linear alternate-reverse;
-            }
-
-            @keyframes glitch-anim-1 {
-                0% {
-                    clip: rect(20px, 9999px, 10px, 0);
-                }
-
-                100% {
-                    clip: rect(80px, 9999px, 90px, 0);
-                }
-            }
-
-            @keyframes glitch-anim-2 {
-                0% {
-                    clip: rect(60px, 9999px, 50px, 0);
-                }
-
-                100% {
-                    clip: rect(10px, 9999px, 140px, 0);
-                }
-            }
-
-            /* Typewriter Subtitle */
-            .hero-subtitle {
-                font-size: 1.2rem;
-                color: var(--neon-primary);
-                margin: 1rem 0 2rem;
-                letter-spacing: 2px;
-                border-right: 2px solid var(--neon-primary);
+            .hero-sub {
+                font-size: 1rem;
+                color: var(--cyan);
+                font-family: 'Roboto Mono', monospace;
+                letter-spacing: 0.08em;
+                margin: 0 0 20px;
+                border-right: 2px solid var(--cyan);
                 display: inline-block;
                 white-space: nowrap;
                 overflow: hidden;
-                animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-                max-width: 100%;
+                animation: typing 3.2s steps(35, end) forwards, blink 0.8s step-end infinite;
             }
 
             @keyframes typing {
@@ -349,7 +338,7 @@
                 }
             }
 
-            @keyframes blink-caret {
+            @keyframes blink {
 
                 from,
                 to {
@@ -357,209 +346,463 @@
                 }
 
                 50% {
-                    border-color: var(--neon-primary);
+                    border-color: var(--cyan)
                 }
             }
 
-            /* Description Box */
             .hero-desc {
-                font-size: 1rem;
+                max-width: 480px;
+                color: var(--text-mid);
+                font-size: 0.92rem;
                 line-height: 1.8;
-                color: var(--text-secondary);
-                border-left: 4px solid var(--neon-primary);
-                padding: 15px 20px;
-                text-align: left;
-                background: linear-gradient(90deg, rgba(0, 255, 200, 0.05), transparent);
-                margin: 0 auto 2rem;
-                max-width: 600px;
-                border-radius: 0 4px 4px 0;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                margin: 0 0 28px;
             }
 
-            /* Buttons */
-            .action-buttons {
+            /* Skill Tags */
+            .skill-tags {
                 display: flex;
-                gap: 15px;
-                justify-content: center;
                 flex-wrap: wrap;
-            }
-
-            .btn-cyber {
-                padding: 12px 30px;
-                font-family: 'Orbitron', sans-serif;
-                font-size: 1rem;
-                font-weight: bold;
-                text-decoration: none;
-                color: #000;
-                background: var(--neon-primary);
-                border: none;
-                clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
-                transition: all 0.3s ease;
-                position: relative;
-                letter-spacing: 1px;
-            }
-
-            .btn-cyber:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 0 25px var(--neon-primary);
-                color: #000;
-            }
-
-            .btn-cyber.secondary {
-                background: transparent;
-                color: var(--neon-primary);
-                border: 1px solid var(--neon-primary);
-                box-shadow: inset 0 0 10px rgba(0, 255, 200, 0.1);
-            }
-
-            .btn-cyber.secondary:hover {
-                background: var(--neon-primary);
-                color: #000;
-                box-shadow: 0 0 20px var(--neon-primary);
-            }
-
-            .btn-cyber.small {
-                padding: 8px 15px;
-                font-size: 0.85rem;
-                border-color: var(--text-secondary);
-                color: var(--text-secondary);
-                box-shadow: none;
-            }
-
-            .btn-cyber.small:hover {
-                border-color: var(--neon-secondary);
-                color: #fff;
-                background: var(--neon-secondary);
-                box-shadow: 0 0 15px var(--neon-secondary);
-            }
-
-            /* Social Icons Fix */
-            .social-links-container {
-                display: flex;
-                gap: 20px;
                 justify-content: center;
-                margin: 20px 0;
-                padding: 10px 20px;
-                background: rgba(255, 255, 255, 0.05);
-                border-radius: 50px;
-                backdrop-filter: blur(5px);
-                display: inline-flex;
+                gap: 8px;
+                margin-bottom: 28px;
             }
 
-            .social-icon-btn {
-                width: 45px;
-                height: 45px;
+            .skill-tag {
+                background: rgba(0, 212, 255, 0.06);
+                border: 1px solid rgba(0, 212, 255, 0.16);
+                border-radius: 100px;
+                padding: 4px 14px;
+                font-size: 0.78rem;
+                color: var(--text-mid);
+                font-family: 'Roboto Mono', monospace;
+                transition: all 0.2s;
+            }
+
+            .skill-tag:hover {
+                border-color: var(--cyan);
+                color: var(--cyan);
+                box-shadow: 0 0 8px var(--cyan-glow);
+            }
+
+            /* CTA Buttons */
+            .hero-cta {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 11px 26px;
+                border-radius: 8px;
+                font-family: 'Orbitron', monospace;
+                font-size: 0.82rem;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                text-decoration: none;
+                transition: all 0.25s;
+                cursor: pointer;
+            }
+
+            .btn-primary {
+                background: var(--cyan);
+                color: #050810;
+                border: none;
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            }
+
+            .btn-primary:hover {
+                box-shadow: 0 0 30px rgba(0, 212, 255, 0.55);
+                transform: translateY(-2px);
+                color: #050810;
+            }
+
+            .btn-outline {
+                background: transparent;
+                color: var(--cyan);
+                border: 1.5px solid var(--border);
+            }
+
+            .btn-outline:hover {
+                border-color: var(--cyan);
+                box-shadow: 0 0 16px var(--cyan-glow);
+                transform: translateY(-2px);
+                color: var(--cyan);
+            }
+
+            /* ── SERVICES ── */
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 16px;
+            }
+
+            .service-card {
+                background: var(--card-bg);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                padding: 24px 22px;
+                transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .service-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .service-card:hover {
+                border-color: rgba(0, 212, 255, 0.4);
+                transform: translateY(-4px);
+                box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+            }
+
+            .service-card:hover::before {
+                opacity: 1;
+            }
+
+            .service-icon {
+                font-size: 1.8rem;
+                margin-bottom: 14px;
+                width: 52px;
+                height: 52px;
+                background: rgba(0, 212, 255, 0.08);
+                border: 1px solid rgba(0, 212, 255, 0.15);
+                border-radius: 12px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border-radius: 50%;
-                background: rgba(0, 0, 0, 0.2);
-                border: 1px solid var(--neon-primary);
-                color: #fff !important;
-                font-size: 1.2rem;
+                color: var(--cyan);
+            }
+
+            .service-title {
+                font-family: 'Orbitron', monospace;
+                font-size: 0.92rem;
+                font-weight: 700;
+                color: var(--text-hi);
+                margin: 0 0 8px;
+            }
+
+            .service-desc {
+                font-size: 0.84rem;
+                color: var(--text-mid);
+                line-height: 1.7;
+                margin: 0 0 14px;
+            }
+
+            .service-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            .service-tag {
+                font-size: 0.73rem;
+                font-family: 'Roboto Mono', monospace;
+                color: var(--cyan);
+                background: rgba(0, 212, 255, 0.07);
+                border: 1px solid rgba(0, 212, 255, 0.15);
+                border-radius: 100px;
+                padding: 2px 9px;
+            }
+
+            .service-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 0.8rem;
+                color: var(--cyan);
                 text-decoration: none;
-                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                font-family: 'Roboto Mono', monospace;
+                margin-top: 14px;
+                opacity: 0.75;
+                transition: opacity 0.2s;
             }
 
-            .social-icon-btn:hover {
-                background: var(--neon-primary);
-                color: #000 !important;
-                transform: translateY(-5px) scale(1.1);
-                box-shadow: 0 5px 15px var(--neon-primary);
+            .service-link:hover {
+                opacity: 1;
             }
 
-            /* Footer Override */
+            /* ── PROJECTS quick links ── */
+            .projects-row {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 12px;
+            }
+
+            .project-card {
+                background: var(--card-bg);
+                border: 1px solid var(--border);
+                border-radius: var(--radius-sm);
+                padding: 18px 18px 16px;
+                text-decoration: none;
+                transition: all 0.22s;
+                display: block;
+            }
+
+            .project-card:hover {
+                border-color: rgba(0, 212, 255, 0.4);
+                box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
+                transform: translateY(-2px);
+            }
+
+            .project-card-icon {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+                color: var(--cyan);
+            }
+
+            .project-card-name {
+                font-size: 0.88rem;
+                font-weight: 600;
+                color: var(--text-hi);
+                margin: 0 0 6px;
+            }
+
+            .project-card-desc {
+                font-size: 0.78rem;
+                color: var(--text-mid);
+                line-height: 1.6;
+                margin: 0;
+            }
+
+            /* ── AWARDS ── */
+            .awards-list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .award-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 14px;
+                background: var(--card-bg);
+                border: 1px solid var(--border);
+                border-radius: var(--radius-sm);
+                padding: 14px 18px;
+                transition: border-color 0.2s;
+            }
+
+            .award-item:hover {
+                border-color: rgba(0, 212, 255, 0.35);
+            }
+
+            .award-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--cyan);
+                box-shadow: 0 0 8px var(--cyan);
+                flex-shrink: 0;
+                margin-top: 5px;
+            }
+
+            .award-text {
+                font-size: 0.86rem;
+                color: var(--text-hi);
+                line-height: 1.5;
+            }
+
+            .award-year {
+                font-family: 'Roboto Mono', monospace;
+                font-size: 0.75rem;
+                color: var(--text-lo);
+                margin-left: auto;
+                flex-shrink: 0;
+                align-self: center;
+            }
+
+            /* ── CONTACT ── */
+            .contact-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+
+            .contact-card {
+                background: var(--card-bg);
+                border: 1px solid var(--border);
+                border-radius: var(--radius-sm);
+                padding: 18px 20px;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                text-decoration: none;
+                transition: all 0.22s;
+                color: var(--text-hi);
+            }
+
+            .contact-card:hover {
+                border-color: var(--border);
+                box-shadow: 0 4px 20px rgba(0, 212, 255, 0.12);
+                transform: translateY(-2px);
+                color: var(--text-hi);
+            }
+
+            .contact-icon {
+                width: 44px;
+                height: 44px;
+                background: rgba(0, 212, 255, 0.08);
+                border: 1px solid rgba(0, 212, 255, 0.15);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                color: var(--cyan);
+                flex-shrink: 0;
+            }
+
+            .contact-icon.line {
+                background: rgba(0, 185, 0, 0.1);
+                border-color: rgba(0, 185, 0, 0.25);
+                color: #06c755;
+            }
+
+            .contact-icon.ig {
+                background: rgba(200, 60, 130, 0.1);
+                border-color: rgba(200, 60, 130, 0.25);
+                color: #e1306c;
+            }
+
+            .contact-icon.gh {
+                background: rgba(255, 255, 255, 0.05);
+                border-color: rgba(255, 255, 255, 0.12);
+                color: #c9d1d9;
+            }
+
+            .contact-label {
+                font-size: 0.72rem;
+                color: var(--text-lo);
+                font-family: 'Roboto Mono', monospace;
+                margin-bottom: 2px;
+            }
+
+            .contact-value {
+                font-size: 0.83rem;
+                font-weight: 600;
+                color: var(--text-hi);
+                word-break: break-all;
+                line-height: 1.3;
+            }
+
+            .contact-note {
+                background: rgba(0, 212, 255, 0.05);
+                border: 1px solid var(--border);
+                border-radius: var(--radius-sm);
+                padding: 16px 20px;
+                font-size: 0.85rem;
+                color: var(--text-mid);
+                line-height: 1.7;
+                font-family: 'Roboto Mono', monospace;
+            }
+
+            .contact-note strong {
+                color: var(--cyan);
+            }
+
+            /* ── Social icons row ── */
+            .social-row {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                margin-top: 32px;
+                flex-wrap: wrap;
+            }
+
+            .social-btn {
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+                background: rgba(0, 0, 0, 0.25);
+                border: 1px solid var(--border);
+                color: var(--text-mid);
+                font-size: 1.1rem;
+                text-decoration: none;
+                transition: all 0.22s;
+            }
+
+            .social-btn:hover {
+                border-color: var(--cyan);
+                color: var(--cyan);
+                box-shadow: 0 0 12px var(--cyan-glow);
+                transform: translateY(-2px);
+            }
+
+            /* ── Footer ── */
             #footer-wrapper {
                 position: relative;
                 z-index: 2;
-                background: transparent;
-                margin-top: 0;
+                border-top: 1px solid var(--border);
             }
 
-            /* Header Override */
-            #landing-header {
-                position: absolute;
-                width: 100%;
-                z-index: 100;
+            /* ── Animations ── */
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
             }
 
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* ── RWD ── */
             @media (max-width: 600px) {
-                .hero-title {
-                    font-size: 2rem;
-                    line-height: 1.2;
-                    margin-bottom: 10px;
+                .hero-name {
+                    font-size: 1.9rem;
                 }
 
-                .hero-subtitle {
-                    font-size: 0.9rem;
+                .hero-sub {
+                    font-size: 0.82rem;
                     white-space: normal;
-                    /* Allow wrap on mobile */
                     border-right: none;
-                    /* Remove caret on mobile to avoid layout shift */
                     animation: none;
-                    /* Disable typewriter on mobile for better fit */
-                    margin-bottom: 1.5rem;
                 }
 
-                .hero-container {
-                    padding: 2rem 1rem;
-                    margin: 0 10px;
-                    /* Prevent touching edges */
-                    width: calc(100% - 20px);
-                    /* Ensure explicit width */
-                }
-
-                .landing-wrapper {
-                    padding: 1rem;
-                    overflow-x: hidden;
-                    /* Prevent horizontal scroll */
-                }
-
-                .hero-desc {
-                    font-size: 0.9rem;
-                    padding: 10px;
-                }
-
-                .btn-cyber {
-                    width: 100%;
-                    text-align: center;
-                    margin-bottom: 10px;
-                    padding: 10px 15px;
-                    /* Reduced vertical and horizontal padding */
-                    font-size: 0.95rem;
-                    /* Slightly smaller text */
-                    box-sizing: border-box;
-                    /* Ensure padding doesn't add to width */
-                }
-
-                .action-buttons {
-                    gap: 10px;
-                }
-
-                .action-buttons.primary-actions {
+                .hero-cta {
                     flex-direction: column;
+                    align-items: stretch;
                 }
 
-                .action-buttons.secondary-actions {
-                    flex-direction: column;
+                .btn {
+                    justify-content: center;
                 }
 
-                .social-links-container {
-                    flex-wrap: wrap;
-                    padding: 10px;
+                .page-wrap {
+                    padding: 0 14px 48px;
                 }
             }
         </style>
 </head>
 
 <body>
-    <!-- Dynamic Background -->
-    <div id="particles-js"></div>
+    <canvas id="bg-canvas"></canvas>
 
     <header id="landing-header">
         <navbar id="navbar">
   <nav id="title-nav">
-    <a href="/%20/">
+    <a href="/">
       <div id="vivia-logo">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -649,70 +892,232 @@
 </script>
     </header>
 
-    <div class="landing-wrapper">
-        <div class="hero-container" id="tilt-card">
+    <div class="page-wrap">
 
-            <div class="avatar-container">
+        <!-- ══ HERO ══ -->
+        <section class="hero">
+            <div class="avatar-wrap">
+                <div class="avatar-dot"></div>
                 <div class="avatar-ring"></div>
-                <img src="/images/me.jpg" alt="Avatar" class="avatar-img">
+                <img src="/images/loading.gif" data-original="/images/me.jpg" alt="Boyce Lee">
             </div>
 
-            <h1 class="hero-title" data-text="里肌肉部落格">
-                里肌肉部落格
-            </h1>
+            <div class="hero-badge">可接案中 · Open for Work</div>
 
-            <p class="hero-subtitle">
-                System Online // Ready for Input
+            <h1 class="hero-name">
+                李柏毅 (Boyce)
+            </h1>
+            <p class="hero-sub">資安研究 ｜ Python 自動化 ｜ AI 應用</p>
+
+            <p class="hero-desc">
+                潮州高中應屆生。中興大學應用數學系（數據分析與計算組）準新生。<br>
+                專注於 Python 自動化開發、資安研究與教學，提供程式接案與家教服務。
             </p>
 
-            <!-- Primary Actions -->
-            <div class="action-buttons primary-actions" style="margin-bottom: 2rem;">
-                <a href="/about/" class="btn-cyber">
-                    <i class="fa-solid fa-user-astronaut"></i> 關於我
+            <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">自動化</span>
+                <span class="skill-tag">資安 / CTF</span>
+                <span class="skill-tag">AI 應用</span>
+                <span class="skill-tag">RAG 研究</span>
+                <span class="skill-tag">Web 開發</span>
+                <span class="skill-tag">Flask</span>
+                <span class="skill-tag">Raspberry Pi</span>
+                <span class="skill-tag">競程</span>
+                <span class="skill-tag">APCS</span>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> 聯絡我
                 </a>
-                <a href="/blog/" class="btn-cyber">
-                    <i class="fa-solid fa-rocket"></i> 最新文章
+                <a href="/blog/" class="btn btn-outline">
+                    <i class="fa-solid fa-book-open"></i> 技術文章
+                </a>
+                <a href="/about/" class="btn btn-outline">
+                    <i class="fa-solid fa-id-card"></i> 關於我
+                </a>
+            </div>
+        </section>
+
+        <!-- ══ SERVICES ══ -->
+        <section class="fade-in">
+            <div class="section-label">// services</div>
+            <h2 class="section-title">提供的<span>服務</span></h2>
+
+            <div class="services-grid">
+                <!-- 自動化接案 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+                    <div class="service-title">Python 自動化開發</div>
+                    <div class="service-desc">
+                        爬蟲、排程、表單自動化、LINE Bot、資料處理流程、API 串接、硬體整合（Raspberry Pi / Arduino）等。
+                    </div>
+                    <div class="service-tags">
+                        <span class="service-tag">爬蟲</span>
+                        <span class="service-tag">LINE Bot</span>
+                        <span class="service-tag">排程</span>
+                        <span class="service-tag">API 串接</span>
+                        <span class="service-tag">硬體控制</span>
+                    </div>
+                    <a href="#projects" class="service-link">
+                        <i class="fa-solid fa-arrow-right"></i> 查看相關專案
+                    </a>
+                </div>
+
+                <!-- 國小國中陪讀 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="service-title">國小 / 國中陪讀</div>
+                    <div class="service-desc">
+                        耐心陪伴學習、作業輔導、自然科學與數學基礎強化，以鼓勵式教學建立學習信心。
+                    </div>
+                    <div class="service-tags">
+                        <span class="service-tag">國小</span>
+                        <span class="service-tag">國中</span>
+                        <span class="service-tag">自然</span>
+                        <span class="service-tag">數學</span>
+                        <span class="service-tag">作業輔導</span>
+                    </div>
+                </div>
+
+                <!-- 程式家教 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-terminal"></i></div>
+                    <div class="service-title">程式設計 / 競程家教</div>
+                    <div class="service-desc">
+                        Python / C++ 入門到進階、APCS 考前衝刺、競程演算法（排序、搜尋、DP、圖論）一對一教學。
+                    </div>
+                    <div class="service-tags">
+                        <span class="service-tag">Python</span>
+                        <span class="service-tag">C++</span>
+                        <span class="service-tag">APCS</span>
+                        <span class="service-tag">競程</span>
+                        <span class="service-tag">演算法</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ PROJECTS ══ -->
+        <section id="projects" class="fade-in">
+            <div class="section-label">// projects</div>
+            <h2 class="section-title">代表<span>專案</span></h2>
+
+            <div class="projects-row">
+                <a href="/tags/專案/" class="project-card">
+                    <div class="project-card-icon"><i class="fa-solid fa-gears"></i></div>
+                    <div class="project-card-name">自動化 / 硬體專案</div>
+                    <div class="project-card-desc">Python + Raspberry Pi + Arduino 實作系列</div>
+                </a>
+                <a href="/tags/資安/" class="project-card">
+                    <div class="project-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="project-card-name">資安研究</div>
+                    <div class="project-card-desc">CTF Writeup、滲透測試、漏洞分析筆記</div>
+                </a>
+                <a href="/tags/AI/" class="project-card">
+                    <div class="project-card-icon"><i class="fa-solid fa-brain"></i></div>
+                    <div class="project-card-name">AI / RAG 研究</div>
+                    <div class="project-card-desc">生成式 AI 應用、RAG 架構、黑客松作品</div>
+                </a>
+                <a href="/archives/" class="project-card">
+                    <div class="project-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="project-card-name">所有文章</div>
+                    <div class="project-card-desc">完整學習歷程與技術筆記歸檔</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ══ AWARDS highlight ══ -->
+        <section class="fade-in">
+            <div class="section-label">// achievements</div>
+            <h2 class="section-title">部分<span>成就</span></h2>
+
+            <ul class="awards-list">
+                <li class="award-item">
+                    <div class="award-dot"></div>
+                    <div class="award-text"><strong style="color:var(--cyan)">全國中小學科學展覽</strong>（第 65 屆・電腦與資訊學科）— 佳作
+                    </div>
+                    <div class="award-year">2026</div>
+                </li>
+                <li class="award-item">
+                    <div class="award-dot"></div>
+                    <div class="award-text"><strong style="color:var(--cyan)">114 分區資訊學科能力競賽複賽</strong>（學科能力競賽）— 佳作
+                    </div>
+                    <div class="award-year">2026</div>
+                </li>
+                <li class="award-item">
+                    <div class="award-dot"></div>
+                    <div class="award-text"><strong style="color:var(--cyan)">第十屆 AIS3「好厲駭」資安年訓</strong> — 學員（教育部）</div>
+                    <div class="award-year">2025–26</div>
+                </li>
+                <li class="award-item">
+                    <div class="award-dot"></div>
+                    <div class="award-text"><strong style="color:var(--cyan)">全民 e 化資訊運動會</strong> — Python
+                        程式素養「全國第一」・資訊科技概論「全國第一」</div>
+                    <div class="award-year">2025</div>
+                </li>
+                <li class="award-item">
+                    <div class="award-dot"></div>
+                    <div class="award-text"><strong style="color:var(--cyan)">全國 YIF 青少年生成式 AI 黑客松</strong> — 季軍</div>
+                    <div class="award-year">2025</div>
+                </li>
+                <li class="award-item">
+                    <div class="award-dot"></div>
+                    <div class="award-text"><strong style="color:var(--cyan)">巨匠 Python 高中程式競賽</strong> — 全國前 20 名</div>
+                    <div class="award-year">2025</div>
+                </li>
+                <li class="award-item">
+                    <div class="award-dot"></div>
+                    <div class="award-text">UC Berkeley 全球創客松 Erupture — 入圍台灣區複賽</div>
+                    <div class="award-year">2025</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ══ CONTACT ══ -->
+        <section id="contact" class="fade-in">
+            <div class="section-label">// contact</div>
+            <h2 class="section-title">聯絡<span>方式</span></h2>
+
+            <div class="contact-grid">
+                <a href="https://line.me/ti/p/WEBpF4Mg8Q" target="_blank" class="contact-card">
+                    <div class="contact-icon line"><i class="fa-brands fa-line"></i></div>
+                    <div>
+                        <div class="contact-label">LINE</div>
+                        <div class="contact-value">加我好友</div>
+                    </div>
+                </a>
+                <a href="mailto:Boyce9739@gmail.com" class="contact-card">
+                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                    <div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">Boyce9739@gmail.com</div>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/boyce_lee_0309" target="_blank" class="contact-card">
+                    <div class="contact-icon ig"><i class="fa-brands fa-instagram"></i></div>
+                    <div>
+                        <div class="contact-label">Instagram</div>
+                        <div class="contact-value">@boyce_lee_0309</div>
+                    </div>
+                </a>
+                <a href="https://github.com/Boyce39" target="_blank" class="contact-card">
+                    <div class="contact-icon gh"><i class="fa-brands fa-github"></i></div>
+                    <div>
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-value">Boyce39</div>
+                    </div>
                 </a>
             </div>
 
-            <div class="hero-desc">
-                這裡是我記錄技術旅程、分享資安心得，以及展示創意專案的數位基地。<br>
-                Tech Journey // Security Insights // Innovation Base
+            <div class="contact-note">
+                <strong>📌 接案 / 家教洽詢：</strong>透過 LINE 或 Email 聯繫，說明需求與時段，通常 24 小時內回覆。<br>
+                <strong>📌 自動化開發：</strong>請附上需求描述，報價依複雜度而定（小型專案 NT$2,000 起）。<br>
+                <strong>📌 家教：</strong>屏東地區優先，遠端授課可彈性安排。
             </div>
+        </section>
 
-            <!-- Social Icons -->
-            <div class="social-links-container">
-                
-                    
-                        <a href="https://www.instagram.com/boyce_lee_0309?igsh=MWRjZWh1OHh3a2d0bQ==" target="_blank" class="social-icon-btn" title="instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        
-                        <a href="mailto:Boyce9739@gmail.com" target="_blank" class="social-icon-btn" title="gmail">
-                            <i class="fa-regular fa-envelope"></i>
-                        </a>
-                        
-                        <a href="https://github.com/Boyce39" target="_blank" class="social-icon-btn" title="GitHub">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        
-                            
-            </div>
-
-            <!-- Secondary Actions -->
-            <div class="action-buttons secondary-actions">
-                <a href="/archives/" class="btn-cyber secondary small">
-                    <i class="fa-solid fa-layer-group"></i> 文章總覽
-                </a>
-                <a href="/anonymous/" class="btn-cyber secondary small">
-                    <i class="fa-solid fa-user-secret"></i> 匿名版
-                </a>
-                <a href="/assistant/" class="btn-cyber secondary small">
-                    <i class="fa-solid fa-robot"></i> AI 助理
-                </a>
-            </div>
-
-        </div>
     </div>
 
     <div id="footer-wrapper">
@@ -723,7 +1128,7 @@
 
                 <div class="footer-row">
                   <span class="copyright">
-                    &copy; 2025
+                    &copy; 2026
                       李柏毅
                   </span>
 
@@ -831,69 +1236,95 @@
     </div>
 
     <!-- Scripts -->
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/load-settings.js"></script>
+    <script src="/js/light-dark-switch.js"></script>
+    <script src="/js/local-search.js"></script>
     <script src="/js/tech-effects.js"></script>
-    <script src="https://cdn.staticfile.org/particles.js/2.0.0/particles.min.js"></script>
+
     <script>
-        // Init Particles
-        if (window.particlesJS) {
-            // Check light mode from html attribute or storage
-            function getTheme() {
-                return document.documentElement.getAttribute('theme') || localStorage.getItem('theme') || 'dark';
+        // ── Particle Background ──
+        (function () {
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d');
+            let W, H, pts = [];
+            const N = 55, MAX_DIST = 140;
+
+            function resize() {
+                W = canvas.width = window.innerWidth;
+                H = canvas.height = window.innerHeight;
             }
-
-            function initParticles() {
-                const isLight = getTheme() === 'light';
-                const pColor = isLight ? "#00b894" : "#00ffc8";
-                const lColor = isLight ? "#2c3e50" : "#7c3aed";
-
-                particlesJS('particles-js', {
-                    "particles": {
-                        "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-                        "color": { "value": pColor },
-                        "shape": { "type": "circle" },
-                        "opacity": { "value": 0.5, "random": true },
-                        "size": { "value": 3, "random": true },
-                        "line_linked": { "enable": true, "distance": 150, "color": lColor, "opacity": 0.4, "width": 1 },
-                        "move": { "enable": true, "speed": 2 }
-                    },
-                    "interactivity": {
-                        "detect_on": "canvas",
-                        "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }
-                    },
-                    "retina_detect": true
+            function mkPt() {
+                return {
+                    x: Math.random() * W, y: Math.random() * H,
+                    vx: (Math.random() - 0.5) * 0.45,
+                    vy: (Math.random() - 0.5) * 0.45,
+                    r: Math.random() * 1.6 + 0.4
+                };
+            }
+            function init() { pts = []; for (let i = 0; i < N; i++) pts.push(mkPt()); }
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                pts.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > W) p.vx *= -1;
+                    if (p.y < 0 || p.y > H) p.vy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(0,212,255,0.55)';
+                    ctx.fill();
                 });
-            }
-
-            initParticles();
-
-            // Observe theme changes to reload particles
-            const observer = new MutationObserver(function (mutations) {
-                mutations.forEach(function (mutation) {
-                    if (mutation.type === "attributes" && mutation.attributeName === "theme") {
-                        initParticles();
+                for (let i = 0; i < pts.length; i++) {
+                    for (let j = i + 1; j < pts.length; j++) {
+                        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+                        const d = Math.sqrt(dx * dx + dy * dy);
+                        if (d < MAX_DIST) {
+                            ctx.strokeStyle = `rgba(0,212,255,${0.18 * (1 - d / MAX_DIST)})`;
+                            ctx.lineWidth = 0.6;
+                            ctx.beginPath();
+                            ctx.moveTo(pts[i].x, pts[i].y);
+                            ctx.lineTo(pts[j].x, pts[j].y);
+                            ctx.stroke();
+                        }
                     }
-                });
-            });
-            observer.observe(document.documentElement, { attributes: true });
-        }
-
-        // Tilt Effect
-        const card = document.getElementById('tilt-card');
-        document.addEventListener('mousemove', (e) => {
-            if (window.innerWidth > 768 && card) {
-                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-                card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                }
+                requestAnimationFrame(draw);
             }
+            window.addEventListener('resize', () => { resize(); init(); });
+            resize(); init(); draw();
+        })();
+
+        // ── Scroll fade-in ──
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ── Smooth anchor scroll ──
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
         });
 
         // Backend Pre-warm
-        (function () {
-            const pingUrl = 'https://webpython-h2y7.onrender.com/test-api';
-            fetch(pingUrl, { mode: 'no-cors' }).catch(err => console.debug('Pre-warm ping silent.'));
-        })();
+        fetch('https://webpython-h2y7.onrender.com/test-api', { mode: 'no-cors' }).catch(() => { });
     </script>
-</body>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
 
 </html>
     

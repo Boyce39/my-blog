@@ -1,0 +1,385 @@
+/* ============================================
+   custom-tech.css — 科技風格強化
+   里肌肉部落格 by Boyce
+   沉穩科技感：深色 + 青藍霓虹 + 毛玻璃
+   ============================================ */
+
+/* ---------- 全局字型補強 ---------- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@600;700&display=swap');
+
+/* ---------- CSS 變數 ---------- */
+:root {
+  --tech-cyan: #00d4ff;
+  --tech-cyan-dim: rgba(0, 212, 255, 0.15);
+  --tech-cyan-glow: rgba(0, 212, 255, 0.35);
+  --tech-blue: #3b82f6;
+  --tech-blue-dim: rgba(59, 130, 246, 0.12);
+  --tech-grid-color: rgba(0, 212, 255, 0.045);
+  --tech-border: rgba(0, 212, 255, 0.22);
+  --tech-scan-speed: 4s;
+  --tech-glow-spread: 0 0 12px rgba(0,212,255,0.28), 0 0 28px rgba(0,212,255,0.12);
+}
+
+/* ============================================
+   背景：細微電路網格
+   ============================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--tech-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tech-grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 1;
+}
+
+/* ============================================
+   Navbar：毛玻璃 + 頂部發光邊
+   ============================================ */
+navbar {
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  background: rgba(22, 28, 42, 0.72) !important;
+  border-bottom: 1px solid var(--tech-border);
+  box-shadow: 0 2px 32px rgba(0,0,0,0.35), inset 0 -1px 0 var(--tech-border);
+  position: relative;
+}
+
+navbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--tech-cyan) 30%, var(--tech-blue) 70%, transparent 100%);
+  opacity: 0.85;
+}
+
+/* Nav 連結 hover 用 cyan */
+.main-nav-link:hover,
+.nav-icon:hover {
+  color: var(--tech-cyan) !important;
+  fill: var(--tech-cyan) !important;
+  text-shadow: 0 0 8px var(--tech-cyan);
+}
+
+/* ============================================
+   網站標題：Orbitron 科技字型
+   ============================================ */
+#title-nav a {
+  font-family: 'Orbitron', 'JetBrains Mono', monospace !important;
+  letter-spacing: 0.04em;
+  font-size: 14px !important;
+}
+
+/* ============================================
+   文章卡片：hover 霓虹光暈
+   ============================================ */
+.article-inner {
+  transition: box-shadow 0.3s ease, transform 0.25s ease !important;
+  border: 1px solid transparent;
+}
+
+.article-inner:hover {
+  box-shadow: var(--tech-glow-spread) !important;
+  border-color: var(--tech-border);
+  transform: translateY(-2px);
+}
+
+/* 卡片 fade-in-up 動畫 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.article {
+  animation: fadeInUp 0.45s ease both;
+}
+
+.article:nth-child(1) { animation-delay: 0.05s; }
+.article:nth-child(2) { animation-delay: 0.12s; }
+.article:nth-child(3) { animation-delay: 0.18s; }
+.article:nth-child(4) { animation-delay: 0.24s; }
+.article:nth-child(5) { animation-delay: 0.30s; }
+
+/* ============================================
+   文章標題：h1 掃描線動畫
+   ============================================ */
+.article-title h1,
+.article-title .article-title-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.article-title h1::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.06), transparent);
+  animation: scanline var(--tech-scan-speed) linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanline {
+  0%   { left: -60%; }
+  100% { left: 160%; }
+}
+
+/* 文章頁 h2/h3 左側有色條 + 微發光 */
+.article-entry h2 {
+  border-left: 3px solid var(--tech-cyan);
+  padding-left: 14px;
+  box-shadow: -3px 0 10px rgba(0,212,255,0.2);
+  margin-left: -16px;
+}
+
+.article-entry h3 {
+  border-left: 2px solid var(--tech-blue);
+  padding-left: 12px;
+  margin-left: -14px;
+  opacity: 0.92;
+}
+
+/* ============================================
+   程式碼區塊：終端機風格強化
+   ============================================ */
+.highlight,
+figure.highlight {
+  position: relative;
+  border: 1px solid var(--tech-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 終端機標題列 */
+.highlight::before,
+figure.highlight::before {
+  content: '● ● ●';
+  display: block;
+  background: rgba(0, 12, 22, 0.85);
+  color: rgba(0, 212, 255, 0.5);
+  font-size: 11px;
+  letter-spacing: 3px;
+  padding: 7px 14px;
+  border-bottom: 1px solid var(--tech-border);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* 游標閃爍（加在 .highlight 的 code 第一行前） */
+.highlight .line:first-child::before,
+figure.highlight .line:first-child::before {
+  content: '▌';
+  color: var(--tech-cyan);
+  opacity: 0.7;
+  animation: blink 1.1s step-end infinite;
+  margin-right: 2px;
+  font-size: 0.85em;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 0; }
+}
+
+/* inline code */
+.article-entry code:not([class]) {
+  background: var(--tech-cyan-dim);
+  border: 1px solid var(--tech-border);
+  color: var(--tech-cyan);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88em;
+}
+
+/* ============================================
+   引用區塊：左青藍邊 + 淡背景
+   ============================================ */
+.article-entry blockquote {
+  border-left: 3px solid var(--tech-cyan) !important;
+  background: linear-gradient(90deg, var(--tech-cyan-dim) 0%, transparent 100%) !important;
+  padding-left: 20px;
+}
+
+/* ============================================
+   側邊欄 Widget：輕微毛玻璃
+   ============================================ */
+.widget {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,212,255,0.1);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.widget:hover {
+  border-color: var(--tech-border);
+  box-shadow: 0 0 16px rgba(0,212,255,0.1);
+}
+
+/* Widget 標題左色條顏色改為 cyan */
+.widget-title::before {
+  background-color: var(--tech-cyan) !important;
+  box-shadow: 0 0 8px var(--tech-cyan);
+}
+
+/* ============================================
+   歸檔頁面：科技年份時間軸
+   ============================================ */
+.archive-year-wrap {
+  position: relative;
+}
+
+.archive-year {
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 0.08em;
+  font-size: 1.35rem;
+  color: var(--tech-cyan) !important;
+  text-shadow: 0 0 12px rgba(0,212,255,0.45);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 年份前的發光點 */
+.archive-year::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tech-cyan);
+  box-shadow: 0 0 8px var(--tech-cyan), 0 0 16px rgba(0,212,255,0.45);
+  flex-shrink: 0;
+}
+
+/* 文章列表 timeline 連接線 */
+.archive-article {
+  position: relative;
+  padding-left: 8px;
+  border-left: 1px solid rgba(0,212,255,0.15);
+  margin-left: 3px;
+  transition: border-color 0.2s;
+}
+
+.archive-article:hover {
+  border-left-color: var(--tech-cyan);
+}
+
+/* 歸檔日期 */
+.archive-article-date {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem;
+  color: var(--tech-cyan) !important;
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+}
+
+/* 歸檔文章 hover 標題發光 */
+.archive-article-title:hover {
+  color: var(--tech-cyan) !important;
+  text-shadow: 0 0 10px rgba(0,212,255,0.3);
+}
+
+/* ============================================
+   分頁導覽：科技感按鈕
+   ============================================ */
+.page-number.current,
+.extend {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================
+   標籤 Tag：霓虹感
+   ============================================ */
+.article-tag-list-link:hover,
+.widget-tag-list-link:hover {
+  color: var(--tech-cyan) !important;
+  text-shadow: 0 0 6px rgba(0,212,255,0.4);
+}
+
+/* ============================================
+   回到頂部按鈕
+   ============================================ */
+#back-to-top-btn {
+  border: 1px solid var(--tech-border);
+  box-shadow: 0 0 14px rgba(0,212,255,0.2);
+  transition: box-shadow 0.25s, transform 0.2s;
+}
+
+#back-to-top-btn:hover {
+  box-shadow: var(--tech-glow-spread);
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   滾動條
+   ============================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--tech-cyan), var(--tech-blue));
+  border-radius: 10px;
+}
+
+/* ============================================
+   選取文字：發光
+   ============================================ */
+::selection {
+  background: rgba(0,212,255,0.25) !important;
+  color: #fff !important;
+  text-shadow: 0 0 8px var(--tech-cyan);
+}
+
+/* ============================================
+   連結 hover 顏色
+   ============================================ */
+.article-entry a:not([class]) {
+  transition: color 0.2s, text-shadow 0.2s;
+}
+.article-entry a:not([class]):hover {
+  color: var(--tech-cyan) !important;
+  text-shadow: 0 0 6px rgba(0,212,255,0.35);
+}
+
+/* ============================================
+   頁尾
+   ============================================ */
+#footer {
+  border-top: 1px solid var(--tech-border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================
+   RWD - Mobile 調整
+   ============================================ */
+@media (max-width: 767px) {
+  .article-entry h2 {
+    margin-left: -12px;
+  }
+  .article-entry h3 {
+    margin-left: -10px;
+  }
+  body::before {
+    background-size: 28px 28px;
+  }
+}
