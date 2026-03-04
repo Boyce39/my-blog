@@ -110,3 +110,29 @@
     resize();
     animate();
 })();
+
+// ── Code Block Copy Button ──
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+        // Create copy button
+        const btn = document.createElement('div');
+        btn.className = 'copy-btn';
+        btn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+        block.appendChild(btn);
+
+        btn.addEventListener('click', async () => {
+            const code = block.querySelector('.code, code');
+            if (code) {
+                try {
+                    await navigator.clipboard.writeText(code.innerText);
+                    btn.innerHTML = '<i class="fa-solid fa-check" style="color:var(--tech-cyan)"></i>';
+                    setTimeout(() => {
+                        btn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+                    }, 2000);
+                } catch (e) {
+                    console.error('Copy failed', e);
+                }
+            }
+        });
+    });
+});
