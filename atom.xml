@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>里肌肉部落格</title>
+  <title>里肌肉實驗室</title>
   
   
   <link href="https://boycework.eu.cc/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>https://boycework.eu.cc/</id>
   
   <author>
-    <name>李柏毅 (Boyce)</name>
+    <name>李柏毅 BoyceLab</name>
     
   </author>
   
