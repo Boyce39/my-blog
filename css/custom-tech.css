@@ -459,6 +459,16 @@ body,
   body::before {
     background-size: 28px 28px;
   }
+
+  /* 恢復手機版的預設字體大小 */
+  body,
+  .article-entry {
+    font-size: 1em !important;
+  }
+
+  #title-nav a {
+    font-size: 14px !important;
+  }
 }
 
 /* ============================================
@@ -669,4 +679,153 @@ body,
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--tech-cyan), #6c5ce7);
   box-shadow: 0 0 10px var(--tech-cyan);
+}
+
+/* ============================================
+   文章列表 - 大綱條列樣式 (亮暗主題通用)
+   ============================================ */
+.post-outline-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 4px;
+}
+
+.post-outline-list li {
+  position: relative;
+  padding: 6px 0 6px 22px;
+  font-size: 0.88em;
+  line-height: 1.5;
+  /* 亮色主題下用深灰，暗色主題下用淺藍灰 */
+  color: var(--text-mid, #555);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.10);
+}
+
+/* 暗色主題下強制亮色 */
+html[theme='dark'] .post-outline-list li,
+.dark .post-outline-list li {
+  color: rgba(180, 210, 240, 0.8);
+  border-bottom-color: rgba(0, 212, 255, 0.07);
+}
+
+.post-outline-list li::before {
+  content: '⟩';
+  position: absolute;
+  left: 4px;
+  color: var(--tech-cyan);
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+}
+
+/* outline 是純文字字串時的段落樣式 */
+.post-outline-text {
+  margin: 8px 0 4px;
+  font-size: 0.9em;
+  line-height: 1.65;
+  color: var(--text-mid, #555);
+}
+
+html[theme='dark'] .post-outline-text,
+.dark .post-outline-text {
+  color: rgba(180, 210, 240, 0.8);
+}
+
+/* ============================================
+   全站響應式排版強化 (Mobile-First)
+   ============================================ */
+
+/* 手機版基礎字體、間距控制 */
+@media (max-width: 640px) {
+
+  /* 全站 body 字體恢復預設，避免太大 */
+  body,
+  .article-entry {
+    font-size: 1em !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  /* 文章內容 */
+  .article-entry {
+    line-height: 1.75;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* 文章標題在手機上縮小 */
+  .article-entry h1 {
+    font-size: 1.5em;
+  }
+
+  .article-entry h2 {
+    font-size: 1.25em;
+  }
+
+  .article-entry h3 {
+    font-size: 1.1em;
+  }
+
+  /* Code block 橫向滾動，不讓它撐破版面 */
+  .article-entry pre,
+  .article-entry code {
+    font-size: 0.82em !important;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  /* 文章內 table 可橫向滾動 */
+  .article-entry table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.85em;
+  }
+
+  /* 導航列 logo 縮小 */
+  #title-nav a {
+    font-size: 13px !important;
+    letter-spacing: 0.02em;
+  }
+
+  /* 文章大綱列表手機版字體 */
+  .post-outline-list li {
+    font-size: 0.85em;
+    padding: 5px 0 5px 20px;
+  }
+
+  /* Cyber sorting lab 手機版 */
+  .cyber-sorting-lab .algo-nav-bar {
+    gap: 5px;
+    padding: 10px 12px 0;
+  }
+
+  .algo-nav-btn {
+    font-size: 0.72rem !important;
+    padding: 6px 10px !important;
+  }
+
+  .array-container {
+    height: 160px !important;
+    padding: 0 12px 16px !important;
+    gap: 3px !important;
+  }
+
+  .status-panel {
+    font-size: 0.78rem !important;
+  }
+}
+
+/* 平板 (641px - 1023px) */
+@media (min-width: 641px) and (max-width: 1023px) {
+
+  body,
+  .article-entry {
+    font-size: 1.05em !important;
+  }
+
+  .article-entry h1 {
+    font-size: 1.65em;
+  }
+
+  .article-entry h2 {
+    font-size: 1.35em;
+  }
 }

@@ -1,0 +1,1638 @@
+
+      <!DOCTYPE html>
+      
+        
+          <html theme="dark" showBanner="true" hasBanner="false">
+
+          <head>
+            <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+            <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+            <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+            <script src="/js/color.global.min.js"></script>
+            <script src="/js/load-settings.js"></script>
+            <head>
+  <meta charset="utf-8">
+  
+    
+      
+
+        
+          <title>
+            
+              演算法筆記：八大排序演算法 | 
+                  里肌肉實驗室
+          </title>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+          
+            <meta name="description"
+              content="
+
+  
+    
+    SORTING_MATRIX_SIMULATOR_v2.0 // 點擊演算法後按鈕跳轉說明
+  
+  
+    Bubble O(n²)
+    Selection O(n²)
+    Insertion O(n²)
+    Merge O(n log n)
+    Quick O(n...">
+            
+                
+                  <meta name="keywords" content="演算法">
+                  
+
+                      <link rel="canonical" href="https://boycework.eu.cc/2026/03/05/sorting-algorithms/">
+                      <meta name="google-site-verification" content="BjnRa5PrgPoCBv-2HSXBY9Lq8TY9-2kV_WeigOl1R2A" />
+
+                      <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font"
+                        type="font/ttf" crossorigin="anonymous">
+                      <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf"
+                        crossorigin="anonymous">
+
+                      <meta name="description" content="SORTING_MATRIX_SIMULATOR_v2.0 &#x2F;&#x2F; 點擊演算法後按鈕跳轉說明           Bubble O(n²)     Selection O(n²)     Insertion O(n²)     Merge O(n log n)     Quick O(n log n)     Heap O(n log n)     Counting O(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="演算法筆記：八大排序演算法">
+<meta property="og:url" content="https://boycework.eu.cc/2026/03/05/sorting-algorithms/index.html">
+<meta property="og:site_name" content="里肌肉實驗室">
+<meta property="og:description" content="SORTING_MATRIX_SIMULATOR_v2.0 &#x2F;&#x2F; 點擊演算法後按鈕跳轉說明           Bubble O(n²)     Selection O(n²)     Insertion O(n²)     Merge O(n log n)     Quick O(n log n)     Heap O(n log n)     Counting O(">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-03-05T14:42:00.000Z">
+<meta property="article:modified_time" content="2026-03-05T16:01:37.169Z">
+<meta property="article:author" content="李柏毅 BoyceLab">
+<meta property="article:tag" content="演算法">
+<meta name="twitter:card" content="summary">
+                        
+                          <link rel="alternate" href="/atom.xml" title="里肌肉實驗室" type="application/atom+xml">
+                            
+                                  
+                                        <link rel="icon" media="(prefers-color-scheme: light)"
+                                          href="/images/favicon-light-32.png" sizes="32x32">
+                                        <link rel="icon" media="(prefers-color-scheme: light)"
+                                          href="/images/favicon-light-128.png" sizes="128x128">
+                                        <link rel="icon" media="(prefers-color-scheme: light)"
+                                          href="/images/favicon-light-180.png" sizes="180x180">
+                                        <link rel="icon" media="(prefers-color-scheme: light)"
+                                          href="/images/favicon-light-192.png" sizes="192x192">
+                                        <link rel="icon" media="(prefers-color-scheme: dark)"
+                                          href="/images/favicon-dark-32.png" sizes="32x32">
+                                        <link rel="icon" media="(prefers-color-scheme: dark)"
+                                          href="/images/favicon-dark-128.png" sizes="128x128">
+                                        <link rel="icon" media="(prefers-color-scheme: dark)"
+                                          href="/images/favicon-dark-180.png" sizes="180x180">
+                                        <link rel="icon" media="(prefers-color-scheme: dark)"
+                                          href="/images/favicon-dark-192.png" sizes="192x192">
+                                        
+                                          
+                                            <script async
+                                              src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                                            
+                                              
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "演算法筆記：八大排序演算法",
+    "image": [
+      "https://boycework.eu.cc/images/me.jpg"
+    ],
+    "datePublished": "2026-03-05T14:42:00.000Z",
+    "dateModified": "2026-03-05T16:01:37.169Z",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "BoyceLab",
+        "url": "https://boycework.eu.cc/about"
+      }
+    ],
+    "description": "SORTING_MATRIX_SIMULATOR_v2.0 // 點擊演算法後按鈕跳轉說明\n  \n  \n    Bubble O(n²)\n    Selection O(n²)\n    Insertion O(n²)\n    Merge O(n log n)\n    Quick O(n log n)\n    Heap O(n log n)\n    Counting O(n+k)\n  \n  \n   ",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://boycework.eu.cc/2026/03/05/sorting-algorithms/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首頁",
+        "item": "https://boycework.eu.cc"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "演算法筆記：八大排序演算法",
+        "item": "https://boycework.eu.cc/2026/03/05/sorting-algorithms/"
+      }
+    ]
+  }
+]
+</script>
+    
+                                                
+<link rel="stylesheet" href="/css/style.css">
+
+                                                  <link rel="stylesheet" href="/css/custom-tech.css">
+<meta name="generator" content="Hexo 8.1.1"></head>
+          </head>
+
+          <body>
+            
+                  
+                        <div id="main-grid"
+                          class="">
+                          <div id="nav" class="">
+                            <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>里肌肉實驗室 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">
+        首頁
+      </a>
+      
+      <a class="main-nav-link" href="/blog/">
+        文章列表
+      </a>
+      
+      <a class="main-nav-link" href="/about/">
+        關於我
+      </a>
+      
+      <a class="main-nav-link" href="/archives/">
+        歸檔
+      </a>
+      
+      <a class="main-nav-link" href="/assistant/">
+        AI助理
+      </a>
+      
+      <a class="main-nav-link" href="/anonymous/">
+        匿名留言
+      </a>
+      
+  </nav>
+  <nav id="sub-nav">
+    <a id="nav-search-btn" class="nav-icon" title="搜尋">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+        <div id="nav-menu-btn" class="nav-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+        </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">
+        首頁
+      </a>
+      
+      <a class="nav-dropdown-link" href="/blog/">
+        文章列表
+      </a>
+      
+      <a class="nav-dropdown-link" href="/about/">
+        關於我
+      </a>
+      
+      <a class="nav-dropdown-link" href="/archives/">
+        歸檔
+      </a>
+      
+      <a class="nav-dropdown-link" href="/assistant/">
+        AI助理
+      </a>
+      
+      <a class="nav-dropdown-link" href="/anonymous/">
+        匿名留言
+      </a>
+      
+        
+  </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function () {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+                          </div>
+                          <div id="sidebar-wrapper">
+                            <sidebar id="sidebar">
+  
+    
+          
+            <div class="sticky">
+              
+                
+                  
+                    
+                  
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">
+        標籤
+      </h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%B0%88%E6%A1%88/" rel="tag">專案</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E5%BF%83%E5%BE%97/" rel="tag">心得</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag">演算法</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%B3%87%E5%AE%89/" rel="tag">資安</a></li></ul>
+    </div>
+  </div>
+  
+                    
+                      
+            </div>
+</sidebar>
+                          </div>
+                          <div id="content-body">
+                            
+  
+
+    <article id="post-sorting-algorithms" class="h-entry article article-type-post"
+      itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+      
+        
+          
+            <div class="article-inner">
+              <div class="article-main">
+                <header class="article-header">
+                  
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        演算法筆記：八大排序演算法
+      </h1>
+    
+  
+</div>
+
+                    <div class='meta-info-bar'>
+                      <div class="meta-info">
+  <time class="dt-published" datetime="2026-03-05T14:42:00.000Z" itemprop="datePublished">2026-03-05</time>
+</div>
+                        <div class="need-seperator meta-info">
+                          <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/">演算法</a>><a class="meta-cate-link" href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/">Algorithm</a>><a class="meta-cate-link" href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/">C++</a>><a class="meta-cate-link" href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/">競程</a>><a class="meta-cate-link" href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/%E6%95%99%E5%AD%B8/">教學</a>
+   
+</div>
+
+                        </div>
+                        <div class="wordcount need-seperator meta-info">
+                          34k 詞
+                        </div>
+                        
+                          <div class="need-seperator meta-info">
+                            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span> 瀏覽次數</span>
+                          </div>
+                          
+                    </div>
+                    
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag">演算法</a></li></ul>
+
+                </header>
+                <div class="e-content article-entry" itemprop="articleBody">
+                  
+                                      <!-- 頂部互動區：點擊演算法演示並跳轉 -->
+<div class="cyber-sorting-lab">
+  <div class="console-header">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <div class="console-title">SORTING_MATRIX_SIMULATOR_v2.0 // 點擊演算法後按鈕跳轉說明</div>
+  </div>
+  <div class="algo-nav-bar">
+    <button class="algo-nav-btn active" data-algo="bubble" onclick="selectAlgo('bubble')">Bubble O(n²)</button>
+    <button class="algo-nav-btn" data-algo="selection" onclick="selectAlgo('selection')">Selection O(n²)</button>
+    <button class="algo-nav-btn" data-algo="insertion" onclick="selectAlgo('insertion')">Insertion O(n²)</button>
+    <button class="algo-nav-btn accent" data-algo="merge" onclick="selectAlgo('merge')">Merge O(n log n)</button>
+    <button class="algo-nav-btn accent" data-algo="quick" onclick="selectAlgo('quick')">Quick O(n log n)</button>
+    <button class="algo-nav-btn accent" data-algo="heap" onclick="selectAlgo('heap')">Heap O(n log n)</button>
+    <button class="algo-nav-btn green" data-algo="counting" onclick="selectAlgo('counting')">Counting O(n+k)</button>
+  </div>
+  <div class="controls">
+    <button class="cyber-btn" id="btn-generate"><i class="fa-solid fa-rotate"></i> 新資料</button>
+    <button class="cyber-btn primary" id="btn-run"><i class="fa-solid fa-play"></i> 執行</button>
+    <button class="cyber-btn danger" id="btn-stop" disabled><i class="fa-solid fa-stop"></i> 終止</button>
+    <label class="cyber-btn sound-toggle" id="sound-label">
+      <input type="checkbox" id="sound-check" checked style="display:none">
+      <i class="fa-solid fa-volume-high"></i> 音效 ON
+    </label>
+  </div>
+  <div class="status-panel" id="status-panel">System Standby... // Choose an Algorithm</div>
+  <div class="array-container" id="array-container"></div>
+  <div class="jump-section-btn-wrap">
+    <a id="jump-section-link" href="#bubble-section" class="cyber-btn primary">📖 跳轉到 Bubble Sort 說明</a>
+  </div>
+</div>
+
+<span id="more"></span>
+
+<hr>
+<h2 id="什麼是-Big-O-時間複雜度"><a href="#什麼是-Big-O-時間複雜度" class="headerlink" title="什麼是 Big O (時間複雜度)?"></a>什麼是 Big O (時間複雜度)?</h2><p>Big O 描述演算法在<strong>資料量 n 趨近無限大</strong>時的效能趨勢。</p>
+<table>
+<thead>
+<tr>
+<th>演算法</th>
+<th>平均</th>
+<th>最差</th>
+<th>空間</th>
+<th>穩定</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bubble Sort</strong></td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Selection Sort</strong></td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Insertion Sort</strong></td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Merge Sort</strong></td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Quick Sort</strong></td>
+<td>O(n log n)</td>
+<td>O(n²)</td>
+<td>O(log n)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Heap Sort</strong></td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(1)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Counting Sort</strong></td>
+<td>O(n+k)</td>
+<td>O(n+k)</td>
+<td>O(k)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Radix Sort</strong></td>
+<td>O(nk)</td>
+<td>O(nk)</td>
+<td>O(n+k)</td>
+<td>✅</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🔴-Bubble-Sort（氣泡排序）"><a href="#🔴-Bubble-Sort（氣泡排序）" class="headerlink" title="🔴 Bubble Sort（氣泡排序）"></a><span id="bubble-section">🔴 Bubble Sort（氣泡排序）</span></h2><p><strong>核心思想</strong>：每輪把相鄰的兩個元素互比，如果左邊比較大就交換。這樣最大數字會像泡泡一樣「浮」到最右端，然後一直縮小範圍重複這個動作。</p>
+<p><strong>什麼時候用？</strong> 幾乎不用於實戰，但因為邏輯最直覺，是學習演算法的起點。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bubbleSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="type">bool</span> swapped = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(arr[j], arr[j + <span class="number">1</span>]);</span><br><span class="line">                swapped = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!swapped) <span class="keyword">break</span>; <span class="comment">// 優化：提早結束</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">64</span>, <span class="number">34</span>, <span class="number">25</span>, <span class="number">12</span>, <span class="number">22</span>, <span class="number">11</span>, <span class="number">90</span>&#125;;</span><br><span class="line">    <span class="built_in">bubbleSort</span>(v);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : v) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output: 11 12 22 25 34 64 90</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔴-Selection-Sort（選擇排序）"><a href="#🔴-Selection-Sort（選擇排序）" class="headerlink" title="🔴 Selection Sort（選擇排序）"></a><span id="selection-section">🔴 Selection Sort（選擇排序）</span></h2><p><strong>核心思想</strong>：每一輪從「尚未排序的部分」找出<strong>最小值</strong>，然後跟最前面的元素交換。每輪確定一個位置正確的元素。</p>
+<p><strong>注意</strong>：Selection Sort 永遠執行 O(n²) 次比較，<strong>無論資料本身是否已排序</strong>，這是它的最大缺點。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">selectionSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> minIdx = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[minIdx]) minIdx = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">swap</span>(arr[i], arr[minIdx]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔴-Insertion-Sort（插入排序）"><a href="#🔴-Insertion-Sort（插入排序）" class="headerlink" title="🔴 Insertion Sort（插入排序）"></a><span id="insertion-section">🔴 Insertion Sort（插入排序）</span></h2><p><strong>核心思想</strong>：想像左手拿著已排好的牌，右手每次從右邊抽一張，然後插進左手牌堆的正確位置。</p>
+<p><strong>什麼時候用？</strong> 資料已接近排序完成時（nearly sorted），時間複雜度接近 O(n)！在 <code>std::sort</code> 的 IntroSort 實作中，當子陣列縮到小於 16 個元素時，會切換為 Insertion Sort。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insertionSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> key = arr[i];</span><br><span class="line">        <span class="type">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; key) &#123;</span><br><span class="line">            arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[j + <span class="number">1</span>] = key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🟡-Merge-Sort（合併排序）"><a href="#🟡-Merge-Sort（合併排序）" class="headerlink" title="🟡 Merge Sort（合併排序）"></a><span id="merge-section">🟡 Merge Sort（合併排序）</span></h2><p><strong>核心思想</strong>：<strong>分治法 (Divide and Conquer)</strong>. 不斷把陣列對半切，直到每個子陣列只剩 1 個元素。然後再一一將兩個有序陣列「合併」成一個有序陣列。</p>
+<p><strong>什麼時候用？</strong> 需要<strong>穩定排序</strong>且時間複雜度穩定在 O(n log n) 的場合，例如處理鏈結串列、外部排序（待排資料超過記憶體大小）。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> l, <span class="type">int</span> m, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">L</span><span class="params">(arr.begin() + l, arr.begin() + m + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">R</span><span class="params">(arr.begin() + m + <span class="number">1</span>, arr.begin() + r + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, k = l;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; L.<span class="built_in">size</span>() &amp;&amp; j &lt; R.<span class="built_in">size</span>()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (L[i] &lt;= R[j]) arr[k++] = L[i++];</span><br><span class="line">        <span class="keyword">else</span> arr[k++] = R[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; L.<span class="built_in">size</span>()) arr[k++] = L[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt; R.<span class="built_in">size</span>()) arr[k++] = R[j++];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mergeSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> m = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">mergeSort</span>(arr, l, m);</span><br><span class="line">    <span class="built_in">mergeSort</span>(arr, m + <span class="number">1</span>, r);</span><br><span class="line">    <span class="built_in">merge</span>(arr, l, m, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">38</span>, <span class="number">27</span>, <span class="number">43</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">82</span>, <span class="number">10</span>&#125;;</span><br><span class="line">    <span class="built_in">mergeSort</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : v) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🟡-Quick-Sort（快速排序）"><a href="#🟡-Quick-Sort（快速排序）" class="headerlink" title="🟡 Quick Sort（快速排序）"></a><span id="quick-section">🟡 Quick Sort（快速排序）</span></h2><p><strong>核心思想</strong>：挑一個 <strong>Pivot（基準點）</strong>，把所有比 Pivot 小的元素放到左邊，比 Pivot 大的放到右邊。然後遞迴對左右兩側重複這個動作。</p>
+<p><strong>什麼時候用？</strong> 這是實際最常用的排序法。<code>std::sort</code> 的底層 (IntroSort) 即是以 Quick Sort 為核心。平均 O(n log n)，且記憶體使用效率高（In-place）。</p>
+<blockquote>
+<p><strong>⚠️ 坑點</strong>：如果每次都選最小&#x2F;最大值當 Pivot，退化成 O(n²)。實務上要用<strong>亂數選 Pivot</strong> 或<strong>三數取中</strong>來避免。</p>
+</blockquote>
+<p><strong>C++ 競程寫法（推薦用 <code>std::sort</code>）：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 競程直接用 std::sort，底層已是 IntroSort (Quick+Heap+Insertion)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">10</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()); <span class="comment">// 升冪</span></span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;()); <span class="comment">// 降冪</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自訂排序</span></span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), [](<span class="type">int</span> a, <span class="type">int</span> b) &#123;</span><br><span class="line">        <span class="keyword">return</span> a % <span class="number">3</span> &lt; b % <span class="number">3</span>; <span class="comment">// 按模 3 餘數升冪</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手刻版本（理解用）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">partition</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> low, <span class="type">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> pivot = arr[high];</span><br><span class="line">    <span class="type">int</span> i = low - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = low; j &lt; high; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[j] &lt; pivot) <span class="built_in">swap</span>(arr[++i], arr[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">swap</span>(arr[i + <span class="number">1</span>], arr[high]);</span><br><span class="line">    <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quickSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> low, <span class="type">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="type">int</span> pi = <span class="built_in">partition</span>(arr, low, high);</span><br><span class="line">        <span class="built_in">quickSort</span>(arr, low, pi - <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">quickSort</span>(arr, pi + <span class="number">1</span>, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🟡-Heap-Sort（堆積排序）"><a href="#🟡-Heap-Sort（堆積排序）" class="headerlink" title="🟡 Heap Sort（堆積排序）"></a><span id="heap-section">🟡 Heap Sort（堆積排序）</span></h2><p><strong>核心思想</strong>：利用 <strong>Max-Heap（最大堆積）</strong> 這種資料結構。先把陣列建成 Max-Heap，然後每次把堆頂（最大值）取出放到末端，再對剩下的部分重新整理成 Heap，重複直到結束。</p>
+<p><strong>什麼時候用？</strong> 當你需要 O(n log n) <strong>且</strong> O(1) 空間複雜度的穩定效能（Quick Sort 最差退化，Merge Sort 需要額外空間）。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 競程中 priority_queue 就是一個 Max-Heap</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    priority_queue&lt;<span class="type">int</span>&gt; maxHeap;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : v) maxHeap.<span class="built_in">push</span>(x);</span><br><span class="line"></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; sorted;</span><br><span class="line">    <span class="keyword">while</span> (!maxHeap.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        sorted.<span class="built_in">push_back</span>(maxHeap.<span class="built_in">top</span>());</span><br><span class="line">        maxHeap.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">reverse</span>(sorted.<span class="built_in">begin</span>(), sorted.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : sorted) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手刻 Heap Sort</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">heapify</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> n, <span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> largest = i, l = <span class="number">2</span>*i<span class="number">+1</span>, r = <span class="number">2</span>*i<span class="number">+2</span>;</span><br><span class="line">    <span class="keyword">if</span> (l &lt; n &amp;&amp; arr[l] &gt; arr[largest]) largest = l;</span><br><span class="line">    <span class="keyword">if</span> (r &lt; n &amp;&amp; arr[r] &gt; arr[largest]) largest = r;</span><br><span class="line">    <span class="keyword">if</span> (largest != i) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(arr[i], arr[largest]);</span><br><span class="line">        <span class="built_in">heapify</span>(arr, n, largest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">heapSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n/<span class="number">2</span><span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) <span class="built_in">heapify</span>(arr, n, i);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n<span class="number">-1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(arr[<span class="number">0</span>], arr[i]);</span><br><span class="line">        <span class="built_in">heapify</span>(arr, i, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔵-Counting-Sort（計數排序）"><a href="#🔵-Counting-Sort（計數排序）" class="headerlink" title="🔵 Counting Sort（計數排序）"></a><span id="counting-section">🔵 Counting Sort（計數排序）</span></h2><p><strong>核心思想</strong>：不靠「比較」來排序！先統計每個數字出現幾次，再依序填回陣列。</p>
+<p><strong>限制條件</strong>：只適用於整數，且數值範圍 k 不能太大（k &#x3D; max - min），因為需要建立大小為 k 的計數陣列。</p>
+<p><strong>什麼時候用？</strong> 數字範圍明確且較小時（例如成績 0<del>100、字元 0</del>255、APCS 中 N ≤ 10⁶ 且值域為 0~10⁶）可達到 O(n+k) 的速度，<strong>比比較式排序更快</strong>。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">countingSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr.<span class="built_in">empty</span>()) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> maxVal = *<span class="built_in">max_element</span>(arr.<span class="built_in">begin</span>(), arr.<span class="built_in">end</span>());</span><br><span class="line">    <span class="type">int</span> minVal = *<span class="built_in">min_element</span>(arr.<span class="built_in">begin</span>(), arr.<span class="built_in">end</span>());</span><br><span class="line">    <span class="type">int</span> range = maxVal - minVal + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">count</span><span class="params">(range, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : arr) count[x - minVal]++;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; range; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (count[i]-- &gt; <span class="number">0</span>) arr[idx++] = i + minVal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="built_in">countingSort</span>(v);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : v) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="comment">// Output: 1 2 2 3 3 4 8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><table>
+<thead>
+<tr>
+<th>情境</th>
+<th>推薦</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不知道選什麼</td>
+<td><code>std::sort</code> (Quick&#x2F;IntroSort)</td>
+</tr>
+<tr>
+<td>需要穩定排序</td>
+<td>Merge Sort &#x2F; <code>std::stable_sort</code></td>
+</tr>
+<tr>
+<td>數值範圍小的整數</td>
+<td>Counting Sort</td>
+</tr>
+<tr>
+<td>已接近排序</td>
+<td>Insertion Sort</td>
+</tr>
+<tr>
+<td>O(1) 空間且穩定 O(n log n)</td>
+<td>Heap Sort</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 競程中 99% 的排序直接用 <code>sort()</code> 就夠了。理解底層邏輯的意義在於：<strong>當題目限制特殊時，你才知道挑哪把刀</strong>。</p>
+</blockquote>
+<hr>
+<div class="cyber-sorting-lab">
+  <div class="console-header">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <div class="console-title">SORTING_MATRIX_SIMULATOR_v2.0 // 點擊演算法後按鈕跳轉說明</div>
+  </div>
+  <div class="algo-nav-bar">
+    <button class="algo-nav-btn active" data-algo="bubble" onclick="window.triggerAlgo('bubble')">Bubble O(n²)</button>
+    <button class="algo-nav-btn" data-algo="selection" onclick="window.triggerAlgo('selection')">Selection O(n²)</button>
+    <button class="algo-nav-btn" data-algo="insertion" onclick="window.triggerAlgo('insertion')">Insertion O(n²)</button>
+    <button class="algo-nav-btn accent" data-algo="merge" onclick="window.triggerAlgo('merge')">Merge O(n log n)</button>
+    <button class="algo-nav-btn accent" data-algo="quick" onclick="window.triggerAlgo('quick')">Quick O(n log n)</button>
+    <button class="algo-nav-btn accent" data-algo="heap" onclick="window.triggerAlgo('heap')">Heap O(n log n)</button>
+    <button class="algo-nav-btn green" data-algo="counting" onclick="window.triggerAlgo('counting')">Counting O(n+k)</button>
+  </div>
+  <div class="controls">
+    <button class="cyber-btn" id="btn-generate"><i class="fa-solid fa-rotate"></i> 新資料</button>
+    <button class="cyber-btn primary" id="btn-run"><i class="fa-solid fa-play"></i> 執行</button>
+    <button class="cyber-btn danger" id="btn-stop" disabled><i class="fa-solid fa-stop"></i> 終止</button>
+    <label class="cyber-btn sound-toggle" id="sound-label">
+      <input type="checkbox" id="sound-check" checked style="display:none">
+      <i class="fa-solid fa-volume-high"></i> 音效 ON
+    </label>
+  </div>
+  <div class="status-panel" id="status-panel">System Standby... // Choose an Algorithm</div>
+  <div class="array-container" id="array-container"></div>
+  <div class="jump-section-btn-wrap">
+    <a id="jump-section-link" href="#bubble-section" class="cyber-btn primary">📖 跳轉到 Bubble Sort 說明</a>
+  </div>
+</div>
+
+<style>
+.cyber-sorting-lab {
+  background: rgba(8, 12, 24, 0.9); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 8px; margin: 30px 0; overflow: hidden; font-family: 'JetBrains Mono', 'Roboto Mono', monospace; position: relative;
+}
+.cyber-sorting-lab::before {
+  content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 0;
+}
+.console-header { background: rgba(0, 10, 20, 0.95); padding: 8px 16px; display: flex; align-items: center; border-bottom: 1px solid rgba(0, 212, 255, 0.2); position: relative; z-index: 1; }
+.console-header .dots span { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; background: #ff5f56; }
+.console-header .dots span:nth-child(2) { background: #ffbd2e; }
+.console-header .dots span:nth-child(3) { background: #27c93f; }
+.console-title { color: #00d4ff; font-size: 0.75rem; margin-left: 14px; letter-spacing: 2px; text-shadow: 0 0 8px #00d4ff; }
+.algo-nav-bar { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 20px 0; position: relative; z-index: 1; }
+.algo-nav-btn { background: rgba(0, 212, 255, 0.05); color: #8fa0b8; border: 1px solid rgba(0, 212, 255, 0.25); padding: 8px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; cursor: pointer; border-radius: 4px; transition: all 0.25s; letter-spacing: 1px; }
+.algo-nav-btn:hover, .algo-nav-btn.active { background: rgba(0, 212, 255, 0.18); color: #fff; border-color: #00d4ff; box-shadow: 0 0 12px rgba(0, 212, 255, 0.4); }
+.algo-nav-btn.accent { color: #d633ff; border-color: rgba(214,51,255,0.3); }
+.algo-nav-btn.accent:hover, .algo-nav-btn.accent.active { background: rgba(214,51,255,0.15); border-color: #d633ff; box-shadow: 0 0 12px rgba(214,51,255,0.4); }
+.algo-nav-btn.green { color: #00e676; border-color: rgba(0,230,118,0.3); }
+.algo-nav-btn.green:hover, .algo-nav-btn.green.active { background: rgba(0,230,118,0.15); border-color: #00e676; box-shadow: 0 0 12px rgba(0,230,118,0.4); }
+.controls { display: flex; gap: 10px; flex-wrap: wrap; padding: 12px 20px 0; position: relative; z-index: 1; align-items: center; }
+.cyber-btn { background: rgba(0, 212, 255, 0.05); color: #8fa0b8; border: 1px solid rgba(0, 212, 255, 0.3); padding: 9px 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; cursor: pointer; border-radius: 4px; transition: all 0.25s; letter-spacing: 1px; }
+.cyber-btn:hover:not(:disabled) { background: rgba(0,212,255,0.15); color: #fff; border-color: #00d4ff; box-shadow: 0 0 14px rgba(0,212,255,0.4); }
+.cyber-btn.primary { color: #00d4ff; border-color: #00d4ff; }
+.cyber-btn.danger { color: #ff5252; border-color: rgba(255,82,82,0.4); }
+.cyber-btn.danger:hover:not(:disabled) { background: rgba(255,82,82,0.15); border-color: #ff5252; box-shadow: 0 0 14px rgba(255,82,82,0.5); }
+.cyber-btn.danger:disabled { opacity: 0.3; cursor: not-allowed; }
+.cyber-btn.sound-toggle { cursor: pointer; user-select: none; }
+.cyber-btn.sound-toggle.muted { color: #555; border-color: rgba(100,100,100,0.3); }
+.status-panel { text-align: center; color: #00e676; font-size: 0.88rem; padding: 10px; text-shadow: 0 0 8px #00e676; animation: pulse-op 2s infinite; position: relative; z-index: 1; }
+@keyframes pulse-op { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+.array-container { display: flex; align-items: flex-end; height: 220px; gap: 5px; padding: 0 24px 24px; position: relative; z-index: 1; }
+.array-bar { flex: 1; background: linear-gradient(180deg, #00d4ff 0%, rgba(0,212,255,0.15) 100%); border: 1px solid rgba(0, 212, 255, 0.7); border-bottom: none; border-radius: 3px 3px 0 0; transition: height 0.12s ease, background 0.1s; box-shadow: 0 0 8px rgba(0, 212, 255, 0.25); position: relative; }
+.array-bar::after { content: attr(data-val); position: absolute; top: -22px; left: 50%; transform: translateX(-50%); color: #00d4ff; font-size: 0.7rem; opacity: 0; transition: opacity 0.2s; }
+.array-bar:hover::after { opacity: 1; }
+.array-bar.active { background: linear-gradient(180deg, #ff5252 0%, rgba(255,82,82,0.15) 100%); border-color: #ff5252; box-shadow: 0 0 18px rgba(255,82,82,0.7); }
+.array-bar.pivot { background: linear-gradient(180deg, #ffbd2e 0%, rgba(255,189,46,0.15) 100%); border-color: #ffbd2e; box-shadow: 0 0 18px rgba(255,189,46,0.7); }
+.array-bar.sorted { background: linear-gradient(180deg, #00e676 0%, rgba(0,230,118,0.15) 100%); border-color: #00e676; box-shadow: 0 0 12px rgba(0,230,118,0.4); }
+.jump-section-btn-wrap { text-align: center; padding: 0 20px 20px; position: relative; z-index: 1; }
+.jump-section-btn-wrap a { display: inline-block; text-decoration: none; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('array-container');
+  const statusEl  = document.getElementById('status-panel');
+  const jumpLink  = document.getElementById('jump-section-link');
+  const btnRun    = document.getElementById('btn-run');
+  const btnStop   = document.getElementById('btn-stop');
+  const btnGen    = document.getElementById('btn-generate');
+  const soundCheck = document.getElementById('sound-check');
+  const soundLabel = document.getElementById('sound-label');
+
+  let array = [];
+  const ARRAY_SIZE = 20;
+  const DELAY = 60;
+  let isSorting = false;
+  let currentRunId = 0;
+  let selectedAlgo = 'bubble';
+
+  // -------- Web Audio --------
+  let audioCtx = null;
+  function getCtx() {
+    if (!audioCtx) Object.defineProperty(window, 'AudioContext', { value: window.AudioContext || window.webkitAudioContext });
+    if (!audioCtx) audioCtx = new AudioContext();
+    return audioCtx;
+  }
+  function beep(freq, type = 'sine', vol = 0.08, dur = 0.06) {
+    if (!soundCheck.checked) return;
+    try {
+      const ctx = getCtx();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.type = type; o.frequency.setValueAtTime(freq, ctx.currentTime);
+      g.gain.setValueAtTime(vol, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+      o.start(ctx.currentTime); o.stop(ctx.currentTime + dur);
+    } catch(e) {}
+  }
+  function playCompare(val) { beep(150 + val * 4, 'sine', 0.06, 0.05); }
+  function playSwap(val) { beep(300 + val * 4, 'triangle', 0.1, 0.07); }
+  function playSwapHigh(val) { beep(400 + val * 5, 'sawtooth', 0.07, 0.08); }
+  function playDone() {
+    if (!soundCheck.checked) return;
+    const notes = [523, 659, 784, 1047];
+    notes.forEach((f, i) => setTimeout(() => beep(f, 'sine', 0.12, 0.18), i * 80));
+  }
+  function playStop() {
+    beep(130, 'sawtooth', 0.15, 0.15); setTimeout(() => beep(90, 'sawtooth', 0.1, 0.2), 60);
+  }
+
+  soundCheck.addEventListener('change', () => {
+    soundLabel.innerHTML = soundCheck.checked ? '<i class="fa-solid fa-volume-high"></i> 音效 ON' : '<i class="fa-solid fa-volume-xmark"></i> 音效 OFF';
+    soundLabel.classList.toggle('muted', !soundCheck.checked);
+  });
+
+  const algoMeta = {
+    bubble:    { label: 'Bubble Sort',    color: '#00d4ff', section: '#bubble-section',   complexity: 'O(n²)' },
+    selection: { label: 'Selection Sort', color: '#00d4ff', section: '#selection-section', complexity: 'O(n²)' },
+    insertion: { label: 'Insertion Sort', color: '#00d4ff', section: '#insertion-section', complexity: 'O(n²)' },
+    merge:     { label: 'Merge Sort',     color: '#d633ff', section: '#merge-section',     complexity: 'O(n log n)' },
+    quick:     { label: 'Quick Sort',     color: '#d633ff', section: '#quick-section',     complexity: 'O(n log n)' },
+    heap:      { label: 'Heap Sort',      color: '#d633ff', section: '#heap-section',      complexity: 'O(n log n)' },
+    counting:  { label: 'Counting Sort',  color: '#00e676', section: '#counting-section',  complexity: 'O(n+k)' },
+  };
+
+  function delay(ms, runId) {
+    return new Promise((resolve, reject) => {
+      const start = performance.now();
+      function check(now) {
+        if (currentRunId !== runId) return reject(new Error('STOP'));
+        if (now - start >= ms) return resolve();
+        requestAnimationFrame(check);
+      }
+      requestAnimationFrame(check);
+    });
+  }
+
+  function updateStatus(text, color) {
+    statusEl.innerHTML = text; statusEl.style.color = color || '#00e676'; statusEl.style.textShadow = `0 0 8px ${color || '#00e676'}`;
+  }
+  function setSortingMode(val) {
+    isSorting = val; btnRun.disabled = val; btnGen.disabled = val; btnStop.disabled = !val;
+  }
+  function cleanBars() {
+    const bars = getBars(); for (let i = 0; i < bars.length; i++) bars[i].className = 'array-bar';
+  }
+  function setBar(bar, val) {
+    bar.style.height = `${val}%`; bar.setAttribute('data-val', val);
+  }
+  function isAscending() {
+    for (let i = 0; i < array.length - 1; i++) if (array[i] > array[i+1]) return false;
+    return true;
+  }
+  function getBars() { return document.getElementsByClassName('array-bar'); }
+
+  // 暴露在 global 讓 HTML buttons call
+  window.triggerAlgo = function(algo) {
+    selectedAlgo = algo; // 真正的切換在這！
+    if (isSorting) { currentRunId++; isSorting = false; setSortingMode(false); playStop(); }
+    document.querySelectorAll('.algo-nav-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`[data-algo="${algo}"]`).classList.add('active');
+    generateArray();
+    const meta = algoMeta[algo];
+    jumpLink.href = meta.section; jumpLink.textContent = `📖 跳轉到 ${meta.label} 說明`;
+  };
+
+  function generateArray() {
+    array = []; container.innerHTML = '';
+    for (let i = 0; i < ARRAY_SIZE; i++) {
+      const val = Math.floor(Math.random() * 85) + 10;
+      array.push(val);
+      const bar = document.createElement('div'); bar.className = 'array-bar';
+      setBar(bar, val); container.appendChild(bar);
+    }
+    updateStatus(`System Ready // ${ARRAY_SIZE} values loaded.`, '#e8edf5');
+  }
+
+  const act = async (bars, i, j, runId) => { bars[i].classList.add('active'); if(j!==undefined) bars[j].classList.add('active'); await delay(DELAY, runId); };
+  const dAct = (bars, i, j) => { bars[i].classList.remove('active'); if(j!==undefined) bars[j].classList.remove('active'); };
+
+  async function bubbleSort(runId) {
+    const bars = getBars(), meta = algoMeta.bubble;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    for (let i = 0; i < array.length - 1; i++) {
+      let swapped = false;
+      for (let j = 0; j < array.length - i - 1; j++) {
+        await act(bars, j, j+1, runId); playCompare(array[j]);
+        if (array[j] > array[j+1]) {
+          [array[j], array[j+1]] = [array[j+1], array[j]];
+          setBar(bars[j], array[j]); setBar(bars[j+1], array[j+1]); playSwap(array[j]); swapped = true;
+        }
+        dAct(bars, j, j+1);
+      }
+      bars[array.length - i - 1].classList.add('sorted');
+      if (!swapped) break;
+    }
+    for (let i = 0; i < bars.length; i++) bars[i].classList.add('sorted');
+  }
+
+  async function selectionSort(runId) {
+    const bars = getBars(), meta = algoMeta.selection;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    for (let i = 0; i < array.length - 1; i++) {
+      let minIdx = i; bars[minIdx].classList.add('pivot');
+      for (let j = i + 1; j < array.length; j++) {
+        await act(bars, j, undefined, runId); playCompare(array[j]);
+        if (array[j] < array[minIdx]) {
+          bars[minIdx].classList.remove('pivot'); minIdx = j; bars[minIdx].classList.add('pivot');
+        }
+        dAct(bars, j);
+      }
+      if (minIdx !== i) {
+        [array[i], array[minIdx]] = [array[minIdx], array[i]];
+        setBar(bars[i], array[i]); setBar(bars[minIdx], array[minIdx]); playSwap(array[i]);
+      }
+      bars[minIdx].classList.remove('pivot'); bars[i].classList.add('sorted');
+    }
+    bars[array.length - 1].classList.add('sorted');
+  }
+
+  async function insertionSort(runId) {
+    const bars = getBars(), meta = algoMeta.insertion;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    bars[0].classList.add('sorted');
+    for (let i = 1; i < array.length; i++) {
+      let key = array[i], j = i - 1;
+      await act(bars, i, undefined, runId); playCompare(key);
+      while (j >= 0 && array[j] > key) {
+        bars[j].classList.add('active'); array[j + 1] = array[j];
+        setBar(bars[j+1], array[j+1]); playSwap(array[j+1]);
+        await delay(DELAY, runId); dAct(bars, j); j--;
+      }
+      array[j + 1] = key; setBar(bars[j+1], key); dAct(bars, i);
+      for (let k = 0; k <= i; k++) bars[k].classList.add('sorted');
+    }
+  }
+
+  async function mergeSortHelper(l, r, bars, runId) {
+    if (l >= r) return;
+    const m = l + Math.floor((r - l) / 2);
+    await mergeSortHelper(l, m, bars, runId); await mergeSortHelper(m + 1, r, bars, runId);
+    const L = array.slice(l, m + 1), R = array.slice(m + 1, r + 1);
+    let i = 0, j = 0, k = l;
+    while (i < L.length && j < R.length) {
+      bars[k].className = 'array-bar active'; playCompare(Math.max(L[i], R[j])); await delay(DELAY, runId);
+      if (L[i] <= R[j]) { array[k] = L[i++]; } else { array[k] = R[j++]; }
+      setBar(bars[k], array[k]); bars[k].className = 'array-bar sorted'; k++;
+    }
+    while (i < L.length) {
+      bars[k].className = 'array-bar active'; await delay(DELAY/2, runId);
+      array[k] = L[i++]; setBar(bars[k], array[k]); bars[k].className = 'array-bar sorted'; k++;
+    }
+    while (j < R.length) {
+      bars[k].className = 'array-bar active'; await delay(DELAY/2, runId);
+      array[k] = R[j++]; setBar(bars[k], array[k]); bars[k].className = 'array-bar sorted'; k++;
+    }
+  }
+  async function mergeSort(runId) {
+    const bars = getBars(), meta = algoMeta.merge;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    await mergeSortHelper(0, array.length - 1, bars, runId);
+    for (let i = 0; i < bars.length; i++) bars[i].classList.add('sorted');
+  }
+
+  async function qPartition(low, high, bars, runId) {
+    const pivot = array[high]; bars[high].classList.add('pivot');
+    let i = low - 1;
+    for (let j = low; j < high; j++) {
+      await act(bars, j, undefined, runId); playCompare(array[j]);
+      if (array[j] < pivot) {
+        i++; [array[i], array[j]] = [array[j], array[i]];
+        setBar(bars[i], array[i]); setBar(bars[j], array[j]); playSwapHigh(array[i]);
+      }
+      dAct(bars, j);
+    }
+    [array[i+1], array[high]] = [array[high], array[i+1]];
+    setBar(bars[i+1], array[i+1]); setBar(bars[high], array[high]);
+    bars[high].classList.remove('pivot'); bars[i+1].classList.add('sorted');
+    return i + 1;
+  }
+  async function quickSortHelper(low, high, bars, runId) {
+    if (low < high) {
+      const pi = await qPartition(low, high, bars, runId);
+      await quickSortHelper(low, pi - 1, bars, runId); await quickSortHelper(pi + 1, high, bars, runId);
+    } else if (low === high) bars[low].classList.add('sorted');
+  }
+  async function quickSort(runId) {
+    const bars = getBars(), meta = algoMeta.quick;
+    updateStatus(`>> Executing [ ${meta.label} ] avg ${meta.complexity}`, meta.color);
+    await quickSortHelper(0, array.length - 1, bars, runId);
+    for (let i = 0; i < bars.length; i++) bars[i].classList.add('sorted');
+  }
+
+  async function heapify(n, i, bars, runId) {
+    let largest = i, l = 2*i+1, r = 2*i+2;
+    if (l < n && array[l] > array[largest]) largest = l;
+    if (r < n && array[r] > array[largest]) largest = r;
+    if (largest !== i) {
+      await act(bars, i, largest, runId); playCompare(array[largest]);
+      [array[i], array[largest]] = [array[largest], array[i]];
+      setBar(bars[i], array[i]); setBar(bars[largest], array[largest]); playSwap(array[i]);
+      dAct(bars, i, largest); await heapify(n, largest, bars, runId);
+    }
+  }
+  async function heapSort(runId) {
+    const bars = getBars(), meta = algoMeta.heap, n = array.length;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    for (let i = Math.floor(n/2)-1; i >= 0; i--) await heapify(n, i, bars, runId);
+    for (let i = n-1; i > 0; i--) {
+      bars[0].classList.add('pivot'); await delay(DELAY, runId);
+      [array[0], array[i]] = [array[i], array[0]];
+      setBar(bars[0], array[0]); setBar(bars[i], array[i]); playSwapHigh(array[i]);
+      bars[0].classList.remove('pivot'); bars[i].classList.add('sorted');
+      await heapify(i, 0, bars, runId);
+    }
+    bars[0].classList.add('sorted');
+  }
+
+  async function countingSort(runId) {
+    const bars = getBars(), meta = algoMeta.counting;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity} // No comparisons!`, meta.color);
+    const minVal = Math.min(...array), maxVal = Math.max(...array);
+    const count = new Array(maxVal - minVal + 1).fill(0);
+    for (let x of array) count[x - minVal]++;
+    for (let i = 0; i < bars.length; i++) bars[i].classList.add('active');
+    beep(300, 'square', 0.08, 0.3); await delay(400, runId);
+    for (let i = 0; i < bars.length; i++) bars[i].classList.remove('active');
+    let idx = 0;
+    for (let i = 0; i < count.length; i++) {
+      while (count[i]-- > 0) {
+        array[idx] = i + minVal; setBar(bars[idx], array[idx]); bars[idx].classList.add('sorted');
+        playCompare(array[idx]); await delay(DELAY, runId); idx++;
+      }
+    }
+  }
+
+  // EVENT LISTENERS
+  const algoFns = { bubble: bubbleSort, selection: selectionSort, insertion: insertionSort, merge: mergeSort, quick: quickSort, heap: heapSort, counting: countingSort };
+
+  btnRun.addEventListener('click', async () => {
+    if (isSorting) return;
+    if (isAscending()) generateArray();
+    cleanBars(); currentRunId++; const runId = currentRunId; setSortingMode(true);
+    try {
+      if (!algoFns[selectedAlgo]) throw new Error('Unknown Algo');
+      await algoFns[selectedAlgo](runId);
+      if (runId === currentRunId) {
+        updateStatus(`>> [ ${algoMeta[selectedAlgo].label} ] Done! ✅ Scroll down to read the explanation.`, '#00e676');
+        playDone();
+      }
+    } catch(e) {
+      if (e.message === 'STOP') {
+        cleanBars(); updateStatus(`>> [ ABORTED ] // 排序已終止，可重新生成資料或切換算法`, '#ff5252');
+      }
+    } finally {
+      if (runId === currentRunId) setSortingMode(false);
+    }
+  });
+
+  btnStop.addEventListener('click', () => {
+    if (!isSorting) return;
+    currentRunId++; isSorting = false; setSortingMode(false); playStop();
+  });
+
+  btnGen.addEventListener('click', () => { if (!isSorting) generateArray(); });
+
+  window.triggerAlgo('bubble');
+});
+</script>
+
+
+<hr>
+<h2 id="🔴-Bubble-Sort（氣泡排序）-1"><a href="#🔴-Bubble-Sort（氣泡排序）-1" class="headerlink" title="🔴 Bubble Sort（氣泡排序）"></a><span id="bubble-section">🔴 Bubble Sort（氣泡排序）</span></h2><p><strong>核心思想</strong>：每輪把相鄰的兩個元素互比，如果左邊比較大就交換。這樣最大數字會像泡泡一樣「浮」到最右端，然後一直縮小範圍重複這個動作。</p>
+<p><strong>什麼時候用？</strong> 幾乎不用於實戰，但因為邏輯最直覺，是學習演算法的起點。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bubbleSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="type">bool</span> swapped = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(arr[j], arr[j + <span class="number">1</span>]);</span><br><span class="line">                swapped = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!swapped) <span class="keyword">break</span>; <span class="comment">// 優化：提早結束</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">64</span>, <span class="number">34</span>, <span class="number">25</span>, <span class="number">12</span>, <span class="number">22</span>, <span class="number">11</span>, <span class="number">90</span>&#125;;</span><br><span class="line">    <span class="built_in">bubbleSort</span>(v);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : v) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output: 11 12 22 25 34 64 90</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔴-Selection-Sort（選擇排序）-1"><a href="#🔴-Selection-Sort（選擇排序）-1" class="headerlink" title="🔴 Selection Sort（選擇排序）"></a><span id="selection-section">🔴 Selection Sort（選擇排序）</span></h2><p><strong>核心思想</strong>：每一輪從「尚未排序的部分」找出<strong>最小值</strong>，然後跟最前面的元素交換。每輪確定一個位置正確的元素。</p>
+<p><strong>注意</strong>：Selection Sort 永遠執行 O(n²) 次比較，<strong>無論資料本身是否已排序</strong>，這是它的最大缺點。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">selectionSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> minIdx = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[minIdx]) minIdx = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">swap</span>(arr[i], arr[minIdx]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔴-Insertion-Sort（插入排序）-1"><a href="#🔴-Insertion-Sort（插入排序）-1" class="headerlink" title="🔴 Insertion Sort（插入排序）"></a><span id="insertion-section">🔴 Insertion Sort（插入排序）</span></h2><p><strong>核心思想</strong>：想像左手拿著已排好的牌，右手每次從右邊抽一張，然後插進左手牌堆的正確位置。</p>
+<p><strong>什麼時候用？</strong> 資料已接近排序完成時（nearly sorted），時間複雜度接近 O(n)！在 <code>std::sort</code> 的 IntroSort 實作中，當子陣列縮到小於 16 個元素時，會切換為 Insertion Sort。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insertionSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> key = arr[i];</span><br><span class="line">        <span class="type">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; key) &#123;</span><br><span class="line">            arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[j + <span class="number">1</span>] = key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🟡-Merge-Sort（合併排序）-1"><a href="#🟡-Merge-Sort（合併排序）-1" class="headerlink" title="🟡 Merge Sort（合併排序）"></a><span id="merge-section">🟡 Merge Sort（合併排序）</span></h2><p><strong>核心思想</strong>：<strong>分治法 (Divide and Conquer)</strong>. 不斷把陣列對半切，直到每個子陣列只剩 1 個元素。然後再一一將兩個有序陣列「合併」成一個有序陣列。</p>
+<p><strong>什麼時候用？</strong> 需要<strong>穩定排序</strong>且時間複雜度穩定在 O(n log n) 的場合，例如處理鏈結串列、外部排序（待排資料超過記憶體大小）。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> l, <span class="type">int</span> m, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">L</span><span class="params">(arr.begin() + l, arr.begin() + m + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">R</span><span class="params">(arr.begin() + m + <span class="number">1</span>, arr.begin() + r + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, k = l;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; L.<span class="built_in">size</span>() &amp;&amp; j &lt; R.<span class="built_in">size</span>()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (L[i] &lt;= R[j]) arr[k++] = L[i++];</span><br><span class="line">        <span class="keyword">else</span> arr[k++] = R[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; L.<span class="built_in">size</span>()) arr[k++] = L[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt; R.<span class="built_in">size</span>()) arr[k++] = R[j++];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mergeSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> m = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">mergeSort</span>(arr, l, m);</span><br><span class="line">    <span class="built_in">mergeSort</span>(arr, m + <span class="number">1</span>, r);</span><br><span class="line">    <span class="built_in">merge</span>(arr, l, m, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">38</span>, <span class="number">27</span>, <span class="number">43</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">82</span>, <span class="number">10</span>&#125;;</span><br><span class="line">    <span class="built_in">mergeSort</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : v) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🟡-Quick-Sort（快速排序）-1"><a href="#🟡-Quick-Sort（快速排序）-1" class="headerlink" title="🟡 Quick Sort（快速排序）"></a><span id="quick-section">🟡 Quick Sort（快速排序）</span></h2><p><strong>核心思想</strong>：挑一個 <strong>Pivot（基準點）</strong>，把所有比 Pivot 小的元素放到左邊，比 Pivot 大的放到右邊。然後遞迴對左右兩側重複這個動作。</p>
+<p><strong>什麼時候用？</strong> 這是實際最常用的排序法。<code>std::sort</code> 的底層 (IntroSort) 即是以 Quick Sort 為核心。平均 O(n log n)，且記憶體使用效率高（In-place）。</p>
+<blockquote>
+<p><strong>⚠️ 坑點</strong>：如果每次都選最小&#x2F;最大值當 Pivot，退化成 O(n²)。實務上要用<strong>亂數選 Pivot</strong> 或<strong>三數取中</strong>來避免。</p>
+</blockquote>
+<p><strong>C++ 競程寫法（推薦用 <code>std::sort</code>）：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 競程直接用 std::sort，底層已是 IntroSort (Quick+Heap+Insertion)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">10</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()); <span class="comment">// 升冪</span></span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;()); <span class="comment">// 降冪</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 自訂排序</span></span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), [](<span class="type">int</span> a, <span class="type">int</span> b) &#123;</span><br><span class="line">        <span class="keyword">return</span> a % <span class="number">3</span> &lt; b % <span class="number">3</span>; <span class="comment">// 按模 3 餘數升冪</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手刻版本（理解用）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">partition</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> low, <span class="type">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> pivot = arr[high];</span><br><span class="line">    <span class="type">int</span> i = low - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = low; j &lt; high; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[j] &lt; pivot) <span class="built_in">swap</span>(arr[++i], arr[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">swap</span>(arr[i + <span class="number">1</span>], arr[high]);</span><br><span class="line">    <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quickSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> low, <span class="type">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="type">int</span> pi = <span class="built_in">partition</span>(arr, low, high);</span><br><span class="line">        <span class="built_in">quickSort</span>(arr, low, pi - <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">quickSort</span>(arr, pi + <span class="number">1</span>, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🟡-Heap-Sort（堆積排序）-1"><a href="#🟡-Heap-Sort（堆積排序）-1" class="headerlink" title="🟡 Heap Sort（堆積排序）"></a><span id="heap-section">🟡 Heap Sort（堆積排序）</span></h2><p><strong>核心思想</strong>：利用 <strong>Max-Heap（最大堆積）</strong> 這種資料結構。先把陣列建成 Max-Heap，然後每次把堆頂（最大值）取出放到末端，再對剩下的部分重新整理成 Heap，重複直到結束。</p>
+<p><strong>什麼時候用？</strong> 當你需要 O(n log n) <strong>且</strong> O(1) 空間複雜度的穩定效能（Quick Sort 最差退化，Merge Sort 需要額外空間）。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 競程中 priority_queue 就是一個 Max-Heap</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    priority_queue&lt;<span class="type">int</span>&gt; maxHeap;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : v) maxHeap.<span class="built_in">push</span>(x);</span><br><span class="line"></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; sorted;</span><br><span class="line">    <span class="keyword">while</span> (!maxHeap.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        sorted.<span class="built_in">push_back</span>(maxHeap.<span class="built_in">top</span>());</span><br><span class="line">        maxHeap.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// sorted 是降冪，反轉後得升冪</span></span><br><span class="line">    <span class="built_in">reverse</span>(sorted.<span class="built_in">begin</span>(), sorted.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : sorted) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手刻 Heap Sort</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">heapify</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> n, <span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> largest = i, l = <span class="number">2</span>*i<span class="number">+1</span>, r = <span class="number">2</span>*i<span class="number">+2</span>;</span><br><span class="line">    <span class="keyword">if</span> (l &lt; n &amp;&amp; arr[l] &gt; arr[largest]) largest = l;</span><br><span class="line">    <span class="keyword">if</span> (r &lt; n &amp;&amp; arr[r] &gt; arr[largest]) largest = r;</span><br><span class="line">    <span class="keyword">if</span> (largest != i) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(arr[i], arr[largest]);</span><br><span class="line">        <span class="built_in">heapify</span>(arr, n, largest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">heapSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = arr.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n/<span class="number">2</span><span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) <span class="built_in">heapify</span>(arr, n, i);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n<span class="number">-1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(arr[<span class="number">0</span>], arr[i]);</span><br><span class="line">        <span class="built_in">heapify</span>(arr, i, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔵-Counting-Sort（計數排序）-1"><a href="#🔵-Counting-Sort（計數排序）-1" class="headerlink" title="🔵 Counting Sort（計數排序）"></a><span id="counting-section">🔵 Counting Sort（計數排序）</span></h2><p><strong>核心思想</strong>：不靠「比較」來排序！先統計每個數字出現幾次，再依序填回陣列。</p>
+<p><strong>限制條件</strong>：只適用於整數，且數值範圍 k 不能太大（k &#x3D; max - min），因為需要建立大小為 k 的計數陣列。</p>
+<p><strong>什麼時候用？</strong> 數字範圍明確且較小時（例如成績 0<del>100、字元 0</del>255、APCS 中 N ≤ 10⁶ 且值域為 0~10⁶）可達到 O(n+k) 的速度，<strong>比比較式排序更快</strong>。</p>
+<p><strong>C++ 競程寫法：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">countingSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr.<span class="built_in">empty</span>()) <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> maxVal = *<span class="built_in">max_element</span>(arr.<span class="built_in">begin</span>(), arr.<span class="built_in">end</span>());</span><br><span class="line">    <span class="type">int</span> minVal = *<span class="built_in">min_element</span>(arr.<span class="built_in">begin</span>(), arr.<span class="built_in">end</span>());</span><br><span class="line">    <span class="type">int</span> range = maxVal - minVal + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">count</span><span class="params">(range, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : arr) count[x - minVal]++;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; range; i++) &#123;</span><br><span class="line">        <span class="keyword">while</span> (count[i]-- &gt; <span class="number">0</span>) arr[idx++] = i + minVal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="built_in">countingSort</span>(v);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x : v) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="comment">// Output: 1 2 2 3 3 4 8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="結論-1"><a href="#結論-1" class="headerlink" title="結論"></a>結論</h2><table>
+<thead>
+<tr>
+<th>情境</th>
+<th>推薦</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不知道選什麼</td>
+<td><code>std::sort</code> (Quick&#x2F;IntroSort)</td>
+</tr>
+<tr>
+<td>需要穩定排序</td>
+<td>Merge Sort &#x2F; <code>std::stable_sort</code></td>
+</tr>
+<tr>
+<td>數值範圍小的整數</td>
+<td>Counting Sort</td>
+</tr>
+<tr>
+<td>已接近排序</td>
+<td>Insertion Sort</td>
+</tr>
+<tr>
+<td>O(1) 空間且穩定 O(n log n)</td>
+<td>Heap Sort</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 競程中 99% 的排序直接用 <code>sort()</code> 就夠了。理解底層邏輯的意義在於：<strong>當題目限制特殊時，你才知道挑哪把刀</strong>。</p>
+</blockquote>
+<hr>
+<!-- Sorting Visualizer Script + Styles -->
+<style>
+.cyber-sorting-lab {
+  background: rgba(8, 12, 24, 0.9);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 8px;
+  margin: 30px 0;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+  position: relative;
+}
+.cyber-sorting-lab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+.console-header {
+  background: rgba(0, 10, 20, 0.95);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  position: relative; z-index: 1;
+}
+.console-header .dots span {
+  display: inline-block; width: 12px; height: 12px;
+  border-radius: 50%; margin-right: 6px; background: #ff5f56;
+}
+.console-header .dots span:nth-child(2) { background: #ffbd2e; }
+.console-header .dots span:nth-child(3) { background: #27c93f; }
+.console-title { color: #00d4ff; font-size: 0.75rem; margin-left: 14px; letter-spacing: 2px; text-shadow: 0 0 8px #00d4ff; }
+.algo-nav-bar {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 14px 20px 0;
+  position: relative; z-index: 1;
+}
+.algo-nav-btn {
+  background: rgba(0, 212, 255, 0.05);
+  color: #8fa0b8;
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  padding: 8px 14px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+  cursor: pointer; border-radius: 4px;
+  transition: all 0.25s; letter-spacing: 1px;
+}
+.algo-nav-btn:hover, .algo-nav-btn.active {
+  background: rgba(0, 212, 255, 0.18);
+  color: #fff; border-color: #00d4ff;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+}
+.algo-nav-btn.accent { color: #d633ff; border-color: rgba(214,51,255,0.3); }
+.algo-nav-btn.accent:hover, .algo-nav-btn.accent.active {
+  background: rgba(214,51,255,0.15);
+  border-color: #d633ff;
+  box-shadow: 0 0 12px rgba(214,51,255,0.4);
+}
+.algo-nav-btn.green { color: #00e676; border-color: rgba(0,230,118,0.3); }
+.algo-nav-btn.green:hover, .algo-nav-btn.green.active {
+  background: rgba(0,230,118,0.15);
+  border-color: #00e676;
+  box-shadow: 0 0 12px rgba(0,230,118,0.4);
+}
+.controls {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  padding: 12px 20px 0;
+  position: relative; z-index: 1;
+}
+.cyber-btn {
+  background: rgba(0, 212, 255, 0.05); color: #8fa0b8;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  padding: 9px 16px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;
+  cursor: pointer; border-radius: 4px;
+  transition: all 0.25s; letter-spacing: 1px;
+}
+.cyber-btn:hover { background: rgba(0,212,255,0.15); color: #fff; border-color: #00d4ff; box-shadow: 0 0 14px rgba(0,212,255,0.4); }
+.cyber-btn.primary { color: #00d4ff; border-color: #00d4ff; }
+.status-panel {
+  text-align: center; color: #00e676; font-size: 0.88rem;
+  padding: 10px; text-shadow: 0 0 8px #00e676;
+  animation: pulse-op 2s infinite; position: relative; z-index: 1;
+}
+@keyframes pulse-op { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+.array-container {
+  display: flex; align-items: flex-end;
+  height: 220px; gap: 5px;
+  padding: 0 24px 24px;
+  position: relative; z-index: 1;
+}
+.array-bar {
+  flex: 1;
+  background: linear-gradient(180deg, #00d4ff 0%, rgba(0,212,255,0.15) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.7); border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  transition: height 0.12s ease, background 0.1s;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.25);
+  position: relative;
+}
+.array-bar::after {
+  content: attr(data-val);
+  position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+  color: #00d4ff; font-size: 0.7rem; opacity: 0; transition: opacity 0.2s;
+}
+.array-bar:hover::after { opacity: 1; }
+.array-bar.active {
+  background: linear-gradient(180deg, #ff5252 0%, rgba(255,82,82,0.15) 100%);
+  border-color: #ff5252; box-shadow: 0 0 18px rgba(255,82,82,0.7);
+  transform: scaleY(1.015);
+}
+.array-bar.pivot {
+  background: linear-gradient(180deg, #ffbd2e 0%, rgba(255,189,46,0.15) 100%);
+  border-color: #ffbd2e; box-shadow: 0 0 18px rgba(255,189,46,0.7);
+}
+.array-bar.sorted {
+  background: linear-gradient(180deg, #00e676 0%, rgba(0,230,118,0.15) 100%);
+  border-color: #00e676; box-shadow: 0 0 12px rgba(0,230,118,0.4);
+}
+.jump-section-btn-wrap {
+  text-align: center; padding: 0 20px 20px;
+  position: relative; z-index: 1;
+}
+.jump-section-btn-wrap a { display: inline-block; text-decoration: none; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('array-container');
+  const statusEl = document.getElementById('status-panel');
+  const jumpLink = document.getElementById('jump-section-link');
+
+  let array = [];
+  const ARRAY_SIZE = 22;
+  const DELAY = 70;
+  let isSorting = false;
+  let selectedAlgo = 'bubble';
+
+  const algoMeta = {
+    bubble:    { label: 'Bubble Sort',    color: 'var(--tech-cyan)',    section: '#bubble-section',   complexity: 'O(n²)' },
+    selection: { label: 'Selection Sort', color: 'var(--tech-cyan)',    section: '#selection-section', complexity: 'O(n²)' },
+    insertion: { label: 'Insertion Sort', color: 'var(--tech-cyan)',    section: '#insertion-section', complexity: 'O(n²)' },
+    merge:     { label: 'Merge Sort',     color: '#d633ff',             section: '#merge-section',     complexity: 'O(n log n)' },
+    quick:     { label: 'Quick Sort',     color: '#d633ff',             section: '#quick-section',     complexity: 'O(n log n)' },
+    heap:      { label: 'Heap Sort',      color: '#d633ff',             section: '#heap-section',      complexity: 'O(n log n)' },
+    counting:  { label: 'Counting Sort',  color: '#00e676',             section: '#counting-section',  complexity: 'O(n+k)' },
+  };
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function updateStatus(text, color) {
+    statusEl.innerHTML = text;
+    statusEl.style.color = color || '#00e676';
+    statusEl.style.textShadow = `0 0 8px ${color || '#00e676'}`;
+  }
+
+  window.selectAlgo = function(algo) {
+    selectedAlgo = algo;
+    document.querySelectorAll('.algo-nav-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`[data-algo="${algo}"]`).classList.add('active');
+    const meta = algoMeta[algo];
+    updateStatus(`>> Selected: [ ${meta.label} ] - ${meta.complexity}`, meta.color);
+    jumpLink.href = meta.section;
+    jumpLink.textContent = `📖 跳轉到 ${meta.label} 說明`;
+  };
+
+  function generateArray() {
+    if (isSorting) return;
+    array = [];
+    container.innerHTML = '';
+    for (let i = 0; i < ARRAY_SIZE; i++) {
+      // For counting sort, keep values small
+      const val = Math.floor(Math.random() * 85) + 10;
+      array.push(val);
+      const bar = document.createElement('div');
+      bar.classList.add('array-bar');
+      bar.style.height = `${val}%`;
+      bar.setAttribute('data-val', val);
+      container.appendChild(bar);
+    }
+    const meta = algoMeta[selectedAlgo];
+    updateStatus(`System Ready // ${ARRAY_SIZE} values loaded. Run ${meta.label}?`, '#e8edf5');
+  }
+
+  function getBars() { return document.getElementsByClassName('array-bar'); }
+
+  // ---------- BUBBLE ----------
+  async function bubbleSort() {
+    const bars = getBars();
+    const meta = algoMeta.bubble;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    for (let i = 0; i < array.length - 1; i++) {
+      let swapped = false;
+      for (let j = 0; j < array.length - i - 1; j++) {
+        bars[j].classList.add('active'); bars[j+1].classList.add('active');
+        await sleep(DELAY);
+        if (array[j] > array[j+1]) {
+          [array[j], array[j+1]] = [array[j+1], array[j]];
+          bars[j].style.height = `${array[j]}%`; bars[j].setAttribute('data-val', array[j]);
+          bars[j+1].style.height = `${array[j+1]}%`; bars[j+1].setAttribute('data-val', array[j+1]);
+          swapped = true;
+        }
+        bars[j].classList.remove('active'); bars[j+1].classList.remove('active');
+      }
+      bars[array.length - i - 1].classList.add('sorted');
+      if (!swapped) break;
+    }
+    for (let i = 0; i < bars.length; i++) bars[i].classList.add('sorted');
+  }
+
+  // ---------- SELECTION ----------
+  async function selectionSort() {
+    const bars = getBars();
+    const meta = algoMeta.selection;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    for (let i = 0; i < array.length - 1; i++) {
+      let minIdx = i;
+      bars[minIdx].classList.add('pivot');
+      for (let j = i + 1; j < array.length; j++) {
+        bars[j].classList.add('active');
+        await sleep(DELAY);
+        if (array[j] < array[minIdx]) {
+          bars[minIdx].classList.remove('pivot');
+          minIdx = j;
+          bars[minIdx].classList.add('pivot');
+        }
+        bars[j].classList.remove('active');
+      }
+      if (minIdx !== i) {
+        [array[i], array[minIdx]] = [array[minIdx], array[i]];
+        bars[i].style.height = `${array[i]}%`; bars[i].setAttribute('data-val', array[i]);
+        bars[minIdx].style.height = `${array[minIdx]}%`; bars[minIdx].setAttribute('data-val', array[minIdx]);
+      }
+      bars[minIdx].classList.remove('pivot');
+      bars[i].classList.add('sorted');
+    }
+    bars[array.length - 1].classList.add('sorted');
+  }
+
+  // ---------- INSERTION ----------
+  async function insertionSort() {
+    const bars = getBars();
+    const meta = algoMeta.insertion;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    bars[0].classList.add('sorted');
+    for (let i = 1; i < array.length; i++) {
+      let key = array[i], j = i - 1;
+      bars[i].classList.add('active');
+      await sleep(DELAY);
+      while (j >= 0 && array[j] > key) {
+        bars[j].classList.add('active');
+        array[j + 1] = array[j];
+        bars[j+1].style.height = `${array[j+1]}%`; bars[j+1].setAttribute('data-val', array[j+1]);
+        await sleep(DELAY);
+        bars[j].classList.remove('active');
+        j--;
+      }
+      array[j + 1] = key;
+      bars[j+1].style.height = `${key}%`; bars[j+1].setAttribute('data-val', key);
+      bars[i].classList.remove('active');
+      for (let k = 0; k <= i; k++) bars[k].classList.add('sorted');
+    }
+  }
+
+  // ---------- MERGE ----------
+  async function mergeSortHelper(l, r, bars) {
+    if (l >= r) return;
+    const m = l + Math.floor((r - l) / 2);
+    await mergeSortHelper(l, m, bars);
+    await mergeSortHelper(m + 1, r, bars);
+    // Merge
+    const L = array.slice(l, m + 1), R = array.slice(m + 1, r + 1);
+    let i = 0, j = 0, k = l;
+    while (i < L.length && j < R.length) {
+      bars[k].classList.add('active');
+      await sleep(DELAY);
+      if (L[i] <= R[j]) { array[k] = L[i++]; }
+      else { array[k] = R[j++]; }
+      bars[k].style.height = `${array[k]}%`; bars[k].setAttribute('data-val', array[k]);
+      bars[k].classList.remove('active');
+      bars[k].classList.add('sorted');
+      k++;
+    }
+    while (i < L.length) {
+      bars[k].classList.add('active'); await sleep(DELAY/2);
+      array[k] = L[i++];
+      bars[k].style.height = `${array[k]}%`; bars[k].setAttribute('data-val', array[k]);
+      bars[k].classList.remove('active'); bars[k].classList.add('sorted'); k++;
+    }
+    while (j < R.length) {
+      bars[k].classList.add('active'); await sleep(DELAY/2);
+      array[k] = R[j++];
+      bars[k].style.height = `${array[k]}%`; bars[k].setAttribute('data-val', array[k]);
+      bars[k].classList.remove('active'); bars[k].classList.add('sorted'); k++;
+    }
+  }
+
+  async function mergeSort() {
+    const bars = getBars();
+    const meta = algoMeta.merge;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    await mergeSortHelper(0, array.length - 1, bars);
+    for (let i = 0; i < bars.length; i++) bars[i].classList.add('sorted');
+  }
+
+  // ---------- QUICK ----------
+  async function partition(low, high, bars) {
+    const pivot = array[high];
+    bars[high].classList.add('pivot');
+    let i = low - 1;
+    for (let j = low; j < high; j++) {
+      bars[j].classList.add('active');
+      await sleep(DELAY);
+      if (array[j] < pivot) {
+        i++;
+        [array[i], array[j]] = [array[j], array[i]];
+        bars[i].style.height = `${array[i]}%`; bars[i].setAttribute('data-val', array[i]);
+        bars[j].style.height = `${array[j]}%`; bars[j].setAttribute('data-val', array[j]);
+      }
+      bars[j].classList.remove('active');
+    }
+    [array[i+1], array[high]] = [array[high], array[i+1]];
+    bars[i+1].style.height = `${array[i+1]}%`; bars[i+1].setAttribute('data-val', array[i+1]);
+    bars[high].style.height = `${array[high]}%`; bars[high].setAttribute('data-val', array[high]);
+    bars[high].classList.remove('pivot');
+    bars[i+1].classList.add('sorted');
+    return i + 1;
+  }
+
+  async function quickSortHelper(low, high, bars) {
+    if (low < high) {
+      const pi = await partition(low, high, bars);
+      await quickSortHelper(low, pi - 1, bars);
+      await quickSortHelper(pi + 1, high, bars);
+    } else if (low === high) bars[low].classList.add('sorted');
+  }
+
+  async function quickSort() {
+    const bars = getBars();
+    const meta = algoMeta.quick;
+    updateStatus(`>> Executing [ ${meta.label} ] avg ${meta.complexity}`, meta.color);
+    await quickSortHelper(0, array.length - 1, bars);
+    for (let i = 0; i < bars.length; i++) bars[i].classList.add('sorted');
+  }
+
+  // ---------- HEAP ----------
+  async function heapify(n, i, bars) {
+    let largest = i, l = 2*i+1, r = 2*i+2;
+    if (l < n && array[l] > array[largest]) largest = l;
+    if (r < n && array[r] > array[largest]) largest = r;
+    if (largest !== i) {
+      bars[i].classList.add('active'); bars[largest].classList.add('active');
+      await sleep(DELAY);
+      [array[i], array[largest]] = [array[largest], array[i]];
+      bars[i].style.height = `${array[i]}%`; bars[i].setAttribute('data-val', array[i]);
+      bars[largest].style.height = `${array[largest]}%`; bars[largest].setAttribute('data-val', array[largest]);
+      bars[i].classList.remove('active'); bars[largest].classList.remove('active');
+      await heapify(n, largest, bars);
+    }
+  }
+
+  async function heapSort() {
+    const bars = getBars();
+    const meta = algoMeta.heap;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity}`, meta.color);
+    const n = array.length;
+    for (let i = Math.floor(n/2)-1; i >= 0; i--) await heapify(n, i, bars);
+    for (let i = n-1; i > 0; i--) {
+      bars[0].classList.add('pivot');
+      await sleep(DELAY);
+      [array[0], array[i]] = [array[i], array[0]];
+      bars[0].style.height = `${array[0]}%`; bars[0].setAttribute('data-val', array[0]);
+      bars[i].style.height = `${array[i]}%`; bars[i].setAttribute('data-val', array[i]);
+      bars[0].classList.remove('pivot'); bars[i].classList.add('sorted');
+      await heapify(i, 0, bars);
+    }
+    bars[0].classList.add('sorted');
+  }
+
+  // ---------- COUNTING ----------
+  async function countingSort() {
+    const bars = getBars();
+    const meta = algoMeta.counting;
+    updateStatus(`>> Executing [ ${meta.label} ] ${meta.complexity} // No comparisons!`, meta.color);
+    const minVal = Math.min(...array), maxVal = Math.max(...array);
+    const count = new Array(maxVal - minVal + 1).fill(0);
+    for (let x of array) count[x - minVal]++;
+
+    // Flash all bars red to show "counting" phase
+    for (let i = 0; i < bars.length; i++) bars[i].classList.add('active');
+    await sleep(400);
+    for (let i = 0; i < bars.length; i++) bars[i].classList.remove('active');
+
+    let idx = 0;
+    for (let i = 0; i < count.length; i++) {
+      while (count[i]-- > 0) {
+        array[idx] = i + minVal;
+        bars[idx].style.height = `${array[idx]}%`; bars[idx].setAttribute('data-val', array[idx]);
+        bars[idx].classList.add('sorted');
+        await sleep(DELAY);
+        idx++;
+      }
+    }
+  }
+
+  // ---------- MAIN RUN ----------
+  const algoFns = { bubble: bubbleSort, selection: selectionSort, insertion: insertionSort, merge: mergeSort, quick: quickSort, heap: heapSort, counting: countingSort };
+
+  document.getElementById('btn-run').addEventListener('click', async () => {
+    if (isSorting) return;
+    isSorting = true;
+    await algoFns[selectedAlgo]();
+    const meta = algoMeta[selectedAlgo];
+    updateStatus(`>> [ ${meta.label} ] Done! ✅ Scroll down to read the explanation.`, '#00e676');
+    isSorting = false;
+  });
+
+  document.getElementById('btn-generate').addEventListener('click', () => {
+    if (isSorting) return;
+    generateArray();
+  });
+
+  selectAlgo('bubble');
+  generateArray();
+});
+</script>
+
+                                        
+                </div>
+
+                
+              </div>
+
+              
+            </div>
+            
+              
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/12/24/115-special/"
+      title="115 特殊選才心得｜資工特選的現實與轉彎"
+     >
+
+    <p class="title-text">
+      
+        115 特殊選才心得｜資工特選的現實與轉彎
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+                
+    </article>
+
+    
+
+          
+
+              
+                <div id="comment-card" class="comment-card">
+                  <div class="main-title-bar">
+                    <div class="main-title-dot"></div>
+                    <div class="main-title">
+                      留言
+                    </div>
+                  </div>
+                  <div class="giscus"></div>
+                  <script src="https://giscus.app/client.js" data-repo="Boyce39/-Discussions"
+                    data-repo-id="R_kgDOQuShag"
+                    data-category="General"
+                    data-category-id="DIC_kwDOQuShas4C0M76"
+                    data-mapping="pathname"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="bottom"
+                    data-theme="catppuccin_macchiato" data-lang="zh-TW"
+                    crossorigin="anonymous" async>
+                    </script>
+                </div>
+                
+                          </div>
+                          <div id="footer-wrapper">
+                            <footer id="footer">
+  
+        <div id="footer-info" class="inner">
+          
+
+                <div class="footer-row">
+                  <span class="copyright">
+                    &copy; 2026
+                      BoyceLab
+                  </span>
+
+                  <span class="divider">|</span>
+
+                  <span class="divider">|</span>
+                  <a href="/changelog/" class="changelog-link">
+                    <i class="fa-solid fa-code-branch"></i> v1.8.9 更新日誌
+                  </a>
+                  <span class="divider">|</span>
+
+                  <span class="powered-by">
+                    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a
+                        target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+                  </span>
+
+                  
+                    <span class="divider">|</span>
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                      <i class="fa-solid fa-eye"></i>
+                      本站總瀏覽量 <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                    <span class="divider">|</span>
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                      <i class="fa-solid fa-user"></i>
+                      本站訪客數 <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                    
+                </div>
+
+                <!-- 網站運行時間腳本 (隱藏執行) -->
+                <script>
+                  (function () {
+                    // 保留腳本但暫不顯示，因為用戶要求刪除顯示
+                  })();
+                </script>
+
+                <style>
+                  #footer-info {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    padding: 20px 0;
+                    width: 100%;
+                  }
+
+                  .footer-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 15px;
+                    line-height: 1.8;
+                    font-size: 0.85rem;
+                    color: #888;
+                    width: 100%;
+                    text-align: center;
+                  }
+
+                  .changelog-link {
+                    color: #888;
+                    text-decoration: none;
+                    border-bottom: 1px dashed #555;
+                    transition: all 0.3s ease;
+                  }
+
+                  .changelog-link:hover {
+                    color: var(--color-primary, #00ffc8);
+                    border-bottom-color: var(--color-primary, #00ffc8);
+                  }
+
+                  .divider {
+                    color: #555;
+                    font-size: 0.8em;
+                  }
+
+                  .powered-by a {
+                    color: #888;
+                    text-decoration: none;
+                  }
+
+                  .powered-by a:hover {
+                    text-decoration: underline;
+                  }
+
+                  /* RWD: Mobile optimize */
+                  @media (max-width: 600px) {
+                    .footer-row {
+                      flex-direction: column;
+                      gap: 8px;
+                    }
+
+                    .divider {
+                      display: none;
+                    }
+
+                    #footer-info {
+                      padding: 15px 10px;
+                    }
+                  }
+                </style>
+        </div>
+</footer>
+                          </div>
+                          <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+                            <div id="search-modal" class="hidden">
+    <div id="search-modal-content">
+        <div id="search-modal-header">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search-input" placeholder="搜尋文章內容...">
+            <div id="search-close-btn">&times;</div>
+        </div>
+        <div id="search-results">
+            <div class="search-empty">輸入關鍵字開始搜尋...</div>
+        </div>
+    </div>
+</div>
+                        </div>
+                        <script src="/js/light-dark-switch.js"></script>
+                        <script src="https://cdn.staticfile.org/fuse.js/6.6.2/fuse.min.js"></script>
+                        <script src="/js/local-search.js"></script>
+                        <script src="/js/tech-effects.js"></script>
+                        <script>
+                          // Backend Pre-warm
+                          (function () {
+                            const pingUrl = 'https://webpython-h2y7.onrender.com/test-api';
+                            fetch(pingUrl, { mode: 'no-cors' }).catch(err => console.debug('Pre-warm ping silent.'));
+                          })();
+                        </script>
+                        
+                          <script src="https://cdn.staticfile.org/mermaid/10.6.1/mermaid.min.js"></script>
+                          <script>
+                            if (window.mermaid) {
+                              mermaid.initialize({ theme: 'dark' });
+                            }
+                          </script>
+                          
+          
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+          </html>
+          
