@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>網站服務方案 | BoyceLab</title>
+    <meta name="description" content="BoyceLab 提供小店家、工作室與個人品牌的網站建置與維護服務。方案透明、快速交件，不怕踩雷。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{
+        --bg:#0d0f14;--bg2:#13161e;--bg3:#1a1e29;
+        --sf:#1e2332;--sf2:#252b3b;
+        --ac:#6c8ef5;--ac2:#a78bfa;
+        --green:#34d399;--yellow:#fbbf24;--red:#f87171;--teal:#2dd4bf;
+        --glow:rgba(108,142,245,.13);
+        --t:#e2e8f0;--tm:#8892a4;--bd:rgba(255,255,255,.06);
+        --r:16px;--rs:10px;
+        --mono:'JetBrains Mono',monospace;
+      }
+      html{scroll-behavior:smooth}
+      body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--t);line-height:1.7;overflow-x:hidden}
+      a{color:inherit;text-decoration:none}
+
+      /* ── TOPBAR ── */
+      .topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,15,20,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:60px}
+      .tb-back{display:flex;align-items:center;gap:.5rem;color:var(--tm);font-size:.9rem;font-weight:500;transition:color .2s}
+      .tb-back:hover{color:var(--ac)}
+      .tb-back svg{width:16px;height:16px}
+      .tb-brand{font-size:1rem;font-weight:800;background:linear-gradient(135deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+      .tb-cta{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;padding:.4rem 1.2rem;border-radius:50px;font-size:.85rem;font-weight:700;transition:opacity .2s,transform .2s;box-shadow:0 2px 12px rgba(108,142,245,.3)}
+      .tb-cta:hover{opacity:.88;transform:translateY(-1px)}
+
+      /* ── COMMON ── */
+      .section{padding:90px 1.5rem}
+      .si{max-width:1040px;margin:0 auto}
+      .tag{display:inline-flex;align-items:center;background:var(--glow);color:var(--ac);border:1px solid rgba(108,142,245,.25);border-radius:50px;padding:.28rem .85rem;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
+      .h2{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:900;line-height:1.2;margin-bottom:.7rem}
+      .sub{color:var(--tm);font-size:1rem;max-width:600px;line-height:1.8}
+      .hl{color:var(--ac)}
+      .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.8rem;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .25s;border:none}
+      .bp{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;box-shadow:0 4px 20px rgba(108,142,245,.35)}
+      .bp:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(108,142,245,.5)}
+      .bo{background:transparent;color:var(--ac);border:1.5px solid rgba(108,142,245,.45)}
+      .bo:hover{background:var(--glow);transform:translateY(-2px)}
+      .reveal{opacity:0;transform:translateY(22px);transition:opacity .5s,transform .5s}
+      .reveal.v{opacity:1;transform:none}
+
+      /* ── HERO ── */
+      .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:60px}
+      .hero-bg{position:absolute;inset:0;z-index:0;
+        background:
+          radial-gradient(ellipse 70% 60% at 75% 35%,rgba(108,142,245,.14) 0%,transparent 60%),
+          radial-gradient(ellipse 55% 50% at 10% 80%,rgba(167,139,250,.08) 0%,transparent 60%)}
+      .hero-grid{position:absolute;inset:0;z-index:0;
+        background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+        background-size:60px 60px}
+      .hero-inner{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:4rem 1.5rem}
+      .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(52,211,153,.1);color:var(--green);border:1px solid rgba(52,211,153,.25);border-radius:50px;padding:.32rem .95rem;font-size:.8rem;font-weight:600;margin-bottom:1.5rem}
+      .hero-badge::before{content:'●';animation:pulse 2s infinite}
+      @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+      .hero h1{font-size:clamp(2.1rem,6vw,4rem);font-weight:900;line-height:1.12;margin-bottom:1.1rem}
+      .hero-desc{color:var(--tm);font-size:1.1rem;max-width:520px;margin-bottom:2.5rem;line-height:1.9}
+      .hero-act{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+      .hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--bd)}
+      .stat-n{font-size:1.85rem;font-weight:900;background:linear-gradient(135deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}
+      .stat-l{color:var(--tm);font-size:.8rem;margin-top:.1rem}
+
+      /* ── ABOUT / TRUST ── */
+      .about-sec{background:var(--bg2)}
+      .trust-card{background:linear-gradient(135deg,var(--sf),rgba(52,211,153,.04));border:1px solid rgba(52,211,153,.18);border-radius:var(--r);padding:1.8rem 2rem;margin-top:2rem;display:flex;align-items:flex-start;gap:1.2rem}
+      .trust-icon{font-size:2rem;flex-shrink:0}
+      .trust-title{font-weight:800;font-size:1.05rem;margin-bottom:.35rem;color:var(--green)}
+      .trust-text{font-size:.9rem;color:var(--tm);line-height:1.8}
+
+      /* ── PAIN ── */
+      .pain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem;margin-top:2.5rem}
+      .pain-card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.35rem 1.5rem;display:flex;align-items:flex-start;gap:.9rem;transition:border-color .25s,transform .25s}
+      .pain-card:hover{border-color:rgba(108,142,245,.28);transform:translateY(-3px)}
+      .pi{font-size:1.4rem;flex-shrink:0}
+      .pt{font-size:.9rem;color:var(--tm)}
+      .pt strong{color:var(--t);display:block;margin-bottom:.15rem;font-size:.95rem}
+
+      /* ── SERVICES ── */
+      .svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+      .svc-card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:2rem 1.8rem;display:flex;flex-direction:column;gap:.85rem;position:relative;overflow:hidden;transition:transform .28s,box-shadow .28s,border-color .28s}
+      .svc-card:hover{transform:translateY(-5px);box-shadow:0 18px 55px rgba(0,0,0,.45);border-color:rgba(108,142,245,.28)}
+      .svc-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;opacity:.75;transition:opacity .25s}
+      .svc-card:hover::before{opacity:1}
+      .c-web::before{background:linear-gradient(180deg,var(--ac),var(--ac2))}
+      .c-copy::before{background:linear-gradient(180deg,var(--green),#059669)}
+      .c-rwd::before{background:linear-gradient(180deg,var(--teal),#0891b2)}
+      .c-seo::before{background:linear-gradient(180deg,var(--yellow),#d97706)}
+      .c-maint::before{background:linear-gradient(180deg,#f472b6,#be185d)}
+      .svc-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0}
+      .c-web .svc-icon{background:rgba(108,142,245,.12)}
+      .c-copy .svc-icon{background:rgba(52,211,153,.1)}
+      .c-rwd .svc-icon{background:rgba(45,212,191,.1)}
+      .c-seo .svc-icon{background:rgba(251,191,36,.1)}
+      .c-maint .svc-icon{background:rgba(244,114,182,.1)}
+      .svc-name{font-size:1.08rem;font-weight:800}
+      .svc-en{font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--tm);margin-top:-.3rem}
+      .svc-desc{font-size:.88rem;color:var(--tm);flex:1;line-height:1.75}
+      .svc-chips{display:flex;gap:.35rem;flex-wrap:wrap}
+      .chip{background:var(--bg3);border:1px solid var(--bd);border-radius:4px;padding:.13rem .52rem;font-size:.73rem;font-family:var(--mono);color:var(--tm)}
+
+      /* ── WORKS ── */
+      .works-sec{background:var(--bg2)}
+      .works-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+      .wc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;transition:transform .25s,box-shadow .25s}
+      .wc:hover{transform:translateY(-5px);box-shadow:0 14px 50px rgba(0,0,0,.4)}
+      .wc-thumb{height:145px;display:flex;align-items:center;justify-content:center;font-size:2.7rem;position:relative}
+      .wc-badge{position:absolute;top:.55rem;right:.55rem;background:rgba(108,142,245,.2);color:var(--ac);border:1px solid rgba(108,142,245,.3);border-radius:50px;padding:.18rem .65rem;font-size:.7rem;font-weight:700}
+      .wc-body{padding:1.2rem 1.4rem}
+      .wc-type{font-size:.76rem;color:var(--tm);margin-bottom:.2rem}
+      .wc-name{font-size:1.02rem;font-weight:800;margin-bottom:.45rem}
+      .wc-desc{font-size:.85rem;color:var(--tm);line-height:1.7}
+      .wc-tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.75rem}
+      .wt{background:var(--bg3);border-radius:4px;padding:.13rem .5rem;font-size:.7rem;font-family:var(--mono);color:var(--tm)}
+      .wc-link{display:inline-flex;align-items:center;gap:.35rem;color:var(--ac);font-size:.83rem;font-weight:600;margin-top:.75rem;transition:gap .2s}
+      .wc-link:hover{gap:.6rem}
+
+      /* ── PRICING ── */
+      .pricing-sec-inner{margin-top:2.5rem}
+      /* 信任語 */
+      .trust-line{text-align:center;color:var(--tm);font-size:.95rem;margin-bottom:2rem;padding:.9rem;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15);border-radius:var(--rs)}
+      .trust-line strong{color:var(--green)}
+      /* 方案卡 */
+      .pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:1.4rem}
+      .plan{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:2rem 1.7rem;display:flex;flex-direction:column;gap:.5rem;position:relative;transition:transform .25s}
+      .plan:hover{transform:translateY(-4px)}
+      .plan.hot{border-color:rgba(108,142,245,.45);background:linear-gradient(160deg,var(--sf),rgba(108,142,245,.07))}
+      .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;border-radius:50px;padding:.22rem 1rem;font-size:.73rem;font-weight:800;white-space:nowrap}
+      .plan-emoji{font-size:1.5rem;margin-top:.3rem}
+      .plan-name{font-size:1.08rem;font-weight:800;margin-top:.2rem}
+      .plan-for{font-size:.8rem;color:var(--tm);margin-bottom:.3rem}
+      .plan-price{font-size:1.9rem;font-weight:900;color:var(--ac);line-height:1.1}
+      .plan-note{font-size:.8rem;color:var(--tm)}
+      hr.pd{border:none;border-top:1px solid var(--bd);margin:.7rem 0}
+      /* 項目列 */
+      .plan-ul{list-style:none;display:flex;flex-direction:column;gap:.48rem;flex:1}
+      .plan-ul li{display:flex;align-items:flex-start;gap:.45rem;font-size:.86rem;color:var(--tm);line-height:1.55}
+      .plan-ul li.ok::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0;margin-top:.05rem}
+      .plan-ul li.no{margin-top:.4rem}
+      .plan-ul li.no::before{content:'✕';color:var(--red);font-weight:800;flex-shrink:0;margin-top:.05rem}
+      .plan-ul li.no span{color:var(--tm);font-size:.83rem}
+      .plan-btn{margin-top:1.1rem}
+      .plan-btn .btn{width:100%;justify-content:center}
+
+      /* ── 服務條款 ── */
+      .terms-box{margin-top:2rem;background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r);padding:1.6rem 2rem}
+      .terms-box h4{font-size:1rem;font-weight:800;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+      .terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.6rem}
+      .term-i{display:flex;gap:.5rem;font-size:.86rem;color:var(--tm);line-height:1.55}
+      .term-i::before{content:'•';color:var(--ac);flex-shrink:0;font-weight:700}
+
+      /* ── FLOW ── */
+      .flow-sec{background:var(--bg2)}
+      .flow-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem;margin-top:2.5rem;counter-reset:step}
+      .flow-step{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.35rem 1.5rem;display:flex;align-items:flex-start;gap:.9rem;counter-increment:step;transition:border-color .25s}
+      .flow-step:hover{border-color:rgba(108,142,245,.25)}
+      .sn{width:34px;height:34px;flex-shrink:0;background:linear-gradient(135deg,var(--ac),var(--ac2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:800;color:#fff}
+      .sn::after{content:counter(step)}
+      .st{font-weight:700;font-size:.95rem;margin-bottom:.15rem}
+      .sd{font-size:.84rem;color:var(--tm)}
+
+      /* ── FAQ ── */
+      .faq-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:.7rem}
+      .faq-item{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);overflow:hidden}
+      .faq-q{width:100%;background:none;border:none;color:var(--t);font-family:inherit;font-size:.94rem;font-weight:600;text-align:left;padding:1.05rem 1.35rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:.8rem}
+      .faq-q:hover{background:var(--sf2)}
+      .faq-ch{color:var(--ac);font-size:.95rem;flex-shrink:0;transition:transform .25s}
+      .faq-a{display:none;padding:0 1.35rem 1.05rem;font-size:.87rem;color:var(--tm);line-height:1.8}
+      .faq-item.open .faq-a{display:block}
+      .faq-item.open .faq-ch{transform:rotate(180deg)}
+
+      /* ── CONTACT ── */
+      .contact-sec{background:var(--bg2)}
+      .cc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.1rem;margin-top:2.5rem}
+      .cc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1rem;transition:border-color .25s,transform .25s}
+      .cc:hover{border-color:rgba(108,142,245,.32);transform:translateY(-3px)}
+      .cc-ico{width:44px;height:44px;flex-shrink:0;border-radius:10px;background:var(--glow);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+      .cc-l{font-size:.75rem;color:var(--tm)}
+      .cc-v{font-weight:700;font-size:.95rem}
+      .cta-row{margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+      /* ── AUTO CTA ── */
+      .auto-banner{margin-top:0;padding:0 1.5rem 60px}
+      .auto-banner-inner{max-width:1040px;margin:0 auto}
+      .auto-cta-box{background:linear-gradient(135deg,var(--sf),rgba(108,142,245,.07));border:1px solid rgba(108,142,245,.28);border-radius:var(--r);padding:2rem 2.2rem;display:flex;align-items:center;gap:1.8rem}
+      .auto-cta-box .ico{font-size:2.8rem;flex-shrink:0}
+      .auto-cta-title{font-size:1.15rem;font-weight:800;margin-bottom:.4rem}
+      .auto-cta-desc{font-size:.88rem;color:var(--tm);margin-bottom:1rem;line-height:1.75}
+
+      /* ── FOOTER ── */
+      .footer{text-align:center;padding:2rem 1.5rem;color:var(--tm);font-size:.82rem;border-top:1px solid var(--bd)}
+
+      /* ── RWD ── */
+      @media(max-width:640px){
+        .topbar{padding:0 1rem}
+        .tb-brand{display:none}
+        .section{padding:70px 1rem}
+        .auto-banner{padding:0 1rem 50px}
+        .hero h1{font-size:2.1rem}
+        .hero-stats{gap:1.5rem}
+        .pricing-grid{grid-template-columns:1fr}
+        .svc-grid,.works-grid,.pain-grid,.cc-grid,.flow-grid,.sk-grid{grid-template-columns:1fr}
+        .cta-row{flex-direction:column;align-items:stretch}
+        .cta-row .btn{justify-content:center}
+        .terms-grid{grid-template-columns:1fr}
+        .auto-cta-box{flex-direction:column;gap:1rem;padding:1.5rem 1.2rem;text-align:center}
+        .faq-q{font-size:.88rem;padding:.95rem 1.1rem}
+      }
+      @media(max-width:480px){
+        .hero h1{font-size:1.85rem}
+        .plan-price{font-size:1.65rem}
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <a href="/" class="tb-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        回個人網站
+      </a>
+      <span class="tb-brand">BoyceLab</span>
+      <a href="https://lin.ee/pHoDzDk" target="_blank" rel="noopener" class="tb-cta">💬 免費諮詢</a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-inner">
+        <div class="hero-badge">目前開放接案</div>
+        <h1>幫你建立<span class="hl">專業網站</span>，<br />讓客戶更容易<span class="hl">找到你</span></h1>
+        <p class="hero-desc">
+          適合小店家、工作室與個人品牌。<br />
+          從網站建置、內容整理到後續維護，一步完成。<br />
+          <strong style="color:var(--t)">不會寫內容也沒關係，我會協助你整理。</strong>
+        </p>
+        <div class="hero-act">
+          <a href="https://lin.ee/pHoDzDk" target="_blank" rel="noopener" class="btn bp">💬 免費諮詢你的網站需求</a>
+          <a href="#pricing" class="btn bo">查看方案 ↓</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-n">3~10</div><div class="stat-l">天內完成交件</div></div>
+          <div><div class="stat-n">NT$1,000</div><div class="stat-l">DEMO 起</div></div>
+          <div><div class="stat-n">NT$2,500</div><div class="stat-l">正式入門起</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about-sec" id="about">
+      <div class="si reveal">
+        <span class="tag">About</span>
+        <h2 class="h2">幫你整理好，<span class="hl">讓客戶看得懂</span></h2>
+        <p class="sub">我專門協助小店家與個人品牌建立清楚、好看的網站，讓客戶可以快速了解你的服務並聯絡你。熟悉前端設計、RWD、SEO 設定與自動化整合。</p>
+        <div class="trust-card">
+          <div class="trust-icon">🏆</div>
+          <div>
+            <div class="trust-title">已協助實際店面上線網站</div>
+            <div class="trust-text">
+              已為在地 56 年老店「遠東專業影像生活館」建立並上線完整四頁網站，
+              從品牌介紹、服務說明、作品展示到聯絡方式一手包辦，
+              顯著提升資訊清楚度與品牌形象，客戶可直接在網站找到所需資訊。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAIN POINTS -->
+    <section class="section" id="pain">
+      <div class="si">
+        <span class="tag">你是不是也有這些困擾</span>
+        <h2 class="h2 reveal">這些問題，<span class="hl">一個網站解決</span></h2>
+        <div class="pain-grid">
+          <div class="pain-card reveal"><span class="pi">😵</span><div class="pt"><strong>IG 資訊很亂</strong>客戶常問重複問題，自己累對方也累</div></div>
+          <div class="pain-card reveal"><span class="pi">🕳️</span><div class="pt"><strong>沒有完整介紹頁</strong>說不清楚服務，潛在客戶直接走掉</div></div>
+          <div class="pain-card reveal"><span class="pi">😰</span><div class="pt"><strong>想做網站不知怎麼開始</strong>不知道要找誰、預算怎麼抓</div></div>
+          <div class="pain-card reveal"><span class="pi">💸</span><div class="pt"><strong>找過報價太高</strong>開口就要幾萬，小店家根本負擔不起</div></div>
+          <div class="pain-card reveal"><span class="pi">🔧</span><div class="pt"><strong>做完沒人維護</strong>想改個字、更新照片，找不到人幫忙</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section about-sec" id="services">
+      <div class="si">
+        <span class="tag">Service</span>
+        <h2 class="h2 reveal">我提供的<span class="hl">服務項目</span></h2>
+        <p class="sub reveal">網站、文案、後續維護——說需求，我給解法。</p>
+        <div class="svc-grid">
+          <div class="svc-card c-web reveal">
+            <div class="svc-icon">🎨</div>
+            <div><div class="svc-name">網站設計與建置</div><div class="svc-en">Website Development</div></div>
+            <div class="svc-desc">從版面規劃、視覺設計到前端切版，手機與電腦完美呈現，每個細節都精心打磨。</div>
+            <div class="svc-chips"><span class="chip">HTML/CSS/JS</span><span class="chip">Hexo</span><span class="chip">RWD</span></div>
+          </div>
+          <div class="svc-card c-copy reveal">
+            <div class="svc-icon">✍️</div>
+            <div><div class="svc-name">內容整理與文案</div><div class="svc-en">Content & Copywriting</div></div>
+            <div class="svc-desc">你給大概方向，我幫你把資訊整理成易讀、有說服力的格式，不需要自己想好每個字。</div>
+            <div class="svc-chips"><span class="chip">文案整理</span><span class="chip">結構規劃</span></div>
+          </div>
+          <div class="svc-card c-rwd reveal">
+            <div class="svc-icon">📱</div>
+            <div><div class="svc-name">RWD 全裝置適配</div><div class="svc-en">Responsive Design</div></div>
+            <div class="svc-desc">手機、平板、桌機任何螢幕都完美顯示，Google 行動版友善，不讓任何人因為版面問題流失。</div>
+            <div class="svc-chips"><span class="chip">Mobile First</span><span class="chip">版面優化</span></div>
+          </div>
+          <div class="svc-card c-seo reveal">
+            <div class="svc-icon">🔍</div>
+            <div><div class="svc-name">SEO 基本設定</div><div class="svc-en">Search Engine Optimization</div></div>
+            <div class="svc-desc">標題、Meta、Sitemap、結構化資料，讓 Google 找得到你，提升搜尋曝光。</div>
+            <div class="svc-chips"><span class="chip">Meta Tags</span><span class="chip">Sitemap</span><span class="chip">Analytics</span></div>
+          </div>
+          <div class="svc-card c-maint reveal">
+            <div class="svc-icon">🔄</div>
+            <div><div class="svc-name">後續維護與修改</div><div class="svc-en">Maintenance</div></div>
+            <div class="svc-desc">上線後的修改、圖片更新、活動上架——持續支援，讓網站保持最新狀態。</div>
+            <div class="svc-chips"><span class="chip">月費方案</span><span class="chip">按需修改</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section class="section works-sec" id="works">
+      <div class="si">
+        <span class="tag">Portfolio</span>
+        <h2 class="h2 reveal">做過的<span class="hl">實際作品</span></h2>
+        <div class="works-grid">
+          <div class="wc reveal">
+            <div class="wc-thumb" style="background:linear-gradient(135deg,#1a1e29,#252b3b)">📷<span class="wc-badge">🔥 代表作</span></div>
+            <div class="wc-body">
+              <div class="wc-type">在地店家 · 完整四頁網站</div>
+              <div class="wc-name">遠東專業影像生活館</div>
+              <div class="wc-desc">56 年老照相館品牌重塑。品牌介紹、服務項目、作品欣賞、聯絡方式，完整 RWD + SEO。</div>
+              <div class="wc-tags"><span class="wt">HTML/CSS</span><span class="wt">RWD</span><span class="wt">SEO</span><span class="wt">多頁面</span></div>
+              <a href="https://www.fepphoto.com" target="_blank" rel="noopener" class="wc-link">查看網站 →</a>
+            </div>
+          </div>
+          <div class="wc reveal">
+            <div class="wc-thumb" style="background:linear-gradient(135deg,#13161e,#1a1e29)">🧑‍💻</div>
+            <div class="wc-body">
+              <div class="wc-type">個人品牌 · 技術部落格</div>
+              <div class="wc-name">BoyceLab 個人網站</div>
+              <div class="wc-desc">Hexo 框架技術部落格，含文章系統、AI 助理、訂閱功能，glassmorphism 設計風格。</div>
+              <div class="wc-tags"><span class="wt">Hexo</span><span class="wt">自訂主題</span><span class="wt">AI 整合</span></div>
+              <a href="/" class="wc-link">查看網站 →</a>
+            </div>
+          </div>
+          <div class="wc reveal">
+            <div class="wc-thumb" style="background:linear-gradient(135deg,#0d1117,#161b24)">🤖</div>
+            <div class="wc-body">
+              <div class="wc-type">自動化工具 · 系統整合</div>
+              <div class="wc-name">LINE Bot &amp; QR 雲端串接</div>
+              <div class="wc-desc">LINE 自動回覆機器人 + QR Code 雲端資料庫即時同步，節省大量人工作業時間。</div>
+              <div class="wc-tags"><span class="wt">LINE Bot</span><span class="wt">Python</span><span class="wt">Firebase</span></div>
+              <a href="/automation/" class="wc-link">看自動化服務 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+      <div class="si">
+        <span class="tag">Pricing</span>
+        <h2 class="h2 reveal">透明方案，<span class="hl">不怕踩雷</span></h2>
+
+        <div class="pricing-sec-inner reveal">
+          <div class="trust-line">
+            💡 <strong>不會寫內容也沒關係</strong>，我會協助你整理資訊，讓客戶一看就懂你的服務。
+          </div>
+
+          <div class="pricing-grid">
+
+            <!-- DEMO -->
+            <div class="plan reveal">
+              <div class="plan-emoji">🎯</div>
+              <div class="plan-name">一次性 DEMO 方案</div>
+              <div class="plan-for">比賽作品・活動展示・短期宣傳</div>
+              <div class="plan-price">NT$1,000</div>
+              <div class="plan-note">一次性費用・存放一年</div>
+              <hr class="pd" />
+              <ul class="plan-ul">
+                <li class="ok">單頁精美展示網站</li>
+                <li class="ok">僅限文字與圖片替換</li>
+                <li class="ok">1 次整體修改額度</li>
+                <li class="ok">上線存放一年</li>
+                <li class="ok">到期可續約（另議）</li>
+                <li class="no"><span>不含客製設計更改</span></li>
+                <li class="no"><span>不含功能新增</span></li>
+                <li class="no"><span>不含版面結構變更</span></li>
+              </ul>
+              <div class="plan-btn">
+                <a href="https://lin.ee/pHoDzDk" target="_blank" rel="noopener" class="btn bo">立即討論你的需求</a>
+              </div>
+            </div>
+
+            <!-- 入門 -->
+            <div class="plan reveal">
+              <div class="plan-emoji">🟢</div>
+              <div class="plan-name">入門網站方案</div>
+              <div class="plan-for">剛起步的小店家・個人接案</div>
+              <div class="plan-price">NT$2,500</div>
+              <div class="plan-note">建置費・維護 NT$300/月（選購）</div>
+              <hr class="pd" />
+              <ul class="plan-ul">
+                <li class="ok">單頁網站</li>
+                <li class="ok">品牌介紹 + 服務說明</li>
+                <li class="ok">聯絡方式 &amp; 社群連結</li>
+                <li class="ok">Google 地圖嵌入</li>
+                <li class="ok">手機版優化</li>
+                <li class="ok">1 次免費整體修改</li>
+                <li class="no"><span>不含文案撰寫（可協助整理）</span></li>
+                <li class="no"><span>客戶需提供圖片與資料</span></li>
+              </ul>
+              <div class="plan-btn">
+                <a href="https://lin.ee/pHoDzDk" target="_blank" rel="noopener" class="btn bo">立即討論你的需求</a>
+              </div>
+            </div>
+
+            <!-- 標準（主推） -->
+            <div class="plan hot reveal">
+              <div class="plan-badge">🔥 主推方案</div>
+              <div class="plan-emoji">🔵</div>
+              <div class="plan-name">標準網站方案</div>
+              <div class="plan-for">工作室・個人品牌・店家官網</div>
+              <div class="plan-price">NT$6,000～8,000</div>
+              <div class="plan-note">建置費・維護 NT$800/月</div>
+              <hr class="pd" />
+              <ul class="plan-ul">
+                <li class="ok">3～5 頁多頁網站</li>
+                <li class="ok">首頁 + 介紹 + 服務 + 聯絡</li>
+                <li class="ok">含文案整理（非全新撰寫）</li>
+                <li class="ok">SEO 基本設定</li>
+                <li class="ok">網站上線 &amp; DNS 設定</li>
+                <li class="ok">2 次免費整體修改</li>
+                <li class="ok">約 5～10 個工作天完成</li>
+                <li class="no"><span>不含金流 / 訂購系統</span></li>
+                <li class="no"><span>不含會員登入系統</span></li>
+                <li class="no"><span>不含客製後端功能</span></li>
+              </ul>
+              <div class="plan-btn">
+                <a href="https://lin.ee/pHoDzDk" target="_blank" rel="noopener" class="btn bp">免費諮詢你的網站需求</a>
+              </div>
+            </div>
+
+            <!-- 維護 -->
+            <div class="plan reveal">
+              <div class="plan-emoji">🟡</div>
+              <div class="plan-name">維護代管方案</div>
+              <div class="plan-for">已有網站・想長期維護</div>
+              <div class="plan-price">NT$800～1,500</div>
+              <div class="plan-note">每月</div>
+              <hr class="pd" />
+              <ul class="plan-ul">
+                <li class="ok">每月 2 次內容更新</li>
+                <li class="ok">（每次為一個區塊修改）</li>
+                <li class="ok">圖片 &amp; 文字替換</li>
+                <li class="ok">活動資訊上架</li>
+                <li class="ok">超出部分 NT$200～500/次</li>
+                <li class="no"><span>不含重新設計版面</span></li>
+                <li class="no"><span>不含新增頁面</span></li>
+              </ul>
+              <div class="plan-btn">
+                <a href="https://lin.ee/pHoDzDk" target="_blank" rel="noopener" class="btn bo">立即討論你的需求</a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 服務條款 -->
+          <div class="terms-box reveal">
+            <h4>⚠ 服務說明與限制</h4>
+            <div class="terms-grid">
+              <div class="term-i">網域與主機費用另計（可協助代購）</div>
+              <div class="term-i">客戶需提供基本文字與圖片素材</div>
+              <div class="term-i">修改次數以「一次整體調整」為單位</div>
+              <div class="term-i">超出方案範圍將另行報價，事前確認</div>
+              <div class="term-i">訂金 30% 後開始製作</div>
+              <div class="term-i">尾款結清後正式上線</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTO CTA BANNER -->
+    <div class="auto-banner">
+      <div class="auto-banner-inner">
+        <div class="auto-cta-box reveal">
+          <div class="ico">🤖</div>
+          <div>
+            <div class="auto-cta-title">也有自動化／AI 需求？</div>
+            <div class="auto-cta-desc">LINE Bot、視覺辨識、QR 雲端串接、AI 對話機器人——這是另一個獨立服務，點進去看專案說明。</div>
+            <a href="/automation/" class="btn bp">看自動化服務 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLOW -->
+    <section class="section flow-sec" id="flow">
+      <div class="si">
+        <span class="tag">Process</span>
+        <h2 class="h2 reveal">合作<span class="hl">流程</span></h2>
+        <div class="flow-grid">
+          <div class="flow-step reveal"><div class="sn"></div><div><div class="st">聯絡諮詢</div><div class="sd">透過 LINE 說大概需求，不需先想好所有細節</div></div></div>
+          <div class="flow-step reveal"><div class="sn"></div><div><div class="st">確認需求</div><div class="sd">討論風格、頁面內容、功能，確認方案範圍</div></div></div>
+          <div class="flow-step reveal"><div class="sn"></div><div><div class="st">報價與訂金</div><div class="sd">確認報價後收 30% 訂金，正式開始製作</div></div></div>
+          <div class="flow-step reveal"><div class="sn"></div><div><div class="st">製作網站</div><div class="sd">5～10 個工作天，過程隨時更新進度</div></div></div>
+          <div class="flow-step reveal"><div class="sn"></div><div><div class="st">修改確認</div><div class="sd">方案內含修改次數，確保你滿意為止</div></div></div>
+          <div class="flow-step reveal"><div class="sn"></div><div><div class="st">上線交付</div><div class="sd">尾款結清後正式上線，附基本使用教學</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="si">
+        <span class="tag">FAQ</span>
+        <h2 class="h2 reveal">常見<span class="hl">問題</span></h2>
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <button class="faq-q">不會寫內容，可以嗎？<span class="faq-ch">▾</span></button>
+            <div class="faq-a">完全沒問題。你只需要給我大概方向或現有資料，我會幫你整理成清楚易讀的文案，不需要自己想好每個字。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">DEMO 方案適合拿來做什麼？<span class="faq-ch">▾</span></button>
+            <div class="faq-a">適合比賽作品展示、短期活動宣傳、課程成果呈現等一次性需求。含 1 次整體修改、存放一年，到期可續約。注意：DEMO 方案不包含版面設計更改，僅替換文字與圖片內容。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">需要自己買網域嗎？<span class="faq-ch">▾</span></button>
+            <div class="faq-a">可以自己買，也可以讓我代為申請設定。網域費約 NT$300~600／年，費用直接付給服務商，我不加價。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">多久可以完成？<span class="faq-ch">▾</span></button>
+            <div class="faq-a">DEMO / 入門方案約 3～5 個工作天，標準方案約 5～10 個工作天，視頁數與內容複雜度而定。急件請提前告知。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">「1 次修改」是什麼意思？<span class="faq-ch">▾</span></button>
+            <div class="faq-a">修改以「一次整體調整」為單位——也就是你一次性提供所有修改需求，我統一處理。超出次數後每次 NT$200～500，視修改量而定。</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">原始碼、網站所有權是我的嗎？<span class="faq-ch">▾</span></button>
+            <div class="faq-a">是的。付款完成後所有原始碼交付給你，可以自己托管或找其他開發者接手，完全不被綁住。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-sec" id="contact">
+      <div class="si">
+        <span class="tag">Contact</span>
+        <h2 class="h2 reveal">準備好了？<span class="hl">直接找我聊</span></h2>
+        <p class="sub reveal">不需要先想好所有細節，說個大概我就能給你建議和報價。</p>
+        <div class="cc-grid">
+          <a href="https://lin.ee/pHoDzDk" target="_blank" rel="noopener" class="cc reveal">
+            <div class="cc-ico">💬</div>
+            <div><div class="cc-l">最快回覆</div><div class="cc-v">LINE 聯絡</div></div>
+          </a>
+          <a href="https://www.instagram.com/boyce_lee_0309?igsh=MWRjZWh1OHh3a2d0bQ==" target="_blank" rel="noopener" class="cc reveal">
+            <div class="cc-ico">📸</div>
+            <div><div class="cc-l">Instagram</div><div class="cc-v">@boyce_lee_0309</div></div>
+          </a>
+          <a href="mailto:index@boycelab.com" class="cc reveal">
+            <div class="cc-ico">✉️</div>
+            <div><div class="cc-l">Email</div><div class="cc-v">index@boycelab.com</div></div>
+          </a>
+        </div>
+        <div class="cta-row reveal">
+          <a href="https://lin.ee/pHoDzDk" target="_blank" rel="noopener" class="btn bp">💬 免費諮詢你的網站需求</a>
+          <a href="#pricing" class="btn bo">再看一次方案</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© 2026 BoyceLab · 李柏毅 · 全台遠端接案</p>
+    </footer>
+
+    <script>
+      document.querySelectorAll('.faq-q').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const it=btn.closest('.faq-item'),open=it.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+          if(!open)it.classList.add('open');
+        });
+      });
+      const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自動化開發 | BoyceLab</title>
+    <meta name="description" content="BoyceLab 自動化專案：LINE Bot、QR Code 雲端串接、Python 自動化、視覺辨識 AI 等整合開發作品展示。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{
+        --bg:#0d0f14;--bg2:#13161e;--bg3:#1a1e29;
+        --sf:#1e2332;--sf2:#252b3b;
+        --ac:#6c8ef5;--ac2:#a78bfa;
+        --green:#34d399;--yellow:#fbbf24;--teal:#2dd4bf;--red:#f87171;
+        --glow:rgba(108,142,245,.14);
+        --t:#e2e8f0;--tm:#8892a4;--bd:rgba(255,255,255,.06);
+        --r:14px;--rs:8px;
+        --mono:'JetBrains Mono',monospace;
+      }
+      html{scroll-behavior:smooth}
+      body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--t);line-height:1.7;overflow-x:hidden}
+      a{color:inherit;text-decoration:none}
+
+      /* TOPBAR */
+      .topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,15,20,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:60px}
+      .tb-back{display:flex;align-items:center;gap:.5rem;color:var(--tm);font-size:.9rem;font-weight:500;transition:color .2s}
+      .tb-back:hover{color:var(--ac)}
+      .tb-back svg{width:16px;height:16px}
+      .tb-brand{font-size:1rem;font-weight:800;background:linear-gradient(135deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+      .tb-nav{display:flex;gap:1.2rem}
+      .tb-nav a{color:var(--tm);font-size:.85rem;font-weight:500;transition:color .2s}
+      .tb-nav a:hover{color:var(--ac)}
+
+      /* COMMON */
+      .section{padding:90px 1.5rem}
+      .si{max-width:1020px;margin:0 auto}
+      .tag{display:inline-flex;align-items:center;background:var(--glow);color:var(--ac);border:1px solid rgba(108,142,245,.25);border-radius:50px;padding:.28rem .85rem;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
+      .h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:900;line-height:1.2;margin-bottom:.7rem}
+      .sub{color:var(--tm);font-size:1rem;max-width:580px}
+      .hl{color:var(--ac)}
+      .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem 1.7rem;border-radius:50px;font-size:.93rem;font-weight:700;cursor:pointer;transition:all .25s;border:none}
+      .bp{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;box-shadow:0 4px 18px rgba(108,142,245,.35)}
+      .bp:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(108,142,245,.5)}
+      .bo{background:transparent;color:var(--ac);border:1.5px solid rgba(108,142,245,.45)}
+      .bo:hover{background:var(--glow);transform:translateY(-2px)}
+      .reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+      .reveal.v{opacity:1;transform:none}
+
+      /* HERO */
+      .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:60px}
+      .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 75% 30%,rgba(45,212,191,.09) 0%,transparent 60%),radial-gradient(ellipse 55% 50% at 10% 75%,rgba(108,142,245,.1) 0%,transparent 60%)}
+      .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px}
+      /* 右側代碼裝飾 */
+      .hero-code{position:absolute;right:4%;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.73rem;color:rgba(255,255,255,.065);line-height:2;pointer-events:none;white-space:pre;display:none}
+      @media(min-width:860px){.hero-code{display:block}}
+      .hero-inner{position:relative;z-index:1;max-width:1020px;margin:0 auto;padding:4rem 1.5rem}
+      .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(45,212,191,.1);color:var(--teal);border:1px solid rgba(45,212,191,.25);border-radius:50px;padding:.32rem .95rem;font-size:.8rem;font-weight:600;margin-bottom:1.5rem}
+      .hero-badge::before{content:'●';animation:blink 2s infinite}
+      @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+      .hero h1{font-size:clamp(2rem,5.5vw,3.5rem);font-weight:900;line-height:1.15;margin-bottom:1.1rem}
+      .hero-desc{color:var(--tm);font-size:1.05rem;max-width:520px;margin-bottom:2.5rem}
+      .hero-act{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+      .tech-row{display:flex;gap:.5rem;flex-wrap:wrap;padding-top:1.8rem;border-top:1px solid var(--bd)}
+      .tech-chip{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:.25rem .7rem;font-size:.76rem;font-family:var(--mono);color:var(--tm);transition:border-color .2s,color .2s}
+      .tech-chip:hover{border-color:rgba(108,142,245,.4);color:var(--ac)}
+
+      /* PROJECT CARDS */
+      .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:2.5rem}
+      .proj-card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.9rem 1.8rem;display:flex;flex-direction:column;gap:.75rem;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+      .proj-card:hover{transform:translateY(-5px);box-shadow:0 14px 45px rgba(0,0,0,.45);border-color:rgba(108,142,245,.22)}
+      /* 頂部彩條 */
+      .proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+      .p-line::before{background:linear-gradient(90deg,#06c755,#00e676)}
+      .p-qr::before{background:linear-gradient(90deg,var(--teal),var(--ac))}
+      .p-py::before{background:linear-gradient(90deg,var(--yellow),#f59e0b)}
+      .p-ai::before{background:linear-gradient(90deg,var(--ac2),#ec4899)}
+      .p-cv::before{background:linear-gradient(90deg,var(--red),#f97316)}
+
+      .proj-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem}
+      .proj-emoji{font-size:2rem}
+      .status{display:inline-flex;align-items:center;border-radius:50px;padding:.18rem .65rem;font-size:.71rem;font-weight:700}
+      .s-done{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.25)}
+      .s-wip{background:rgba(251,191,36,.1);color:var(--yellow);border:1px solid rgba(251,191,36,.25)}
+
+      .proj-name{font-size:1.08rem;font-weight:800}
+      .proj-desc{font-size:.88rem;color:var(--tm);flex:1}
+      .proj-detail{background:var(--bg3);border-radius:var(--rs);padding:.8rem .95rem;font-size:.82rem;display:flex;flex-direction:column;gap:.35rem}
+      .dr{display:flex;gap:.55rem}
+      .dk{color:var(--tm);min-width:48px;flex-shrink:0}
+      .proj-tags{display:flex;gap:.35rem;flex-wrap:wrap}
+      .ptag{background:var(--bg);border:1px solid var(--bd);border-radius:4px;padding:.14rem .52rem;font-size:.72rem;font-family:var(--mono);color:var(--tm)}
+
+      /* SKILLS */
+      .skills{background:var(--bg2)}
+      .sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.2rem;margin-top:2.5rem}
+      .sk-card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.6rem;transition:border-color .25s,transform .25s}
+      .sk-card:hover{border-color:rgba(108,142,245,.28);transform:translateY(-3px)}
+      .sk-icon{font-size:1.5rem}
+      .sk-name{font-weight:800;font-size:.95rem}
+      .sk-chips{display:flex;gap:.35rem;flex-wrap:wrap}
+      .sk-chip{background:var(--bg);border:1px solid var(--bd);border-radius:4px;padding:.13rem .52rem;font-size:.75rem;font-family:var(--mono);color:var(--tm)}
+
+      /* CTA */
+      .cta-sec{background:var(--bg2)}
+      .cta-box{background:linear-gradient(135deg,var(--sf),rgba(108,142,245,.07));border:1px solid rgba(108,142,245,.22);border-radius:var(--r);padding:3rem 2.5rem;text-align:center;max-width:680px;margin:0 auto}
+      .cta-box h2{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:900;margin-bottom:.7rem}
+      .cta-box p{color:var(--tm);font-size:.95rem;margin-bottom:2rem}
+      .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+      /* FOOTER */
+      .footer{text-align:center;padding:2rem 1.5rem;color:var(--tm);font-size:.82rem;border-top:1px solid var(--bd)}
+
+      @media(max-width:640px){
+        .topbar{padding:0 1rem}
+        .tb-brand,.tb-nav{display:none}
+        .section{padding:70px 1rem}
+        .proj-grid,.sk-grid{grid-template-columns:1fr}
+        .hero h1{font-size:2rem}
+        .cta-box{padding:2rem 1.2rem}
+        .cta-btns{flex-direction:column}
+        .cta-btns .btn{justify-content:center}
+      }
+    </style>
+  </head>
+  <body>
+
+    <header class="topbar">
+      <a href="/" class="tb-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        回個人網站
+      </a>
+      <span class="tb-brand">BoyceLab · 自動化</span>
+      <nav class="tb-nav">
+        <a href="/services/">網站服務</a>
+        <a href="#contact">委託洽詢</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-code">import linebot, cv2, qrcode
+from google.cloud import firestore
+from ultralytics import YOLO
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    body = request.get_json()
+    for event in body['events']:
+        handle_event(event)
+    return 'OK'
+
+model = YOLO('yolov8n.pt')
+
+def detect_objects(frame):
+    results = model(frame)
+    return results[0].boxes
+
+def sync_qr(code):
+    db = firestore.Client()
+    return db.collection('qr').document(code)</div>
+      <div class="hero-inner">
+        <div class="hero-badge">🤖 自動化 &amp; AI 整合</div>
+        <h1>讓流程<span class="hl">自動跑</span>，<br />節省你的時間</h1>
+        <p class="hero-desc">
+          LINE Bot、QR 雲端串接、Python 自動化、<br />
+          視覺辨識、AI 機器人——把重複作業交給程式。
+        </p>
+        <div class="hero-act">
+          <a href="#projects" class="btn bp">看專案 ↓</a>
+          <a href="/services/" class="btn bo">網站架設服務</a>
+        </div>
+        <div class="tech-row">
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">LINE API</span>
+          <span class="tech-chip">OpenCV</span>
+          <span class="tech-chip">YOLO</span>
+          <span class="tech-chip">Firebase</span>
+          <span class="tech-chip">GCP</span>
+          <span class="tech-chip">Flask</span>
+          <span class="tech-chip">Webhook</span>
+          <span class="tech-chip">QR Code</span>
+          <span class="tech-chip">REST API</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="si">
+        <span class="tag">Projects</span>
+        <h2 class="h2 reveal">做過的<span class="hl">自動化專案</span></h2>
+        <p class="sub reveal">每個專案都是實際解決過的問題。</p>
+        <div class="proj-grid">
+
+          <!-- LINE Bot -->
+          <div class="proj-card p-line reveal">
+            <div class="proj-hd"><span class="proj-emoji">💬</span><span class="status s-done">✓ 已完成</span></div>
+            <div class="proj-name">LINE 自動回覆機器人</div>
+            <div class="proj-desc">整合 LINE Messaging API，依關鍵字自動回覆常見問題，支援圖文選單與彈性回覆邏輯。</div>
+            <div class="proj-detail">
+              <div class="dr"><span class="dk">解決</span><span>每日重複客服問題，省下 1~2 小時人工回覆</span></div>
+              <div class="dr"><span class="dk">規模</span><span>多關鍵字群組、Flex Message、圖文選單</span></div>
+            </div>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">LINE API</span><span class="ptag">Flask</span><span class="ptag">Webhook</span></div>
+          </div>
+
+          <!-- QR 串接 -->
+          <div class="proj-card p-qr reveal">
+            <div class="proj-hd"><span class="proj-emoji">📲</span><span class="status s-done">✓ 已完成</span></div>
+            <div class="proj-name">QR Code 雲端自動串接</div>
+            <div class="proj-desc">掃描 QR Code 自動觸發雲端資料庫查詢或更新，動態內容即時同步，零手動輸入。</div>
+            <div class="proj-detail">
+              <div class="dr"><span class="dk">架構</span><span>掃描 → Webhook → Cloud DB → 即時回應</span></div>
+              <div class="dr"><span class="dk">解決</span><span>紙本紀錄改為雲端全自動化流程</span></div>
+            </div>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Firebase</span><span class="ptag">GCP</span><span class="ptag">QR Code</span></div>
+          </div>
+
+          <!-- Python 自動化 -->
+          <div class="proj-card p-py reveal">
+            <div class="proj-hd"><span class="proj-emoji">🐍</span><span class="status s-done">✓ 已完成</span></div>
+            <div class="proj-name">Python 批次自動化腳本</div>
+            <div class="proj-desc">針對重複性作業設計：批次檔案整理、自動報表生成、排程任務執行，每週省下數小時。</div>
+            <div class="proj-detail">
+              <div class="dr"><span class="dk">功能</span><span>排程執行、批次處理、報表輸出、通知推送</span></div>
+            </div>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">pandas</span><span class="ptag">schedule</span><span class="ptag">openpyxl</span></div>
+          </div>
+
+          <!-- 視覺辨識 -->
+          <div class="proj-card p-cv reveal">
+            <div class="proj-hd"><span class="proj-emoji">👁️</span><span class="status s-done">✓ 已完成</span></div>
+            <div class="proj-name">電腦視覺辨識系統</div>
+            <div class="proj-desc">運用 OpenCV + YOLO 實作物件偵測與影像辨識，可應用於人流統計、物品辨識、異常偵測等場景。</div>
+            <div class="proj-detail">
+              <div class="dr"><span class="dk">技術</span><span>YOLOv8 物件偵測、即時影像串流處理</span></div>
+              <div class="dr"><span class="dk">應用</span><span>人流偵測、物品分類、安全監控輔助</span></div>
+            </div>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">OpenCV</span><span class="ptag">YOLOv8</span><span class="ptag">NumPy</span></div>
+          </div>
+
+          <!-- AI 機器人 -->
+          <div class="proj-card p-ai reveal">
+            <div class="proj-hd"><span class="proj-emoji">🤖</span><span class="status s-done">✓ 已完成</span></div>
+            <div class="proj-name">AI 對話機器人整合</div>
+            <div class="proj-desc">結合 LLM（大型語言模型）與 LINE / Telegram，打造可理解自然語言的智慧客服或問答機器人。</div>
+            <div class="proj-detail">
+              <div class="dr"><span class="dk">技術</span><span>OpenAI API / Gemini API + 對話記憶管理</span></div>
+              <div class="dr"><span class="dk">應用</span><span>客服自動化、FAQ 智慧回答、內容生成</span></div>
+            </div>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">OpenAI</span><span class="ptag">Gemini</span><span class="ptag">LINE Bot</span></div>
+          </div>
+
+          <!-- 更多 -->
+          <div class="proj-card reveal" style="border-style:dashed;opacity:.55;">
+            <div class="proj-hd"><span class="proj-emoji">➕</span><span class="status s-wip">規劃中</span></div>
+            <div class="proj-name">更多專案持續更新中…</div>
+            <div class="proj-desc">有特定自動化需求歡迎直接找我聊，不一定要套現有方案，可以客製討論。</div>
+            <div class="proj-tags"><span class="ptag">TBA</span></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills" id="skills">
+      <div class="si">
+        <span class="tag">Tech Stack</span>
+        <h2 class="h2 reveal">使用的<span class="hl">技術</span></h2>
+        <div class="sk-grid">
+          <div class="sk-card reveal">
+            <span class="sk-icon">🐍</span>
+            <div class="sk-name">後端 / 自動化</div>
+            <div class="sk-chips"><span class="sk-chip">Python</span><span class="sk-chip">Flask</span><span class="sk-chip">FastAPI</span><span class="sk-chip">pandas</span></div>
+          </div>
+          <div class="sk-card reveal">
+            <span class="sk-icon">👁️</span>
+            <div class="sk-name">視覺辨識 / AI</div>
+            <div class="sk-chips"><span class="sk-chip">OpenCV</span><span class="sk-chip">YOLOv8</span><span class="sk-chip">OpenAI API</span><span class="sk-chip">Gemini</span></div>
+          </div>
+          <div class="sk-card reveal">
+            <span class="sk-icon">☁️</span>
+            <div class="sk-name">雲端 / 資料庫</div>
+            <div class="sk-chips"><span class="sk-chip">Firebase</span><span class="sk-chip">Firestore</span><span class="sk-chip">GCP</span><span class="sk-chip">Render</span></div>
+          </div>
+          <div class="sk-card reveal">
+            <span class="sk-icon">💬</span>
+            <div class="sk-name">訊息 / 整合</div>
+            <div class="sk-chips"><span class="sk-chip">LINE API</span><span class="sk-chip">Telegram Bot</span><span class="sk-chip">Webhook</span><span class="sk-chip">REST API</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-sec" id="contact">
+      <div class="si">
+        <div class="cta-box reveal">
+          <h2>有想自動化的流程？<span class="hl">來聊聊</span></h2>
+          <p>不論是 LINE 整合、視覺辨識、資料串接，還是說不清楚但「感覺可以更有效率」，都可以找我討論方向。</p>
+          <div class="cta-btns">
+            <a href="https://lin.ee/pHoDzDk" target="_blank" rel="noopener" class="btn bp">💬 LINE 聯絡</a>
+            <a href="mailto:index@boycelab.com" class="btn bo">✉️ 寄 Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© 2026 BoyceLab · 李柏毅 · <a href="/services/" style="color:var(--ac)">網站架設服務 →</a></p>
+    </footer>
+
+    <script>
+      const obs = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.08});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    </script>
+  </body>
+</html>
