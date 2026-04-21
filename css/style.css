@@ -1320,6 +1320,9 @@ a.article-title:active {
   line-height: 1.6em;
   margin: 1.2em 0;
 }
+.article-entry p {
+  text-indent: 2em;
+}
 .article-entry h1,
 .article-entry h2,
 .article-entry h3,
