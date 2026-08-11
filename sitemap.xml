@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.boycelab.com/anonymous/index.html</loc>
+    <loc>https://www.boycelab.com/changelog/index.html</loc>
     
     <lastmod>2026-08-11</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/changelog/index.html</loc>
+    <loc>https://www.boycelab.com/anonymous/index.html</loc>
     
     <lastmod>2026-08-11</lastmod>
     
@@ -135,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/tags/%E5%B0%88%E6%A1%88/</loc>
+    <loc>https://www.boycelab.com/tags/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/tags/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://www.boycelab.com/tags/%E5%B0%88%E6%A1%88/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -165,21 +165,7 @@
 
   
   <url>
-    <loc>https://www.boycelab.com/categories/Writeup/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/</loc>
-    <lastmod>2026-08-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -193,7 +179,14 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/Writeup/2025-AIS3-Junior/</loc>
+    <loc>https://www.boycelab.com/categories/Writeup/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -214,14 +207,21 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/</loc>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/</loc>
+    <loc>https://www.boycelab.com/categories/Writeup/2025-AIS3-Junior/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -242,14 +242,14 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/P-X/</loc>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/</loc>
+    <loc>https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/P-X/</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
