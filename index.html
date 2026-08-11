@@ -1,8 +1,10 @@
 
   <!DOCTYPE html>
-<html theme="dark">
+<html theme="dark" lang="zh-TW">
 
 <head>
+    <script src="/js/color.global.min.js"></script>
+    <script src="/js/load-settings.js"></script>
     <head>
   <meta charset="utf-8">
   
@@ -24,7 +26,7 @@
                     <meta name="keywords" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
                     
 
-                      <link rel="canonical" href="https://boycework.eu.cc/">
+                      <link rel="canonical" href="https://www.boycelab.com/">
                       <meta name="google-site-verification" content="BjnRa5PrgPoCBv-2HSXBY9Lq8TY9-2kV_WeigOl1R2A" />
 
                       <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font"
@@ -35,7 +37,7 @@
                       <meta name="description" content="李柏毅 BoyceLab 的技術實驗室。專注於資安研究 (AIS3, CTF)、Python 自動化、AI 應用及 Web 開發，紀錄從技術探索到專案實作的點滴。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="首頁">
-<meta property="og:url" content="https://boycework.eu.cc/index.html">
+<meta property="og:url" content="https://www.boycelab.com/index.html">
 <meta property="og:site_name" content="里肌肉實驗室">
 <meta property="og:description" content="李柏毅 BoyceLab 的技術實驗室。專注於資安研究 (AIS3, CTF)、Python 自動化、AI 應用及 Web 開發，紀錄從技術探索到專案實作的點滴。">
 <meta property="og:locale" content="zh_TW">
@@ -48,23 +50,8 @@
                           <link rel="alternate" href="/atom.xml" title="里肌肉實驗室" type="application/atom+xml">
                             
                                   
-                                        <link rel="icon" media="(prefers-color-scheme: light)"
-                                          href="/images/favicon-light-32.png" sizes="32x32">
-                                        <link rel="icon" media="(prefers-color-scheme: light)"
-                                          href="/images/favicon-light-128.png" sizes="128x128">
-                                        <link rel="icon" media="(prefers-color-scheme: light)"
-                                          href="/images/favicon-light-180.png" sizes="180x180">
-                                        <link rel="icon" media="(prefers-color-scheme: light)"
-                                          href="/images/favicon-light-192.png" sizes="192x192">
-                                        <link rel="icon" media="(prefers-color-scheme: dark)"
-                                          href="/images/favicon-dark-32.png" sizes="32x32">
-                                        <link rel="icon" media="(prefers-color-scheme: dark)"
-                                          href="/images/favicon-dark-128.png" sizes="128x128">
-                                        <link rel="icon" media="(prefers-color-scheme: dark)"
-                                          href="/images/favicon-dark-180.png" sizes="180x180">
-                                        <link rel="icon" media="(prefers-color-scheme: dark)"
-                                          href="/images/favicon-dark-192.png" sizes="192x192">
-                                        
+                                    <link rel="shortcut icon" href="/images/boycelab-mark.svg">
+                                      
                                           
                                             <script async
                                               src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -80,13 +67,13 @@
         "@type": "ListItem",
         "position": 1,
         "name": "首頁",
-        "item": "https://boycework.eu.cc"
+        "item": "https://www.boycelab.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "首頁",
-        "item": "https://boycework.eu.cc/index.html"
+        "item": "https://www.boycelab.com/index.html"
       }
     ]
   }
@@ -97,812 +84,530 @@
 <link rel="stylesheet" href="/css/style.css">
 
                                                   <link rel="stylesheet" href="/css/custom-tech.css">
+                                                  <link rel="stylesheet" href="/css/site-refresh.css">
 <meta name="generator" content="Hexo 8.1.1"></head>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap');
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <style>
+        .landing-page {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-            /* ── CSS Variables ── */
-            :root {
-                --bg: #050810;
-                --surface: rgba(12, 18, 35, 0.7);
-                --border: rgba(0, 210, 255, 0.18);
-                --cyan: #00d4ff;
-                --cyan-glow: rgba(0, 212, 255, 0.25);
-                --purple: #6c5ce7;
-                --text-hi: #e8edf5;
-                --text-mid: #8fa0b8;
-                --text-lo: #4a5a72;
-                --card-bg: rgba(10, 18, 38, 0.75);
-                --scan: rgba(0, 212, 255, 0.015);
-                --radius: 16px;
-                --radius-sm: 10px;
+        .landing-header {
+            position: sticky;
+            top: 12px;
+            z-index: 100;
+            width: min(1120px, calc(100% - 28px));
+            margin: 12px auto 0;
+        }
+
+        .landing-header #navbar {
+            width: 100%;
+        }
+
+        .landing-shell {
+            width: min(1080px, calc(100% - 36px));
+            margin: 0 auto;
+            padding: clamp(56px, 8vw, 100px) 0 64px;
+        }
+
+        .landing-section {
+            margin-top: clamp(72px, 10vw, 120px);
+        }
+
+        .landing-kicker {
+            margin: 0 0 12px;
+            color: var(--lab-accent-strong);
+            font: 600 0.74rem/1.2 "Roboto Mono", monospace;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .landing-heading {
+            max-width: 720px;
+            margin: 0;
+            color: var(--lab-text);
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            line-height: 1.16;
+            letter-spacing: -0.035em;
+            text-wrap: balance;
+        }
+
+        .landing-heading span {
+            color: var(--lab-accent-strong);
+        }
+
+        .landing-intro {
+            max-width: 680px;
+            margin: 16px 0 0;
+            color: var(--lab-text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(220px, 270px);
+            align-items: center;
+            gap: clamp(34px, 6vw, 72px);
+            min-height: min(680px, calc(100vh - 110px));
+        }
+
+        .hero-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 24px;
+            padding: 8px 12px;
+            border: 1px solid var(--lab-border);
+            border-radius: 999px;
+            color: var(--lab-text-muted);
+            background: var(--lab-panel);
+            font: 500 0.78rem/1 "Roboto Mono", monospace;
+        }
+
+        .hero-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--lab-accent);
+            box-shadow: 0 0 0 5px var(--lab-accent-soft);
+        }
+
+        .hero-title {
+            margin: 0;
+            color: var(--lab-text);
+            font-size: clamp(3.25rem, 8.5vw, 6.7rem);
+            line-height: 0.92;
+            letter-spacing: -0.075em;
+        }
+
+        .hero-title span {
+            display: block;
+            margin-top: 12px;
+            color: var(--lab-accent-strong);
+            font-size: 0.35em;
+            line-height: 1.15;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-description {
+            max-width: 690px;
+            margin: 28px 0 0;
+            color: var(--lab-text-muted);
+            font-size: clamp(1rem, 2vw, 1.14rem);
+            line-height: 1.85;
+        }
+
+        .hero-description strong {
+            color: var(--lab-text);
+            font-weight: 650;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .hero-profile {
+            position: relative;
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--lab-border);
+            border-radius: 22px;
+            background: var(--lab-panel);
+            box-shadow: var(--lab-shadow);
+        }
+
+        .hero-profile::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            z-index: -1;
+            border-radius: 18px;
+            background: var(--lab-accent-soft);
+            transform: rotate(4deg) translate(16px, 12px);
+        }
+
+        .hero-profile img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1.08;
+            object-fit: cover;
+            border-radius: 15px;
+            filter: saturate(0.86) contrast(1.02);
+        }
+
+        .hero-profile-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 18px 4px 2px;
+        }
+
+        .hero-profile-meta strong {
+            display: block;
+            color: var(--lab-text);
+            font-size: 1rem;
+        }
+
+        .hero-profile-meta span {
+            display: block;
+            margin-top: 4px;
+            color: var(--lab-text-faint);
+            font: 500 0.72rem/1.3 "Roboto Mono", monospace;
+        }
+
+        .profile-code {
+            color: var(--lab-accent-strong) !important;
+            white-space: nowrap;
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .focus-card {
+            min-height: 230px;
+            padding: 24px;
+            border: 1px solid var(--lab-border);
+            border-radius: var(--lab-radius);
+            background: var(--lab-panel);
+        }
+
+        .focus-number {
+            color: var(--lab-text-faint);
+            font: 500 0.72rem/1 "Roboto Mono", monospace;
+        }
+
+        .focus-icon {
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            margin: 32px 0 18px;
+            border-radius: 12px;
+            color: var(--lab-accent-strong);
+            background: var(--lab-accent-soft);
+        }
+
+        .focus-card h3 {
+            margin: 0 0 10px;
+            color: var(--lab-text);
+            font-size: 1.06rem;
+        }
+
+        .focus-card p {
+            margin: 0;
+            color: var(--lab-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 18px;
+            min-height: 126px;
+            padding: 22px;
+            border: 1px solid var(--lab-border);
+            border-radius: var(--lab-radius);
+            color: inherit;
+            background: var(--lab-panel);
+            text-decoration: none;
+            transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--lab-border-strong);
+            background: var(--lab-panel-solid);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-icon {
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            color: var(--lab-accent-strong);
+            background: var(--lab-accent-soft);
+        }
+
+        .project-card h3 {
+            margin: 0 0 6px;
+            color: var(--lab-text);
+            font-size: 1rem;
+        }
+
+        .project-card p {
+            margin: 0;
+            color: var(--lab-text-muted);
+            font-size: 0.86rem;
+            line-height: 1.6;
+        }
+
+        .project-arrow {
+            color: var(--lab-text-faint);
+        }
+
+        .achievement-list {
+            display: grid;
+            gap: 10px;
+            margin: 30px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .achievement-item {
+            display: grid;
+            grid-template-columns: 74px 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            border: 1px solid var(--lab-border);
+            border-radius: 14px;
+            background: var(--lab-panel);
+        }
+
+        .achievement-year {
+            color: var(--lab-accent-strong);
+            font: 600 0.78rem/1 "Roboto Mono", monospace;
+        }
+
+        .achievement-name {
+            color: var(--lab-text);
+            font-weight: 650;
+            line-height: 1.55;
+        }
+
+        .achievement-result {
+            color: var(--lab-text-muted);
+            font-size: 0.86rem;
+            text-align: right;
+        }
+
+        .friends-preview {
+            margin-top: 30px;
+        }
+
+        .friends-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .friends-actions p {
+            margin: 0;
+            color: var(--lab-text-faint);
+            font-size: 0.86rem;
+        }
+
+        .contact-panel {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 30px;
+            margin-top: 30px;
+            padding: clamp(24px, 5vw, 42px);
+            border: 1px solid var(--lab-border-strong);
+            border-radius: 24px;
+            background:
+                linear-gradient(120deg, var(--lab-accent-soft), transparent 58%),
+                var(--lab-panel);
+        }
+
+        .contact-panel h3 {
+            margin: 0 0 10px;
+            color: var(--lab-text);
+            font-size: clamp(1.35rem, 4vw, 2rem);
+        }
+
+        .contact-panel p {
+            max-width: 620px;
+            margin: 0;
+            color: var(--lab-text-muted);
+            line-height: 1.75;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 9px;
+        }
+
+        .social-link {
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--lab-border);
+            border-radius: 12px;
+            color: var(--lab-text-muted);
+            background: var(--lab-bg-soft);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: var(--lab-accent-strong);
+            border-color: var(--lab-border-strong);
+        }
+
+        .landing-subscribe {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 12px;
+            max-width: 660px;
+            margin-top: 26px;
+        }
+
+        .landing-subscribe input {
+            min-width: 0;
+            height: 46px;
+            padding: 0 14px;
+            border: 1px solid var(--lab-border);
+            border-radius: 11px;
+            color: var(--lab-text);
+            background: var(--lab-panel);
+            font: inherit;
+        }
+
+        .landing-subscribe input:focus {
+            border-color: var(--lab-accent);
+            outline: none;
+            box-shadow: 0 0 0 3px var(--lab-accent-soft);
+        }
+
+        .landing-reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 450ms ease, transform 450ms ease;
+        }
+
+        .landing-reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 860px) {
+            .landing-header {
+                top: 8px;
+                width: calc(100% - 16px);
+                margin-top: 8px;
             }
 
-            html[theme='light'] {
-                --bg: #080e1e;
-                --surface: rgba(8, 16, 32, 0.75);
-                --border: rgba(0, 210, 255, 0.2);
-                --text-hi: #d8e4f0;
-                --text-mid: #7a90a8;
-            }
-
-            /* ── Reset / Base ── */
-            *,
-            *::before,
-            *::after {
-                box-sizing: border-box;
-            }
-
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                min-height: 100vh;
-            }
-
-            body {
-                background: var(--bg);
-                color: var(--text-hi);
-                font-family: 'Inter', "Chiron GoRound TC", 'PingFang TC', -apple-system, sans-serif;
-                font-optical-sizing: auto;
-                overflow-x: hidden;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-
-            /* CRT scanlines */
-            body::before {
-                content: '';
-                position: fixed;
-                inset: 0;
-                z-index: 998;
-                pointer-events: none;
-                background:
-                    linear-gradient(rgba(0, 0, 0, 0) 50%, var(--scan) 50%),
-                    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 200, 0.01), rgba(0, 0, 255, 0.03));
-                background-size: 100% 3px, 4px 100%;
-            }
-
-            /* Particle background */
-            #bg-canvas {
-                position: fixed;
-                inset: 0;
-                z-index: 0;
-                pointer-events: none;
-            }
-
-            /* ── Layout ── */
-            .page-wrap {
-                position: relative;
-                z-index: 1;
-                max-width: 900px;
-                margin: 0 auto;
-                padding: 0 20px 60px;
-            }
-
-            /* ── Navbar override for landing ── */
-            #landing-header {
-                position: relative;
-                z-index: 100;
-            }
-
-            /* ── Section commons ── */
-            section {
-                margin-bottom: 56px;
-            }
-
-            .section-label {
-                font-family: 'Roboto Mono', monospace;
-                font-size: 0.72rem;
-                letter-spacing: 0.2em;
-                color: var(--cyan);
-                text-transform: uppercase;
-                margin-bottom: 6px;
-                opacity: 0.8;
-            }
-
-            .section-title {
-                font-family: 'Orbitron', monospace;
-                font-size: 1.35rem;
-                font-weight: 700;
-                color: var(--text-hi);
-                margin: 0 0 28px;
-                padding-bottom: 12px;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .section-title span {
-                color: var(--cyan);
-            }
-
-            /* ── HERO ── */
             .hero {
-                display: flex;
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-copy {
+                order: 1;
+            }
+
+            .hero-profile {
+                order: 2;
+                width: min(240px, 72vw);
+                margin-inline: auto;
+            }
+
+            .hero-title {
+                font-size: clamp(3.6rem, 18vw, 6rem);
+            }
+
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .focus-card {
+                min-height: auto;
+            }
+
+            .focus-icon {
+                margin-top: 24px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .landing-shell {
+                width: min(100% - 24px, 520px);
+                padding-top: 44px;
+            }
+
+            .hero-actions,
+            .friends-actions,
+            .contact-panel {
+                align-items: stretch;
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 72px 0 40px;
-                gap: 0;
             }
 
-            .avatar-wrap {
-                position: relative;
-                width: 130px;
-                height: 130px;
-                margin-bottom: 28px;
+            .hero-actions .lab-button {
+                width: 100%;
             }
 
-            .avatar-wrap img {
-                width: 130px;
-                height: 130px;
-                border-radius: 50%;
-                object-fit: cover;
-                border: 2px solid var(--cyan);
-                box-shadow: 0 0 24px var(--cyan-glow);
-                position: relative;
-                z-index: 2;
-            }
-
-            .avatar-ring {
-                position: absolute;
-                inset: -12px;
-                border-radius: 50%;
-                border: 1.5px dashed rgba(108, 92, 231, 0.55);
-                border-top-color: transparent;
-                animation: spin 10s linear infinite;
-                z-index: 1;
-            }
-
-            .avatar-dot {
-                position: absolute;
-                inset: -20px;
-                border-radius: 50%;
-                border: 1px solid rgba(0, 212, 255, 0.12);
-                animation: spin 18s linear infinite reverse;
-            }
-
-            @keyframes spin {
-                to {
-                    transform: rotate(360deg);
-                }
-            }
-
-            .hero-badge {
-                display: inline-flex;
-                align-items: center;
+            .achievement-item {
+                grid-template-columns: 1fr;
                 gap: 8px;
-                background: rgba(0, 212, 255, 0.08);
-                border: 1px solid var(--border);
-                border-radius: 100px;
-                padding: 5px 14px;
-                font-family: 'Roboto Mono', monospace;
-                font-size: 0.75rem;
-                color: var(--cyan);
-                margin-bottom: 16px;
-                letter-spacing: 0.05em;
             }
 
-            .hero-badge::before {
-                content: '';
-                width: 7px;
-                height: 7px;
-                border-radius: 50%;
-                background: var(--cyan);
-                box-shadow: 0 0 6px var(--cyan);
-                animation: pulse-dot 2s ease-in-out infinite;
+            .achievement-result {
+                text-align: left;
             }
 
-            @keyframes pulse-dot {
-
-                0%,
-                100% {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-
-                50% {
-                    opacity: 0.4;
-                    transform: scale(0.8);
-                }
-            }
-
-            .hero-name {
-                font-family: 'Orbitron', monospace;
-                font-size: clamp(2rem, 6vw, 3.2rem);
-                font-weight: 900;
-                margin: 0 0 10px;
-                color: var(--text-hi);
-                letter-spacing: 0.05em;
-                text-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
-            }
-
-            .hero-sub {
-                font-size: 1rem;
-                color: var(--cyan);
-                font-family: 'Roboto Mono', monospace;
-                letter-spacing: 0.08em;
-                margin: 0 0 20px;
-                border-right: 2px solid var(--cyan);
-                display: inline-block;
-                white-space: nowrap;
-                overflow: hidden;
-                animation: typing 3.2s steps(35, end) forwards, blink 0.8s step-end infinite;
-            }
-
-            @keyframes typing {
-                from {
-                    width: 0
-                }
-
-                to {
-                    width: 100%
-                }
-            }
-
-            @keyframes blink {
-
-                from,
-                to {
-                    border-color: transparent
-                }
-
-                50% {
-                    border-color: var(--cyan)
-                }
-            }
-
-            .hero-desc {
-                max-width: 480px;
-                color: var(--text-mid);
-                font-size: 0.92rem;
-                line-height: 1.8;
-                margin: 0 0 28px;
-            }
-
-            /* Skill Tags */
-            .skill-tags {
+            .friends-actions {
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-                margin-bottom: 28px;
             }
 
-            .skill-tag {
-                background: rgba(0, 212, 255, 0.06);
-                border: 1px solid rgba(0, 212, 255, 0.16);
-                border-radius: 100px;
-                padding: 4px 14px;
-                font-size: 0.78rem;
-                color: var(--text-mid);
-                font-family: 'Roboto Mono', monospace;
-                transition: all 0.2s;
-            }
-
-            /* Removed hover for non-interactive tags */
-
-            /* CTA Buttons */
-            .hero-cta {
+            .contact-panel {
                 display: flex;
-                gap: 12px;
-                flex-wrap: wrap;
-                justify-content: center;
             }
 
-            .btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                padding: 11px 26px;
-                border-radius: 8px;
-                font-family: 'Orbitron', monospace;
-                font-size: 0.82rem;
-                font-weight: 700;
-                letter-spacing: 0.04em;
-                text-decoration: none;
-                transition: all 0.25s;
-                cursor: pointer;
+            .landing-subscribe {
+                grid-template-columns: 1fr;
             }
 
-            .btn-primary {
-                background: var(--cyan);
-                color: #050810;
-                border: none;
-                box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            .landing-subscribe .lab-button {
+                width: 100%;
             }
+        }
 
-            .btn-primary:hover {
-                box-shadow: 0 0 30px rgba(0, 212, 255, 0.55);
-                transform: translateY(-2px);
-                color: #050810;
-            }
-
-            .btn-outline {
-                background: transparent;
-                color: var(--cyan);
-                border: 1.5px solid var(--border);
-            }
-
-            .btn-outline:hover {
-                border-color: var(--cyan);
-                box-shadow: 0 0 16px var(--cyan-glow);
-                transform: translateY(-2px);
-                color: var(--cyan);
-            }
-
-            /* ── SERVICES ── */
-            .services-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 16px;
-            }
-
-            .service-card {
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-radius: var(--radius);
-                padding: 24px 22px;
-                transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .service-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 2px;
-                background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
-
-            /* Removed hover for display-only cards */
-
-            .service-icon {
-                font-size: 1.8rem;
-                margin-bottom: 14px;
-                width: 52px;
-                height: 52px;
-                background: rgba(0, 212, 255, 0.08);
-                border: 1px solid rgba(0, 212, 255, 0.15);
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--cyan);
-            }
-
-            .service-title {
-                font-family: 'Orbitron', monospace;
-                font-size: 0.92rem;
-                font-weight: 700;
-                color: var(--text-hi);
-                margin: 0 0 8px;
-            }
-
-            .service-desc {
-                font-size: 0.84rem;
-                color: var(--text-mid);
-                line-height: 1.7;
-                margin: 0 0 14px;
-            }
-
-            .service-tags {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 6px;
-            }
-
-            .service-tag {
-                font-size: 0.73rem;
-                font-family: 'Roboto Mono', monospace;
-                color: var(--cyan);
-                background: rgba(0, 212, 255, 0.07);
-                border: 1px solid rgba(0, 212, 255, 0.15);
-                border-radius: 100px;
-                padding: 2px 9px;
-            }
-
-            .service-link {
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                font-size: 0.8rem;
-                color: var(--cyan);
-                text-decoration: none;
-                font-family: 'Roboto Mono', monospace;
-                margin-top: 14px;
-                opacity: 0.75;
-                transition: opacity 0.2s;
-            }
-
-            .service-link:hover {
+        @media (prefers-reduced-motion: reduce) {
+            .landing-reveal {
                 opacity: 1;
+                transform: none;
             }
-
-            /* ── PROJECTS quick links ── */
-            .projects-row {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 12px;
-            }
-
-            .project-card {
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-radius: var(--radius-sm);
-                padding: 18px 18px 16px;
-                text-decoration: none;
-                transition: all 0.22s;
-                display: block;
-            }
-
-            .project-card:hover {
-                border-color: rgba(0, 212, 255, 0.4);
-                box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
-                transform: translateY(-2px);
-            }
-
-            .project-card-icon {
-                font-size: 1.3rem;
-                margin-bottom: 10px;
-                color: var(--cyan);
-            }
-
-            .project-card-name {
-                font-size: 0.88rem;
-                font-weight: 600;
-                color: var(--text-hi);
-                margin: 0 0 6px;
-            }
-
-            .project-card-desc {
-                font-size: 0.78rem;
-                color: var(--text-mid);
-                line-height: 1.6;
-                margin: 0;
-            }
-
-            /* ── AWARDS ── */
-            .awards-list {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .award-item {
-                display: flex;
-                align-items: flex-start;
-                gap: 14px;
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-radius: var(--radius-sm);
-                padding: 14px 18px;
-                transition: border-color 0.2s;
-            }
-
-            /* Removed hover for non-interactive list items */
-
-            .award-dot {
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: var(--cyan);
-                box-shadow: 0 0 8px var(--cyan);
-                flex-shrink: 0;
-                margin-top: 5px;
-            }
-
-            .award-text {
-                font-size: 0.86rem;
-                color: var(--text-hi);
-                line-height: 1.5;
-            }
-
-            .award-year {
-                font-family: 'Roboto Mono', monospace;
-                font-size: 0.75rem;
-                color: var(--text-lo);
-                margin-left: auto;
-                flex-shrink: 0;
-                align-self: center;
-            }
-
-            /* ── CONTACT ── */
-            .contact-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 12px;
-                margin-bottom: 24px;
-            }
-
-            .contact-card {
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-radius: var(--radius-sm);
-                padding: 18px 20px;
-                display: flex;
-                align-items: center;
-                gap: 14px;
-                text-decoration: none;
-                transition: all 0.22s;
-                color: var(--text-hi);
-            }
-
-            .contact-card:hover {
-                border-color: var(--border);
-                box-shadow: 0 4px 20px rgba(0, 212, 255, 0.12);
-                transform: translateY(-2px);
-                color: var(--text-hi);
-            }
-
-            .contact-icon {
-                width: 44px;
-                height: 44px;
-                background: rgba(0, 212, 255, 0.08);
-                border: 1px solid rgba(0, 212, 255, 0.15);
-                border-radius: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.2rem;
-                color: var(--cyan);
-                flex-shrink: 0;
-            }
-
-            .contact-icon.line {
-                background: rgba(0, 185, 0, 0.1);
-                border-color: rgba(0, 185, 0, 0.25);
-                color: #06c755;
-            }
-
-            .contact-icon.ig {
-                background: rgba(200, 60, 130, 0.1);
-                border-color: rgba(200, 60, 130, 0.25);
-                color: #e1306c;
-            }
-
-            .contact-icon.gh {
-                background: rgba(255, 255, 255, 0.05);
-                border-color: rgba(255, 255, 255, 0.12);
-                color: #c9d1d9;
-            }
-
-            .contact-label {
-                font-size: 0.72rem;
-                color: var(--text-lo);
-                font-family: 'Roboto Mono', monospace;
-                margin-bottom: 2px;
-            }
-
-            .contact-value {
-                font-size: 0.83rem;
-                font-weight: 600;
-                color: var(--text-hi);
-                word-break: break-all;
-                line-height: 1.3;
-            }
-
-            .contact-note {
-                background: rgba(0, 212, 255, 0.05);
-                border: 1px solid var(--border);
-                border-radius: var(--radius-sm);
-                padding: 16px 20px;
-                font-size: 0.85rem;
-                color: var(--text-mid);
-                line-height: 1.7;
-                font-family: 'Roboto Mono', monospace;
-            }
-
-            .contact-note strong {
-                color: var(--cyan);
-            }
-
-            /* ── Social icons row ── */
-            .social-row {
-                display: flex;
-                gap: 10px;
-                justify-content: center;
-                margin-top: 32px;
-                flex-wrap: wrap;
-            }
-
-            .social-btn {
-                width: 44px;
-                height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 10px;
-                background: rgba(0, 0, 0, 0.25);
-                border: 1px solid var(--border);
-                color: var(--text-mid);
-                font-size: 1.1rem;
-                text-decoration: none;
-                transition: all 0.22s;
-            }
-
-            .social-btn:hover {
-                border-color: var(--cyan);
-                color: var(--cyan);
-                box-shadow: 0 0 12px var(--cyan-glow);
-                transform: translateY(-2px);
-            }
-
-            /* ── Footer ── */
-            #footer-wrapper {
-                position: relative;
-                z-index: 2;
-                border-top: 1px solid var(--border);
-            }
-
-            /* ── SUBSCRIBE ── */
-            .subscribe-section {
-                text-align: center;
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-radius: var(--radius);
-                padding: 40px 20px;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .subscribe-section::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: radial-gradient(circle at center, rgba(0, 212, 255, 0.05) 0%, transparent 60%);
-                pointer-events: none;
-            }
-
-            .subscribe-title {
-                font-family: 'Orbitron', monospace;
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: var(--text-hi);
-                margin: 0 0 12px;
-            }
-
-            .subscribe-desc {
-                font-size: 0.95rem;
-                color: var(--text-mid);
-                max-width: 500px;
-                margin: 0 auto 24px;
-                line-height: 1.7;
-            }
-
-            .landing-subscribe-widget .sib-form-container {
-                width: 100%;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .landing-subscribe-widget #sib-container {
-                background-color: transparent !important;
-                border: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-
-            .landing-subscribe-widget .sib-form-block {
-                background-color: transparent !important;
-                color: var(--text-hi) !important;
-            }
-
-            .landing-subscribe-widget input[type="text"] {
-                width: 100%;
-                padding: 12px 16px !important;
-                background: rgba(255, 255, 255, 0.05) !important;
-                border: 1px solid var(--border) !important;
-                border-radius: 8px !important;
-                color: var(--text-hi) !important;
-                margin-bottom: 12px;
-                font-size: 1rem !important;
-                transition: all 0.3s ease;
-            }
-
-            .landing-subscribe-widget input[type="text"]:focus {
-                outline: none;
-                border-color: var(--cyan) !important;
-                box-shadow: 0 0 12px rgba(0, 212, 255, 0.2) !important;
-                background: rgba(255, 255, 255, 0.08) !important;
-            }
-
-            html[theme='light'] .landing-subscribe-widget input[type="text"] {
-                background: rgba(0, 0, 0, 0.03) !important;
-                border-color: rgba(0, 0, 0, 0.1) !important;
-            }
-
-            html[theme='light'] .landing-subscribe-widget input[type="text"]:focus {
-                background: rgba(0, 0, 0, 0.05) !important;
-                border-color: var(--cyan) !important;
-            }
-
-            .landing-subscribe-widget button {
-                background: var(--cyan) !important;
-                color: #050810 !important;
-                border: none !important;
-                border-radius: 8px !important;
-                padding: 12px 24px !important;
-                font-family: 'Orbitron', monospace !important;
-                font-weight: 700 !important;
-                font-size: 0.95rem !important;
-                width: 100%;
-                cursor: pointer;
-                transition: all 0.3s ease !important;
-                box-shadow: 0 0 20px rgba(0, 212, 255, 0.3) !important;
-            }
-
-            .landing-subscribe-widget button:hover {
-                box-shadow: 0 0 30px rgba(0, 212, 255, 0.5) !important;
-                transform: translateY(-2px);
-            }
-
-
-            /* ── Animations ── */
-            .fade-in {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.5s ease, transform 0.5s ease;
-            }
-
-            .fade-in.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* ── RWD ── */
-            @media (max-width: 600px) {
-                .hero-name {
-                    font-size: 1.9rem;
-                }
-
-                .hero-sub {
-                    font-size: 0.82rem;
-                    white-space: normal;
-                    border-right: none;
-                    animation: none;
-                }
-
-                .hero-cta {
-                    flex-direction: column;
-                    align-items: stretch;
-                }
-
-                .btn {
-                    justify-content: center;
-                }
-
-                .page-wrap {
-                    padding: 0 14px 48px;
-                }
-            }
-        </style>
+        }
+    </style>
 </head>
 
-<body>
-    <canvas id="bg-canvas"></canvas>
-
-    <header id="landing-header">
+<body class="landing-page">
+    <header id="landing-header" class="landing-header">
         <navbar id="navbar">
   <nav id="title-nav">
     <a href="/">
       <div id="vivia-logo">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <img class="site-mark" src="/images/loading.gif" data-original="/images/boycelab-mark.svg" alt="" width="32" height="32">
       </div>
       <div>里肌肉實驗室 </div>
     </a>
@@ -933,8 +638,8 @@
         匿名留言
       </a>
       
-      <a class="main-nav-link" href="/services/">
-        服務方案
+      <a class="main-nav-link" href="/friends/">
+        友站
       </a>
       
   </nav>
@@ -979,8 +684,8 @@
         匿名留言
       </a>
       
-      <a class="nav-dropdown-link" href="/services/">
-        服務方案
+      <a class="nav-dropdown-link" href="/friends/">
+        友站
       </a>
       
         
@@ -993,501 +698,235 @@
     dropdownEle.classList.toggle("hidden");
   }
 </script>
+
     </header>
 
-    <div class="page-wrap">
-
-        <!-- ══ HERO ══ -->
-        <section class="hero">
-            <div class="avatar-wrap">
-                <div class="avatar-dot"></div>
-                <div class="avatar-ring"></div>
-                <img src="/images/loading.gif" data-original="/images/me.jpg" alt="BoyceLab">
+    <main class="landing-shell">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <div class="hero-status"><span class="hero-status-dot"></span>NCHU · Applied Mathematics</div>
+                <h1 id="hero-title" class="hero-title">BoyceLab<span>技術、數學與持續探索。</span></h1>
+                <p class="hero-description">
+                    目前為<strong>中興大學應用數學系（數據分析與計算組）大一學生</strong>。專注於 Python 自動化、資安研究與資料應用，把學習過程整理成能被理解、也能被延伸的作品與文章。
+                </p>
+                <div class="hero-actions">
+                    <a href="/blog/" class="lab-button"><i class="fa-solid fa-book-open"></i>閱讀技術文章</a>
+                    <a href="/about/" class="lab-button secondary"><i class="fa-regular fa-user"></i>認識我</a>
+                    <a href="/friends/" class="lab-button secondary"><i class="fa-solid fa-link"></i>探索友站</a>
+                </div>
             </div>
 
-            <div class="hero-badge">可接案中 · Open for Work</div>
+            <aside class="hero-profile" aria-label="個人資料卡">
+                <img src="/images/loading.gif" data-original="/images/me.jpg" alt="李柏毅 Boyce 的個人照片" width="420" height="462">
+                <div class="hero-profile-meta">
+                    <div>
+                        <strong>李柏毅 Boyce</strong>
+                        <span>Python · Security · Data</span>
+                    </div>
+                    <span class="profile-code">NCHU / AMATH</span>
+                </div>
+            </aside>
+        </section>
 
-            <h1 class="hero-name">
-                李柏毅 BoyceLab
-            </h1>
-            <p class="hero-sub">資安研究 ｜ Python 自動化 ｜ AI 應用</p>
-
-            <p class="hero-desc">
-                目前為中興大學大一應用數學系（數據分析與計算組）學生。<br>
-                專注於 Python 自動化開發、資安研究與教學，提供程式接案與家教服務。
-            </p>
-
-            <div class="skill-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">自動化</span>
-                <span class="skill-tag">資安 / CTF</span>
-                <span class="skill-tag">AI 應用</span>
-                <span class="skill-tag">RAG 研究</span>
-                <span class="skill-tag">Web 開發</span>
-                <span class="skill-tag">音樂(打擊樂)</span>
-                <span class="skill-tag">網頁設計</span>
-                <span class="skill-tag">競程</span>
-                <span class="skill-tag">APCS</span>
-            </div>
-
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fa-solid fa-paper-plane"></i> 聯絡我
-                </a>
-                <a href="/blog/" class="btn btn-outline">
-                    <i class="fa-solid fa-book-open"></i> 技術文章
-                </a>
-                <a href="/about/" class="btn btn-outline">
-                    <i class="fa-solid fa-id-card"></i> 關於我
-                </a>
+        <section class="landing-section landing-reveal" aria-labelledby="focus-title">
+            <p class="landing-kicker">Current Focus</p>
+            <h2 id="focus-title" class="landing-heading">現在關注的三個<span>方向</span></h2>
+            <p class="landing-intro">不追求堆疊名詞，而是把每個主題做成可驗證的程式、研究筆記或完整專案。</p>
+            <div class="focus-grid">
+                <article class="focus-card">
+                    <span class="focus-number">01 / DATA</span>
+                    <div class="focus-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>數據分析與計算</h3>
+                    <p>從應用數學出發，建立資料處理、分析建模與計算思維的基礎。</p>
+                </article>
+                <article class="focus-card">
+                    <span class="focus-number">02 / SECURITY</span>
+                    <div class="focus-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>資安研究</h3>
+                    <p>持續參與 AIS3、CTF 與漏洞分析，並將解題過程整理成可重現的紀錄。</p>
+                </article>
+                <article class="focus-card">
+                    <span class="focus-number">03 / BUILD</span>
+                    <div class="focus-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3>Python 自動化</h3>
+                    <p>用程式改善重複流程，實作 API 串接、資料處理、硬體整合與 AI 應用。</p>
+                </article>
             </div>
         </section>
 
-        <!-- ══ SERVICES ══ -->
-        <section class="fade-in">
-            <div class="section-label">// services</div>
-            <h2 class="section-title">提供的<span>服務</span></h2>
-
-            <div class="services-grid">
-                <!-- 自動化接案 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
-                    <div class="service-title">Python 自動化開發</div>
-                    <div class="service-desc">
-                        爬蟲、排程、表單自動化、LINE Bot、資料處理流程、API 串接、硬體整合（Raspberry Pi / Arduino）等。
-                    </div>
-                    <div class="service-tags">
-                        <span class="service-tag">爬蟲</span>
-                        <span class="service-tag">LINE Bot</span>
-                        <span class="service-tag">排程</span>
-                        <span class="service-tag">API 串接</span>
-                        <span class="service-tag">硬體控制</span>
-                    </div>
-                    <a href="#projects" class="service-link">
-                        <i class="fa-solid fa-arrow-right"></i> 查看相關專案
-                    </a>
-                </div>
-
-                <!-- 國小國中陪讀 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-book"></i></div>
-                    <div class="service-title">國小 / 國中陪讀</div>
-                    <div class="service-desc">
-                        耐心陪伴學習、作業輔導、自然科學與數學基礎強化，以鼓勵式教學建立學習信心。
-                    </div>
-                    <div class="service-tags">
-                        <span class="service-tag">國小</span>
-                        <span class="service-tag">國中</span>
-                        <span class="service-tag">自然</span>
-                        <span class="service-tag">數學</span>
-                        <span class="service-tag">作業輔導</span>
-                    </div>
-                </div>
-
-                <!-- 程式家教 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-terminal"></i></div>
-                    <div class="service-title">程式設計 / 競程家教</div>
-                    <div class="service-desc">
-                        Python / C++ 入門到進階、APCS 考前衝刺、競程演算法（排序、搜尋、DP、圖論）一對一教學。
-                    </div>
-                    <div class="service-tags">
-                        <span class="service-tag">Python</span>
-                        <span class="service-tag">C++</span>
-                        <span class="service-tag">APCS</span>
-                        <span class="service-tag">競程</span>
-                        <span class="service-tag">演算法</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ══ PROJECTS ══ -->
-        <section id="projects" class="fade-in">
-            <div class="section-label">// projects</div>
-            <h2 class="section-title">代表<span>專案</span></h2>
-
-            <div class="projects-row">
-                <a href="/tags/專案/" class="project-card">
-                    <div class="project-card-icon"><i class="fa-solid fa-gears"></i></div>
-                    <div class="project-card-name">自動化 / 硬體專案</div>
-                    <div class="project-card-desc">Python + Raspberry Pi + Arduino 實作系列</div>
+        <section class="landing-section landing-reveal" aria-labelledby="projects-title">
+            <p class="landing-kicker">Selected Work</p>
+            <h2 id="projects-title" class="landing-heading">從筆記到作品的<span>實作紀錄</span></h2>
+            <div class="project-grid">
+                <a href="/categories/專案/" class="project-card">
+                    <span class="project-icon"><i class="fa-solid fa-microchip"></i></span>
+                    <span><h3>專案實作</h3><p>自動化、硬體整合與完整產品紀錄。</p></span>
+                    <i class="fa-solid fa-arrow-right project-arrow"></i>
                 </a>
                 <a href="/tags/資安/" class="project-card">
-                    <div class="project-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <div class="project-card-name">資安研究</div>
-                    <div class="project-card-desc">CTF Writeup、滲透測試、漏洞分析筆記</div>
+                    <span class="project-icon"><i class="fa-solid fa-user-shield"></i></span>
+                    <span><h3>資安筆記</h3><p>CTF、課程紀錄與安全研究整理。</p></span>
+                    <i class="fa-solid fa-arrow-right project-arrow"></i>
                 </a>
-                <a href="/tags/AI/" class="project-card">
-                    <div class="project-card-icon"><i class="fa-solid fa-brain"></i></div>
-                    <div class="project-card-name">AI / RAG 研究</div>
-                    <div class="project-card-desc">生成式 AI 應用、RAG 架構、黑客松作品</div>
+                <a href="/assistant/" class="project-card">
+                    <span class="project-icon"><i class="fa-solid fa-brain"></i></span>
+                    <span><h3>AI 助理</h3><p>串接 Render 後端與 Gemini 的互動實驗。</p></span>
+                    <i class="fa-solid fa-arrow-right project-arrow"></i>
                 </a>
-                <a href="/archives/" class="project-card">
-                    <div class="project-card-icon"><i class="fa-solid fa-layer-group"></i></div>
-                    <div class="project-card-name">所有文章</div>
-                    <div class="project-card-desc">完整學習歷程與技術筆記歸檔</div>
+                <a href="/blog/" class="project-card">
+                    <span class="project-icon"><i class="fa-regular fa-folder-open"></i></span>
+                    <span><h3>所有文章</h3><p>依時間閱讀完整學習與成長軌跡。</p></span>
+                    <i class="fa-solid fa-arrow-right project-arrow"></i>
                 </a>
             </div>
         </section>
 
-        <!-- ══ AWARDS highlight ══ -->
-        <section class="fade-in">
-            <div class="section-label">// achievements</div>
-            <h2 class="section-title">部分<span>成就</span></h2>
-
-            <ul class="awards-list">
-                <li class="award-item">
-                    <div class="award-dot"></div>
-                    <div class="award-text"><strong style="color:var(--cyan)">全國中小學科學展覽</strong>（第 65 屆・電腦與資訊學科）— 佳作
-                    </div>
-                    <div class="award-year">2026</div>
+        <section class="landing-section landing-reveal" aria-labelledby="achievements-title">
+            <p class="landing-kicker">Milestones</p>
+            <h2 id="achievements-title" class="landing-heading">部分<span>成就</span></h2>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <span class="achievement-year">2026</span>
+                    <span class="achievement-name">第 66 屆第 6 分區中小學科學展覽會</span>
+                    <span class="achievement-result">特優</span>
                 </li>
-                <li class="award-item">
-                    <div class="award-dot"></div>
-                    <div class="award-text"><strong style="color:var(--cyan)">114 分區資訊學科能力競賽複賽</strong>（學科能力競賽）— 佳作
-                    </div>
-                    <div class="award-year">2026</div>
+                <li class="achievement-item">
+                    <span class="achievement-year">2026</span>
+                    <span class="achievement-name">第 25 屆旺宏科學獎</span>
+                    <span class="achievement-result">佳作</span>
                 </li>
-                <li class="award-item">
-                    <div class="award-dot"></div>
-                    <div class="award-text"><strong style="color:var(--cyan)">第十屆 AIS3「好厲駭」資安年訓</strong> — 學員（教育部）</div>
-                    <div class="award-year">2025–26</div>
+                <li class="achievement-item">
+                    <span class="achievement-year">2026</span>
+                    <span class="achievement-name">全國中小學科學展覽（第 65 屆・電腦與資訊學科）</span>
+                    <span class="achievement-result">佳作</span>
                 </li>
-                <li class="award-item">
-                    <div class="award-dot"></div>
-                    <div class="award-text"><strong style="color:var(--cyan)">全民 e 化資訊運動會</strong> — Python
-                        程式素養「全國第一」・資訊科技概論「全國第一」</div>
-                    <div class="award-year">2025</div>
+                <li class="achievement-item">
+                    <span class="achievement-year">2026</span>
+                    <span class="achievement-name">114 分區資訊學科能力競賽複賽</span>
+                    <span class="achievement-result">佳作</span>
                 </li>
-                <li class="award-item">
-                    <div class="award-dot"></div>
-                    <div class="award-text"><strong style="color:var(--cyan)">全國 YIF 青少年生成式 AI 黑客松</strong> — 季軍</div>
-                    <div class="award-year">2025</div>
+                <li class="achievement-item">
+                    <span class="achievement-year">2025–26</span>
+                    <span class="achievement-name">第十屆 AIS3「好厲駭」資安年訓</span>
+                    <span class="achievement-result">學員</span>
                 </li>
-                <li class="award-item">
-                    <div class="award-dot"></div>
-                    <div class="award-text"><strong style="color:var(--cyan)">巨匠 Python 高中程式競賽</strong> — 全國前 20 名</div>
-                    <div class="award-year">2025</div>
+                <li class="achievement-item">
+                    <span class="achievement-year">2025</span>
+                    <span class="achievement-name">全民 e 化資訊運動會</span>
+                    <span class="achievement-result">Python 與資訊科技概論全國第一</span>
                 </li>
-                <li class="award-item">
-                    <div class="award-dot"></div>
-                    <div class="award-text">UC Berkeley 全球創客松 Erupture — 入圍台灣區複賽</div>
-                    <div class="award-year">2025</div>
+                <li class="achievement-item">
+                    <span class="achievement-year">2025</span>
+                    <span class="achievement-name">全國 YIF 青少年生成式 AI 黑客松</span>
+                    <span class="achievement-result">季軍</span>
                 </li>
             </ul>
+        </section>
 
-            <!-- Glassmorphism 互動狀態區塊 -->
-            <div class="glass-status-panel">
-                <div class="glass-header">
-                    <div class="window-controls">
-                        <span class="ctrl close"></span>
-                        <span class="ctrl min"></span>
-                        <span class="ctrl max"></span>
-                    </div>
-                    <div class="window-title">system_status.exe</div>
+        <section class="landing-section landing-reveal" aria-labelledby="friends-title">
+            <p class="landing-kicker">Web Neighbors</p>
+            <h2 id="friends-title" class="landing-heading">值得拜訪的<span>友站</span></h2>
+            <p class="landing-intro">交換連結不是數字遊戲，而是讓彼此的作品被更多人看見。</p>
+            <div class="friends-preview">
+                <div class="friend-grid" data-friends-list data-limit="3">
+                    <div class="friend-loading">正在讀取友站；若後端休眠，會在喚醒後自動顯示。</div>
                 </div>
-                <div class="glass-body">
-                    <div class="status-row">
-                        <i class="fa-solid fa-satellite-dish pulse-icon"></i>
-                        <span class="status-text">System Online</span>
-                        <span class="status-value highlight-cyan">Ready for New Projects</span>
-                    </div>
-                    <div class="status-row mt-2">
-                        <i class="fa-brands fa-github"></i>
-                        <span class="status-text">GitHub Contributions</span>
-                        <img src="https://ghchart.rshah.org/00d4ff/Boyce39" alt="Boyce39's Github Chart"
-                            class="github-chart mt-2" style="width: 100%; border-radius: 4px; opacity: 0.9;">
-                    </div>
-                </div>
+            </div>
+            <div class="friends-actions">
+                <p>有自己的網站或技術部落格嗎？歡迎交換連結。</p>
+                <a href="/friends/#apply" class="lab-button secondary">申請友站 <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </section>
 
-        <!-- ══ SUBSCRIBE ══ -->
-        <section class="fade-in">
-            <div class="subscribe-section">
-                <h2 class="subscribe-title">Join the Lab</h2>
-                <p class="subscribe-desc">訂閱 Boyce Lab 電子報，不定期一封信，即時收到最新技術筆記、AI 研究與資安見解。不發垃圾信件，隨時可以取消訂閱。</p>
+        <section class="landing-section landing-reveal" aria-labelledby="subscribe-title">
+            <p class="landing-kicker">Occasional Notes</p>
+            <h2 id="subscribe-title" class="landing-heading">偶爾寄一封<span>技術近況</span></h2>
+            <p class="landing-intro">不定期分享新文章、研究筆記與專案進度，不發廣告信。</p>
+            <form id="sib-form-landing" class="landing-subscribe" method="POST"
+                action="https://64b9c1a2.sibforms.com/serve/MUIFAHih7dp78TT_j2NgzBXNE31MsRjZhWFJuxtLaLCYbJdPxnACWZrfS4QDAAKnCttNxksTmt1yjImjB8ZsMnpEQT7odmsQ6CIHI92JK3a7Sn9sC3agHEGPeBdlT21J5zGmQPyk9Eyss7iKLR2tj9JkbYpFDv8F01BMlQEcpoa_SL4PGOHDS2HCrmdx1l-8R-wT8XrGJZjlW1vPtQ==">
+                <label class="honeypot-field" for="landing-email-check">請勿填寫</label>
+                <input id="landing-email-check" type="text" name="email_address_check" tabindex="-1" autocomplete="off" class="honeypot-field">
+                <label class="honeypot-field" for="landing-email">Email</label>
+                <input id="landing-email" type="email" name="EMAIL" autocomplete="email" placeholder="you@example.com" required>
+                <input type="hidden" name="locale" value="zh-TW">
+                <button class="lab-button" form="sib-form-landing" type="submit">訂閱更新</button>
+            </form>
+        </section>
 
-                <!-- Begin Brevo Form -->
-                <div class="sib-form landing-subscribe-widget">
-                    <div id="sib-form-container" class="sib-form-container">
-
-                        <div id="sib-container">
-                            <form id="sib-form-landing" class="boyce-subscribe-form" method="POST"
-                                action="https://64b9c1a2.sibforms.com/serve/MUIFAHih7dp78TT_j2NgzBXNE31MsRjZhWFJuxtLaLCYbJdPxnACWZrfS4QDAAKnCttNxksTmt1yjImjB8ZsMnpEQT7odmsQ6CIHI92JK3a7Sn9sC3agHEGPeBdlT21J5zGmQPyk9Eyss7iKLR2tj9JkbYpFDv8F01BMlQEcpoa_SL4PGOHDS2HCrmdx1l-8R-wT8XrGJZjlW1vPtQ==">
-
-                                <div style="padding: 4px 0;">
-                                    <div class="sib-input sib-form-block">
-                                        <div class="form__entry entry_block">
-                                            <div class="form__label-row ">
-                                                <div class="entry__field">
-                                                    <label class="entry__label"
-                                                        style="display: block; font-size: 0.95rem; color: var(--text-hi); margin-bottom: 8px; font-weight: bold;">輸入
-                                                        Email 即可免費訂閱</label>
-                                                    <input class="input" type="text" id="EMAIL-landing" name="EMAIL"
-                                                        autocomplete="off" placeholder="輸入您的 Email..." required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div style="padding: 8px 0;">
-                                    <div class="sib-form-block">
-                                        <button class="sib-form-block__button" form="sib-form-landing" type="submit">
-                                            立即免費訂閱取得最新內容
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <input type="text" name="email_address_check" value="" class="input--hidden"
-                                    style="display:none;">
-                                <input type="hidden" name="locale" value="en">
-                            </form>
-                        </div>
-                    </div>
+        <section id="contact" class="landing-section landing-reveal" aria-labelledby="contact-title">
+            <p class="landing-kicker">Connect</p>
+            <h2 id="contact-title" class="landing-heading">保持<span>聯絡</span></h2>
+            <div class="contact-panel">
+                <div>
+                    <h3>交流技術、研究想法或單純打聲招呼。</h3>
+                    <p>可以透過 Email、Instagram 或 GitHub 找到我；不方便具名時，也可以使用匿名留言。</p>
                 </div>
-                <!-- End Brevo Form -->
+                <div class="social-links" aria-label="社群連結">
+                    <a class="social-link" href="mailto:index@boycelab.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                    <a class="social-link" href="https://www.instagram.com/boyce_lee_0309" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="social-link" href="https://github.com/Boyce39" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a class="social-link" href="/anonymous/" aria-label="匿名留言"><i class="fa-solid fa-user-secret"></i></a>
+                </div>
             </div>
         </section>
-
-        <!-- ══ CONTACT ══ -->
-        <section id="contact" class="fade-in">
-            <div class="section-label">// contact</div>
-            <h2 class="section-title">聯絡<span>方式</span></h2>
-
-            <div class="contact-grid">
-                <a href="https://line.me/ti/p/WEBpF4Mg8Q" target="_blank" class="contact-card">
-                    <div class="contact-icon line"><i class="fa-brands fa-line"></i></div>
-                    <div>
-                        <div class="contact-label">LINE</div>
-                        <div class="contact-value">加我好友</div>
-                    </div>
-                </a>
-                <a href="mailto:index@boycelab.com" class="contact-card">
-                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
-                    <div>
-                        <div class="contact-label">Email</div>
-                        <div class="contact-value">index@boycelab.com</div>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/boyce_lee_0309" target="_blank" class="contact-card">
-                    <div class="contact-icon ig"><i class="fa-brands fa-instagram"></i></div>
-                    <div>
-                        <div class="contact-label">Instagram</div>
-                        <div class="contact-value">@boyce_lee_0309</div>
-                    </div>
-                </a>
-                <a href="https://github.com/Boyce39" target="_blank" class="contact-card">
-                    <div class="contact-icon gh"><i class="fa-brands fa-github"></i></div>
-                    <div>
-                        <div class="contact-label">GitHub</div>
-                        <div class="contact-value">Boyce39</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="contact-note">
-                <strong>📌 接案 / 家教洽詢：</strong>透過 LINE 或 Email 聯繫，說明需求與時段，通常 24 小時內回覆。<br>
-                <strong>📌 自動化開發：</strong>請附上需求描述，報價依複雜度而定（小型專案 NT$2,000 起）。<br>
-                <strong>📌 家教：</strong>屏東地區優先，遠端授課可彈性安排。
-            </div>
-        </section>
-
-    </div>
+    </main>
 
     <div id="footer-wrapper">
         <footer id="footer">
-  
-        <div id="footer-info" class="inner">
-          
-
-                <div class="footer-row">
-                  <span class="copyright">
-                    &copy; 2026
-                      BoyceLab
-                  </span>
-
-                  <span class="divider">|</span>
-
-                  <span class="divider">|</span>
-                  <a href="/changelog/" class="changelog-link">
-                    <i class="fa-solid fa-code-branch"></i> v1.8.9 更新日誌
-                  </a>
-                  <span class="divider">|</span>
-
-                  <span class="powered-by">
-                    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a
-                        target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
-                  </span>
-
-                  
-                    <span class="divider">|</span>
-                    <span id="busuanzi_container_site_pv" style="display:none">
-                      <i class="fa-solid fa-eye"></i>
-                      本站總瀏覽量 <span id="busuanzi_value_site_pv"></span>
-                    </span>
-                    <span class="divider">|</span>
-                    <span id="busuanzi_container_site_uv" style="display:none">
-                      <i class="fa-solid fa-user"></i>
-                      本站訪客數 <span id="busuanzi_value_site_uv"></span>
-                    </span>
-                    
-                </div>
-
-                <!-- 網站運行時間腳本 (隱藏執行) -->
-                <script>
-                  (function () {
-                    // 保留腳本但暫不顯示，因為用戶要求刪除顯示
-                  })();
-                </script>
-
-                <style>
-                  #footer-info {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-wrap: wrap;
-                    padding: 20px 0;
-                    width: 100%;
-                  }
-
-                  .footer-row {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                    gap: 15px;
-                    line-height: 1.8;
-                    font-size: 0.85rem;
-                    color: #888;
-                    width: 100%;
-                    text-align: center;
-                  }
-
-                  .changelog-link {
-                    color: #888;
-                    text-decoration: none;
-                    border-bottom: 1px dashed #555;
-                    transition: all 0.3s ease;
-                  }
-
-                  .changelog-link:hover {
-                    color: var(--color-primary, #00ffc8);
-                    border-bottom-color: var(--color-primary, #00ffc8);
-                  }
-
-                  .divider {
-                    color: #555;
-                    font-size: 0.8em;
-                  }
-
-                  .powered-by a {
-                    color: #888;
-                    text-decoration: none;
-                  }
-
-                  .powered-by a:hover {
-                    text-decoration: underline;
-                  }
-
-                  /* RWD: Mobile optimize */
-                  @media (max-width: 600px) {
-                    .footer-row {
-                      flex-direction: column;
-                      gap: 8px;
-                    }
-
-                    .divider {
-                      display: none;
-                    }
-
-                    #footer-info {
-                      padding: 15px 10px;
-                    }
-                  }
-                </style>
-        </div>
-</footer>
+  <div id="footer-info" class="inner">
+    <div class="footer-row">
+      <span>&copy; 2026 BoyceLab</span>
+      <span class="footer-dot" aria-hidden="true"></span>
+      <span>用技術記錄探索，也用作品連結彼此。</span>
+      <nav class="footer-links" aria-label="頁尾導覽">
+        <a href="/blog/">文章</a>
+        <a href="/friends/">友站</a>
+        <a href="/changelog/">更新日誌</a>
+        <a href="https://github.com/Boyce39" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
     </div>
+  </div>
+</footer>
 
-    <!-- Scripts -->
-    <script src="/js/jquery-3.4.1.min.js"></script>
-    <script src="/js/load-settings.js"></script>
+    </div>
+    <div id="search-modal" class="hidden">
+    <div id="search-modal-content">
+        <div id="search-modal-header">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search-input" placeholder="搜尋文章內容...">
+            <div id="search-close-btn">&times;</div>
+        </div>
+        <div id="search-results">
+            <div class="search-empty">輸入關鍵字開始搜尋...</div>
+        </div>
+    </div>
+</div>
+
     <script src="/js/light-dark-switch.js"></script>
+    <script src="https://cdn.staticfile.org/fuse.js/6.6.2/fuse.min.js"></script>
     <script src="/js/local-search.js"></script>
     <script src="/js/tech-effects.js"></script>
     <script src="/js/subscribe.js"></script>
-
+    <script src="/js/backend-wakeup.js"></script>
+    <script src="/js/friends.js"></script>
     <script>
-        // ── Particle Background ──
         (function () {
-            const canvas = document.getElementById('bg-canvas');
-            const ctx = canvas.getContext('2d');
-            let W, H, pts = [];
-            const N = 55, MAX_DIST = 140;
+            const items = document.querySelectorAll('.landing-reveal');
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(item => item.classList.add('is-visible'));
+                return;
+            }
 
-            function resize() {
-                W = canvas.width = window.innerWidth;
-                H = canvas.height = window.innerHeight;
-            }
-            function mkPt() {
-                return {
-                    x: Math.random() * W, y: Math.random() * H,
-                    vx: (Math.random() - 0.5) * 0.45,
-                    vy: (Math.random() - 0.5) * 0.45,
-                    r: Math.random() * 1.6 + 0.4
-                };
-            }
-            function init() { pts = []; for (let i = 0; i < N; i++) pts.push(mkPt()); }
-            function draw() {
-                ctx.clearRect(0, 0, W, H);
-                pts.forEach(p => {
-                    p.x += p.vx; p.y += p.vy;
-                    if (p.x < 0 || p.x > W) p.vx *= -1;
-                    if (p.y < 0 || p.y > H) p.vy *= -1;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(0,212,255,0.55)';
-                    ctx.fill();
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
                 });
-                for (let i = 0; i < pts.length; i++) {
-                    for (let j = i + 1; j < pts.length; j++) {
-                        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-                        const d = Math.sqrt(dx * dx + dy * dy);
-                        if (d < MAX_DIST) {
-                            ctx.strokeStyle = `rgba(0,212,255,${0.18 * (1 - d / MAX_DIST)})`;
-                            ctx.lineWidth = 0.6;
-                            ctx.beginPath();
-                            ctx.moveTo(pts[i].x, pts[i].y);
-                            ctx.lineTo(pts[j].x, pts[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-                requestAnimationFrame(draw);
-            }
-            window.addEventListener('resize', () => { resize(); init(); });
-            resize(); init(); draw();
+            }, { threshold: 0.12 });
+
+            items.forEach(item => observer.observe(item));
         })();
-
-        // ── Scroll fade-in ──
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // ── Smooth anchor scroll ──
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-            });
-        });
-
-        // Backend Pre-warm
-        fetch('https://webpython-h2y7.onrender.com/test-api', { mode: 'no-cors' }).catch(() => { });
     </script>
 
         <style>

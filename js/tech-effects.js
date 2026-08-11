@@ -1,138 +1,202 @@
 (function () {
-    // 1. Reading Progress Bar
+  'use strict';
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cardSelector = [
+    '.focus-card',
+    '.project-card',
+    '.milestone-item',
+    '.friend-card',
+    '.friends-panel',
+    '.newsletter-panel',
+    '.anonymous-panel',
+    '.post-list-item',
+    '.archive-post'
+  ].join(',');
+
+  function ready(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  function initReadingProgress() {
     const progressBar = document.createElement('div');
     progressBar.id = 'reading-progress-bar';
+    progressBar.setAttribute('aria-hidden', 'true');
     document.body.appendChild(progressBar);
 
-    const style = document.createElement('style');
-    style.textContent = `
-    #reading-progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 3px;
-      background: linear-gradient(to right, var(--primary), #00f2fe);
-      box-shadow: 0 0 10px var(--primary);
-      z-index: 9999;
-      transition: width 0.1s ease-out;
+    let ticking = false;
+    function update() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(100, Math.max(0, (window.scrollY / scrollable) * 100)) : 0;
+      progressBar.style.transform = `scaleX(${progress / 100})`;
+      ticking = false;
     }
-    #tech-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0.4;
-    }
-  `;
-    document.head.appendChild(style);
 
-    window.addEventListener('scroll', () => {
-        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = (window.scrollY / totalHeight) * 100;
-        progressBar.style.width = progress + '%';
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }, { passive: true });
+    update();
+  }
+
+  function initCardEffects() {
+    const cards = Array.from(document.querySelectorAll(cardSelector));
+    if (!cards.length) return;
+
+    const observer = !reducedMotion && 'IntersectionObserver' in window
+      ? new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('tech-card-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -24px' })
+      : null;
+
+    cards.forEach(function (card, index) {
+      if (card.querySelector(':scope > .tech-card-glow')) return;
+      card.classList.add('tech-card-enhanced');
+
+      const glow = document.createElement('span');
+      glow.className = 'tech-card-glow';
+      glow.setAttribute('aria-hidden', 'true');
+      card.appendChild(glow);
+
+      if (!reducedMotion) {
+        card.style.setProperty('--tech-delay', `${Math.min(index % 6, 5) * 38}ms`);
+        card.addEventListener('pointermove', function (event) {
+          if (event.pointerType === 'touch') return;
+          const bounds = card.getBoundingClientRect();
+          card.style.setProperty('--tech-card-x', `${event.clientX - bounds.left}px`);
+          card.style.setProperty('--tech-card-y', `${event.clientY - bounds.top}px`);
+        }, { passive: true });
+        observer ? observer.observe(card) : card.classList.add('tech-card-visible');
+      } else {
+        card.classList.add('tech-card-visible');
+      }
     });
+  }
 
-    // 2. Tech Background (Particle Network)
+  function initAmbientNetwork() {
+    if (reducedMotion) return;
+
     const canvas = document.createElement('canvas');
     canvas.id = 'tech-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
     document.body.appendChild(canvas);
-    const ctx = canvas.getContext('2d');
+    const context = canvas.getContext('2d');
+    if (!context) return;
 
     let particles = [];
-    const particleCount = 60;
-    const maxDistance = 150;
-
-    class Particle {
-        constructor() {
-            this.init();
-        }
-        init() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 0.5;
-            this.vy = (Math.random() - 0.5) * 0.5;
-            this.size = Math.random() * 2;
-        }
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-        }
-        draw() {
-            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary') || '#7f00ff';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
+    let animationFrame = 0;
+    let width = 0;
+    let height = 0;
 
     function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        particles = [];
-        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+      const count = width < 700 ? 12 : Math.min(28, Math.max(18, Math.round(width / 62)));
+      particles = Array.from({ length: count }, function () {
+        return {
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          radius: 0.7 + Math.random() * 1.2
+        };
+      });
     }
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
+    function draw() {
+      context.clearRect(0, 0, width, height);
+      const lightTheme = document.documentElement.getAttribute('theme') === 'light';
+      const nodeColor = lightTheme ? 'rgba(15, 118, 110, 0.2)' : 'rgba(103, 232, 249, 0.24)';
+      const lineColor = lightTheme ? [15, 118, 110] : [45, 212, 191];
 
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < maxDistance) {
-                    ctx.strokeStyle = `rgba(127, 0, 255, ${1 - distance / maxDistance})`;
-                    if (document.documentElement.getAttribute('theme') === 'light') {
-                        ctx.strokeStyle = `rgba(0, 0, 0, ${0.1 * (1 - distance / maxDistance)})`;
-                    }
-                    ctx.lineWidth = 0.5;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                }
-            }
+      particles.forEach(function (particle) {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        if (particle.x < 0 || particle.x > width) particle.vx *= -1;
+        if (particle.y < 0 || particle.y > height) particle.vy *= -1;
+        context.fillStyle = nodeColor;
+        context.beginPath();
+        context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        context.fill();
+      });
+
+      for (let left = 0; left < particles.length; left += 1) {
+        for (let right = left + 1; right < particles.length; right += 1) {
+          const xDistance = particles[left].x - particles[right].x;
+          const yDistance = particles[left].y - particles[right].y;
+          const distance = Math.hypot(xDistance, yDistance);
+          if (distance > 135) continue;
+          context.strokeStyle = `rgba(${lineColor.join(',')}, ${(1 - distance / 135) * 0.1})`;
+          context.lineWidth = 0.7;
+          context.beginPath();
+          context.moveTo(particles[left].x, particles[left].y);
+          context.lineTo(particles[right].x, particles[right].y);
+          context.stroke();
         }
-        requestAnimationFrame(animate);
+      }
+
+      animationFrame = window.requestAnimationFrame(draw);
     }
 
-    window.addEventListener('resize', resize);
-    resize();
-    animate();
-})();
-
-// ── Code Block Copy Button ──
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
-        // Create copy button
-        const btn = document.createElement('div');
-        btn.className = 'copy-btn';
-        btn.innerHTML = '<i class="fa-regular fa-copy"></i>';
-        block.appendChild(btn);
-
-        btn.addEventListener('click', async () => {
-            const code = block.querySelector('.code, code');
-            if (code) {
-                try {
-                    await navigator.clipboard.writeText(code.innerText);
-                    btn.innerHTML = '<i class="fa-solid fa-check" style="color:var(--tech-cyan)"></i>';
-                    setTimeout(() => {
-                        btn.innerHTML = '<i class="fa-regular fa-copy"></i>';
-                    }, 2000);
-                } catch (e) {
-                    console.error('Copy failed', e);
-                }
-            }
-        });
+    window.addEventListener('resize', resize, { passive: true });
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') {
+        window.cancelAnimationFrame(animationFrame);
+      } else {
+        window.cancelAnimationFrame(animationFrame);
+        draw();
+      }
     });
-});
+    resize();
+    draw();
+  }
+
+  function initCopyButtons() {
+    document.querySelectorAll('figure.highlight, .highlight').forEach(function (block) {
+      if (block.querySelector(':scope > .copy-btn')) return;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'copy-btn';
+      button.setAttribute('aria-label', '複製程式碼');
+      button.innerHTML = '<i class="fa-regular fa-copy" aria-hidden="true"></i>';
+      block.appendChild(button);
+
+      button.addEventListener('click', async function () {
+        const code = block.querySelector('.code, code');
+        if (!code) return;
+        try {
+          await navigator.clipboard.writeText(code.innerText);
+          button.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i>';
+          window.setTimeout(function () {
+            button.innerHTML = '<i class="fa-regular fa-copy" aria-hidden="true"></i>';
+          }, 1800);
+        } catch (error) {
+          button.setAttribute('aria-label', '複製失敗');
+        }
+      });
+    });
+  }
+
+  ready(function () {
+    initReadingProgress();
+    initCardEffects();
+    initAmbientNetwork();
+    initCopyButtons();
+  });
+})();

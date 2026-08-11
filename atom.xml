@@ -3,11 +3,11 @@
   <title>里肌肉實驗室</title>
   
   
-  <link href="https://boycework.eu.cc/atom.xml" rel="self"/>
+  <link href="https://www.boycelab.com/atom.xml" rel="self"/>
   
-  <link href="https://boycework.eu.cc/"/>
+  <link href="https://www.boycelab.com/"/>
   <updated>2026-04-21T14:32:21.221Z</updated>
-  <id>https://boycework.eu.cc/</id>
+  <id>https://www.boycelab.com/</id>
   
   <author>
     <name>李柏毅 BoyceLab</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>SITCON 參與心得｜從屏東出發，看見語言模型的另一面</title>
-    <link href="https://boycework.eu.cc/2026/04/21/sitcon2026/"/>
-    <id>https://boycework.eu.cc/2026/04/21/sitcon2026/</id>
+    <link href="https://www.boycelab.com/2026/04/21/sitcon2026/"/>
+    <id>https://www.boycelab.com/2026/04/21/sitcon2026/</id>
     <published>2026-04-20T16:00:00.000Z</published>
     <updated>2026-04-21T14:32:21.221Z</updated>
     
@@ -37,29 +37,29 @@
     
     
     
-    <category term="心得" scheme="https://boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/"/>
+    <category term="心得" scheme="https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/"/>
     
-    <category term="技術" scheme="https://boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/"/>
+    <category term="技術" scheme="https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/"/>
     
-    <category term="AI" scheme="https://boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/"/>
+    <category term="AI" scheme="https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/"/>
     
-    <category term="LLM" scheme="https://boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/"/>
+    <category term="LLM" scheme="https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/"/>
     
-    <category term="資安" scheme="https://boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/"/>
+    <category term="資安" scheme="https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/"/>
     
-    <category term="Prompt Injection" scheme="https://boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/Prompt-Injection/"/>
+    <category term="Prompt Injection" scheme="https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/Prompt-Injection/"/>
     
-    <category term="Alignment" scheme="https://boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/Prompt-Injection/Alignment/"/>
+    <category term="Alignment" scheme="https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/Prompt-Injection/Alignment/"/>
     
     
-    <category term="SITCON2026" scheme="https://boycework.eu.cc/tags/SITCON2026/"/>
+    <category term="SITCON2026" scheme="https://www.boycelab.com/tags/SITCON2026/"/>
     
   </entry>
   
   <entry>
     <title>演算法筆記：八大排序演算法</title>
-    <link href="https://boycework.eu.cc/2026/03/05/sorting-algorithms/"/>
-    <id>https://boycework.eu.cc/2026/03/05/sorting-algorithms/</id>
+    <link href="https://www.boycelab.com/2026/03/05/sorting-algorithms/"/>
+    <id>https://www.boycelab.com/2026/03/05/sorting-algorithms/</id>
     <published>2026-03-05T14:42:00.000Z</published>
     <updated>2026-03-09T15:08:23.690Z</updated>
     
@@ -99,25 +99,25 @@
     
     
     
-    <category term="演算法" scheme="https://boycework.eu.cc/categories/%E6%BC%94%E7%AE%97%E6%B3%95/"/>
+    <category term="演算法" scheme="https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/"/>
     
-    <category term="Algorithm" scheme="https://boycework.eu.cc/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/"/>
+    <category term="Algorithm" scheme="https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/"/>
     
-    <category term="C++" scheme="https://boycework.eu.cc/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/"/>
+    <category term="C++" scheme="https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/"/>
     
-    <category term="競程" scheme="https://boycework.eu.cc/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/"/>
+    <category term="競程" scheme="https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/"/>
     
-    <category term="教學" scheme="https://boycework.eu.cc/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/%E6%95%99%E5%AD%B8/"/>
+    <category term="教學" scheme="https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/%E6%95%99%E5%AD%B8/"/>
     
     
-    <category term="演算法" scheme="https://boycework.eu.cc/tags/%E6%BC%94%E7%AE%97%E6%B3%95/"/>
+    <category term="演算法" scheme="https://www.boycelab.com/tags/%E6%BC%94%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>115 特殊選才心得｜資工特選的現實與轉彎</title>
-    <link href="https://boycework.eu.cc/2025/12/24/115-special/"/>
-    <id>https://boycework.eu.cc/2025/12/24/115-special/</id>
+    <link href="https://www.boycelab.com/2025/12/24/115-special/"/>
+    <id>https://www.boycelab.com/2025/12/24/115-special/</id>
     <published>2025-12-24T02:00:00.000Z</published>
     <updated>2026-03-09T15:08:23.810Z</updated>
     
@@ -134,17 +134,17 @@
     
     
     
-    <category term="心得" scheme="https://boycework.eu.cc/categories/%E5%BF%83%E5%BE%97/"/>
+    <category term="心得" scheme="https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/"/>
     
     
-    <category term="心得" scheme="https://boycework.eu.cc/tags/%E5%BF%83%E5%BE%97/"/>
+    <category term="心得" scheme="https://www.boycelab.com/tags/%E5%BF%83%E5%BE%97/"/>
     
   </entry>
   
   <entry>
     <title>2025 AIS3 Junior Writeup｜從基礎 Web 到 XSS 與後端漏洞</title>
-    <link href="https://boycework.eu.cc/2025/08/13/AIS3-Full-Security-Record/"/>
-    <id>https://boycework.eu.cc/2025/08/13/AIS3-Full-Security-Record/</id>
+    <link href="https://www.boycelab.com/2025/08/13/AIS3-Full-Security-Record/"/>
+    <id>https://www.boycelab.com/2025/08/13/AIS3-Full-Security-Record/</id>
     <published>2025-08-13T02:00:00.000Z</published>
     <updated>2026-03-09T15:08:23.773Z</updated>
     
@@ -161,17 +161,17 @@
     
     
     
-    <category term="Writeup" scheme="https://boycework.eu.cc/categories/Writeup/"/>
+    <category term="Writeup" scheme="https://www.boycelab.com/categories/Writeup/"/>
     
-    <category term="2025 AIS3 Junior" scheme="https://boycework.eu.cc/categories/Writeup/2025-AIS3-Junior/"/>
+    <category term="2025 AIS3 Junior" scheme="https://www.boycelab.com/categories/Writeup/2025-AIS3-Junior/"/>
     
     
   </entry>
   
   <entry>
     <title>Filename Confusion | Writeup</title>
-    <link href="https://boycework.eu.cc/2025/08/13/250813-filename-confusion/"/>
-    <id>https://boycework.eu.cc/2025/08/13/250813-filename-confusion/</id>
+    <link href="https://www.boycelab.com/2025/08/13/250813-filename-confusion/"/>
+    <id>https://www.boycelab.com/2025/08/13/250813-filename-confusion/</id>
     <published>2025-08-12T16:00:00.000Z</published>
     <updated>2026-03-09T15:08:23.795Z</updated>
     
@@ -189,19 +189,19 @@
     
     
     
-    <category term="資安" scheme="https://boycework.eu.cc/categories/%E8%B3%87%E5%AE%89/"/>
+    <category term="資安" scheme="https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/"/>
     
-    <category term="Writeup" scheme="https://boycework.eu.cc/categories/%E8%B3%87%E5%AE%89/Writeup/"/>
+    <category term="Writeup" scheme="https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/Writeup/"/>
     
     
-    <category term="資安" scheme="https://boycework.eu.cc/tags/%E8%B3%87%E5%AE%89/"/>
+    <category term="資安" scheme="https://www.boycelab.com/tags/%E8%B3%87%E5%AE%89/"/>
     
   </entry>
   
   <entry>
     <title>拍貼機系統 P!X 印一下</title>
-    <link href="https://boycework.eu.cc/2025/07/26/Photobooth_Post/"/>
-    <id>https://boycework.eu.cc/2025/07/26/Photobooth_Post/</id>
+    <link href="https://www.boycelab.com/2025/07/26/Photobooth_Post/"/>
+    <id>https://www.boycelab.com/2025/07/26/Photobooth_Post/</id>
     <published>2025-07-26T02:00:00.000Z</published>
     <updated>2026-03-09T15:08:23.743Z</updated>
     
@@ -219,14 +219,14 @@
     
     
     
-    <category term="專案" scheme="https://boycework.eu.cc/categories/%E5%B0%88%E6%A1%88/"/>
+    <category term="專案" scheme="https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/"/>
     
-    <category term="拍貼" scheme="https://boycework.eu.cc/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/"/>
+    <category term="拍貼" scheme="https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/"/>
     
-    <category term="P!X" scheme="https://boycework.eu.cc/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/P-X/"/>
+    <category term="P!X" scheme="https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/P-X/"/>
     
     
-    <category term="專案" scheme="https://boycework.eu.cc/tags/%E5%B0%88%E6%A1%88/"/>
+    <category term="專案" scheme="https://www.boycelab.com/tags/%E5%B0%88%E6%A1%88/"/>
     
   </entry>
   

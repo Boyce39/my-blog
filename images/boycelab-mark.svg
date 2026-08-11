@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">BoyceLab</title>
+  <desc id="desc">以電路節點與 BL 字母構成的 BoyceLab 科技實驗室圖示</desc>
+  <defs>
+    <linearGradient id="shell" x1="8" y1="6" x2="57" y2="59" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12202b"/>
+      <stop offset="1" stop-color="#071118"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="16" y1="14" x2="51" y2="51" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67e8f9"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#shell)" stroke="#244354" stroke-width="2"/>
+  <path d="M18 17v30h14.5c7 0 11.5-3.7 11.5-9 0-3.5-2.1-6.2-5.8-7.5 2.9-1.4 4.6-3.7 4.6-6.6 0-4.3-3.8-6.9-10.2-6.9H18Zm7 6h7.1c2.5 0 3.9 1 3.9 2.9s-1.5 3.1-4.1 3.1H25v-6Zm0 12h7.8c2.8 0 4.4 1.1 4.4 3.1 0 2.1-1.7 3.3-4.5 3.3H25V35Z" fill="url(#signal)"/>
+  <path d="M47 17v11" stroke="#67e8f9" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="47" cy="15" r="3" fill="#071118" stroke="#67e8f9" stroke-width="2"/>
+  <path d="M46 47h7" stroke="#2dd4bf" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="55" cy="47" r="3" fill="#071118" stroke="#2dd4bf" stroke-width="2"/>
+</svg>
