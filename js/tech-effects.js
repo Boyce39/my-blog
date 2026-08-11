@@ -10,6 +10,9 @@
     '.friends-panel',
     '.newsletter-panel',
     '.anonymous-panel',
+    '.anonymous-card',
+    '.community-form-panel',
+    '.subscribe-section',
     '.post-list-item',
     '.archive-post'
   ].join(',');
@@ -167,6 +170,38 @@
     draw();
   }
 
+  function initSystemInterface() {
+    if (document.getElementById('tech-interface-layer')) return;
+
+    const interfaceLayer = document.createElement('div');
+    interfaceLayer.id = 'tech-interface-layer';
+    interfaceLayer.setAttribute('aria-hidden', 'true');
+    interfaceLayer.innerHTML = '<i class="tech-scan-beam"></i><i class="tech-pointer-field"></i>';
+    document.body.appendChild(interfaceLayer);
+
+    const hud = document.createElement('div');
+    hud.id = 'tech-hud';
+    hud.setAttribute('aria-hidden', 'true');
+    hud.innerHTML = `
+      <i class="tech-hud-corner top-left"></i>
+      <i class="tech-hud-corner top-right"></i>
+      <i class="tech-hud-corner bottom-left"></i>
+      <i class="tech-hud-corner bottom-right"></i>
+      <span class="tech-hud-label hud-status"><b></b> BOYCELAB / ONLINE</span>
+      <span class="tech-hud-label hud-coordinate">NCHU · AMATH · ${new Date().getFullYear()}</span>`;
+    document.body.appendChild(hud);
+
+    if (reducedMotion || !window.matchMedia('(pointer: fine)').matches) return;
+    let pointerFrame = 0;
+    window.addEventListener('pointermove', function (event) {
+      window.cancelAnimationFrame(pointerFrame);
+      pointerFrame = window.requestAnimationFrame(function () {
+        interfaceLayer.style.setProperty('--pointer-x', `${event.clientX}px`);
+        interfaceLayer.style.setProperty('--pointer-y', `${event.clientY}px`);
+      });
+    }, { passive: true });
+  }
+
   function initCopyButtons() {
     document.querySelectorAll('figure.highlight, .highlight').forEach(function (block) {
       if (block.querySelector(':scope > .copy-btn')) return;
@@ -194,6 +229,7 @@
   }
 
   ready(function () {
+    initSystemInterface();
     initReadingProgress();
     initCardEffects();
     initAmbientNetwork();
