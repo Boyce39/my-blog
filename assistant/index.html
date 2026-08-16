@@ -55,7 +55,7 @@
 <meta property="og:description" content="@import url(&#39;https:&#x2F;&#x2F;fonts.googleapis.com&#x2F;css2?family&#x3D;Orbitron:wght@400;700;900&amp;family&#x3D;Fira+Code:wght@300;400;500&amp;display&#x3D;swap&#39;);      :root {         --primary-glow: #00ffc8;         --second">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-12-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-27T08:36:16.851Z">
+<meta property="article:modified_time" content="2026-08-16T02:43:11.961Z">
 <meta property="article:author" content="李柏毅 BoyceLab">
 <meta property="article:tag" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
 <meta name="twitter:card" content="summary">
@@ -98,6 +98,7 @@
 
                                                   <link rel="stylesheet" href="/css/custom-tech.css">
                                                   <link rel="stylesheet" href="/css/site-refresh.css">
+                                                  <script src="/js/api-config.js"></script>
 <meta name="generator" content="Hexo 8.1.1"></head>
 
           </head>
@@ -443,7 +444,7 @@
 
                         </div>
                         <div class="wordcount need-seperator meta-info">
-                          7.4k 詞
+                          7.2k 詞
                         </div>
                         
                           <div class="need-seperator meta-info">
@@ -739,11 +740,11 @@
     <!-- 預熱遮罩 -->
     <div id="prewarmOverlay" class="prewarm-overlay">
         <div class="prewarm-content">
-            <div class="prewarm-text">Initialising Neural Link...</div>
+            <div class="prewarm-text">Connecting Edge Neural Link...</div>
             <div class="loader">
                 <div id="loaderBar" class="loader-bar"></div>
             </div>
-            <div id="prewarmStatus" style="font-size: 0.7rem; color: var(--text-dim);">Awaiting Backend Wake-up...</div>
+            <div id="prewarmStatus" style="font-size: 0.7rem; color: var(--text-dim);">Connecting to Cloudflare edge...</div>
         </div>
     </div>
 
@@ -774,7 +775,7 @@
 </div>
 
 <script>
-    const API_BASE = 'https://webpython-h2y7.onrender.com';
+    const API_BASE = window.BoyceApiConfig?.baseUrl || 'https://api.boycelab.com';
     const chatBody = document.getElementById('chatBody');
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
@@ -786,30 +787,16 @@
 
     let isThinking = false;
 
-    // 1. 自動預熱與檢測
     async function prewarm() {
-        let attempts = 0;
-        const maxAttempts = 20; // 最多等 2 分鐘 (6s * 20)
-        
-        while (attempts < maxAttempts) {
-            try {
-                const start = Date.now();
-                // 真正的 Test API 呼叫
-                const res = await fetch(`${API_BASE}/test-api`, { mode: 'cors' });
-                if (res.ok) {
-                    onOnline();
-                    return;
-                }
-            } catch (e) {
-                attempts++;
-                const progress = (attempts / maxAttempts) * 100;
-                loaderBar.style.width = `${progress}%`;
-                prewarmStatus.innerText = `Attempt ${attempts}: Backend sleeping, waking up...`;
-                console.log('Backend waking up...', attempts);
-            }
-            await new Promise(r => setTimeout(r, 6000)); // Render 免費版需要一點時間
+        try {
+            const res = await fetch(`${API_BASE}/health`, { mode: 'cors', cache: 'no-store' });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            onOnline();
+        } catch (error) {
+            prewarmStatus.innerText = 'Edge API unavailable. You can retry shortly.';
+            loaderBar.style.width = '100%';
+            setTimeout(() => prewarmOverlay.classList.add('hidden'), 1200);
         }
-        prewarmStatus.innerText = "Backend timed out. Please refresh.";
     }
 
     function onOnline() {
@@ -821,7 +808,6 @@
         }, 800);
     }
 
-    // 2. 訊息發送與處理
     async function sendMessage() {
         const text = userInput.value.trim();
         if (!text || isThinking) return;
@@ -844,6 +830,7 @@
                 body: JSON.stringify({ question: text })
             });
             const data = await res.json();
+            if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
             
             // 移除思考中，顯示答案
             const thinkingEl = document.getElementById(thinkingId);
@@ -879,7 +866,6 @@
         chatBody.scrollTop = chatBody.scrollHeight;
     }
 
-    // 3. 事件監聽
     sendBtn.addEventListener('click', sendMessage);
     userInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -894,11 +880,11 @@
         this.style.height = (this.scrollHeight) + 'px';
     });
 
-    // 啟動預熱
     prewarm();
 </script>
 
 </div>
+
 
                                         
                 </div>

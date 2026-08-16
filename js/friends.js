@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const API_BASE_URL = window.BoyceBackend?.baseUrl || 'https://webpython-h2y7.onrender.com';
+  const API_BASE_URL = window.BoyceApiConfig?.baseUrl || window.BoyceBackend?.baseUrl || 'https://api.boycelab.com';
   let retryScheduled = false;
 
   function createFriendCard(friend) {
@@ -67,7 +67,7 @@
       });
     } catch (error) {
       containers.forEach(container => {
-        renderEmpty(container, '後端正在喚醒，友站名單稍後會自動重新載入。');
+        renderEmpty(container, '目前無法連上友站資料服務，連線恢復後會自動重新載入。');
       });
 
       if (!retryScheduled) {
@@ -114,7 +114,7 @@
 
       submitButton.disabled = true;
       status.className = 'form-status';
-      status.textContent = '正在送出申請；若 Render 休眠，可能需要約一分鐘喚醒。';
+      status.textContent = '正在透過 Cloudflare 邊緣 API 送出申請…';
 
       try {
         const response = await fetch(`${API_BASE_URL}/friend-applications`, {

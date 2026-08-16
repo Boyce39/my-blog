@@ -1,9 +1,7 @@
 (function () {
   'use strict';
 
-  const API_BASE_URL = 'https://webpython-h2y7.onrender.com';
-  const WAKEUP_KEY = 'boycelab_backend_wakeup_at';
-  const WAKEUP_INTERVAL = 10 * 60 * 1000;
+  const API_BASE_URL = window.BoyceApiConfig?.baseUrl || 'https://api.boycelab.com';
   let pendingRequest = null;
 
   function emit(state, detail) {
@@ -12,41 +10,22 @@
     }));
   }
 
-  function shouldWake(force) {
-    if (force) return true;
-
-    try {
-      const lastWakeup = Number(sessionStorage.getItem(WAKEUP_KEY) || 0);
-      return Date.now() - lastWakeup > WAKEUP_INTERVAL;
-    } catch (error) {
-      return true;
-    }
-  }
-
-  function rememberWakeup() {
-    try {
-      sessionStorage.setItem(WAKEUP_KEY, String(Date.now()));
-    } catch (error) {
-      // Storage may be unavailable in strict privacy modes.
-    }
-  }
-
-  function wake(options) {
-    const force = Boolean(options && options.force);
-
+  function check() {
     if (pendingRequest) return pendingRequest;
-    if (!shouldWake(force)) return Promise.resolve({ state: 'recently-requested' });
+    emit('checking');
 
-    rememberWakeup();
-    emit('waking');
+    const controller = new AbortController();
+    const timer = window.setTimeout(function () {
+      controller.abort();
+    }, 8000);
 
-    pendingRequest = fetch(`${API_BASE_URL}/test-api`, {
+    pendingRequest = fetch(`${API_BASE_URL}/health`, {
       method: 'GET',
       mode: 'cors',
       cache: 'no-store',
       credentials: 'omit',
-      keepalive: true,
-      headers: { Accept: 'application/json' }
+      headers: { Accept: 'application/json' },
+      signal: controller.signal
     })
       .then(function (response) {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -58,6 +37,7 @@
         return { state: 'unavailable', error: error };
       })
       .finally(function () {
+        window.clearTimeout(timer);
         pendingRequest = null;
       });
 
@@ -66,19 +46,10 @@
 
   window.BoyceBackend = {
     baseUrl: API_BASE_URL,
-    wake: wake
+    check: check,
+    wake: check
   };
 
-  wake();
-  window.setInterval(function () {
-    wake({ force: true });
-  }, WAKEUP_INTERVAL);
-
-  document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'visible') wake();
-  });
-
-  window.addEventListener('online', function () {
-    wake({ force: true });
-  });
+  check();
+  window.addEventListener('online', check);
 })();

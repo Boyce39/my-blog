@@ -27,12 +27,12 @@
           
             <meta name="description"
               content=" 系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。
-v3.0.2 (2026-08-11)
-訂閱即時回饋、匿名安全稽核與介面科技化
+v4.0.0 (2026-08-16)
+Cloudflare 邊緣後端遷移與資料安全重構
 
 
-⚡ 訂閱不再卡住：改由隱藏背景通道送出 Brevo 表單，不等待跨站回應即可立即顯示成功彈窗並恢復操作
-🛰️ 全站 HUD 介面：加入低透明度系統角標、掃描光束、游標光場、...">
+☁️ 後端全面遷移：將 Flask &amp;#x2F; Render API 重構為 Cloudflare Workers，正式使用 api.boycelab.com
+�...">
             
                 
                     <meta name="keywords" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
@@ -46,15 +46,15 @@ v3.0.2 (2026-08-11)
                       <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf"
                         crossorigin="anonymous">
 
-                      <meta name="description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v3.0.2 (2026-08-11) 訂閱即時回饋、匿名安全稽核與介面科技化   ⚡ 訂閱不再卡住：改由隱藏背景通道送出 Brevo 表單，不等待跨站回應即可立即顯示成功彈窗並恢復操作 🛰️ 全站 HUD 介面：加入低透明度系統角標、掃描光束、游標光場、細緻網格與卡片訊號節點 📱 響應式調校：手機版自動隱藏 HUD 文字、降低網格與動畫">
+                      <meta name="description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.0.0 (2026-08-16) Cloudflare 邊緣後端遷移與資料安全重構   ☁️ 後端全面遷移：將 Flask &#x2F; Render API 重構為 Cloudflare Workers，正式使用 api.boycelab.com 🗃️ D1 資料層：AI 紀錄、匿名留言、友站申請與全域限流改由 Cloudflare">
 <meta property="og:type" content="website">
 <meta property="og:title" content="版本更新紀錄">
 <meta property="og:url" content="https://www.boycelab.com/changelog/index.html">
 <meta property="og:site_name" content="里肌肉實驗室">
-<meta property="og:description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v3.0.2 (2026-08-11) 訂閱即時回饋、匿名安全稽核與介面科技化   ⚡ 訂閱不再卡住：改由隱藏背景通道送出 Brevo 表單，不等待跨站回應即可立即顯示成功彈窗並恢復操作 🛰️ 全站 HUD 介面：加入低透明度系統角標、掃描光束、游標光場、細緻網格與卡片訊號節點 📱 響應式調校：手機版自動隱藏 HUD 文字、降低網格與動畫">
+<meta property="og:description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.0.0 (2026-08-16) Cloudflare 邊緣後端遷移與資料安全重構   ☁️ 後端全面遷移：將 Flask &#x2F; Render API 重構為 Cloudflare Workers，正式使用 api.boycelab.com 🗃️ D1 資料層：AI 紀錄、匿名留言、友站申請與全域限流改由 Cloudflare">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-08-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-08-11T08:14:33.605Z">
+<meta property="article:modified_time" content="2026-08-16T02:54:16.261Z">
 <meta property="article:author" content="李柏毅 BoyceLab">
 <meta property="article:tag" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
 <meta name="twitter:card" content="summary">
@@ -97,6 +97,7 @@ v3.0.2 (2026-08-11)
 
                                                   <link rel="stylesheet" href="/css/custom-tech.css">
                                                   <link rel="stylesheet" href="/css/site-refresh.css">
+                                                  <script src="/js/api-config.js"></script>
 <meta name="generator" content="Hexo 8.1.1"></head>
 
           </head>
@@ -442,7 +443,7 @@ v3.0.2 (2026-08-11)
 
                         </div>
                         <div class="wordcount need-seperator meta-info">
-                          2.5k 詞
+                          2.9k 詞
                         </div>
                         
                           <div class="need-seperator meta-info">
@@ -455,6 +456,18 @@ v3.0.2 (2026-08-11)
                 <div class="e-content article-entry" itemprop="articleBody">
                   
                                       <h1 id="系統更新日誌"><a href="#系統更新日誌" class="headerlink" title=" 系統更新日誌"></a><i class="fa-solid fa-code-branch"></i> 系統更新日誌</h1><p>這裡記錄了本站的所有重大更新與功能迭代。</p>
+<h2 id="v4-0-0-2026-08-16"><a href="#v4-0-0-2026-08-16" class="headerlink" title="v4.0.0 (2026-08-16)"></a>v4.0.0 (2026-08-16)</h2><blockquote>
+<p><strong>Cloudflare 邊緣後端遷移與資料安全重構</strong></p>
+</blockquote>
+<ul>
+<li>☁️ <strong>後端全面遷移</strong>：將 Flask &#x2F; Render API 重構為 Cloudflare Workers，正式使用 <code>api.boycelab.com</code></li>
+<li>🗃️ <strong>D1 資料層</strong>：AI 紀錄、匿名留言、友站申請與全域限流改由 Cloudflare D1 儲存</li>
+<li>⚡ <strong>移除保活輪詢</strong>：不再每隔一段時間傳送測試封包，頁面只做一次快速健康檢查</li>
+<li>🛡️ <strong>後台安全保護</strong>：匿名原始 IP、約略位置與友站審核改用 Bearer Token 保護，金鑰僅保留於工作階段</li>
+<li>📬 <strong>可靠匿名傳送</strong>：斷線時保留於瀏覽器佇列，恢復網路後自動重試，並以 <code>client_id</code> 防止重複寫入</li>
+<li>🌐 <strong>前端通道統一</strong>：AI 助理、匿名留言、友站、聊天室與獨立管理後台全部改用同一 API 設定</li>
+<li>🧪 <strong>完整驗證</strong>：加入 Worker 語法檢查、D1 migration、Gemini 模擬服務與端對端整合測試</li>
+</ul>
 <h2 id="v3-0-2-2026-08-11"><a href="#v3-0-2-2026-08-11" class="headerlink" title="v3.0.2 (2026-08-11)"></a>v3.0.2 (2026-08-11)</h2><blockquote>
 <p><strong>訂閱即時回饋、匿名安全稽核與介面科技化</strong></p>
 </blockquote>

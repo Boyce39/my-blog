@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const API_BASE_URL = window.BoyceBackend?.baseUrl || 'https://webpython-h2y7.onrender.com';
+  const API_BASE_URL = window.BoyceApiConfig?.baseUrl || window.BoyceBackend?.baseUrl || 'https://api.boycelab.com';
   const STORAGE_KEY = 'boycelab_anonymous_outbox_v1';
   const MAX_QUEUE_SIZE = 10;
   let memoryQueue = [];
@@ -57,7 +57,7 @@
       panel.classList.add('offline');
       text.textContent = '目前離線；訊息會保留在這台裝置，恢復網路後重試。';
     } else {
-      text.textContent = '正在喚醒留言後端；現在仍可直接輸入並送出。';
+      text.textContent = '正在確認 Cloudflare 邊緣 API；現在仍可直接輸入並送出。';
     }
   }
 
@@ -81,7 +81,7 @@
 
     flushing = true;
     const item = queue[0];
-    setFeedback('訊息正在背景傳送；Render 冷啟動時可能需要約一分鐘。');
+    setFeedback('訊息正在透過 Cloudflare 邊緣網路背景傳送。');
 
     try {
       const response = await fetch(`${API_BASE_URL}/anonymous-message`, {
@@ -175,7 +175,7 @@
   function init() {
     setupForm();
     renderQueueCount();
-    setConnection(navigator.onLine ? 'waking' : 'offline');
+    setConnection(navigator.onLine ? 'checking' : 'offline');
     flushQueue();
 
     window.addEventListener('boycelab:backend', event => {
@@ -183,15 +183,19 @@
         setConnection('ready');
         flushQueue();
       } else if (event.detail?.state === 'unavailable') {
-        setConnection(navigator.onLine ? 'waking' : 'offline');
+        setConnection(navigator.onLine ? 'checking' : 'offline');
       }
     });
     window.addEventListener('online', () => {
-      setConnection('waking');
+      setConnection('checking');
       window.BoyceBackend?.wake?.({ force: true });
       flushQueue();
     });
     window.addEventListener('offline', () => setConnection('offline'));
+
+    window.BoyceBackend?.check?.().then(result => {
+      setConnection(result?.state === 'ready' ? 'ready' : (navigator.onLine ? 'checking' : 'offline'));
+    });
   }
 
   if (document.readyState === 'loading') {
