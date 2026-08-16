@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/assistant/index.html</loc>
+    <loc>https://www.boycelab.com/anonymous/index.html</loc>
     
     <lastmod>2026-08-16</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/anonymous/index.html</loc>
+    <loc>https://www.boycelab.com/assistant/index.html</loc>
     
     <lastmod>2026-08-16</lastmod>
     
@@ -135,13 +135,6 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/tags/%E8%B3%87%E5%AE%89/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.boycelab.com/tags/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -150,6 +143,13 @@
   
   <url>
     <loc>https://www.boycelab.com/tags/SITCON2026/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E8%B3%87%E5%AE%89/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -172,7 +172,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/</loc>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -186,14 +186,14 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/</loc>
+    <loc>https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -207,7 +207,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/Writeup/</loc>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -221,14 +221,14 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/</loc>
+    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/</loc>
+    <loc>https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/Writeup/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
