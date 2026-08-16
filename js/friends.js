@@ -2,7 +2,14 @@
   'use strict';
 
   const API_BASE_URL = window.BoyceApiConfig?.baseUrl || window.BoyceBackend?.baseUrl || 'https://api.boycelab.com';
+  const ICON_MAX_SOURCE_BYTES = 5 * 1024 * 1024;
+  const ICON_MAX_DATA_LENGTH = 180000;
   let retryScheduled = false;
+
+  function safeIconData(value) {
+    const icon = String(value || '');
+    return icon.length <= ICON_MAX_DATA_LENGTH && /^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(icon) ? icon : '';
+  }
 
   function createFriendCard(friend) {
     const card = document.createElement('a');
@@ -10,6 +17,23 @@
     card.href = friend.site_url;
     card.target = '_blank';
     card.rel = 'noopener noreferrer';
+
+    const top = document.createElement('span');
+    top.className = 'friend-card-top';
+
+    const iconData = safeIconData(friend.icon_data);
+    if (iconData) {
+      const icon = document.createElement('img');
+      icon.className = 'friend-icon';
+      icon.src = iconData;
+      icon.alt = '';
+      icon.loading = 'lazy';
+      top.appendChild(icon);
+      card.classList.add('has-icon');
+    }
+
+    const identity = document.createElement('span');
+    identity.className = 'friend-identity';
 
     const domain = document.createElement('span');
     domain.className = 'friend-domain';
@@ -27,7 +51,19 @@
     description.className = 'friend-description';
     description.textContent = friend.description || '點擊前往這個網站。';
 
-    card.append(domain, name, description);
+    const arrow = document.createElement('span');
+    arrow.className = 'friend-arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '↗';
+
+    identity.append(name, domain);
+    top.append(identity, arrow);
+
+    const footer = document.createElement('span');
+    footer.className = 'friend-card-footer';
+    footer.innerHTML = '<span>VISIT WEBSITE</span><i></i>';
+
+    card.append(top, description, footer);
     return card;
   }
 
@@ -37,6 +73,89 @@
     empty.className = 'friend-empty';
     empty.textContent = message;
     container.appendChild(empty);
+  }
+
+  function readImage(file) {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      const objectUrl = URL.createObjectURL(file);
+      image.onload = () => {
+        URL.revokeObjectURL(objectUrl);
+        resolve(image);
+      };
+      image.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        reject(new Error('無法讀取這張圖片'));
+      };
+      image.src = objectUrl;
+    });
+  }
+
+  async function compressIcon(file) {
+    if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
+      throw new Error('僅支援 PNG、JPG 或 WebP 圖片');
+    }
+    if (file.size > ICON_MAX_SOURCE_BYTES) throw new Error('原始圖片不可超過 5MB');
+
+    const image = await readImage(file);
+    const canvas = document.createElement('canvas');
+    canvas.width = 256;
+    canvas.height = 256;
+    const context = canvas.getContext('2d', { alpha: true });
+    const sourceSize = Math.min(image.naturalWidth, image.naturalHeight);
+    const sourceX = (image.naturalWidth - sourceSize) / 2;
+    const sourceY = (image.naturalHeight - sourceSize) / 2;
+    context.clearRect(0, 0, 256, 256);
+    context.drawImage(image, sourceX, sourceY, sourceSize, sourceSize, 0, 0, 256, 256);
+
+    let dataUrl = canvas.toDataURL('image/webp', 0.82);
+    if (dataUrl.length > ICON_MAX_DATA_LENGTH) {
+      const compact = document.createElement('canvas');
+      compact.width = 160;
+      compact.height = 160;
+      compact.getContext('2d').drawImage(canvas, 0, 0, 160, 160);
+      dataUrl = compact.toDataURL('image/webp', 0.7);
+    }
+    if (dataUrl.length > ICON_MAX_DATA_LENGTH) throw new Error('圖片內容太複雜，請改用較小的 Icon');
+    return dataUrl;
+  }
+
+  function setupIconUpload(form, status) {
+    const input = form.querySelector('#friendIcon');
+    const preview = form.querySelector('#friendIconPreview');
+    const placeholder = form.querySelector('#friendIconPlaceholder');
+    const removeButton = form.querySelector('#friendIconRemove');
+    let iconData = '';
+
+    function reset() {
+      iconData = '';
+      input.value = '';
+      preview.src = '';
+      preview.hidden = true;
+      placeholder.hidden = false;
+      removeButton.hidden = true;
+    }
+
+    input.addEventListener('change', async () => {
+      const file = input.files?.[0];
+      if (!file) return reset();
+      status.className = 'form-status';
+      status.textContent = '正在安全處理與壓縮網站 Icon…';
+      try {
+        iconData = await compressIcon(file);
+        preview.src = iconData;
+        preview.hidden = false;
+        placeholder.hidden = true;
+        removeButton.hidden = false;
+        status.textContent = 'Icon 已完成裁切與壓縮，送出申請時會一併上傳。';
+      } catch (error) {
+        reset();
+        status.className = 'form-status error';
+        status.textContent = error.message;
+      }
+    });
+    removeButton.addEventListener('click', reset);
+    return { getValue: () => iconData, reset };
   }
 
   async function loadFriends() {
@@ -87,6 +206,7 @@
     const form = document.getElementById('friendApplicationForm');
     const status = document.getElementById('friendFormStatus');
     if (!toggle || !panel || !form || !status) return;
+    const iconUpload = setupIconUpload(form, status);
 
     function setPanel(open) {
       panel.hidden = !open;
@@ -108,6 +228,7 @@
         site_url: String(formData.get('site_url') || '').trim(),
         description: String(formData.get('description') || '').trim(),
         contact: String(formData.get('contact') || '').trim(),
+        icon_data: iconUpload.getValue(),
         company: String(formData.get('company') || ''),
         client_id: window.crypto?.randomUUID?.() || `friend-${Date.now()}-${Math.random().toString(16).slice(2)}`
       };
@@ -130,6 +251,7 @@
         if (!response.ok) throw new Error(result.error || `HTTP ${response.status}`);
 
         form.reset();
+        iconUpload.reset();
         status.className = 'form-status success';
         status.textContent = '申請已收到！審核通過後會出現在友站列表。';
       } catch (error) {

@@ -27,12 +27,12 @@
           
             <meta name="description"
               content=" 系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。
-v4.0.1 (2026-08-16)
-友站 API 快取切換修正
+v4.1.0 (2026-08-16)
+友站品牌圖示、管理刪除與匿名公開回覆牆
 
 
-🔄 強制更新前端腳本：為 API 設定、友站、匿名留言與健康檢查腳本加入版本參數，避免瀏覽器沿用 Render 時期的快取
-🗃️ 友站資料補遷移：將遷移期間仍送達 Render 的待...">
+🖼️ 友站 Icon 上傳：申請者可上傳 PNG、JPG 或 WebP，瀏覽器會自動裁切成正方形並壓縮後安全送入 D1
+✨ 友站卡片升級：新增 Icon、科技感導覽箭頭、資...">
             
                 
                     <meta name="keywords" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
@@ -46,15 +46,15 @@ v4.0.1 (2026-08-16)
                       <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf"
                         crossorigin="anonymous">
 
-                      <meta name="description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.0.1 (2026-08-16) 友站 API 快取切換修正   🔄 強制更新前端腳本：為 API 設定、友站、匿名留言與健康檢查腳本加入版本參數，避免瀏覽器沿用 Render 時期的快取 🗃️ 友站資料補遷移：將遷移期間仍送達 Render 的待審核友站申請搬入 Cloudflare D1  v4.0.0 (2026-08-16)">
+                      <meta name="description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.1.0 (2026-08-16) 友站品牌圖示、管理刪除與匿名公開回覆牆   🖼️ 友站 Icon 上傳：申請者可上傳 PNG、JPG 或 WebP，瀏覽器會自動裁切成正方形並壓縮後安全送入 D1 ✨ 友站卡片升級：新增 Icon、科技感導覽箭頭、資訊層級與細緻互動；沒有圖片時維持原本的純文字卡片 🗑️ 後台永久刪除：管理員可直接刪">
 <meta property="og:type" content="website">
 <meta property="og:title" content="版本更新紀錄">
 <meta property="og:url" content="https://www.boycelab.com/changelog/index.html">
 <meta property="og:site_name" content="里肌肉實驗室">
-<meta property="og:description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.0.1 (2026-08-16) 友站 API 快取切換修正   🔄 強制更新前端腳本：為 API 設定、友站、匿名留言與健康檢查腳本加入版本參數，避免瀏覽器沿用 Render 時期的快取 🗃️ 友站資料補遷移：將遷移期間仍送達 Render 的待審核友站申請搬入 Cloudflare D1  v4.0.0 (2026-08-16)">
+<meta property="og:description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.1.0 (2026-08-16) 友站品牌圖示、管理刪除與匿名公開回覆牆   🖼️ 友站 Icon 上傳：申請者可上傳 PNG、JPG 或 WebP，瀏覽器會自動裁切成正方形並壓縮後安全送入 D1 ✨ 友站卡片升級：新增 Icon、科技感導覽箭頭、資訊層級與細緻互動；沒有圖片時維持原本的純文字卡片 🗑️ 後台永久刪除：管理員可直接刪">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-08-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-08-16T03:23:10.193Z">
+<meta property="article:modified_time" content="2026-08-16T04:34:56.123Z">
 <meta property="article:author" content="李柏毅 BoyceLab">
 <meta property="article:tag" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
 <meta name="twitter:card" content="summary">
@@ -97,7 +97,7 @@ v4.0.1 (2026-08-16)
 
                                                   <link rel="stylesheet" href="/css/custom-tech.css">
                                                   <link rel="stylesheet" href="/css/site-refresh.css">
-                                                  <script src="/js/api-config.js?v=4.0.1"></script>
+                                                  <script src="/js/api-config.js?v=4.1.0"></script>
 <meta name="generator" content="Hexo 8.1.1"></head>
 
           </head>
@@ -443,7 +443,7 @@ v4.0.1 (2026-08-16)
 
                         </div>
                         <div class="wordcount need-seperator meta-info">
-                          3k 詞
+                          3.3k 詞
                         </div>
                         
                           <div class="need-seperator meta-info">
@@ -456,6 +456,18 @@ v4.0.1 (2026-08-16)
                 <div class="e-content article-entry" itemprop="articleBody">
                   
                                       <h1 id="系統更新日誌"><a href="#系統更新日誌" class="headerlink" title=" 系統更新日誌"></a><i class="fa-solid fa-code-branch"></i> 系統更新日誌</h1><p>這裡記錄了本站的所有重大更新與功能迭代。</p>
+<h2 id="v4-1-0-2026-08-16"><a href="#v4-1-0-2026-08-16" class="headerlink" title="v4.1.0 (2026-08-16)"></a>v4.1.0 (2026-08-16)</h2><blockquote>
+<p><strong>友站品牌圖示、管理刪除與匿名公開回覆牆</strong></p>
+</blockquote>
+<ul>
+<li>🖼️ <strong>友站 Icon 上傳</strong>：申請者可上傳 PNG、JPG 或 WebP，瀏覽器會自動裁切成正方形並壓縮後安全送入 D1</li>
+<li>✨ <strong>友站卡片升級</strong>：新增 Icon、科技感導覽箭頭、資訊層級與細緻互動；沒有圖片時維持原本的純文字卡片</li>
+<li>🗑️ <strong>後台永久刪除</strong>：管理員可直接刪除待審、通過或拒絕的友站申請，公開列表同步移除</li>
+<li>💬 <strong>匿名公開回覆牆</strong>：新增獨立問答頁，只展示管理員親自回覆並選擇發布的匿名訊息</li>
+<li>📝 <strong>回覆草稿與撤回</strong>：後台支援儲存草稿、發布網站、撤回公開與清除回覆，IG 匿名卡下載功能完整保留</li>
+<li>🔒 <strong>隱私分層</strong>：公開回覆 API 不輸出 IP、位置、User-Agent 或其他安全稽核欄位</li>
+<li>🧪 <strong>整合驗證</strong>：端到端測試涵蓋 Icon 寫入與顯示、友站審核及刪除、匿名回覆發布與公開讀取</li>
+</ul>
 <h2 id="v4-0-1-2026-08-16"><a href="#v4-0-1-2026-08-16" class="headerlink" title="v4.0.1 (2026-08-16)"></a>v4.0.1 (2026-08-16)</h2><blockquote>
 <p><strong>友站 API 快取切換修正</strong></p>
 </blockquote>
@@ -662,7 +674,7 @@ v4.0.1 (2026-08-16)
                         <script src="/js/local-search.js"></script>
                         <script src="/js/tech-effects.js"></script>
                         <script src="/js/subscribe.js"></script>
-                        <script src="/js/backend-wakeup.js?v=4.0.1"></script>
+                        <script src="/js/backend-wakeup.js?v=4.1.0"></script>
                         
                           <script src="https://cdn.staticfile.org/mermaid/10.6.1/mermaid.min.js"></script>
                           <script>
