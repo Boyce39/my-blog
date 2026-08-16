@@ -191,6 +191,12 @@
       <span class="tech-hud-label hud-coordinate">NCHU · AMATH · ${new Date().getFullYear()}</span>`;
     document.body.appendChild(hud);
 
+    const telemetry = document.createElement('div');
+    telemetry.id = 'tech-telemetry-rail';
+    telemetry.setAttribute('aria-hidden', 'true');
+    telemetry.innerHTML = '<span>PYTHON</span><i></i><span>SECURITY</span><i></i><span>APPLIED MATH</span>';
+    document.body.appendChild(telemetry);
+
     if (reducedMotion || !window.matchMedia('(pointer: fine)').matches) return;
     let pointerFrame = 0;
     window.addEventListener('pointermove', function (event) {
@@ -200,6 +206,18 @@
         interfaceLayer.style.setProperty('--pointer-y', `${event.clientY}px`);
       });
     }, { passive: true });
+  }
+
+  function initSectionTelemetry() {
+    const sections = document.querySelectorAll('.landing-section, .community-hero, .reply-wall-panel');
+    sections.forEach(function (section, index) {
+      if (section.querySelector(':scope > .tech-section-label')) return;
+      const label = document.createElement('span');
+      label.className = 'tech-section-label';
+      label.setAttribute('aria-hidden', 'true');
+      label.textContent = `SECTION ${String(index + 1).padStart(2, '0')}`;
+      section.appendChild(label);
+    });
   }
 
   function initCopyButtons() {
@@ -230,6 +248,7 @@
 
   ready(function () {
     initSystemInterface();
+    initSectionTelemetry();
     initReadingProgress();
     initCardEffects();
     initAmbientNetwork();

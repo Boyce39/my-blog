@@ -84,8 +84,8 @@
 <link rel="stylesheet" href="/css/style.css">
 
                                                   <link rel="stylesheet" href="/css/custom-tech.css">
-                                                  <link rel="stylesheet" href="/css/site-refresh.css">
-                                                  <script src="/js/api-config.js?v=4.1.0"></script>
+                                                  <link rel="stylesheet" href="/css/site-refresh.css?v=4.2.0">
+                                                  <script src="/js/api-config.js?v=4.2.0"></script>
 <meta name="generator" content="Hexo 8.1.1"></head>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
@@ -252,6 +252,46 @@
             flex-wrap: wrap;
             gap: 12px;
             margin-top: 30px;
+        }
+
+        .hero-signal-rail {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 12px;
+            max-width: 640px;
+            margin-top: 18px;
+            padding: 10px 12px;
+            border-top: 1px solid var(--lab-border);
+            border-bottom: 1px solid var(--lab-border);
+            color: var(--lab-text-faint);
+            font: 600 0.68rem/1.4 "Roboto Mono", monospace;
+            letter-spacing: 0.08em;
+        }
+
+        .hero-signal-rail::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--lab-accent);
+            animation: hero-signal-pulse 2.2s ease-in-out infinite;
+        }
+
+        .hero-signal-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 14px;
+        }
+
+        .hero-signal-links a {
+            color: var(--lab-text-muted) !important;
+            text-decoration: none !important;
+        }
+
+        .hero-signal-links a:hover,
+        .hero-signal-links a:focus-visible {
+            color: var(--lab-accent-strong) !important;
         }
 
         .hero-profile {
@@ -702,6 +742,16 @@
                 width: 100%;
             }
 
+            .hero-signal-rail {
+                grid-template-columns: auto minmax(0, 1fr);
+            }
+
+            .hero-signal-links {
+                grid-column: 1 / -1;
+                justify-content: flex-start;
+                padding-left: 19px;
+            }
+
             .achievement-item {
                 grid-template-columns: 1fr;
                 gap: 8px;
@@ -848,7 +898,10 @@
                 <div class="hero-actions">
                     <a href="/blog/" class="lab-button"><i class="fa-solid fa-book-open"></i>閱讀技術文章</a>
                     <a href="/about/" class="lab-button secondary"><i class="fa-regular fa-user"></i>認識我</a>
-                    <a href="/friends/" class="lab-button secondary"><i class="fa-solid fa-link"></i>探索友站</a>
+                </div>
+                <div class="hero-signal-rail" aria-label="匿名頻道快速入口">
+                    <span>ANONYMOUS CHANNEL / OPEN</span>
+                    <span class="hero-signal-links"><a href="/anonymous-replies/">查看公開匿名牆 →</a><a href="/anonymous/">送出匿名訊息</a></span>
                 </div>
             </div>
 
@@ -1041,10 +1094,10 @@
     <script src="/js/light-dark-switch.js"></script>
     <script src="https://cdn.staticfile.org/fuse.js/6.6.2/fuse.min.js"></script>
     <script src="/js/local-search.js"></script>
-    <script src="/js/tech-effects.js"></script>
+    <script src="/js/tech-effects.js?v=4.2.0"></script>
     <script src="/js/subscribe.js"></script>
-    <script src="/js/backend-wakeup.js?v=4.1.0"></script>
-    <script src="/js/friends.js?v=4.1.0"></script>
+    <script src="/js/backend-wakeup.js?v=4.2.0"></script>
+    <script src="/js/friends.js?v=4.2.0"></script>
     <script>
         (function () {
             const items = document.querySelectorAll('.landing-reveal');
