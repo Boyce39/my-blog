@@ -27,12 +27,14 @@
           
             <meta name="description"
               content=" 系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。
-v4.4.0 (2026-08-25)
-完整照片構圖、免登入文章留言與閱讀介面精簡
+v4.4.1 (2026-08-25)
+留言路徑判斷修正
 
 
-🖼️ 照片保留完整構圖：首頁改用完整橫幅照片，不再裁成頭像；以較矮的小型資料卡呈現，兼顧人物、看板與環境
-💬 免登入文章留言：移除 Giscus／GitHub 登入流...">
+🧭 限定文章頁載入：修正留言板誤顯示於關於、聊天、更新日誌等非文章頁面，避免送出無效文章路徑
+✅ 文章留言維持正常：正式部落格文章仍可免登入讀取、分頁與送出留言
+
+v4.4.0 (2026-08...">
             
                 
                     <meta name="keywords" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
@@ -46,15 +48,15 @@ v4.4.0 (2026-08-25)
                       <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf"
                         crossorigin="anonymous">
 
-                      <meta name="description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.4.0 (2026-08-25) 完整照片構圖、免登入文章留言與閱讀介面精簡   🖼️ 照片保留完整構圖：首頁改用完整橫幅照片，不再裁成頭像；以較矮的小型資料卡呈現，兼顧人物、看板與環境 💬 免登入文章留言：移除 Giscus／GitHub 登入流程，讀者只需填寫顯示名稱與留言內容即可公開回應 🛡️ 留言防濫用：新增蜜罐、防重送、">
+                      <meta name="description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.4.1 (2026-08-25) 留言路徑判斷修正   🧭 限定文章頁載入：修正留言板誤顯示於關於、聊天、更新日誌等非文章頁面，避免送出無效文章路徑 ✅ 文章留言維持正常：正式部落格文章仍可免登入讀取、分頁與送出留言  v4.4.0 (2026-08-25) 完整照片構圖、免登入文章留言與閱讀介面精簡   🖼️ 照片保留完整構圖：首">
 <meta property="og:type" content="website">
 <meta property="og:title" content="版本更新紀錄">
 <meta property="og:url" content="https://www.boycelab.com/changelog/index.html">
 <meta property="og:site_name" content="里肌肉實驗室">
-<meta property="og:description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.4.0 (2026-08-25) 完整照片構圖、免登入文章留言與閱讀介面精簡   🖼️ 照片保留完整構圖：首頁改用完整橫幅照片，不再裁成頭像；以較矮的小型資料卡呈現，兼顧人物、看板與環境 💬 免登入文章留言：移除 Giscus／GitHub 登入流程，讀者只需填寫顯示名稱與留言內容即可公開回應 🛡️ 留言防濫用：新增蜜罐、防重送、">
+<meta property="og:description" content="系統更新日誌這裡記錄了本站的所有重大更新與功能迭代。 v4.4.1 (2026-08-25) 留言路徑判斷修正   🧭 限定文章頁載入：修正留言板誤顯示於關於、聊天、更新日誌等非文章頁面，避免送出無效文章路徑 ✅ 文章留言維持正常：正式部落格文章仍可免登入讀取、分頁與送出留言  v4.4.0 (2026-08-25) 完整照片構圖、免登入文章留言與閱讀介面精簡   🖼️ 照片保留完整構圖：首">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-08-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-08-24T16:45:09.280Z">
+<meta property="article:modified_time" content="2026-08-24T17:07:45.864Z">
 <meta property="article:author" content="李柏毅 BoyceLab">
 <meta property="article:tag" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
 <meta name="twitter:card" content="summary">
@@ -443,7 +445,7 @@ v4.4.0 (2026-08-25)
 
                         </div>
                         <div class="wordcount need-seperator meta-info">
-                          4.3k 詞
+                          4.5k 詞
                         </div>
                         
                           <div class="need-seperator meta-info">
@@ -456,6 +458,13 @@ v4.4.0 (2026-08-25)
                 <div class="e-content article-entry" itemprop="articleBody">
                   
                                       <h1 id="系統更新日誌"><a href="#系統更新日誌" class="headerlink" title=" 系統更新日誌"></a><i class="fa-solid fa-code-branch"></i> 系統更新日誌</h1><p>這裡記錄了本站的所有重大更新與功能迭代。</p>
+<h2 id="v4-4-1-2026-08-25"><a href="#v4-4-1-2026-08-25" class="headerlink" title="v4.4.1 (2026-08-25)"></a>v4.4.1 (2026-08-25)</h2><blockquote>
+<p><strong>留言路徑判斷修正</strong></p>
+</blockquote>
+<ul>
+<li>🧭 <strong>限定文章頁載入</strong>：修正留言板誤顯示於關於、聊天、更新日誌等非文章頁面，避免送出無效文章路徑</li>
+<li>✅ <strong>文章留言維持正常</strong>：正式部落格文章仍可免登入讀取、分頁與送出留言</li>
+</ul>
 <h2 id="v4-4-0-2026-08-25"><a href="#v4-4-0-2026-08-25" class="headerlink" title="v4.4.0 (2026-08-25)"></a>v4.4.0 (2026-08-25)</h2><blockquote>
 <p><strong>完整照片構圖、免登入文章留言與閱讀介面精簡</strong></p>
 </blockquote>
@@ -627,48 +636,6 @@ v4.4.0 (2026-08-25)
           
 
               
-                <section id="article-comments" class="article-comments" data-article-path="/changelog/index.html" aria-labelledby="article-comments-title">
-  <header class="article-comments-header">
-    <div>
-      <span class="article-comments-kicker">READER DISCUSSION</span>
-      <h2 id="article-comments-title">文章留言</h2>
-      <p>不用登入，留下顯示名稱與想說的話即可。</p>
-    </div>
-    <span id="articleCommentCount" class="article-comment-count">讀取中</span>
-  </header>
-
-  <form id="articleCommentForm" class="article-comment-form">
-    <div class="article-comment-fields">
-      <label>
-        <span>顯示名稱</span>
-        <input id="articleCommentName" name="display_name" type="text" maxlength="32" autocomplete="nickname" placeholder="你的名稱" required>
-      </label>
-      <label class="article-comment-message-field">
-        <span>留言內容</span>
-        <textarea id="articleCommentMessage" name="message" rows="4" maxlength="1000" placeholder="分享想法、補充內容，或告訴我哪裡可以寫得更好。" required></textarea>
-      </label>
-    </div>
-    <label class="article-comment-honeypot" aria-hidden="true">
-      <span>Company</span>
-      <input name="company" type="text" tabindex="-1" autocomplete="off">
-    </label>
-    <div class="article-comment-submit-row">
-      <p>公開頁面只顯示名稱、留言與時間；安全稽核資料僅供站長處理濫用。</p>
-      <button id="articleCommentSubmit" type="submit">送出留言</button>
-    </div>
-    <p id="articleCommentStatus" class="article-comment-status" role="status" aria-live="polite"></p>
-  </form>
-
-  <div class="article-comment-list-head">
-    <h3>讀者留言</h3>
-    <button id="articleCommentRefresh" type="button">重新整理</button>
-  </div>
-  <div id="articleCommentList" class="article-comment-list" aria-live="polite" aria-busy="true"></div>
-  <nav id="articleCommentPagination" class="article-comment-pagination" aria-label="文章留言分頁" hidden></nav>
-</section>
-<script src="/js/article-comments.js?v=4.4.0" defer></script>
-
-                
 
                           </div>
                           <div id="footer-wrapper">
