@@ -59,8 +59,8 @@
 <meta property="og:site_name" content="里肌肉實驗室">
 <meta property="og:description" content="AI 助理聊天室                   :root {             --bg1: #0b1220;             --bg2: #0e1a33;             --card: rgba(255, 255, 255, .08);             --card2: rgba(255, 255, 255, .06)">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2026-08-24T15:51:16.667Z">
-<meta property="article:modified_time" content="2026-08-24T15:51:16.667Z">
+<meta property="article:published_time" content="2026-08-24T16:45:09.278Z">
+<meta property="article:modified_time" content="2026-08-24T16:45:09.278Z">
 <meta property="article:author" content="李柏毅 BoyceLab">
 <meta property="article:tag" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
 <meta name="twitter:card" content="summary">
@@ -79,8 +79,8 @@
 <link rel="stylesheet" href="/css/style.css">
 
                                                   <link rel="stylesheet" href="/css/custom-tech.css">
-                                                  <link rel="stylesheet" href="/css/site-refresh.css?v=4.3.0">
-                                                  <script src="/js/api-config.js?v=4.3.0"></script>
+                                                  <link rel="stylesheet" href="/css/site-refresh.css?v=4.4.0">
+                                                  <script src="/js/api-config.js?v=4.4.0"></script>
 <meta name="generator" content="Hexo 8.1.1"></head>
 
           </head>
@@ -415,7 +415,7 @@
 
                     <div class='meta-info-bar'>
                       <div class="meta-info">
-  <time class="dt-published" datetime="2026-08-24T15:51:16.667Z" itemprop="datePublished">2026-08-24</time>
+  <time class="dt-published" datetime="2026-08-24T16:45:09.278Z" itemprop="datePublished">2026-08-25</time>
 </div>
                         <div class="need-seperator meta-info">
                           <div class="meta-cate-flex">
@@ -445,7 +445,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>AI 助理聊天室</title>
-    <script src="/js/api-config.js?v=4.3.0"></script>
+    <script src="/js/api-config.js?v=4.4.0"></script>
     <style>
         :root {
             --bg1: #0b1220;
@@ -1240,26 +1240,47 @@
           
 
               
-                <div id="comment-card" class="comment-card">
-                  <div class="main-title-bar">
-                    <div class="main-title-dot"></div>
-                    <div class="main-title">
-                      留言
-                    </div>
-                  </div>
-                  <div class="giscus"></div>
-                  <script src="https://giscus.app/client.js" data-repo="Boyce39/-Discussions"
-                    data-repo-id="R_kgDOQuShag"
-                    data-category="General"
-                    data-category-id="DIC_kwDOQuShas4C0M76"
-                    data-mapping="pathname"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="bottom"
-                    data-theme="catppuccin_macchiato" data-lang="zh-TW"
-                    crossorigin="anonymous" async>
-                    </script>
-                </div>
+                <section id="article-comments" class="article-comments" data-article-path="/chat/index.html" aria-labelledby="article-comments-title">
+  <header class="article-comments-header">
+    <div>
+      <span class="article-comments-kicker">READER DISCUSSION</span>
+      <h2 id="article-comments-title">文章留言</h2>
+      <p>不用登入，留下顯示名稱與想說的話即可。</p>
+    </div>
+    <span id="articleCommentCount" class="article-comment-count">讀取中</span>
+  </header>
+
+  <form id="articleCommentForm" class="article-comment-form">
+    <div class="article-comment-fields">
+      <label>
+        <span>顯示名稱</span>
+        <input id="articleCommentName" name="display_name" type="text" maxlength="32" autocomplete="nickname" placeholder="你的名稱" required>
+      </label>
+      <label class="article-comment-message-field">
+        <span>留言內容</span>
+        <textarea id="articleCommentMessage" name="message" rows="4" maxlength="1000" placeholder="分享想法、補充內容，或告訴我哪裡可以寫得更好。" required></textarea>
+      </label>
+    </div>
+    <label class="article-comment-honeypot" aria-hidden="true">
+      <span>Company</span>
+      <input name="company" type="text" tabindex="-1" autocomplete="off">
+    </label>
+    <div class="article-comment-submit-row">
+      <p>公開頁面只顯示名稱、留言與時間；安全稽核資料僅供站長處理濫用。</p>
+      <button id="articleCommentSubmit" type="submit">送出留言</button>
+    </div>
+    <p id="articleCommentStatus" class="article-comment-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="article-comment-list-head">
+    <h3>讀者留言</h3>
+    <button id="articleCommentRefresh" type="button">重新整理</button>
+  </div>
+  <div id="articleCommentList" class="article-comment-list" aria-live="polite" aria-busy="true"></div>
+  <nav id="articleCommentPagination" class="article-comment-pagination" aria-label="文章留言分頁" hidden></nav>
+</section>
+<script src="/js/article-comments.js?v=4.4.0" defer></script>
+
                 
 
                           </div>
@@ -1320,9 +1341,9 @@
                         <script src="/js/light-dark-switch.js"></script>
                         <script src="https://cdn.staticfile.org/fuse.js/6.6.2/fuse.min.js"></script>
                         <script src="/js/local-search.js"></script>
-                        <script src="/js/tech-effects.js?v=4.3.0"></script>
+                        <script src="/js/tech-effects.js?v=4.4.0"></script>
                         <script src="/js/subscribe.js"></script>
-                        <script src="/js/backend-wakeup.js?v=4.3.0"></script>
+                        <script src="/js/backend-wakeup.js?v=4.4.0"></script>
                         
                           <script src="https://cdn.staticfile.org/mermaid/10.6.1/mermaid.min.js"></script>
                           <script>

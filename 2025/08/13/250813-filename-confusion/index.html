@@ -114,8 +114,8 @@ Apache 是高度模組化的 Web 伺服器；處理一個 HTTP 請求時，很�
 <link rel="stylesheet" href="/css/style.css">
 
                                                   <link rel="stylesheet" href="/css/custom-tech.css">
-                                                  <link rel="stylesheet" href="/css/site-refresh.css?v=4.3.0">
-                                                  <script src="/js/api-config.js?v=4.3.0"></script>
+                                                  <link rel="stylesheet" href="/css/site-refresh.css?v=4.4.0">
+                                                  <script src="/js/api-config.js?v=4.4.0"></script>
 <meta name="generator" content="Hexo 8.1.1"></head>
 
           </head>
@@ -772,26 +772,47 @@ Apache 是高度模組化的 Web 伺服器；處理一個 HTTP 請求時，很�
           
 
               
-                <div id="comment-card" class="comment-card">
-                  <div class="main-title-bar">
-                    <div class="main-title-dot"></div>
-                    <div class="main-title">
-                      留言
-                    </div>
-                  </div>
-                  <div class="giscus"></div>
-                  <script src="https://giscus.app/client.js" data-repo="Boyce39/-Discussions"
-                    data-repo-id="R_kgDOQuShag"
-                    data-category="General"
-                    data-category-id="DIC_kwDOQuShas4C0M76"
-                    data-mapping="pathname"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="bottom"
-                    data-theme="catppuccin_macchiato" data-lang="zh-TW"
-                    crossorigin="anonymous" async>
-                    </script>
-                </div>
+                <section id="article-comments" class="article-comments" data-article-path="/2025/08/13/250813-filename-confusion/" aria-labelledby="article-comments-title">
+  <header class="article-comments-header">
+    <div>
+      <span class="article-comments-kicker">READER DISCUSSION</span>
+      <h2 id="article-comments-title">文章留言</h2>
+      <p>不用登入，留下顯示名稱與想說的話即可。</p>
+    </div>
+    <span id="articleCommentCount" class="article-comment-count">讀取中</span>
+  </header>
+
+  <form id="articleCommentForm" class="article-comment-form">
+    <div class="article-comment-fields">
+      <label>
+        <span>顯示名稱</span>
+        <input id="articleCommentName" name="display_name" type="text" maxlength="32" autocomplete="nickname" placeholder="你的名稱" required>
+      </label>
+      <label class="article-comment-message-field">
+        <span>留言內容</span>
+        <textarea id="articleCommentMessage" name="message" rows="4" maxlength="1000" placeholder="分享想法、補充內容，或告訴我哪裡可以寫得更好。" required></textarea>
+      </label>
+    </div>
+    <label class="article-comment-honeypot" aria-hidden="true">
+      <span>Company</span>
+      <input name="company" type="text" tabindex="-1" autocomplete="off">
+    </label>
+    <div class="article-comment-submit-row">
+      <p>公開頁面只顯示名稱、留言與時間；安全稽核資料僅供站長處理濫用。</p>
+      <button id="articleCommentSubmit" type="submit">送出留言</button>
+    </div>
+    <p id="articleCommentStatus" class="article-comment-status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="article-comment-list-head">
+    <h3>讀者留言</h3>
+    <button id="articleCommentRefresh" type="button">重新整理</button>
+  </div>
+  <div id="articleCommentList" class="article-comment-list" aria-live="polite" aria-busy="true"></div>
+  <nav id="articleCommentPagination" class="article-comment-pagination" aria-label="文章留言分頁" hidden></nav>
+</section>
+<script src="/js/article-comments.js?v=4.4.0" defer></script>
+
                 
 
                           </div>
@@ -852,9 +873,9 @@ Apache 是高度模組化的 Web 伺服器；處理一個 HTTP 請求時，很�
                         <script src="/js/light-dark-switch.js"></script>
                         <script src="https://cdn.staticfile.org/fuse.js/6.6.2/fuse.min.js"></script>
                         <script src="/js/local-search.js"></script>
-                        <script src="/js/tech-effects.js?v=4.3.0"></script>
+                        <script src="/js/tech-effects.js?v=4.4.0"></script>
                         <script src="/js/subscribe.js"></script>
-                        <script src="/js/backend-wakeup.js?v=4.3.0"></script>
+                        <script src="/js/backend-wakeup.js?v=4.4.0"></script>
                         
                           <script src="https://cdn.staticfile.org/mermaid/10.6.1/mermaid.min.js"></script>
                           <script>
