@@ -2127,3 +2127,115 @@ html[theme='light'] .tech-card-glow {
     animation: none;
   }
 }
+
+/* Compact article cards for blog, archive, category and tag lists */
+.article-type-post.article-index-card {
+  margin-bottom: 18px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.article-index-card .article-inner {
+  min-height: 0;
+  margin-bottom: 0;
+}
+
+.article-index-card .article-main {
+  min-height: 0;
+  padding-bottom: 0;
+}
+
+.article-type-post.article-index-card .article-header {
+  padding: 19px 24px 8px;
+  border-bottom: 0;
+}
+
+.article-type-post.article-index-card .article-header h1,
+.article-type-post.article-index-card .article-title {
+  display: -webkit-box;
+  max-width: none;
+  margin: 0;
+  overflow: hidden;
+  color: var(--lab-text) !important;
+  font-size: clamp(1.15rem, 2vw, 1.38rem);
+  line-height: 1.36;
+  letter-spacing: -0.018em;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.article-type-post.article-index-card .meta-info-bar {
+  gap: 5px 10px;
+  margin-top: 9px;
+  margin-bottom: 3px;
+  font-size: 0.72rem;
+}
+
+.article-index-card .article-tag-list {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.article-type-post.article-index-card .article-entry {
+  width: auto;
+  margin: 0;
+  padding: 4px 24px 17px;
+  font-size: 0.91rem;
+  line-height: 1.62;
+  letter-spacing: 0;
+}
+
+.article-type-post.article-index-card .post-outline-text {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  line-height: 1.62;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.article-type-post.article-index-card .post-outline-list {
+  margin: 0;
+}
+
+.article-type-post.article-index-card .right-panel.non-pic {
+  min-width: 58px;
+}
+
+.article-type-post.article-index-card .right-panel.non-pic i {
+  margin-right: 19px;
+  font-size: 18px;
+}
+
+@media (max-width: 640px) {
+  .article-type-post.article-index-card {
+    margin-bottom: 14px;
+    border-radius: 13px;
+  }
+
+  .article-type-post.article-index-card .article-header {
+    padding: 16px 18px 6px;
+  }
+
+  .article-type-post.article-index-card .article-header h1,
+  .article-type-post.article-index-card .article-title {
+    font-size: 1.12rem;
+    line-height: 1.4;
+  }
+
+  .article-type-post.article-index-card .meta-info-bar {
+    margin-top: 7px;
+    font-size: 0.7rem;
+  }
+
+  .article-type-post.article-index-card .article-entry {
+    padding: 3px 18px 15px;
+    font-size: 0.88rem !important;
+    line-height: 1.58;
+  }
+
+  .article-type-post.article-index-card .post-outline-text {
+    line-height: 1.58;
+    -webkit-line-clamp: 3;
+  }
+}
