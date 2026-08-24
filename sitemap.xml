@@ -144,13 +144,6 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/tags/SITCON2026/</loc>
-    <lastmod>2026-08-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.boycelab.com/tags/%E5%B0%88%E6%A1%88/</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -166,6 +159,13 @@
   
   <url>
     <loc>https://www.boycelab.com/tags/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/SITCON2026/</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -209,14 +209,14 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/Writeup/2025-AIS3-Junior/</loc>
+    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/</loc>
+    <loc>https://www.boycelab.com/categories/Writeup/2025-AIS3-Junior/</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
