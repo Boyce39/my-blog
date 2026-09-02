@@ -8,6 +8,13 @@
   const PAGE_SIZE = 10;
   const NAME_STORAGE_KEY = 'boycelab_article_comment_name';
   const PAGE_QUERY_KEY = 'comment_page';
+  const locale = window.BoyceI18n?.locale || 'zh-TW';
+  const messages = {
+    'zh-TW': { required: '請填寫顯示名稱與留言內容。', sending: '正在送出留言…', sendFailed: '留言送出失敗', duplicate: '這則留言已經送出，不會重複顯示。', success: '留言已公開，謝謝你的回應！', readFailed: '留言讀取失敗', refreshed: '留言已重新整理。', unavailable: '暫時無法讀取', count: '{count} 則留言', emptyTitle: '還沒有留言', emptyBody: '成為第一個分享想法的讀者。', guest: '訪客', previous: '上一頁', next: '下一頁', goPrevious: '前往上一頁', goNext: '前往下一頁', goPage: '前往第 {page} 頁', loadingTitle: '正在讀取留言', loadingBody: '從 BoyceLab 邊緣服務同步中…', errorTitle: '留言暫時無法顯示', retry: '再試一次', submitting: '送出中…', submit: '送出留言', noTime: '時間未記錄', timeout: '連線逾時，請稍後再試。', network: '目前無法連上留言服務，請檢查網路後重試。', service: '留言服務暫時無法使用。' },
+    en: { required: 'Enter your display name and comment.', sending: 'Posting comment…', sendFailed: 'Unable to post comment', duplicate: 'This comment was already submitted and will not be duplicated.', success: 'Your comment is now public. Thank you!', readFailed: 'Unable to load comments', refreshed: 'Comments refreshed.', unavailable: 'Temporarily unavailable', count: '{count} comments', emptyTitle: 'No comments yet', emptyBody: 'Be the first reader to share a thought.', guest: 'Guest', previous: 'Previous', next: 'Next', goPrevious: 'Go to previous page', goNext: 'Go to next page', goPage: 'Go to page {page}', loadingTitle: 'Loading comments', loadingBody: 'Syncing from BoyceLab edge services…', errorTitle: 'Comments are temporarily unavailable', retry: 'Try again', submitting: 'Posting…', submit: 'Post comment', noTime: 'Time unavailable', timeout: 'Connection timed out. Please try again.', network: 'Unable to reach the comment service. Check your connection and retry.', service: 'The comment service is temporarily unavailable.' },
+    ja: { required: '表示名とコメントを入力してください。', sending: 'コメントを投稿中…', sendFailed: 'コメントを投稿できません', duplicate: 'このコメントは送信済みのため重複表示されません。', success: 'コメントを公開しました。ありがとうございます！', readFailed: 'コメントを読み込めません', refreshed: 'コメントを更新しました。', unavailable: '一時的に利用できません', count: '{count}件のコメント', emptyTitle: 'まだコメントはありません', emptyBody: '最初のコメントを投稿してみましょう。', guest: 'ゲスト', previous: '前へ', next: '次へ', goPrevious: '前のページへ', goNext: '次のページへ', goPage: '{page}ページへ', loadingTitle: 'コメントを読み込み中', loadingBody: 'BoyceLabエッジサービスと同期しています…', errorTitle: 'コメントを一時的に表示できません', retry: '再試行', submitting: '投稿中…', submit: '投稿する', noTime: '時刻不明', timeout: '接続がタイムアウトしました。', network: 'コメントサービスに接続できません。ネットワークを確認してください。', service: 'コメントサービスは一時的に利用できません。' },
+    ko: { required: '표시 이름과 댓글을 입력해 주세요.', sending: '댓글 등록 중…', sendFailed: '댓글 등록 실패', duplicate: '이미 등록된 댓글이며 중복 표시되지 않습니다.', success: '댓글이 공개되었습니다. 감사합니다!', readFailed: '댓글 불러오기 실패', refreshed: '댓글을 새로고침했습니다.', unavailable: '일시적으로 사용할 수 없음', count: '댓글 {count}개', emptyTitle: '아직 댓글이 없습니다', emptyBody: '첫 번째로 의견을 남겨 보세요.', guest: '방문자', previous: '이전', next: '다음', goPrevious: '이전 페이지로', goNext: '다음 페이지로', goPage: '{page}페이지로', loadingTitle: '댓글 불러오는 중', loadingBody: 'BoyceLab 엣지 서비스와 동기화 중…', errorTitle: '댓글을 일시적으로 표시할 수 없습니다', retry: '다시 시도', submitting: '등록 중…', submit: '댓글 등록', noTime: '시간 정보 없음', timeout: '연결 시간이 초과되었습니다.', network: '댓글 서비스에 연결할 수 없습니다. 네트워크를 확인해 주세요.', service: '댓글 서비스를 일시적으로 사용할 수 없습니다.' }
+  };
   const articlePath = normalizeArticlePath(root.dataset.articlePath || window.location.pathname);
   const refs = {
     form: document.getElementById('articleCommentForm'),
@@ -41,12 +48,12 @@
     const displayName = refs.name.value.trim();
     const message = refs.message.value.trim();
     if (!displayName || !message) {
-      setStatus('請填寫顯示名稱與留言內容。', 'error');
+      setStatus(ui('required'), 'error');
       return;
     }
 
     setSubmitting(true);
-    setStatus('正在送出留言…');
+    setStatus(ui('sending'));
     try {
       const response = await fetch(`${API_BASE_URL}/article-comments`, {
         method: 'POST',
@@ -62,7 +69,7 @@
         })
       });
       const payload = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(payload.error || `留言送出失敗（${response.status}）`);
+      if (!response.ok) throw new Error(payload.error || `${ui('sendFailed')} (${response.status})`);
 
       storeName(displayName);
       refs.message.value = '';
@@ -71,7 +78,7 @@
       activePage = 1;
       updatePageUrl(1, true);
       await loadComments(1);
-      setStatus(payload.duplicate ? '這則留言已經送出，不會重複顯示。' : '留言已公開，謝謝你的回應！', 'success');
+      setStatus(payload.duplicate ? ui('duplicate') : ui('success'), 'success');
     } catch (error) {
       setStatus(readableError(error), 'error');
     } finally {
@@ -97,7 +104,7 @@
         referrerPolicy: 'strict-origin-when-cross-origin'
       });
       const payload = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(payload.error || `留言讀取失敗（${response.status}）`);
+      if (!response.ok) throw new Error(payload.error || `${ui('readFailed')} (${response.status})`);
       if (sequence !== requestSequence) return;
 
       const comments = Array.isArray(payload.comments) ? payload.comments : [];
@@ -106,11 +113,11 @@
       if (activePage !== page) updatePageUrl(activePage, true);
       renderComments(comments, pagination);
       renderPagination(pagination);
-      if (options.announce) setStatus('留言已重新整理。', 'success');
+      if (options.announce) setStatus(ui('refreshed'), 'success');
     } catch (error) {
       if (sequence !== requestSequence) return;
       renderError(readableError(error));
-      refs.count.textContent = '暫時無法讀取';
+      refs.count.textContent = ui('unavailable');
       refs.pagination.hidden = true;
     } finally {
       if (sequence === requestSequence) {
@@ -122,11 +129,11 @@
 
   function renderComments(comments, pagination) {
     refs.list.replaceChildren();
-    refs.count.textContent = `${pagination.total} 則留言`;
+    refs.count.textContent = ui('count', { count: pagination.total });
     if (!comments.length) {
       const empty = document.createElement('div');
       empty.className = 'article-comment-empty';
-      empty.innerHTML = '<strong>還沒有留言</strong><p>成為第一個分享想法的讀者。</p>';
+      empty.innerHTML = `<strong>${ui('emptyTitle')}</strong><p>${ui('emptyBody')}</p>`;
       refs.list.appendChild(empty);
       return;
     }
@@ -146,7 +153,7 @@
       const heading = document.createElement('div');
       heading.className = 'article-comment-meta';
       const name = document.createElement('strong');
-      name.textContent = comment.display_name || '訪客';
+      name.textContent = comment.display_name || ui('guest');
       const time = document.createElement('time');
       time.dateTime = comment.created_at || '';
       time.textContent = formatDate(comment.created_at);
@@ -170,7 +177,7 @@
       return;
     }
     refs.pagination.hidden = false;
-    refs.pagination.appendChild(pageButton('上一頁', pagination.page - 1, !pagination.has_previous, '前往上一頁'));
+    refs.pagination.appendChild(pageButton(ui('previous'), pagination.page - 1, !pagination.has_previous, ui('goPrevious')));
     pageWindow(pagination.page, pagination.total_pages).forEach((value) => {
       if (value === '…') {
         const ellipsis = document.createElement('span');
@@ -179,11 +186,11 @@
         refs.pagination.appendChild(ellipsis);
         return;
       }
-      const button = pageButton(String(value), value, false, `前往第 ${value} 頁`);
+      const button = pageButton(String(value), value, false, ui('goPage', { page: value }));
       if (value === pagination.page) button.setAttribute('aria-current', 'page');
       refs.pagination.appendChild(button);
     });
-    refs.pagination.appendChild(pageButton('下一頁', pagination.page + 1, !pagination.has_next, '前往下一頁'));
+    refs.pagination.appendChild(pageButton(ui('next'), pagination.page + 1, !pagination.has_next, ui('goNext')));
   }
 
   function handlePaginationClick(event) {
@@ -214,7 +221,7 @@
   }
 
   function renderLoading() {
-    refs.list.innerHTML = '<div class="article-comment-empty"><strong>正在讀取留言</strong><p>從 BoyceLab 邊緣服務同步中…</p></div>';
+    refs.list.innerHTML = `<div class="article-comment-empty"><strong>${ui('loadingTitle')}</strong><p>${ui('loadingBody')}</p></div>`;
   }
 
   function renderError(message) {
@@ -222,12 +229,12 @@
     const wrapper = document.createElement('div');
     wrapper.className = 'article-comment-empty error';
     const title = document.createElement('strong');
-    title.textContent = '留言暫時無法顯示';
+    title.textContent = ui('errorTitle');
     const description = document.createElement('p');
     description.textContent = message;
     const retry = document.createElement('button');
     retry.type = 'button';
-    retry.textContent = '再試一次';
+    retry.textContent = ui('retry');
     retry.addEventListener('click', () => loadComments(activePage));
     wrapper.append(title, description, retry);
     refs.list.appendChild(wrapper);
@@ -251,7 +258,7 @@
     refs.submit.disabled = submitting;
     refs.name.disabled = submitting;
     refs.message.disabled = submitting;
-    refs.submit.textContent = submitting ? '送出中…' : '送出留言';
+    refs.submit.textContent = submitting ? ui('submitting') : ui('submit');
   }
 
   function setStatus(message, type = '') {
@@ -290,22 +297,27 @@
   }
 
   function firstCharacter(value) {
-    return Array.from(String(value || '訪').trim())[0]?.toUpperCase() || '訪';
+    return Array.from(String(value || ui('guest')).trim())[0]?.toUpperCase() || ui('guest')[0];
   }
 
   function formatDate(value) {
-    if (!value) return '時間未記錄';
+    if (!value) return ui('noTime');
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return String(value);
-    return new Intl.DateTimeFormat('zh-TW', {
+    return new Intl.DateTimeFormat(locale, {
       year: 'numeric', month: '2-digit', day: '2-digit',
       hour: '2-digit', minute: '2-digit'
     }).format(date);
   }
 
   function readableError(error) {
-    if (error.name === 'AbortError') return '連線逾時，請稍後再試。';
-    if (error instanceof TypeError) return '目前無法連上留言服務，請檢查網路後重試。';
-    return error.message || '留言服務暫時無法使用。';
+    if (error.name === 'AbortError') return ui('timeout');
+    if (error instanceof TypeError) return ui('network');
+    return error.message || ui('service');
+  }
+
+  function ui(key, values = {}) {
+    const template = messages[locale]?.[key] || messages['zh-TW'][key] || key;
+    return Object.entries(values).reduce((result, [name, value]) => result.replace(`{${name}}`, String(value)), template);
   }
 })();
