@@ -2494,6 +2494,22 @@ html[theme='light'] .tech-card-glow {
 }
 
 @media (max-width: 480px) {
+  #title-nav {
+    margin-left: 0;
+  }
+
+  #title-nav > a {
+    padding-inline: 8px;
+  }
+
+  #title-nav > a > div:last-child {
+    display: none;
+  }
+
+  #sub-nav {
+    margin-right: 0;
+  }
+
   .site-language-menu {
     position: fixed;
     top: 68px;
