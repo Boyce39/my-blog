@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/anonymous/index.html</loc>
+    <loc>https://www.boycelab.com/anonymous-replies/index.html</loc>
     
     <lastmod>2026-08-24</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/anonymous-replies/index.html</loc>
+    <loc>https://www.boycelab.com/anonymous/index.html</loc>
     
     <lastmod>2026-08-24</lastmod>
     
@@ -181,14 +181,14 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/</loc>
+    <loc>https://www.boycelab.com/categories/Writeup/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/Writeup/</loc>
+    <loc>https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -209,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://www.boycelab.com/categories/Writeup/2025-AIS3-Junior/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -217,13 +217,6 @@
   
   <url>
     <loc>https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/Writeup/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/categories/Writeup/2025-AIS3-Junior/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -244,13 +237,6 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -265,21 +251,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -293,14 +265,42 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/%E6%95%99%E5%AD%B8/</loc>
+    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/Prompt-Injection/Alignment/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/Prompt-Injection/Alignment/</loc>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/%E6%95%99%E5%AD%B8/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
