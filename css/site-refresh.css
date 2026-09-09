@@ -2245,6 +2245,12 @@ html[theme='light'] .tech-card-glow {
   position: relative;
   display: inline-flex;
   align-items: center;
+  height: 40px;
+  overflow: hidden;
+  border: 1px solid var(--lab-border);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--lab-panel-solid) 94%, transparent);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .site-language-control.floating {
@@ -2254,79 +2260,56 @@ html[theme='light'] .tech-card-glow {
   right: 18px;
 }
 
-.site-language-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  min-width: 44px;
-  height: 40px;
-  padding: 0 9px;
-  border: 1px solid var(--lab-border);
-  border-radius: 11px;
-  background: color-mix(in srgb, var(--lab-panel-solid) 94%, transparent);
-  color: var(--lab-text-muted);
-  cursor: pointer;
-}
-
-.site-language-button:hover,
-.site-language-button[aria-expanded='true'] {
+.site-language-control:hover,
+.site-language-control:focus-within {
   border-color: var(--lab-accent);
-  color: var(--lab-accent-strong);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lab-accent) 10%, transparent);
 }
 
-.site-language-button span {
-  color: var(--lab-accent);
-  font-size: 0.8rem;
-}
-
-.site-language-button b {
-  font-size: 0.66rem;
-  font-weight: 700;
-}
-
-.site-language-menu {
+.site-language-glyph {
   position: absolute;
-  z-index: 300;
-  top: calc(100% + 9px);
-  right: 0;
-  width: 190px;
-  padding: 7px;
-  border: 1px solid var(--lab-border-strong);
-  border-radius: 13px;
-  background: var(--lab-panel-solid);
-  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+  z-index: 1;
+  left: 10px;
+  color: var(--lab-accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  pointer-events: none;
 }
 
-.site-language-menu[hidden] {
-  display: none;
-}
-
-.site-language-menu button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  min-height: 40px;
-  padding: 0 10px;
+.site-language-select {
+  width: 126px;
+  height: 100%;
+  padding: 0 28px 0 29px;
   border: 0;
-  border-radius: 8px;
   background: transparent;
   color: var(--lab-text-muted);
-  text-align: left;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
 }
 
-.site-language-menu button:hover,
-.site-language-menu button[aria-current='true'] {
-  background: var(--lab-accent-soft);
-  color: var(--lab-text);
+.site-language-select:disabled {
+  cursor: wait;
+  opacity: 0.62;
 }
 
-.site-language-menu i {
-  color: var(--lab-text-faint);
-  font-size: 0.64rem;
-  font-style: normal;
+.site-language-chevron {
+  position: absolute;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--lab-accent);
+  border-bottom: 1.5px solid var(--lab-accent);
+  transform: translateY(-2px) rotate(45deg);
+  pointer-events: none;
+}
+
+.language-switching .site-language-control {
+  opacity: 0.72;
 }
 
 /* Dynamic multilingual CMS posts */
@@ -2510,10 +2493,9 @@ html[theme='light'] .tech-card-glow {
     margin-right: 0;
   }
 
-  .site-language-menu {
-    position: fixed;
-    top: 68px;
-    right: 10px;
+  .site-language-select {
+    width: 92px;
+    padding-right: 24px;
   }
 
   .cms-post-feed {
@@ -2589,6 +2571,18 @@ html[theme='light'] .tech-card-glow {
   cursor: pointer;
 }
 
+.article-machine-translation button:hover,
+.article-machine-translation button:focus-visible {
+  border-color: var(--lab-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lab-accent) 10%, transparent);
+}
+
+.article-machine-translation .translation-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 @keyframes translation-pulse {
   50% { opacity: 0.45; transform: scale(0.78); }
 }
@@ -2599,8 +2593,11 @@ html[theme='light'] .tech-card-glow {
     margin-bottom: 18px;
   }
 
-  .article-machine-translation button {
+  .article-machine-translation .translation-actions {
     grid-column: 1 / -1;
+  }
+
+  .article-machine-translation button {
     width: 100%;
   }
 }

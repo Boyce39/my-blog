@@ -97,30 +97,19 @@
     document.cookie = `${STORAGE_KEY}=${encodeURIComponent(nextLocale)}; Path=/; Max-Age=31536000; SameSite=Lax`;
     const url = new URL(location.href);
     url.searchParams.set('lang', nextLocale);
-    location.href = url.toString();
+    document.documentElement.classList.add('language-switching');
+    document.querySelectorAll('[data-language-select]').forEach(select => { select.disabled = true; });
+    window.location.assign(url.toString());
   }
 
   function createSwitcher() {
     const host = document.getElementById('sub-nav') || document.body;
     const control = document.createElement('div');
     control.className = `site-language-control${host === document.body ? ' floating' : ''}`;
-    control.innerHTML = `<button class="site-language-button" type="button" aria-haspopup="true" aria-expanded="false" title="Language / 語言"><span aria-hidden="true">文</span><b>${LABELS[locale][0]}</b></button><div class="site-language-menu" hidden>${SUPPORTED.map(code => `<button type="button" data-site-locale="${code}" aria-current="${code === locale ? 'true' : 'false'}"><span>${LABELS[code][1]}</span><i>${code}</i></button>`).join('')}</div>`;
+    control.innerHTML = `<span class="site-language-glyph" aria-hidden="true">文</span><select class="site-language-select" data-language-select aria-label="Language / 語言">${SUPPORTED.map(code => `<option value="${code}"${code === locale ? ' selected' : ''}>${LABELS[code][1]}</option>`).join('')}</select><span class="site-language-chevron" aria-hidden="true"></span>`;
     if (host === document.body) host.appendChild(control);
     else host.insertBefore(control, host.firstChild);
-    const toggle = control.querySelector('.site-language-button');
-    const menu = control.querySelector('.site-language-menu');
-    toggle.addEventListener('click', () => {
-      const open = menu.hidden;
-      menu.hidden = !open;
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-    menu.addEventListener('click', event => {
-      const option = event.target.closest('[data-site-locale]');
-      if (option) setLocale(option.dataset.siteLocale);
-    });
-    document.addEventListener('click', event => {
-      if (!control.contains(event.target)) { menu.hidden = true; toggle.setAttribute('aria-expanded', 'false'); }
-    });
+    control.querySelector('select').addEventListener('change', event => setLocale(event.currentTarget.value));
   }
 
   function translate(text) {
@@ -168,71 +157,105 @@
     const notice = document.createElement('aside');
     notice.className = 'article-machine-translation loading';
     notice.setAttribute('role', 'status');
-    notice.innerHTML = `<span class="translation-pulse" aria-hidden="true"></span><div><strong>${copy.loadingTitle}</strong><p>${copy.loadingBody}</p></div><button type="button" hidden>${copy.showOriginal}</button>`;
+    notice.setAttribute('aria-live', 'polite');
+    notice.innerHTML = `<span class="translation-pulse" aria-hidden="true"></span><div class="translation-copy"><strong>${copy.loadingTitle}</strong><p>${copy.loadingBody}</p></div><div class="translation-actions"><button type="button" data-translation-toggle hidden>${copy.showOriginal}</button><button type="button" data-translation-retry hidden>${copy.retry}</button></div>`;
     article.before(notice);
 
-    const controller = new AbortController();
-    const timer = window.setTimeout(() => controller.abort(), 65_000);
-    try {
+    const statusTitle = notice.querySelector('strong');
+    const statusBody = notice.querySelector('p');
+    const toggle = notice.querySelector('[data-translation-toggle]');
+    const retry = notice.querySelector('[data-translation-retry]');
+    let translated = null;
+    let responseWasCached = false;
+    let showingOriginal = false;
+    let requestInFlight = false;
+
+    const requestTranslation = async () => {
+      const controller = new AbortController();
+      const timer = window.setTimeout(() => controller.abort(), 90_000);
       const apiBase = window.BoyceApiConfig?.baseUrl || 'https://api.boycelab.com';
       const description = document.querySelector('meta[name="description"]')?.content || '';
-      const response = await fetch(`${apiBase}/translate/article`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          article_key: `path:${location.pathname}`,
-          source_locale: 'zh-TW',
-          target_locale: locale,
-          title: original.title,
-          excerpt: description,
-          content_html: original.html,
-          seo_title: original.title,
-          seo_description: description
-        }),
-        credentials: 'omit',
-        referrerPolicy: 'strict-origin-when-cross-origin',
-        signal: controller.signal
-      });
-      const payload = await response.json().catch(() => ({}));
-      if (!response.ok || !payload.translation?.content_html) throw new Error(payload.error || `Translation failed (${response.status})`);
+      try {
+        const response = await fetch(`${apiBase}/translate/article`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            article_key: `path:${location.pathname}`,
+            source_locale: 'zh-TW',
+            target_locale: locale,
+            title: original.title,
+            excerpt: description,
+            content_html: original.html,
+            seo_title: original.title,
+            seo_description: description
+          }),
+          credentials: 'omit',
+          referrerPolicy: 'strict-origin-when-cross-origin',
+          signal: controller.signal
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok || !payload.translation?.content_html) throw new Error(payload.error || `Translation failed (${response.status})`);
+        return payload;
+      } finally {
+        window.clearTimeout(timer);
+      }
+    };
 
-      const translated = payload.translation;
+    const applyTranslated = () => {
       const translatedTitle = translated.title || original.title;
-      let showingOriginal = false;
-      const toggle = notice.querySelector('button');
-      const applyTranslated = () => {
-        title.textContent = translatedTitle;
-        article.innerHTML = translated.content_html;
-        hydrateTranslatedImages(article);
-        document.title = original.documentTitle.replace(original.title, translatedTitle);
-        toggle.textContent = copy.showOriginal;
-        notice.querySelector('strong').textContent = copy.readyTitle;
-        notice.querySelector('p').textContent = payload.cached ? copy.cachedBody : copy.readyBody;
-        showingOriginal = false;
-      };
-      const applyOriginal = () => {
-        title.textContent = original.title;
-        article.innerHTML = original.html;
-        hydrateTranslatedImages(article);
-        document.title = original.documentTitle;
-        toggle.textContent = copy.showTranslation;
-        notice.querySelector('strong').textContent = copy.originalTitle;
-        notice.querySelector('p').textContent = copy.originalBody;
-        showingOriginal = true;
-      };
-      toggle.addEventListener('click', () => showingOriginal ? applyTranslated() : applyOriginal());
-      toggle.hidden = false;
-      notice.classList.remove('loading');
-      article.dataset.machineTranslation = 'ready';
-      applyTranslated();
-    } catch (error) {
-      notice.classList.remove('loading');
-      notice.classList.add('error');
-      notice.querySelector('strong').textContent = copy.errorTitle;
-      notice.querySelector('p').textContent = copy.errorBody;
-    } finally {
-      window.clearTimeout(timer);
-    }
+      title.textContent = translatedTitle;
+      article.innerHTML = translated.content_html;
+      hydrateTranslatedImages(article);
+      document.title = original.documentTitle.replace(original.title, translatedTitle);
+      toggle.textContent = copy.showOriginal;
+      statusTitle.textContent = copy.readyTitle;
+      statusBody.textContent = responseWasCached ? copy.cachedBody : copy.readyBody;
+      showingOriginal = false;
+    };
+    const applyOriginal = () => {
+      title.textContent = original.title;
+      article.innerHTML = original.html;
+      hydrateTranslatedImages(article);
+      document.title = original.documentTitle;
+      toggle.textContent = copy.showTranslation;
+      statusTitle.textContent = copy.originalTitle;
+      statusBody.textContent = copy.originalBody;
+      showingOriginal = true;
+    };
+    const runTranslation = async () => {
+      if (requestInFlight) return;
+      requestInFlight = true;
+      notice.classList.remove('error');
+      notice.classList.add('loading');
+      statusTitle.textContent = copy.loadingTitle;
+      statusBody.textContent = copy.loadingBody;
+      toggle.hidden = true;
+      retry.hidden = true;
+      retry.disabled = true;
+      try {
+        const payload = await requestTranslation();
+        translated = payload.translation;
+        responseWasCached = Boolean(payload.cached);
+        article.dataset.machineTranslation = 'ready';
+        notice.classList.remove('loading');
+        toggle.hidden = false;
+        applyTranslated();
+      } catch (error) {
+        notice.classList.remove('loading');
+        notice.classList.add('error');
+        statusTitle.textContent = copy.errorTitle;
+        statusBody.textContent = error?.name === 'AbortError' ? copy.timeoutBody : copy.errorBody;
+        retry.hidden = false;
+        retry.disabled = false;
+        console.warn('Article translation unavailable', error);
+      } finally {
+        requestInFlight = false;
+      }
+    };
+
+    toggle.addEventListener('click', () => showingOriginal ? applyTranslated() : applyOriginal());
+    retry.addEventListener('click', runTranslation);
+    await runTranslation();
   }
 
   function hydrateTranslatedImages(root) {
@@ -243,9 +266,9 @@
 
   function articleTranslationCopy(activeLocale) {
     return {
-      en: { loadingTitle: 'Translating this article', loadingBody: 'Cloudflare AI is preparing an English version. The first translation may take a few seconds.', readyTitle: 'Machine-translated article', readyBody: 'Translated automatically by Cloudflare AI. Technical names and code are kept intact.', cachedBody: 'Loaded from the reviewed edge translation cache.', showOriginal: 'View original', showTranslation: 'View translation', originalTitle: 'Original article', originalBody: 'You are reading the author’s original Traditional Chinese version.', errorTitle: 'Translation is temporarily unavailable', errorBody: 'The original article remains available. Please try switching languages again later.' },
-      ja: { loadingTitle: '記事を翻訳しています', loadingBody: 'Cloudflare AIが日本語版を準備しています。初回は数秒かかることがあります。', readyTitle: '自動翻訳された記事', readyBody: 'Cloudflare AIによる自動翻訳です。技術名とコードは原文のまま保持します。', cachedBody: 'エッジ翻訳キャッシュから読み込みました。', showOriginal: '原文を見る', showTranslation: '翻訳を見る', originalTitle: '原文を表示中', originalBody: '作者が書いた繁体字中国語の原文を表示しています。', errorTitle: '翻訳を一時的に利用できません', errorBody: '原文はそのまま閲覧できます。しばらくしてから再度言語を切り替えてください。' },
-      ko: { loadingTitle: '글을 번역하는 중입니다', loadingBody: 'Cloudflare AI가 한국어 버전을 준비하고 있습니다. 첫 번역은 몇 초 걸릴 수 있습니다.', readyTitle: '자동 번역된 글', readyBody: 'Cloudflare AI로 자동 번역했습니다. 기술 용어와 코드는 원문을 유지합니다.', cachedBody: '엣지 번역 캐시에서 불러왔습니다.', showOriginal: '원문 보기', showTranslation: '번역 보기', originalTitle: '원문을 표시 중입니다', originalBody: '작성자의 번체 중국어 원문을 표시하고 있습니다.', errorTitle: '번역을 일시적으로 사용할 수 없습니다', errorBody: '원문은 계속 읽을 수 있습니다. 잠시 후 언어를 다시 전환해 주세요.' }
+      en: { loadingTitle: 'Translating this article', loadingBody: 'Cloudflare AI is preparing an English version. Longer articles can take a little longer the first time.', readyTitle: 'Machine-translated article', readyBody: 'Translated automatically by Cloudflare AI. Technical names and code are kept intact.', cachedBody: 'Loaded instantly from the edge translation cache.', showOriginal: 'View original', showTranslation: 'View translation', originalTitle: 'Original article', originalBody: 'You are reading the author’s original Traditional Chinese version.', errorTitle: 'Translation could not be completed', errorBody: 'The original article is still available. You can retry without leaving this page.', timeoutBody: 'This translation took longer than expected. The original remains available, and you can retry now.', retry: 'Retry translation' },
+      ja: { loadingTitle: '記事を翻訳しています', loadingBody: 'Cloudflare AIが日本語版を準備しています。長い記事の初回翻訳には少し時間がかかります。', readyTitle: '自動翻訳された記事', readyBody: 'Cloudflare AIによる自動翻訳です。技術名とコードは原文のまま保持します。', cachedBody: 'エッジ翻訳キャッシュからすぐに読み込みました。', showOriginal: '原文を見る', showTranslation: '翻訳を見る', originalTitle: '原文を表示中', originalBody: '作者が書いた繁体字中国語の原文を表示しています。', errorTitle: '翻訳を完了できませんでした', errorBody: '原文はそのまま閲覧できます。このページから再試行できます。', timeoutBody: '翻訳に通常より時間がかかりました。原文を読みながら、もう一度お試しいただけます。', retry: '翻訳を再試行' },
+      ko: { loadingTitle: '글을 번역하는 중입니다', loadingBody: 'Cloudflare AI가 한국어 버전을 준비하고 있습니다. 긴 글의 첫 번역은 조금 더 걸릴 수 있습니다.', readyTitle: '자동 번역된 글', readyBody: 'Cloudflare AI로 자동 번역했습니다. 기술 용어와 코드는 원문을 유지합니다.', cachedBody: '엣지 번역 캐시에서 바로 불러왔습니다.', showOriginal: '원문 보기', showTranslation: '번역 보기', originalTitle: '원문을 표시 중입니다', originalBody: '작성자의 번체 중국어 원문을 표시하고 있습니다.', errorTitle: '번역을 완료하지 못했습니다', errorBody: '원문은 계속 읽을 수 있으며 이 페이지에서 바로 다시 시도할 수 있습니다.', timeoutBody: '번역 시간이 예상보다 길어졌습니다. 원문을 읽으면서 다시 시도할 수 있습니다.', retry: '번역 다시 시도' }
     }[activeLocale];
   }
 })();
