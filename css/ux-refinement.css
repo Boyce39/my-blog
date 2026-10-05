@@ -580,18 +580,27 @@ body .nav-icon {
 }
 
 body .skip-link {
-  position: fixed;
+  position: fixed !important;
   top: 8px;
   left: 12px;
   z-index: 10000;
-  padding: 12px 18px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
   background: var(--lab-panel-solid);
   color: var(--lab-text);
   border: 2px solid var(--lab-accent);
   transform: translateY(-200%);
 }
 
-body .skip-link:focus {
+html.keyboard-navigation body .skip-link:focus-visible {
+  width: auto;
+  height: auto;
+  padding: 12px 18px;
+  clip-path: none;
   transform: none;
 }
 

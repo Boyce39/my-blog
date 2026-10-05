@@ -2,6 +2,15 @@
   'use strict';
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Tab') document.documentElement.classList.add('keyboard-navigation');
+  }, true);
+  document.addEventListener('pointerdown', function () {
+    document.documentElement.classList.remove('keyboard-navigation');
+  }, true);
+  document.addEventListener('visibilitychange', function () {
+    document.documentElement.classList.toggle('lab-paused', document.hidden);
+  });
   const cardSelector = [
     'a.project-card',
     'a.friend-card',
@@ -41,7 +50,6 @@
 
   function initCardEffects() {
     const cards = Array.from(document.querySelectorAll(cardSelector));
-    if (!cards.length) return;
 
     const observer = !reducedMotion && 'IntersectionObserver' in window
       ? new IntersectionObserver(function (entries) {
@@ -53,7 +61,7 @@
         }, { threshold: 0.12, rootMargin: '0px 0px -24px' })
       : null;
 
-    cards.forEach(function (card, index) {
+    function enhanceCard(card, index) {
       if (card.querySelector(':scope > .tech-card-glow')) return;
       card.classList.add('tech-card-enhanced');
 
@@ -74,7 +82,18 @@
       } else {
         card.classList.add('tech-card-visible');
       }
+    }
+    cards.forEach(enhanceCard);
+    const dynamicCards = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(function (node) {
+          if (node.nodeType !== 1) return;
+          if (node.matches(cardSelector)) enhanceCard(node, 0);
+          node.querySelectorAll(cardSelector).forEach(enhanceCard);
+        });
+      });
     });
+    dynamicCards.observe(document.body, { childList: true, subtree: true });
   }
 
   function initAmbientNetwork() {
