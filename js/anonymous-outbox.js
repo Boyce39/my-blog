@@ -52,12 +52,12 @@
     panel.className = 'anonymous-status';
     if (state === 'ready') {
       panel.classList.add('ready');
-      text.textContent = '後端已就緒，背景佇列會立即送出。';
+      text.textContent = '連線正常，可以送出問題。';
     } else if (state === 'offline') {
       panel.classList.add('offline');
       text.textContent = '目前離線；訊息會保留在這台裝置，恢復網路後重試。';
     } else {
-      text.textContent = '正在確認 Cloudflare 邊緣 API；現在仍可直接輸入並送出。';
+      text.textContent = '可以直接輸入問題，送出後會顯示傳送結果。';
     }
   }
 
@@ -81,7 +81,7 @@
 
     flushing = true;
     const item = queue[0];
-    setFeedback('訊息正在透過 Cloudflare 邊緣網路背景傳送。');
+    setFeedback('正在傳送訊息…');
 
     try {
       const response = await fetch(`${API_BASE_URL}/anonymous-message`, {

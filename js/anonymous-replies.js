@@ -42,7 +42,7 @@
     const head = document.createElement('header');
     head.className = 'reply-card-head';
     head.append(
-      createText('span', 'reply-signal', `QUESTION ${String(position).padStart(2, '0')}`),
+      createText('span', 'reply-signal', `提問 ${String(position).padStart(2, '0')}`),
       createText('time', 'reply-date', formatDate(item.replied_at || item.created_at))
     );
 
@@ -159,10 +159,11 @@
     const sequence = ++requestSequence;
     container.setAttribute('aria-busy', 'true');
     container.classList.add('is-loading');
-    counter.textContent = 'SYNCING';
+    counter.textContent = '載入中…';
 
     try {
       const response = await fetch(`${API_BASE_URL}/anonymous-replies?page=${page}&per_page=${PAGE_SIZE}`, {
+        signal: AbortSignal.timeout(15000),
         headers: { Accept: 'application/json' },
         cache: 'no-store',
         credentials: 'omit'
@@ -180,7 +181,7 @@
         has_previous: false,
         has_next: false
       };
-      counter.textContent = `${pagination.total} REPLIES`;
+      counter.textContent = `${pagination.total} 則回覆`;
       container.replaceChildren();
 
       if (!replies.length) {
@@ -200,7 +201,7 @@
       }
     } catch (error) {
       if (sequence !== requestSequence) return;
-      counter.textContent = 'OFFLINE';
+      counter.textContent = '暫時無法載入';
       renderError(container);
       const navigation = document.getElementById('anonymousReplyPagination');
       if (navigation) navigation.hidden = true;

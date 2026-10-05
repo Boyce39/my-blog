@@ -4,7 +4,19 @@
   const API_BASE_URL = window.BoyceApiConfig?.baseUrl || window.BoyceBackend?.baseUrl || 'https://api.boycelab.com';
   const ICON_MAX_SOURCE_BYTES = 5 * 1024 * 1024;
   const ICON_MAX_DATA_LENGTH = 180000;
+  const CACHE_KEY = 'boycelab_public_friends_v1';
   let retryScheduled = false;
+  let friendDirectory = [];
+  let loading = false;
+
+  function safeSiteUrl(value) {
+    try {
+      const url = new URL(value);
+      return ['http:', 'https:'].includes(url.protocol) && !url.username && !url.password ? url.href : '';
+    } catch (error) {
+      return '';
+    }
+  }
 
   function safeIconData(value) {
     const icon = String(value || '');
@@ -14,7 +26,7 @@
   function createFriendCard(friend) {
     const card = document.createElement('a');
     card.className = 'friend-card';
-    card.href = friend.site_url;
+    card.href = safeSiteUrl(friend.site_url);
     card.target = '_blank';
     card.rel = 'noopener noreferrer';
 
@@ -30,6 +42,12 @@
       icon.loading = 'lazy';
       top.appendChild(icon);
       card.classList.add('has-icon');
+    } else {
+      const placeholder = document.createElement('span');
+      placeholder.className = 'friend-initial';
+      placeholder.setAttribute('aria-hidden', 'true');
+      placeholder.textContent = Array.from(String(friend.site_name || '?'))[0].toUpperCase();
+      top.appendChild(placeholder);
     }
 
     const identity = document.createElement('span');
@@ -61,10 +79,27 @@
 
     const footer = document.createElement('span');
     footer.className = 'friend-card-footer';
-    footer.innerHTML = '<span>VISIT WEBSITE</span><i></i>';
+    footer.textContent = '前往網站 ↗ · 在新分頁開啟';
 
     card.append(top, description, footer);
     return card;
+  }
+
+  function renderDirectory() {
+    const query = String(document.getElementById('friendSearch')?.value || '').trim().toLocaleLowerCase();
+    const matches = friendDirectory.filter(friend => `${friend.site_name} ${friend.description || ''} ${friend.site_url}`.toLocaleLowerCase().includes(query));
+    document.querySelectorAll('[data-friends-list]').forEach(container => {
+      const limit = Number(container.dataset.limit || 0);
+      const visible = limit > 0 ? matches.slice(0, limit) : matches;
+      container.replaceChildren();
+      if (!visible.length) {
+        renderEmpty(container, query ? '沒有符合的友站，試試其他關鍵字。' : '歡迎成為這裡的第一位鄰居，按「申請友站」加入。');
+      } else {
+        visible.forEach(friend => container.appendChild(createFriendCard(friend)));
+      }
+    });
+    const counter = document.getElementById('friendResultCount');
+    if (counter) counter.textContent = `${matches.length} / ${friendDirectory.length} 個網站`;
   }
 
   function renderEmpty(container, message) {
@@ -126,8 +161,12 @@
     const placeholder = form.querySelector('#friendIconPlaceholder');
     const removeButton = form.querySelector('#friendIconRemove');
     let iconData = '';
+    let processing = false;
+    let revision = 0;
 
     function reset() {
+      revision += 1;
+      processing = false;
       iconData = '';
       input.value = '';
       preview.src = '';
@@ -139,31 +178,41 @@
     input.addEventListener('change', async () => {
       const file = input.files?.[0];
       if (!file) return reset();
+      const currentRevision = ++revision;
+      processing = true;
       status.className = 'form-status';
       status.textContent = '正在安全處理與壓縮網站 Icon…';
       try {
-        iconData = await compressIcon(file);
+        const result = await compressIcon(file);
+        if (currentRevision !== revision) return;
+        iconData = result;
         preview.src = iconData;
         preview.hidden = false;
         placeholder.hidden = true;
         removeButton.hidden = false;
         status.textContent = 'Icon 已完成裁切與壓縮，送出申請時會一併上傳。';
       } catch (error) {
+        if (currentRevision !== revision) return;
         reset();
         status.className = 'form-status error';
         status.textContent = error.message;
+      } finally {
+        if (currentRevision === revision) processing = false;
       }
     });
     removeButton.addEventListener('click', reset);
-    return { getValue: () => iconData, reset };
+    return { getValue: () => iconData, isProcessing: () => processing, reset };
   }
 
   async function loadFriends() {
     const containers = Array.from(document.querySelectorAll('[data-friends-list]'));
-    if (!containers.length) return;
+    if (!containers.length || loading) return;
+    loading = true;
+    containers.forEach(container => container.setAttribute('aria-busy', 'true'));
 
     try {
       const response = await fetch(`${API_BASE_URL}/friend-sites`, {
+        signal: AbortSignal.timeout(15000),
         headers: { Accept: 'application/json' },
         cache: 'no-store',
         credentials: 'omit'
@@ -171,32 +220,42 @@
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.error || `HTTP ${response.status}`);
 
-      const friends = Array.isArray(result.friend_sites) ? result.friend_sites : [];
-      containers.forEach(container => {
-        const limit = Number(container.dataset.limit || 0);
-        const visibleFriends = limit > 0 ? friends.slice(0, limit) : friends;
-        container.replaceChildren();
-
-        if (!visibleFriends.length) {
-          renderEmpty(container, '第一批友站正在募集，歡迎成為這裡的第一位鄰居。');
-          return;
-        }
-
-        visibleFriends.forEach(friend => container.appendChild(createFriendCard(friend)));
-      });
+      friendDirectory = (Array.isArray(result.friend_sites) ? result.friend_sites : []).filter(friend => safeSiteUrl(friend.site_url));
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ savedAt: Date.now(), friends: friendDirectory }));
+      } catch (error) {}
+      renderDirectory();
     } catch (error) {
+      if (friendDirectory.length) {
+        const counter = document.getElementById('friendResultCount');
+        if (counter) counter.textContent = '顯示最近載入的網站；連線恢復後會更新。';
+        return;
+      }
       containers.forEach(container => {
-        renderEmpty(container, '目前無法連上友站資料服務，連線恢復後會自動重新載入。');
+        renderEmpty(container, '目前無法載入友站，請稍後再試。');
+        const retry = document.createElement('button');
+        retry.className = 'lab-button secondary';
+        retry.type = 'button';
+        retry.textContent = '重新載入';
+        retry.addEventListener('click', loadFriends);
+        container.firstChild.appendChild(retry);
       });
+      const counter = document.getElementById('friendResultCount');
+      if (counter) counter.textContent = '暫時無法載入';
 
       if (!retryScheduled) {
         retryScheduled = true;
-        window.addEventListener('boycelab:backend', event => {
+        const onBackendReady = event => {
           if (event.detail?.state !== 'ready') return;
+          window.removeEventListener('boycelab:backend', onBackendReady);
           retryScheduled = false;
           loadFriends();
-        }, { once: true });
+        };
+        window.addEventListener('boycelab:backend', onBackendReady);
       }
+    } finally {
+      loading = false;
+      containers.forEach(container => container.removeAttribute('aria-busy'));
     }
   }
 
@@ -212,7 +271,7 @@
       panel.hidden = !open;
       toggle.setAttribute('aria-expanded', String(open));
       if (open) {
-        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        panel.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
         form.elements.site_name.focus({ preventScroll: true });
       }
     }
@@ -222,6 +281,11 @@
     form.addEventListener('submit', async event => {
       event.preventDefault();
       const submitButton = form.querySelector('button[type="submit"]');
+      if (iconUpload.isProcessing()) {
+        status.className = 'form-status';
+        status.textContent = '圖片正在處理中，請完成後再送出。';
+        return;
+      }
       const formData = new FormData(form);
       const payload = {
         site_name: String(formData.get('site_name') || '').trim(),
@@ -233,12 +297,19 @@
         client_id: window.crypto?.randomUUID?.() || `friend-${Date.now()}-${Math.random().toString(16).slice(2)}`
       };
 
+      if (!safeSiteUrl(payload.site_url)) {
+        status.className = 'form-status error';
+        status.textContent = '請輸入有效的 http 或 https 網站網址。';
+        return;
+      }
+
       submitButton.disabled = true;
       status.className = 'form-status';
-      status.textContent = '正在透過 Cloudflare 邊緣 API 送出申請…';
+      status.textContent = '正在送出申請…';
 
       try {
         const response = await fetch(`${API_BASE_URL}/friend-applications`, {
+          signal: AbortSignal.timeout(20000),
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -266,6 +337,15 @@
   }
 
   function init() {
+    try {
+      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+      if (cached && Date.now() - cached.savedAt < 6 * 60 * 60 * 1000 && Array.isArray(cached.friends)) {
+        friendDirectory = cached.friends.filter(friend => safeSiteUrl(friend.site_url));
+        if (friendDirectory.length) renderDirectory();
+      }
+    } catch (error) {}
+    window.addEventListener('online', loadFriends);
+    document.getElementById('friendSearch')?.addEventListener('input', renderDirectory);
     loadFriends();
     setupApplicationForm();
   }

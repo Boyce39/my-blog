@@ -6,7 +6,7 @@
   <link href="https://www.boycelab.com/atom.xml" rel="self"/>
   
   <link href="https://www.boycelab.com/"/>
-  <updated>2026-08-24T17:00:31.157Z</updated>
+  <updated>2026-10-05T02:20:00.000Z</updated>
   <id>https://www.boycelab.com/</id>
   
   <author>
@@ -15,6 +15,87 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FtO Seoul 2026：在 rep0rter 專案裡，和不同國家的人一起合作</title>
+    <link href="https://www.boycelab.com/2026/10/05/fto-seoul-2026-rep0rter/"/>
+    <id>https://www.boycelab.com/2026/10/05/fto-seoul-2026-rep0rter/</id>
+    <published>2026-10-05T02:20:00.000Z</published>
+    <updated>2026-10-05T02:20:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>九月，我在首爾參加 Facing the Ocean（FtO）2026，加入了 <strong>rep0rter</strong> 專案，也認識很多來自不同國家與背景的人。</p><p>如果只用一句話留下這次經驗，我之前寫的是：<strong>很好的回憶，明年日本不見不散。</strong></p><p>但除了回憶，我也想把這次活動和一般比賽、個人開發不同的地方整理下來。</p><h2 id="FtO-是什麼？先不用想著「要拿第幾名」"><a href="#FtO-是什麼？先不用想著「要拿第幾名」" class="headerlink" title="FtO 是什麼？先不用想著「要拿第幾名」"></a>FtO 是什麼？先不用想著「要拿第幾名」</h2><p>Facing the Ocean 連結臺灣、日本與韓國等地的 Civic Tech 社群。2026 首爾活動於 9 月 18 至 20 日在 Haja Center 舉行，主要協作活動在 19、20 日。</p><p>它是非競賽式的社群黑客松，沒有以排名或獎金為中心。參與者帶著公共議題、正在進行的專案與自己的經驗，來交流並一起動手。</p><p><strong>Civic Tech 可以先理解成「用科技參與公共事務」</strong>。重點不一定是某個特別複雜的技術，而是資訊能不能更容易取得、工具能不能降低參與的門檻，以及它是否真的回應了使用者的需要。</p><h2 id="加入-rep0rter：先理解已經存在的東西"><a href="#加入-rep0rter：先理解已經存在的東西" class="headerlink" title="加入 rep0rter：先理解已經存在的東西"></a>加入 rep0rter：先理解已經存在的東西</h2><p>這次我加入的專案是 rep0rter。相關開發討論涉及內容發布、Threads API，以及多平台流程。</p><p>進入一個既有專案，和從零開始做自己的作品不同。自己的專案可以依照熟悉的習慣安排；共同開發則需要先理解現在的結構、原本的需求，以及夥伴對系統的想法。</p><p>所以，「開始寫程式」不一定是第一步。先把問題與流程對齊，確認誰正在處理什麼，反而能避免大家各自做出一套互不相容的答案。</p><p>這篇是參與紀錄，不把討論過的功能當成全部已完成，也不把團隊成果寫成由我一個人完成。</p><h2 id="發布工具背後，其實都是使用者的細節"><a href="#發布工具背後，其實都是使用者的細節" class="headerlink" title="發布工具背後，其實都是使用者的細節"></a>發布工具背後，其實都是使用者的細節</h2><p>內容發布看起來可能只是呼叫一次 API，但實際討論會延伸出許多情境：</p><ul><li>新內容要怎麼發布，舊內容又怎麼處理？</li><li>重試時如何避免同一份內容重複出現？</li><li>發送前能不能先看到預覽？</li><li>如果其中一個平台失敗，使用者要怎麼知道？</li><li>自動化與人工操作之間，要保留哪些控制？</li></ul><p>這些問題也提醒我，API 串接不是「收到成功回應」就結束了。可靠的工具還需要讓人看懂狀態、知道能做什麼，以及遇到問題時有路可以走。</p><p>這和我正在整理 BoyceLab 的方向很像：功能存在是一回事，讓人容易理解與使用，是另一件必須認真完成的事。</p><h2 id="和不同背景的人一起做事"><a href="#和不同背景的人一起做事" class="headerlink" title="和不同背景的人一起做事"></a>和不同背景的人一起做事</h2><p>我在活動中認識了不同國家與背景的參與者。這次交流對我來說，不只是交換名字或社群帳號；一起討論與開發，會讓人看見別人怎麼理解問題，也需要練習說明自己的想法。</p><p>同一個需求，不同人可能會先注意不同的部分。有的人從資料出發，有的人關心介面，有的人更了解議題的實際情境。這些差異不一定是阻力，反而是共同專案值得存在的原因。</p><p>我想把這種合作方式帶回平常的學習：不急著證明自己知道多少，而是先確認大家正在解決同一個問題。</p><h2 id="留下紀錄，也留下下一次合作的可能"><a href="#留下紀錄，也留下下一次合作的可能" class="headerlink" title="留下紀錄，也留下下一次合作的可能"></a>留下紀錄，也留下下一次合作的可能</h2><p>FtO 對我而言，不是一張可以列上排名的證明，而是一次進入跨國技術社群的經驗。</p><p>回來後整理這篇文章，也是想把「參加過」往前推一步：我加入了什麼、當時討論了哪些問題，以及哪些觀點值得留在之後的作品裡。</p><p>很好的回憶，也期待下一次再見。希望到時候不只帶著新的作品，也能帶著這段合作經驗繼續往前。</p><hr><p>活動背景：<a href="https://fto.asia/">Facing the Ocean</a> · <a href="https://kr.linkedin.com/posts/rheemakim01_fto-seoul-2026-registration-activity-7497277319569428481-pg1Y">Code for Korea 的首爾活動介紹</a></p><p>本文於 2026 年 10 月回顧整理，個人經驗依既有活動與開發討論紀錄撰寫；FtO 為非競賽活動，本文不宣稱獲獎或獨立完成整個專案。</p>]]></content>
+    
+    
+    <summary type="html">九月在首爾參加 Facing the Ocean，加入 rep0rter 專案，也認識不同國家與背景的夥伴。這不是得獎故事，而是一次跨國開源協作的紀錄。</summary>
+    
+    
+    
+    <category term="學習紀錄" scheme="https://www.boycelab.com/categories/%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/"/>
+    
+    
+    <category term="FtO" scheme="https://www.boycelab.com/tags/FtO/"/>
+    
+    <category term="開源" scheme="https://www.boycelab.com/tags/%E9%96%8B%E6%BA%90/"/>
+    
+    <category term="Civic Tech" scheme="https://www.boycelab.com/tags/Civic-Tech/"/>
+    
+    <category term="國際交流" scheme="https://www.boycelab.com/tags/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>青年百億加州見習：把 AI、永續與英文協作放在同一張桌上</title>
+    <link href="https://www.boycelab.com/2026/10/05/california-youth-pathfinders-revalue-ai-2026/"/>
+    <id>https://www.boycelab.com/2026/10/05/california-youth-pathfinders-revalue-ai-2026/</id>
+    <published>2026-10-05T02:10:00.000Z</published>
+    <updated>2026-10-05T02:10:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今年七月，我透過青年百億海外圓夢基金計畫前往加州見習。這篇把課程、ReValue AI 團隊發表，以及返國後的分享整理在一起，而不是按每天的行程寫成旅遊紀錄。</p><p>這段學習最值得留下的，是技術不再只出現在程式編輯器裡：我們需要把 AI、永續議題與英文表達放在同一張桌上，讓不同背景的人都能理解提案。</p><h2 id="學習場域改變，問題也會改變"><a href="#學習場域改變，問題也會改變" class="headerlink" title="學習場域改變，問題也會改變"></a>學習場域改變，問題也會改變</h2><p>這次見習包含 UC Davis、California State University, Monterey Bay，以及矽谷的學習與探索。課程涵蓋永續發展、AI 工具應用與領導力，讓我從原本比較熟悉的技術視角，接觸更多與生活和社會有關的問題。</p><p>「永續」很容易被當成一個口號。但是當它和食物浪費、物品再利用或循環經濟連在一起，問題就具體了：哪些資源正在被浪費？人們為什麼不選擇再利用？我們提出的方法，會不會增加另一種負擔？</p><p>這也改變了討論 AI 的方式。不是先問「哪裡可以放 AI」，而是先說清楚原本的困難，再判斷 AI 是否真的能幫忙。</p><h2 id="ReValue-AI：讓二手物品有機會再次被使用"><a href="#ReValue-AI：讓二手物品有機會再次被使用" class="headerlink" title="ReValue AI：讓二手物品有機會再次被使用"></a>ReValue AI：讓二手物品有機會再次被使用</h2><p>我們的團隊提案叫做 <strong>ReValue AI</strong>，把 AI 與物品再利用連在一起。</p><p>概念是：協助使用者辨識物品、理解可能的價值，再提供重新使用或轉售的建議。它想處理的不是一個炫技問題，而是人們面對閒置物品時常有的困惑——不知道它還能做什麼，也不知道怎麼開始處理。</p><p>我參與的部分包括 AI 與技術流程、風險分析、Responsible AI，以及英文簡報與排練。要把提案說清楚，就不能只把模型名稱或流程圖放上去，還必須說明使用者會經歷什麼，以及每一步需要哪些資訊。</p><p>這裡也要區分成果的性質：<strong>ReValue AI 是這段見習中整理的團隊概念與成果發表，不代表已經上線營運、完成市場驗證的商業產品。</strong></p><h2 id="AI-的限制，也應該是提案的一部分"><a href="#AI-的限制，也應該是提案的一部分" class="headerlink" title="AI 的限制，也應該是提案的一部分"></a>AI 的限制，也應該是提案的一部分</h2><p>如果 AI 提供估價或辨識建議，使用者可能會把它當成答案。但物品的狀況、地區、交易市場與圖片品質，都會影響判斷。</p><p>因此，一個負責任的提案不能只說「AI 可以幫你估價」，也要想到：</p><ul><li>建議值不等於保證成交的價格。</li><li>輸入資訊不足時，應該提醒使用者，而不是假裝很確定。</li><li>判斷需要保留人工確認的空間。</li><li>蒐集資料時，必須留意隱私與用途。</li></ul><p>這些是提案設計需要面對的問題，不是已經完成的功能宣告。對我而言，把限制說出來，不是在削弱技術，而是在讓它更可信。</p><h2 id="用英文合作，不只是把中文換成英文"><a href="#用英文合作，不只是把中文換成英文" class="headerlink" title="用英文合作，不只是把中文換成英文"></a>用英文合作，不只是把中文換成英文</h2><p>成果發表的主題是 <strong>Learning in California, Leading in Taiwan</strong>。</p><p>準備英文簡報的過程，包含內容安排、句子的簡化、銜接與團隊排練。這和自己完成一份技術筆記不同：台上的每一段，都必須讓聽眾接得上，也要讓團隊成員知道彼此怎麼銜接。</p><p>我也更清楚地看到，「理解技術」與「讓別人理解技術」需要一起練習。把話說得清楚，不代表內容變得不專業；相反地，它要求我先知道自己到底想表達什麼。</p><h2 id="回來之後，讓經驗繼續流動"><a href="#回來之後，讓經驗繼續流動" class="headerlink" title="回來之後，讓經驗繼續流動"></a>回來之後，讓經驗繼續流動</h2><p>返國後，我也把申請、海外學習與自主學習的經驗整理成分享。對我而言，機會的價值不只在於自己去了哪裡，也在於能不能讓下一個正在找資源的人，更容易知道有哪些可能。</p><p>我希望 BoyceLab 同樣扮演這個角色：不是只展示完成的成果，而是把背景、方法與限制寫出來，讓讀者有機會接著思考。</p><p>這次加州見習留下的，不只是一段海外經驗，而是一個持續提醒：<strong>先理解問題，再選擇技術；做好作品，也要讓人看得懂。</strong></p><hr><p>活動背景：<a href="https://www.linkedin.com/posts/foundation-for-scholarly-exchange_fulbrighttaiwan-taiwanglobalpathfinders-activity-7504101806835380224-ceCr">Fulbright Taiwan 的加州見習介紹</a> · <a href="https://twpathfinder.yda.gov.tw/">青年百億海外圓夢基金計畫</a></p><p>本文於 2026 年 10 月回顧整理；課程背景參考主辦單位公開資訊，個人參與內容依既有見習與成果發表紀錄整理。</p>]]></content>
+    
+    
+    <summary type="html">整理青年百億加州見習與 ReValue AI 團隊發表：從永續議題出發，練習解釋 AI 能做什麼、不能做什麼，再把經驗帶回來分享。</summary>
+    
+    
+    
+    <category term="學習紀錄" scheme="https://www.boycelab.com/categories/%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/"/>
+    
+    
+    <category term="青年百億" scheme="https://www.boycelab.com/tags/%E9%9D%92%E5%B9%B4%E7%99%BE%E5%84%84/"/>
+    
+    <category term="海外見習" scheme="https://www.boycelab.com/tags/%E6%B5%B7%E5%A4%96%E8%A6%8B%E7%BF%92/"/>
+    
+    <category term="AI" scheme="https://www.boycelab.com/tags/AI/"/>
+    
+    <category term="永續" scheme="https://www.boycelab.com/tags/%E6%B0%B8%E7%BA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>從科展到 AI 安全：不只做出作品，也學會把問題問清楚</title>
+    <link href="https://www.boycelab.com/2026/10/05/science-fair-ai-security-2026/"/>
+    <id>https://www.boycelab.com/2026/10/05/science-fair-ai-security-2026/</id>
+    <published>2026-10-05T02:00:00.000Z</published>
+    <updated>2026-10-05T02:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>這篇不是把獎項再列一次，而是整理一路做科展時，我的問題意識怎麼改變。</p><p>從第 65 屆分區科展的智慧回收系統，到第 66 屆第 6 分區中小學科展特優，以及第 25 屆旺宏科學獎佳作，我想留下的不只是結果。更重要的是：每次整理作品、準備說明與重新檢查方法，都讓我看到自己還能做得更好的地方。</p><blockquote><p>還在不斷精進自己，每天都不一樣。</p></blockquote><p>這也是我最近整理這段經歷時，最想表達的一句話。</p><h2 id="第一段：讓-AI-從螢幕走進真實環境"><a href="#第一段：讓-AI-從螢幕走進真實環境" class="headerlink" title="第一段：讓 AI 從螢幕走進真實環境"></a>第一段：讓 AI 從螢幕走進真實環境</h2><p>智慧回收系統是我早期將 AI 與硬體串起來的研究。影像辨識只是其中一環，後面還有 Raspberry Pi、感測器、馬達，以及整個回收流程。</p><p>如果只看程式畫面，很容易覺得「模型辨識出來了，作品就完成了」。但是把它放進實際裝置後，問題會變得不同：圖片輸入是否穩定？辨識結果如何交給控制程式？裝置遇到錯誤時要如何處理？</p><p>這讓我開始理解，<strong>模型、程式與硬體要放在同一個流程裡看</strong>。其中一段出了問題，使用者看到的就是整個系統沒有正常工作，而不是「這一小段其實很成功」。</p><h2 id="第二段：從使用-AI，走向研究-AI-的安全"><a href="#第二段：從使用-AI，走向研究-AI-的安全" class="headerlink" title="第二段：從使用 AI，走向研究 AI 的安全"></a>第二段：從使用 AI，走向研究 AI 的安全</h2><p>後來，我把研究方向延伸到 RAG 與文件注入。</p><p>先用比較白話的方式說明：<strong>RAG 就是讓 AI 回答前，先查閱一份外部資料庫或文件</strong>。這個方法很實用，例如讓助理依照公司文件回答問題，而不是只依賴模型記得的內容。</p><p>但也因此多了一個問題：如果被查到的文件，混入了不應該被當成指令的文字，AI 會不會跟著它走？</p><p>這就是文件注入研究想追問的事情。外部內容應該是「可供參考的資料」，不應該因為出現在檢索結果裡，就取得指揮系統的權限。</p><p>研究裡涉及的切片、重疊與檢索參數，看起來像很細的技術設定，但它們其實都在影響同一件事：<strong>模型最後會看到哪些內容，以及它如何使用這些內容</strong>。</p><h2 id="科展讓我練習的不只是上台"><a href="#科展讓我練習的不只是上台" class="headerlink" title="科展讓我練習的不只是上台"></a>科展讓我練習的不只是上台</h2><p>作品可以執行，和研究可以被理解，是兩件不同的事。</p><p>整理報告時，我必須把問題、方法與觀察分開，不能只把畫面或功能一口氣堆上去。準備說明時，也要練習先交代問題的重要性，再介紹專有名詞。</p><p>我現在也把這個要求帶回網站：如果一個頁面看起來很專業，卻讓人不知道可以做什麼，那還不算完成；研究也是一樣，如果只能列出很多技術，卻說不清楚它們在回答什麼問題，就還需要整理。</p><p>對我而言，下一步不是把所有事情說得更大，而是把每個結論的範圍、限制與驗證方法說得更清楚。</p><h2 id="把研究帶進大學的學習"><a href="#把研究帶進大學的學習" class="headerlink" title="把研究帶進大學的學習"></a>把研究帶進大學的學習</h2><p>現在進入中興大學應用數學系，我希望把過去實作的經驗，和數學、資料分析與計算方法連起來。</p><p>以前遇到問題時，我常先想「要用什麼工具做」。接下來，我也想更有能力判斷資料、設計比較方式，理解結果背後的條件，而不只是讓程式跑出一個數字。</p><p>這條路還沒有走完。科展和競賽是階段性的紀錄，持續提問、修正和公開整理，才是我想長期留下的部分。</p><hr><p>延伸閱讀：<a href="/tags/%E8%B3%87%E5%AE%89/">我的資安學習筆記</a> · <a href="/about/">關於我的學習路線</a></p><p>本文於 2026 年 10 月整理發布；活動成果依既有個人紀錄整理，不把分區成果或代表資格當作全國賽得獎。</p>]]></content>
+    
+    
+    <summary type="html">從智慧回收系統到 RAG 文件注入研究，整理科展與旺宏科學獎這段路，還有我如何從「做出來」走向「說清楚、驗證清楚」。</summary>
+    
+    
+    
+    <category term="學習紀錄" scheme="https://www.boycelab.com/categories/%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/"/>
+    
+    
+    <category term="AI" scheme="https://www.boycelab.com/tags/AI/"/>
+    
+    <category term="資安" scheme="https://www.boycelab.com/tags/%E8%B3%87%E5%AE%89/"/>
+    
+    <category term="科展" scheme="https://www.boycelab.com/tags/%E7%A7%91%E5%B1%95/"/>
+    
+    <category term="研究" scheme="https://www.boycelab.com/tags/%E7%A0%94%E7%A9%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>SITCON 參與心得｜從屏東出發，看見語言模型的另一面</title>

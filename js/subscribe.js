@@ -34,7 +34,7 @@
         <div class="tech-modal-content">
           <div class="tech-modal-grid" aria-hidden="true"></div>
           <header class="tech-modal-header">
-            <span><i></i> BOYCELAB / SIGNAL RECEIVED</span>
+            <span><i></i> BoyceLab 電子報</span>
             <button class="tech-modal-close" type="button" aria-label="關閉訂閱訊息">×</button>
           </header>
           <div class="tech-modal-body">
@@ -65,13 +65,13 @@
 
   function openModal(type, message) {
     const activeModal = createModal();
-    const success = type === 'success';
+    const success = type === 'success' || type === 'submitted';
     previousFocus = document.activeElement;
     activeModal.classList.toggle('is-error', !success);
-    activeModal.querySelector('#tech-modal-kicker').textContent = success ? 'TRANSMISSION COMPLETE' : 'TRANSMISSION INTERRUPTED';
-    activeModal.querySelector('#tech-modal-heading').textContent = success ? '訂閱成功' : '暫時無法訂閱';
+    activeModal.querySelector('#tech-modal-kicker').textContent = success ? '感謝你的關注' : '請稍後再試';
+    activeModal.querySelector('#tech-modal-heading').textContent = type === 'submitted' ? '訂閱申請已送出' : success ? '訂閱成功' : '暫時無法訂閱';
     activeModal.querySelector('#tech-modal-message').textContent = message;
-    activeModal.querySelector('#tech-modal-status').textContent = success ? '200 / OK' : '503 / RETRY';
+    activeModal.querySelector('#tech-modal-status').textContent = type === 'submitted' ? '等待確認' : success ? '已確認' : '請重試';
     activeModal.hidden = false;
     document.body.classList.add('tech-modal-open');
     window.requestAnimationFrame(function () {
@@ -109,7 +109,7 @@
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.classList.add('is-sending');
-      submitButton.innerHTML = '<span class="subscribe-spinner" aria-hidden="true"></span> 訊號傳送中…';
+      submitButton.innerHTML = '<span class="subscribe-spinner" aria-hidden="true"></span> 正在送出…';
     }
 
     try {
@@ -121,7 +121,7 @@
       else form.setAttribute('target', originalTarget);
 
       form.reset();
-      openModal('success', '歡迎加入 BoyceLab 電子報。之後會不定期收到最新技術筆記、AI 研究與資安內容。');
+      openModal('submitted', '訂閱申請已交給電子報服務。請留意確認信與垃圾郵件匣；此頁無法確認電子報名單是否已成功更新。');
     } catch (error) {
       openModal('error', '訊號目前沒有成功送達，請確認網路連線後再試一次。');
     } finally {
@@ -144,6 +144,18 @@
     }, true);
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && modal && !modal.hidden) closeModal();
+      if (event.key === 'Tab' && modal && !modal.hidden) {
+        const buttons = Array.from(modal.querySelectorAll('button'));
+        const first = buttons[0];
+        const last = buttons[buttons.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
     });
   }
 

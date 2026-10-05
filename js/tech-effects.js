@@ -3,18 +3,10 @@
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const cardSelector = [
-    '.focus-card',
-    '.project-card',
-    '.milestone-item',
-    '.friend-card',
-    '.friends-panel',
-    '.newsletter-panel',
-    '.anonymous-panel',
-    '.anonymous-card',
-    '.community-form-panel',
-    '.subscribe-section',
-    '.post-list-item',
-    '.archive-post'
+    'a.project-card',
+    'a.friend-card',
+    'a.activity-card',
+    'a.archive-post'
   ].join(',');
 
   function ready(callback) {
@@ -247,8 +239,6 @@
   }
 
   ready(function () {
-    initSystemInterface();
-    initSectionTelemetry();
     initReadingProgress();
     initCardEffects();
     initAmbientNetwork();

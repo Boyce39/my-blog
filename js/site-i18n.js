@@ -49,6 +49,65 @@
     }
   };
 
+  const interfaceCopy = {
+    'FtO Seoul 2026：在 rep0rter 專案裡，和不同國家的人一起合作': ['FtO Seoul 2026: collaborating across borders with rep0rter', 'FtO Seoul 2026：rep0rterで国を越えて協働する', 'FtO Seoul 2026: rep0rter에서 국경을 넘어 협업하다'],
+    '九月在首爾參加 Facing the Ocean，加入 rep0rter 專案，也認識不同國家與背景的夥伴。這不是得獎故事，而是一次跨國開源協作的紀錄。': ['Joining rep0rter at Facing the Ocean in Seoul: an account of international open-source collaboration, not a competition result.', 'ソウルのFacing the Oceanでrep0rterに参加。受賞ではなく、国際的なオープンソース協働の記録です。', '서울 Facing the Ocean에서 rep0rter에 참여한 기록. 수상이 아닌 국제 오픈소스 협업 이야기입니다.'],
+    '青年百億加州見習：把 AI、永續與英文協作放在同一張桌上': ['Learning in California: AI, sustainability, and collaboration in English', 'カリフォルニアで学ぶ：AI、持続可能性、英語での協働', '캘리포니아에서 배우다: AI, 지속가능성, 영어 협업'],
+    '整理青年百億加州見習與 ReValue AI 團隊發表：從永續議題出發，練習解釋 AI 能做什麼、不能做什麼，再把經驗帶回來分享。': ['Reflecting on the California program and ReValue AI presentation: exploring what AI can and cannot do for sustainability.', '海外見学とReValue AIの発表を振り返り、持続可能性のためにAIができることと限界を考えます。', '캘리포니아 프로그램과 ReValue AI 발표를 돌아보며 지속가능성을 위한 AI의 가능성과 한계를 살펴봅니다.'],
+    '從科展到 AI 安全：不只做出作品，也學會把問題問清楚': ['From science fairs to AI security: learning to ask better questions', '科学展からAIセキュリティへ：問いを明確にする学び', '과학전람회에서 AI 보안으로: 더 명확하게 질문하는 법'],
+    '從智慧回收系統到 RAG 文件注入研究，整理科展與旺宏科學獎這段路，還有我如何從「做出來」走向「說清楚、驗證清楚」。': ['From smart recycling to RAG document injection research: moving beyond building a project to explaining and verifying it.', 'スマートリサイクルからRAGの文書注入研究へ。作るだけでなく、説明と検証へ進んだ記録。', '스마트 재활용에서 RAG 문서 주입 연구까지. 만드는 것을 넘어 설명하고 검증하는 과정입니다.'],
+    '文章與學習紀錄': ['Articles & learning notes', '記事と学習ノート', '글과 학습 기록'],
+    '不只有技術教學，也記錄研究、作品與活動心得。選一個你有興趣的主題開始。': ['Tutorials, research, projects, and reflections. Start with a topic you like.', '技術解説、研究、作品、活動の振り返り。興味のあるテーマからどうぞ。', '기술 안내, 연구, 프로젝트, 활동 후기. 관심 있는 주제부터 읽어 보세요.'],
+    '近況與心得 →': ['Recent activities →', '近況と振り返り →', '근황과 후기 →'],
+    '資安研究 →': ['Security research →', 'セキュリティ研究 →', '보안 연구 →'],
+    '專案作品 →': ['Projects →', 'プロジェクト →', '프로젝트 →'],
+    '演算法筆記 →': ['Algorithm notes →', 'アルゴリズムノート →', '알고리즘 노트 →'],
+    '前往網站 ↗ · 在新分頁開啟': ['Visit website ↗ · Opens a new tab', 'サイトへ ↗ · 新しいタブで開く', '웹사이트 방문 ↗ · 새 탭에서 열기'],
+    '想聊聊？': ['Want to talk?', '話してみませんか？', '이야기해 볼까요?'],
+    '最近在做什麼': ['Recent activities', '最近の活動', '최근 활동'],
+    '把經驗寫成': ['Turning experiences into ', '経験を', '경험을 '],
+    '可以分享的故事': ['stories worth sharing', '伝えられる物語に', '나눌 수 있는 이야기로'],
+    '看所有文章 →': ['Browse all articles →', 'すべての記事を見る →', '모든 글 보기 →'],
+    '先從這三篇開始：研究、海外學習，以及和不同國家的人一起做開源專案。不熟悉技術也可以閱讀。': ['Start with research, learning abroad, and international open-source collaboration. No technical background needed.', '研究、海外での学び、国際的なオープンソース活動から。専門知識がなくても読めます。', '연구, 해외 학습, 국제 오픈소스 협업부터 읽어 보세요. 기술 지식이 없어도 괜찮습니다.'],
+    '閱讀這篇文章': ['Read the article', '記事を読む', '글 읽기'],
+    '研究與科展': ['Research & science fairs', '研究と科学展', '연구와 과학전람회'],
+    '海外學習': ['Learning abroad', '海外での学び', '해외 학습'],
+    '開源與國際交流': ['Open source & exchange', 'オープンソースと国際交流', '오픈소스와 국제 교류'],
+    '為什麼選擇應用數學 →': ['Why applied mathematics? →', '応用数学を選んだ理由 →', '응용수학을 선택한 이유 →'],
+    '閱讀資安筆記 →': ['Read security notes →', 'セキュリティノートを読む →', '보안 노트 읽기 →'],
+    '查看程式作品 →': ['Explore projects →', 'プログラミング作品を見る →', '프로젝트 보기 →'],
+    '和 AI 聊聊程式、學習或科技問題。': ['Ask AI about programming, learning, or technology.', 'プログラミングや学習、技術の話をAIと。', 'AI와 프로그래밍, 학습, 기술에 대해 이야기해 보세요.'],
+    '朋友的網站': ['Friends on the web', '友達のサイト', '친구들의 웹사이트'],
+    '逛逛大家的作品與生活。': ['Explore their projects and stories.', 'みんなの作品や日々をのぞいてみよう。', '친구들의 작품과 일상을 둘러보세요.'],
+    '探索不同的觀點': ['Explore different perspectives', '違った視点に出会う', '다양한 관점 만나기'],
+    '已加入的友站': ['Website directory', 'サイト一覧', '웹사이트 목록'],
+    '搜尋友站': ['Search websites', 'サイトを検索', '웹사이트 검색'],
+    '網站名稱、簡介或網址': ['Name, description, or URL', 'サイト名、紹介文、URL', '이름, 소개, URL'],
+    '申請友站': ['Submit your website', 'サイトを申請', '웹사이트 신청'],
+    '申請加入友站': ['Submit your website', 'サイトの掲載を申請', '웹사이트 등록 신청'],
+    '網站名稱': ['Website name', 'サイト名', '웹사이트 이름'],
+    '網站網址': ['Website URL', 'サイトURL', '웹사이트 URL'],
+    '網站簡介': ['Description', '紹介文', '소개'],
+    '聯絡方式': ['Contact information', '連絡先', '연락처'],
+    '送出申請': ['Submit application', '申請を送信', '신청 보내기'],
+    '歡迎交換連結': ['Share your corner of the web', 'リンクをつなぎましょう', '링크를 나눠요'],
+    '大家的問題與我的回答': ['Your questions, my answers', 'みんなの質問と私の回答', '여러분의 질문과 나의 답변'],
+    '匿名提問，公開回覆。': ['Anonymous questions, public answers.', '匿名の質問、公開の回答。', '익명 질문, 공개 답변.'],
+    '公開回覆': ['Public answers', '公開回答', '공개 답변'],
+    '審核與回覆後才公開': ['Reviewed before publishing', '確認・返信後に公開', '검토하고 답변한 뒤 공개'],
+    '不用登入，也不用留下名字': ['No sign-in or name needed', 'ログインも名前も不要', '로그인과 이름이 필요 없어요'],
+    '歡迎隨便問我問題。': ['Feel free to ask me anything.', '気軽に質問してください。', '편하게 질문해 주세요.'],
+    '查看公開回覆牆': ['Read public answers', '公開回答を見る', '공개 답변 보기'],
+    '閱讀全文': ['Read more', '続きを読む', '계속 읽기'],
+    '跳到主要內容': ['Skip to main content', '本文へスキップ', '본문으로 이동'],
+    '搜尋文章': ['Search articles', '記事を検索', '글 검색'],
+    '切換深淺色主題': ['Toggle color theme', 'テーマを切り替える', '테마 전환'],
+    '開啟導覽選單': ['Open navigation', 'メニューを開く', '메뉴 열기']
+  };
+  Object.entries(interfaceCopy).forEach(([original, values]) => {
+    ['en', 'ja', 'ko'].forEach((language, index) => { translations[language][original] = values[index]; });
+  });
+
   const locale = chooseLocale();
   document.documentElement.lang = locale;
   window.BoyceI18n = { locale, t: translate, setLocale, apply: applyTranslations };
@@ -121,7 +180,7 @@
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
         if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-        if (node.parentElement?.closest('script,style,pre,code,[data-i18n-skip],.article-entry,.article-title')) return NodeFilter.FILTER_REJECT;
+        if (node.parentElement?.closest('script,style,pre,code,[data-i18n-skip],.article-type-post:not(.article-index-card) .article-entry,.article-title')) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
