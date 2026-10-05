@@ -13,6 +13,17 @@ body .landing-shell {
   padding-top: clamp(38px, 5vw, 64px);
 }
 
+body .landing-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+html[theme='light'] body .lab-button:not(.secondary),
+html[theme='light'] body #sendBtn {
+  background: #08786f;
+  color: #ffffff !important;
+}
+
 body #navbar {
   gap: 8px;
   padding: 0 10px;
