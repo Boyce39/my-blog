@@ -50,6 +50,10 @@
   };
 
   const interfaceCopy = {
+    '文章': ['Articles', '記事', '글'],
+    '更新日誌': ['Changelog', '更新履歴', '업데이트 기록'],
+    '作品與文章': ['Work and articles', '作品と記事', '작품과 글'],
+    '探索網站': ['Explore the site', 'サイトを探索', '사이트 둘러보기'],
     'FepPhoto 功能型平台：把顧客網站與門市流程接起來': ['FepPhoto: connecting the customer website with store workflows', 'FepPhoto：顧客サイトと店舗の業務をつなぐ', 'FepPhoto: 고객 웹사이트와 매장 업무 연결'],
     '最近的興趣：用 BoyceLab 做小店真正用得上的功能型網站': ['What I am exploring: useful functional websites for small businesses', '最近の関心：小さなお店に役立つ機能型サイト', '최근 관심: 소규모 매장에 유용한 기능형 웹사이트'],
     'Pixel364 點餐設計：從咖啡菜單到一張說得清楚的訂單': ['Pixel364 ordering: from a coffee menu to a clear order', 'Pixel364の注文設計：メニューから明確な注文へ', 'Pixel364 주문 설계: 커피 메뉴에서 명확한 주문까지'],
