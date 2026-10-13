@@ -392,9 +392,9 @@
   }
 
   function initializeArticleTranslation() {
-    if (!/^\/20[0-9]{2}\/[0-9]{2}\/[0-9]{2}\/[A-Za-z0-9%._~-]+\/$/.test(location.pathname)) return;
-    const article = document.querySelector('.article-type-post:not(.article-index-card) .article-entry');
-    const title = document.querySelector('.article-type-post:not(.article-index-card) .article-title');
+    if (!/^\/(?:20[0-9]{2}\/[0-9]{2}\/[0-9]{2}|articles)\/[A-Za-z0-9%._~-]+\/$/.test(location.pathname)) return;
+    const article = document.querySelector('.article-type-post:not(.article-index-card) .article-entry, .cms-public-content');
+    const title = document.querySelector('.article-type-post:not(.article-index-card) .article-title, .cms-public-header h1');
     if (!article || !title || document.querySelector('.article-machine-translation')) return;
     const sourceLocale = normalizeLocale(article.dataset.sourceLocale) || 'zh-TW';
     const originalTitle = title.textContent.trim();
