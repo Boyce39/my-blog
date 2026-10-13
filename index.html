@@ -49,7 +49,7 @@
                           <link rel="alternate" href="/atom.xml" title="里肌肉實驗室" type="application/atom+xml">
                             
                                   
-                                    <link rel="shortcut icon" href="/images/boycelab-mark.svg">
+                                    <link rel="shortcut icon" href="/images/boycelab-mark.svg?v=6.0.0">
                                       
                                           
                                             <script async
@@ -86,8 +86,9 @@
                                                   <link rel="stylesheet" href="/css/site-refresh.css?v=5.2.0">
                                                   <link rel="stylesheet" href="/css/ux-refinement.css?v=5.4.0">
                                                   <link rel="stylesheet" href="/css/lab-visual.css?v=5.4.0">
+                                                  <link rel="stylesheet" href="/css/major-refresh.css?v=6.0.0">
                                                   <script src="/js/api-config.js?v=5.0.0"></script>
-                                                  <script src="/js/site-i18n.js?v=5.3.0" defer></script>
+                                                  <script src="/js/site-i18n.js?v=6.0.0" defer></script>
                                                   <script src="/js/cms-posts.js?v=5.0.0" defer></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
@@ -772,7 +773,7 @@
   <nav id="title-nav">
     <a href="/">
       <div id="vivia-logo">
-        <img class="site-mark" src="/images/loading.gif" data-original="/images/boycelab-mark.svg" alt="" width="32" height="32">
+        <img class="site-mark" src="/images/loading.gif" data-original="/images/boycelab-mark.svg?v=6.0.0" alt="" width="32" height="32">
       </div>
       <div>BoyceLab</div>
     </a>
@@ -785,6 +786,10 @@
       
       <a class="main-nav-link" href="/blog/">
         文章列表
+      </a>
+      
+      <a class="main-nav-link" href="/business/">
+        作品與合作
       </a>
       
       <a class="main-nav-link" href="/about/">
@@ -831,6 +836,10 @@
       
       <a class="nav-dropdown-link" href="/blog/">
         文章列表
+      </a>
+      
+      <a class="nav-dropdown-link" href="/business/">
+        作品與合作
       </a>
       
       <a class="nav-dropdown-link" href="/about/">
@@ -911,13 +920,14 @@
             </div>
             <div class="hero-copy">
                 <div class="hero-status"><span class="hero-status-dot"></span>NCHU · Applied Mathematics</div>
-                <h1 id="hero-title" class="hero-title">BoyceLab<span>技術、數學與持續探索。</span></h1>
+                <h1 id="hero-title" class="hero-title">BoyceLab<span>把想法做成真正好用的網站。</span></h1>
+                <p class="hero-purpose">功能開發 × 商業流程 × 技術研究</p>
                 <p class="hero-description">
                     目前為<strong>中興大學大一應用數學系（數據分析與計算組）學生</strong>。專注於 Python 自動化、資安研究與資料應用，把學習過程整理成能被理解、也能被延伸的作品與文章。
                 </p>
                 <div class="hero-actions">
-                    <a href="/blog/" class="lab-button"><i class="fa-solid fa-book-open"></i>閱讀技術文章</a>
-                    <a href="/about/" class="lab-button secondary"><i class="fa-regular fa-user"></i>認識我</a>
+                    <a href="/business/" class="lab-button"><i class="fa-solid fa-layer-group" aria-hidden="true"></i>作品與合作</a>
+                    <a href="/blog/" class="lab-button secondary"><i class="fa-solid fa-book-open" aria-hidden="true"></i>閱讀技術文章</a>
                 </div>
                 <div class="hero-signal-rail" aria-label="匿名頻道快速入口">
                     <span>想聊聊？</span>
@@ -937,32 +947,41 @@
             </aside>
         </section>
 
+        <section class="landing-section portfolio-preview" aria-labelledby="work-preview-title">
+            <div class="section-title-row"><div><p class="landing-kicker">Built for real life</p><h2 id="work-preview-title" class="landing-heading">不只展示，<span>也解決問題。</span></h2></div><a class="text-link" href="/business/">看看作品與合作方式 →</a></div>
+            <p class="landing-intro">從網站、訂單與預約，到 API 串接與自動化；把實際需求整理成清楚、可使用的數位工具。</p>
+            <div class="portfolio-preview-grid">
+                <a class="portfolio-preview-card" href="/business/#fepphoto"><span class="case-symbol" aria-hidden="true">F</span><div><span class="case-eyebrow">FepPhoto</span><h3>影像服務的數位工作流程</h3><p>從服務介紹、線上下單到門市作業，串起不同的使用情境。</p><span class="text-link">了解功能與架構 →</span></div></a>
+                <a class="portfolio-preview-card" href="/business/#pixel364"><span class="case-symbol pixel-symbol" aria-hidden="true">P</span><div><span class="case-eyebrow">Pixel364</span><h3>咖啡店的線上點餐體驗</h3><p>菜單、客製選項、桌位 QR 與訂位流程，從手機操作開始設計。</p><span class="text-link">了解作品與功能 →</span></div></a>
+            </div>
+        </section>
+
         <section class="landing-section landing-reveal activity-section" aria-labelledby="activity-title">
             <div class="section-title-row">
                 <div><p class="landing-kicker">最近在做什麼</p><h2 id="activity-title" class="landing-heading">把經驗寫成<span>可以分享的故事</span></h2></div>
                 <a class="text-link" href="/blog/">看所有文章 →</a>
             </div>
-            <p class="landing-intro">先從這三篇開始：研究、海外學習，以及和不同國家的人一起做開源專案。不熟悉技術也可以閱讀。</p>
+            <p class="landing-intro">最近的開發筆記、研究與實作觀察；先從你有興趣的主題開始。</p>
             <div class="activity-grid">
                 
-                <a class="activity-card" href="/2026/10/05/fto-seoul-2026-rep0rter/">
-                    <span class="activity-meta"><span>開源與國際交流</span><time datetime="2026-10-05T02:20:00.000Z">2026.10.05</time></span>
-                    <h3>FtO Seoul 2026：在 rep0rter 專案裡，和不同國家的人一起合作</h3>
-                    <p>九月在首爾參加 Facing the Ocean，加入 rep0rter 專案，也認識不同國家與背景的夥伴。這不是得獎故事，而是一次跨國開源協作的紀錄。</p>
+                <a class="activity-card" href="/2026/10/13/fepphoto-functional-platform/">
+                    <span class="activity-meta"><span>BoyceLab 實作筆記</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></span>
+                    <h3>FepPhoto 功能型平台：把顧客網站與門市流程接起來</h3>
+                    <p>從共用授權 API、Cloudflare Workers／D1／R2，到本機交易、付款通知與列印佇列，整理 FepPhoto 的公開架構與實作界線。</p>
                     <span class="activity-read">閱讀這篇文章 <span aria-hidden="true">↗</span></span>
                 </a>
                 
-                <a class="activity-card" href="/2026/10/05/california-youth-pathfinders-revalue-ai-2026/">
-                    <span class="activity-meta"><span>海外學習</span><time datetime="2026-10-05T02:10:00.000Z">2026.10.05</time></span>
-                    <h3>青年百億加州見習：把 AI、永續與英文協作放在同一張桌上</h3>
-                    <p>整理青年百億加州見習與 ReValue AI 團隊發表：從永續議題出發，練習解釋 AI 能做什麼、不能做什麼，再把經驗帶回來分享。</p>
+                <a class="activity-card" href="/2026/10/13/functional-websites-business-notes/">
+                    <span class="activity-meta"><span>BoyceLab 實作筆記</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></span>
+                    <h3>最近的興趣：用 BoyceLab 做小店真正用得上的功能型網站</h3>
+                    <p>從 FepPhoto 與 Pixel364 出發，記錄我對小型商家網站與自動化的思考：先理解流程，再界定功能、例外與維護責任。</p>
                     <span class="activity-read">閱讀這篇文章 <span aria-hidden="true">↗</span></span>
                 </a>
                 
-                <a class="activity-card" href="/2026/10/05/science-fair-ai-security-2026/">
-                    <span class="activity-meta"><span>研究與科展</span><time datetime="2026-10-05T02:00:00.000Z">2026.10.05</time></span>
-                    <h3>從科展到 AI 安全：不只做出作品，也學會把問題問清楚</h3>
-                    <p>從智慧回收系統到 RAG 文件注入研究，整理科展與旺宏科學獎這段路，還有我如何從「做出來」走向「說清楚、驗證清楚」。</p>
+                <a class="activity-card" href="/2026/10/13/pixel364-ordering-design/">
+                    <span class="activity-meta"><span>BoyceLab 實作筆記</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></span>
+                    <h3>Pixel364 點餐設計：從咖啡菜單到一張說得清楚的訂單</h3>
+                    <p>整理 Pixel364 的菜單、客製選項、桌邊 QR、外帶與預約設計，以及 React／Vite／TypeScript、Workers／D1 的分工和未完成整合。</p>
                     <span class="activity-read">閱讀這篇文章 <span aria-hidden="true">↗</span></span>
                 </a>
                 
@@ -1102,16 +1121,12 @@
     <div id="footer-wrapper">
         <footer id="footer">
   <div id="footer-info" class="inner">
-    <div class="footer-row">
-      <span>&copy; 2026 BoyceLab</span>
-      <span class="footer-dot" aria-hidden="true"></span>
-      <span>用技術記錄探索，也用作品連結彼此。</span>
-      <nav class="footer-links" aria-label="頁尾導覽">
-        <a href="/blog/">文章</a>
-        <a href="/friends/">友站</a>
-        <a href="/changelog/">更新日誌</a>
-        <a href="https://github.com/Boyce39" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </nav>
+    <div class="footer-row footer-layout">
+      <div class="footer-brand"><img src="/images/loading.gif" data-original="/images/boycelab-mark.svg?v=6.0.0" alt="" width="36" height="36"><div><strong>BoyceLab</strong><p>用技術記錄探索，讓網站真正派上用場。</p><small>&copy; 2026 BoyceLab</small></div></div>
+      <div class="footer-directory">
+        <nav class="footer-links" aria-label="作品與文章"><span class="footer-label">作品</span><a href="/business/">作品與合作</a><a href="/blog/">文章</a><a href="https://github.com/Boyce39" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+        <nav class="footer-links" aria-label="探索網站"><span class="footer-label">探索</span><a href="/friends/">友站</a><a href="/anonymous-replies/">公開回覆</a><a href="/changelog/">更新日誌</a></nav>
+      </div>
     </div>
   </div>
 </footer>
@@ -1134,7 +1149,7 @@
     <script src="/js/light-dark-switch.js"></script>
     <script src="https://cdn.staticfile.org/fuse.js/6.6.2/fuse.min.js"></script>
     <script src="/js/local-search.js?v=5.3.0"></script>
-    <script src="/js/tech-effects.js?v=5.4.0"></script>
+    <script src="/js/tech-effects.js?v=6.0.0"></script>
     <script src="/js/subscribe.js?v=5.3.0"></script>
     <script src="/js/backend-wakeup.js?v=4.4.0"></script>
     <script>

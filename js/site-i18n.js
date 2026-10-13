@@ -50,6 +50,14 @@
   };
 
   const interfaceCopy = {
+    'FepPhoto 功能型平台：把顧客網站與門市流程接起來': ['FepPhoto: connecting the customer website with store workflows', 'FepPhoto：顧客サイトと店舗の業務をつなぐ', 'FepPhoto: 고객 웹사이트와 매장 업무 연결'],
+    '最近的興趣：用 BoyceLab 做小店真正用得上的功能型網站': ['What I am exploring: useful functional websites for small businesses', '最近の関心：小さなお店に役立つ機能型サイト', '최근 관심: 소규모 매장에 유용한 기능형 웹사이트'],
+    'Pixel364 點餐設計：從咖啡菜單到一張說得清楚的訂單': ['Pixel364 ordering: from a coffee menu to a clear order', 'Pixel364の注文設計：メニューから明確な注文へ', 'Pixel364 주문 설계: 커피 메뉴에서 명확한 주문까지'],
+    '從共用授權 API、Cloudflare Workers／D1／R2，到本機交易、付款通知與列印佇列，整理 FepPhoto 的公開架構與實作界線。': ['Public FepPhoto architecture: authorized APIs, Workers, D1, R2, local transactions, payment verification, and print queues—with clear implementation boundaries.', '認可API、Workers、D1、R2、ローカル取引、決済検証、印刷キュー。FepPhotoの公開設計と実装の範囲を整理します。', '인증 API, Workers, D1, R2, 로컬 거래, 결제 검증, 인쇄 대기열을 통해 FepPhoto의 공개 설계와 구현 범위를 정리합니다.'],
+    '從 FepPhoto 與 Pixel364 出發，記錄我對小型商家網站與自動化的思考：先理解流程，再界定功能、例外與維護責任。': ['From FepPhoto and Pixel364: understanding workflows before defining features, exceptions, and maintenance responsibilities.', 'FepPhotoとPixel364から、業務を理解して機能・例外・保守の責任を定める考え方をまとめます。', 'FepPhoto와 Pixel364를 통해 업무를 이해한 뒤 기능, 예외, 유지보수 책임을 정하는 과정을 기록합니다.'],
+    '整理 Pixel364 的菜單、客製選項、桌邊 QR、外帶與預約設計，以及 React／Vite／TypeScript、Workers／D1 的分工和未完成整合。': ['Pixel364 menus, customization, table QR, takeaway, and reservations: frontend/backend responsibilities and integrations still in progress.', 'Pixel364のメニュー、カスタマイズ、テーブルQR、持ち帰り、予約。フロントエンドとバックエンドの役割、未完成の連携も説明します。', 'Pixel364 메뉴, 맞춤 옵션, 테이블 QR, 포장, 예약 설계와 프론트엔드·백엔드 역할, 진행 중인 연동을 정리합니다.'],
+    'BoyceLab 實作筆記': ['BoyceLab build notes', 'BoyceLab 開発ノート', 'BoyceLab 개발 노트'],
+    'BoyceLab 創業筆記': ['BoyceLab business notes', 'BoyceLab 起業ノート', 'BoyceLab 창업 노트'],
     'FtO Seoul 2026：在 rep0rter 專案裡，和不同國家的人一起合作': ['FtO Seoul 2026: collaborating across borders with rep0rter', 'FtO Seoul 2026：rep0rterで国を越えて協働する', 'FtO Seoul 2026: rep0rter에서 국경을 넘어 협업하다'],
     '九月在首爾參加 Facing the Ocean，加入 rep0rter 專案，也認識不同國家與背景的夥伴。這不是得獎故事，而是一次跨國開源協作的紀錄。': ['Joining rep0rter at Facing the Ocean in Seoul: an account of international open-source collaboration, not a competition result.', 'ソウルのFacing the Oceanでrep0rterに参加。受賞ではなく、国際的なオープンソース協働の記録です。', '서울 Facing the Ocean에서 rep0rter에 참여한 기록. 수상이 아닌 국제 오픈소스 협업 이야기입니다.'],
     '青年百億加州見習：把 AI、永續與英文協作放在同一張桌上': ['Learning in California: AI, sustainability, and collaboration in English', 'カリフォルニアで学ぶ：AI、持続可能性、英語での協働', '캘리포니아에서 배우다: AI, 지속가능성, 영어 협업'],
@@ -102,232 +110,550 @@
     '跳到主要內容': ['Skip to main content', '本文へスキップ', '본문으로 이동'],
     '搜尋文章': ['Search articles', '記事を検索', '글 검색'],
     '切換深淺色主題': ['Toggle color theme', 'テーマを切り替える', '테마 전환'],
-    '開啟導覽選單': ['Open navigation', 'メニューを開く', '메뉴 열기']
+    '開啟導覽選單': ['Open navigation', 'メニューを開く', '메뉴 열기'],
+    '作品與合作': ['Work & collaboration', '制作実績とご相談', '작품과 협업'],
+    '合作洽詢': ['Discuss a project', '制作のご相談', '협업 문의'],
+    '作品': ['Work', '制作実績', '작품'],
+    '探索': ['Explore', '探究', '탐구'],
+    '用技術記錄探索，讓網站真正派上用場。': ['Documenting exploration through technology and building websites that are truly useful.', '技術で探究を記録し、本当に役立つウェブサイトを作ります。', '기술로 탐구를 기록하고 실제로 도움이 되는 웹사이트를 만듭니다.'],
+    '把想法做成真正好用的網站。': ['Turn ideas into websites that truly work.', 'アイデアを、本当に使いやすいウェブサイトに。', '아이디어를 정말 유용한 웹사이트로 만듭니다.'],
+    '功能開發 × 商業流程 × 技術研究': ['Feature development × Business workflows × Technical research', '機能開発 × 業務フロー × 技術研究', '기능 개발 × 비즈니스 프로세스 × 기술 연구'],
+    '從網站、訂單與預約，到 API 串接與自動化；把實際需求整理成清楚、可使用的數位工具。': ['From websites, orders, and bookings to API integrations and automation: turning real needs into clear, usable digital tools.', 'ウェブサイト、注文・予約管理、API連携、自動化まで。実際のニーズを、分かりやすく使えるデジタルツールにします。', '웹사이트, 주문과 예약부터 API 연동과 자동화까지, 실제 요구를 명확하고 사용하기 쉬운 디지털 도구로 만듭니다.'],
+    '看看作品與合作方式 →': ['Explore my work & ways to collaborate →', '制作実績とご相談の流れを見る →', '작품과 협업 방식 살펴보기 →'],
+    '不只展示，': ['Not just for show—', '見せるだけでなく、', '보여 주는 데 그치지 않고,'],
+    '也解決問題。': ['built to solve problems.', '課題も解決します。', '문제도 해결합니다.'],
+    '影像服務的數位工作流程': ['Digital workflows for imaging services', '画像サービスのデジタル業務フロー', '이미지 서비스의 디지털 업무 흐름'],
+    '從服務介紹、線上下單到門市作業，串起不同的使用情境。': ['Connecting service information, online orders, and in-store operations across different use cases.', 'サービス紹介、オンライン注文、店舗業務まで、さまざまな利用場面をつなぎます。', '서비스 소개, 온라인 주문, 매장 업무까지 다양한 사용 상황을 연결합니다.'],
+    '咖啡店的線上點餐體驗': ['An online ordering experience for a café', 'カフェのオンライン注文体験', '카페의 온라인 주문 경험'],
+    '菜單、客製選項、桌位 QR 與訂位流程，從手機操作開始設計。': ['Menus, customizations, table QR codes, and reservations designed around mobile use.', 'メニュー、カスタマイズ、テーブルのQRコード、予約フローを、スマートフォンでの操作から設計します。', '메뉴, 맞춤 옵션, 테이블 QR 코드, 예약 과정을 모바일 사용부터 설계합니다.'],
+    '了解功能與架構 →': ['Explore features & architecture →', '機能と構成を見る →', '기능과 구조 살펴보기 →'],
+    '了解作品與功能 →': ['Explore the project & features →', '制作実績と機能を見る →', '작품과 기능 살펴보기 →'],
+    '最近的開發筆記、研究與實作觀察；先從你有興趣的主題開始。': ['Recent development notes, research, and practical observations. Start with a topic that interests you.', '最近の開発ノート、研究、実装から得た気づき。興味のあるテーマからどうぞ。', '최근 개발 노트, 연구, 구현에서 얻은 관찰입니다. 관심 있는 주제부터 읽어 보세요.'],
+    '語言': ['Language', '言語', '언어'],
+    '跟隨系統': ['Follow system', 'システム設定に合わせる', '시스템 설정 따르기'],
+    '匿名回覆牆': ['Anonymous reply wall', '匿名回答一覧', '익명 답변 게시판'],
+    '只保留問題與回覆，不公開姓名、Email、IP 或安全稽核資訊。想問新問題，請統一使用網站匿名版。': ['Only questions and answers are public, never names, email addresses, IP addresses, or security audit data. Use the anonymous form to ask a new question.', '公開するのは質問と回答だけです。名前、メールアドレス、IP、安全監査情報は公開しません。新しい質問は匿名フォームからどうぞ。', '질문과 답변만 공개하며 이름, 이메일, IP, 보안 감사 정보는 공개하지 않습니다. 새 질문은 익명 양식을 이용해 주세요.'],
+    '匿名回覆分頁': ['Anonymous reply pages', '匿名回答のページ', '익명 답변 페이지'],
+    '搜尋本頁問答': ['Search this page', 'このページの質問・回答を検索', '이 페이지 질문과 답변 검색'],
+    '搜尋問題或回覆': ['Search questions or answers', '質問または回答を検索', '질문 또는 답변 검색'],
+    '只篩選目前載入的 8 則以內問答；不會搜尋其他分頁。問題與回覆保留原文。': ['Filters only the up to 8 answers loaded on this page, not other pages. Questions and answers stay in their original language.', '現在のページに読み込まれた最大8件だけを絞り込みます。他のページは検索しません。質問と回答は原文のままです。', '현재 페이지에 불러온 최대 8개 답변만 필터링하며 다른 페이지는 검색하지 않습니다. 질문과 답변은 원문을 유지합니다.'],
+    '回覆篩選': ['Filter answers', '回答の絞り込み', '답변 필터'],
+    '全部回覆': ['All answers', 'すべての回答', '모든 답변'],
+    '長回覆': ['Long answers', '長い回答', '긴 답변'],
+    '清除篩選': ['Clear filters', '絞り込みを解除', '필터 지우기'],
+    '本頁顯示 {visible} / {loaded} 則；共 {total} 則回覆': ['Showing {visible} of {loaded} on this page; {total} answers total', 'このページは{loaded}件中{visible}件を表示・全{total}件', '이 페이지 {loaded}개 중 {visible}개 표시 · 전체 답변 {total}개'],
+    '提問 {number}': ['Question {number}', '質問 {number}', '질문 {number}'],
+    '匿名提問': ['Anonymous question', '匿名の質問', '익명 질문'],
+    'BoyceLab 回覆': ['BoyceLab answer', 'BoyceLabの回答', 'BoyceLab 답변'],
+    '展開完整問題': ['Read full question', '質問の全文を読む', '질문 전체 보기'],
+    '收合問題': ['Collapse question', '質問を折りたたむ', '질문 접기'],
+    '展開完整回覆': ['Read full answer', '回答の全文を読む', '답변 전체 보기'],
+    '收合回覆': ['Collapse answer', '回答を折りたたむ', '답변 접기'],
+    '送出第一個問題': ['Ask the first question', '最初の質問を送る', '첫 질문 보내기'],
+    '第一則公開回覆正在準備中': ['The first public answer is on its way', '最初の公開回答を準備しています', '첫 공개 답변을 준비 중입니다'],
+    '歡迎先送出匿名問題。': ['You are welcome to send an anonymous question.', '匿名の質問をお待ちしています。', '익명 질문을 보내 주세요.'],
+    '沒有符合的問答': ['No matching questions or answers', '一致する質問・回答はありません', '일치하는 질문이나 답변이 없습니다'],
+    '請換個關鍵字、清除篩選，或前往其他分頁。': ['Try another keyword, clear the filters, or browse another page.', '別のキーワードを試すか、絞り込みを解除するか、他のページをご覧ください。', '다른 검색어를 사용하거나 필터를 지우거나 다른 페이지를 확인해 주세요.'],
+    '目前無法載入公開回覆': ['Public answers could not be loaded', '公開回答を読み込めませんでした', '공개 답변을 불러올 수 없습니다'],
+    '請檢查網路後重新載入。': ['Check your connection and try again.', '接続を確認して再読み込みしてください。', '연결을 확인하고 다시 시도해 주세요.'],
+    '正在載入公開問答': ['Loading public questions and answers', '公開の質問・回答を読み込み中', '공개 질문과 답변 불러오는 중'],
+    '只顯示已公開的問題與回覆。': ['Only published questions and answers are shown.', '公開済みの質問と回答だけを表示します。', '공개된 질문과 답변만 표시합니다.'],
+    '載入中…': ['Loading…', '読み込み中…', '불러오는 중…'],
+    '重新載入': ['Try again', '再読み込み', '다시 시도'],
+    '暫時無法載入': ['Temporarily unavailable', '現在読み込めません', '일시적으로 불러올 수 없음'],
+    '上一頁': ['Previous', '前へ', '이전'],
+    '下一頁': ['Next', '次へ', '다음'],
+    '前往上一頁': ['Go to previous page', '前のページへ', '이전 페이지로'],
+    '前往下一頁': ['Go to next page', '次のページへ', '다음 페이지로'],
+    '前往第 {page} 頁': ['Go to page {page}', '{page}ページへ', '{page}페이지로'],
+    '文章翻譯': ['Article translation', '記事の翻訳', '글 번역'],
+    '文章保留原文': ['Original article preserved', '記事は原文のままです', '글 원문 유지'],
+    '介面語言不會自動翻譯文章。選擇目標語言並按下翻譯，才會將文章文字傳送到 Cloudflare AI。': ['Changing the interface language does not translate the article. Article text is sent to Cloudflare AI only when you choose a language and press Translate.', '表示言語を変えても記事は翻訳しません。翻訳先を選んで翻訳ボタンを押したときだけ、記事のテキストをCloudflare AIに送信します。', '인터페이스 언어를 바꿔도 글은 번역하지 않습니다. 대상 언어를 선택하고 번역 버튼을 누를 때만 글 텍스트를 Cloudflare AI로 전송합니다.'],
+    '翻譯成': ['Translate into', '翻訳先', '번역 대상'],
+    '翻譯這篇文章': ['Translate this article', 'この記事を翻訳', '이 글 번역'],
+    '正在翻譯文章（{done} / {total}）': ['Translating this article ({done} / {total})', '記事を翻訳中（{done} / {total}）', '글 번역 중 ({done} / {total})'],
+    '原文仍可閱讀。首次翻譯可能需要一些時間，也可以取消。': ['The original stays readable. The first translation can take some time; you can cancel it.', '原文は引き続き読めます。初回の翻訳には時間がかかる場合があります。キャンセルもできます。', '원문은 계속 읽을 수 있습니다. 첫 번역은 시간이 걸릴 수 있으며 취소할 수 있습니다.'],
+    '取消翻譯': ['Cancel translation', '翻訳をキャンセル', '번역 취소'],
+    '機器翻譯版本': ['Machine-translated version', '機械翻訳版', '기계 번역본'],
+    'AI 翻譯可能有誤或不完整，請以原文為準。程式碼、連結與圖片保持原樣。': ['AI translation may be inaccurate or incomplete. Refer to the original; code, links, and images are unchanged.', 'AI翻訳には誤りや未翻訳部分がある場合があります。原文を確認してください。コード・リンク・画像は変更しません。', 'AI 번역은 부정확하거나 불완전할 수 있습니다. 원문을 참고해 주세요. 코드, 링크, 이미지는 변경하지 않습니다.'],
+    '查看原文': ['View original', '原文を見る', '원문 보기'],
+    '查看翻譯': ['View translation', '翻訳を見る', '번역 보기'],
+    '翻譯未能完成': ['Translation could not be completed', '翻訳できませんでした', '번역을 완료할 수 없습니다'],
+    '原文完整保留。請稍後再試。': ['The original is preserved. Please try again later.', '原文はそのまま残っています。後でもう一度お試しください。', '원문은 그대로 유지됩니다. 나중에 다시 시도해 주세요.'],
+    '已完成 {done} / {total} 個部分。原文完整保留；重新嘗試會接續已完成的部分。': ['Completed {done} of {total} parts. The original is preserved; retrying resumes from the completed parts.', '{total}部分中{done}部分が完了しました。原文はそのままです。再試行すると完了済み部分から再開します。', '{total}개 부분 중 {done}개를 완료했습니다. 원문은 그대로 유지되며 다시 시도하면 완료한 부분부터 이어집니다.'],
+    '翻譯時間較長，已停止等待；原文仍可閱讀。': ['The translation timed out. The original remains readable.', '翻訳がタイムアウトしました。原文は引き続き読めます。', '번역 시간이 초과되었습니다. 원문은 계속 읽을 수 있습니다.'],
+    '重新嘗試翻譯': ['Retry translation', '翻訳を再試行', '번역 다시 시도']
   };
   Object.entries(interfaceCopy).forEach(([original, values]) => {
     ['en', 'ja', 'ko'].forEach((language, index) => { translations[language][original] = values[index]; });
   });
 
-  const locale = chooseLocale();
+  translations['zh-TW'] = Object.fromEntries(Object.keys(translations.en).map(original => [original, original]));
+  const textSources = new WeakMap();
+  const attributeSources = new WeakMap();
+  const SKIP_INTERFACE = 'script,style,pre,code,kbd,samp,svg,math,[data-i18n-skip],[translate="no"],.article-type-post:not(.article-index-card) .article-entry,.article-title,.article-comment-body > p,.article-comment-meta > strong,.article-comment-avatar,.friend-name,.friend-description,.chat-message-content';
+  const originalDocumentTitle = document.title;
+  let preference = choosePreference();
+  let locale = resolveLocale(preference);
+  let articleTitleOverride = null;
+  let started = false;
   document.documentElement.lang = locale;
-  window.BoyceI18n = { locale, t: translate, setLocale, apply: applyTranslations };
+  window.BoyceI18n = {
+    get locale() { return locale; },
+    get preference() { return preference; },
+    t: translate,
+    setLocale,
+    apply: applyTranslations
+  };
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
   else start();
 
   function start() {
+    if (started) return;
+    started = true;
     createSwitcher();
     applyTranslations(document.body);
-    document.title = document.title.split(' | ').map(part => translate(part)).join(' | ');
-    translateStaticArticle().catch(error => console.warn('Article translation unavailable', error));
+    updateDocumentTitle();
+    initializeArticleTranslation();
     const observer = new MutationObserver(records => {
-      for (const record of records) for (const node of record.addedNodes) if (node.nodeType === Node.ELEMENT_NODE) applyTranslations(node);
+      for (const record of records) {
+        if (record.type === 'characterData') applyTranslations(record.target);
+        else if (record.type === 'attributes') applyAttributes(record.target);
+        else for (const node of record.addedNodes) applyTranslations(node);
+      }
     });
-    observer.observe(document.body, { childList: true, subtree: true });
-    window.dispatchEvent(new CustomEvent('boycelab:languagechange', { detail: { locale } }));
+    observer.observe(document.body, {
+      childList: true, characterData: true, subtree: true,
+      attributes: true, attributeFilter: ['placeholder', 'aria-label', 'title']
+    });
+    window.addEventListener('languagechange', () => {
+      if (preference === 'auto') activatePreference('auto');
+    });
+    window.addEventListener('storage', event => {
+      if (event.key !== STORAGE_KEY && event.key !== null) return;
+      const query = normalizePreference(new URLSearchParams(location.search).get('lang'));
+      if (!query) activatePreference(choosePreference());
+    });
+    window.addEventListener('popstate', () => activatePreference(choosePreference()));
+    notifyLanguageChange(null);
   }
 
-  function chooseLocale() {
-    const queryLocale = normalizeLocale(new URLSearchParams(location.search).get('lang'));
-    if (queryLocale) return queryLocale;
+  function normalizeLocale(value) {
+    const input = String(value || '').toLowerCase().replace(/_/g, '-');
+    if (input === 'zh' || input.startsWith('zh-')) return 'zh-TW';
+    return ['en', 'ja', 'ko'].find(code => input === code || input.startsWith(`${code}-`)) || null;
+  }
+
+  function normalizePreference(value) {
+    return String(value || '').toLowerCase() === 'auto' ? 'auto' : normalizeLocale(value);
+  }
+
+  function choosePreference() {
+    const query = normalizePreference(new URLSearchParams(location.search).get('lang'));
+    if (query) return query;
     try {
-      const stored = normalizeLocale(localStorage.getItem(STORAGE_KEY));
+      const stored = normalizePreference(localStorage.getItem(STORAGE_KEY));
       if (stored) return stored;
     } catch (_) {}
-    for (const language of navigator.languages || [navigator.language]) {
+    return 'auto';
+  }
+
+  function resolveLocale(value) {
+    if (value !== 'auto') return value;
+    for (const language of [...(navigator.languages || []), navigator.language]) {
       const normalized = normalizeLocale(language);
       if (normalized) return normalized;
     }
     return 'zh-TW';
   }
 
-  function normalizeLocale(value) {
-    const input = String(value || '').toLowerCase();
-    if (input === 'zh-tw' || input.startsWith('zh-hant')) return 'zh-TW';
-    if (input === 'ja' || input.startsWith('ja-')) return 'ja';
-    if (input === 'ko' || input.startsWith('ko-')) return 'ko';
-    if (input === 'en' || input.startsWith('en-')) return 'en';
-    return null;
+  function notifyLanguageChange(previousLocale) {
+    window.dispatchEvent(new CustomEvent('boycelab:languagechange', { detail: { locale, preference, previousLocale } }));
+  }
+
+  function activatePreference(nextPreference) {
+    const previousLocale = locale;
+    const previousPreference = preference;
+    preference = nextPreference;
+    locale = resolveLocale(preference);
+    document.documentElement.lang = locale;
+    document.querySelectorAll('[data-language-select]').forEach(select => {
+      select.value = preference;
+      select.setAttribute('aria-label', translate('語言'));
+      const automatic = select.querySelector('option[value="auto"]');
+      if (automatic) automatic.textContent = translate('跟隨系統');
+    });
+    if (!started || (previousLocale === locale && previousPreference === preference)) return;
+    applyTranslations(document.body);
+    updateDocumentTitle();
+    notifyLanguageChange(previousLocale);
   }
 
   function setLocale(nextLocale) {
-    if (!SUPPORTED.includes(nextLocale)) return;
-    try { localStorage.setItem(STORAGE_KEY, nextLocale); } catch (_) {}
-    document.cookie = `${STORAGE_KEY}=${encodeURIComponent(nextLocale)}; Path=/; Max-Age=31536000; SameSite=Lax`;
+    const normalized = normalizePreference(nextLocale);
+    if (!normalized) return false;
+    try { localStorage.setItem(STORAGE_KEY, normalized); } catch (_) {}
+    try {
+      document.cookie = `${STORAGE_KEY}=${encodeURIComponent(normalized)}; Path=/; Max-Age=31536000; SameSite=Lax${location.protocol === 'https:' ? '; Secure' : ''}`;
+    } catch (_) {}
     const url = new URL(location.href);
-    url.searchParams.set('lang', nextLocale);
-    document.documentElement.classList.add('language-switching');
-    document.querySelectorAll('[data-language-select]').forEach(select => { select.disabled = true; });
-    window.location.assign(url.toString());
+    url.searchParams.set('lang', normalized);
+    window.history.replaceState(window.history.state, '', url);
+    activatePreference(normalized);
+    return true;
   }
 
   function createSwitcher() {
+    if (document.querySelector('[data-language-select]')) return;
     const host = document.getElementById('sub-nav') || document.body;
     const control = document.createElement('div');
     control.className = `site-language-control${host === document.body ? ' floating' : ''}`;
-    control.innerHTML = `<span class="site-language-glyph" aria-hidden="true">文</span><select class="site-language-select" data-language-select aria-label="Language / 語言">${SUPPORTED.map(code => `<option value="${code}"${code === locale ? ' selected' : ''}>${LABELS[code][1]}</option>`).join('')}</select><span class="site-language-chevron" aria-hidden="true"></span>`;
-    if (host === document.body) host.appendChild(control);
-    else host.insertBefore(control, host.firstChild);
-    control.querySelector('select').addEventListener('change', event => setLocale(event.currentTarget.value));
+    control.setAttribute('data-i18n-skip', '');
+    const glyph = document.createElement('span');
+    glyph.className = 'site-language-glyph';
+    glyph.setAttribute('aria-hidden', 'true');
+    glyph.textContent = '文';
+    const select = document.createElement('select');
+    select.className = 'site-language-select';
+    select.setAttribute('data-language-select', '');
+    select.setAttribute('aria-label', translate('語言'));
+    ['auto', ...SUPPORTED].forEach(code => {
+      const option = document.createElement('option');
+      option.value = code;
+      option.textContent = code === 'auto' ? translate('跟隨系統') : LABELS[code][1];
+      option.lang = code === 'auto' ? locale : code;
+      select.appendChild(option);
+    });
+    select.value = preference;
+    const chevron = document.createElement('span');
+    chevron.className = 'site-language-chevron';
+    chevron.setAttribute('aria-hidden', 'true');
+    control.append(glyph, select, chevron);
+    host.insertBefore(control, host.firstChild);
+    select.addEventListener('change', event => setLocale(event.currentTarget.value));
   }
 
-  function translate(text) {
-    return locale === 'zh-TW' ? text : translations[locale]?.[text] || text;
+  function translate(text, values = {}) {
+    const template = translations[locale]?.[text] || String(text);
+    return template.replace(/\{([^{}]+)\}/g, (match, name) => Object.prototype.hasOwnProperty.call(values, name) ? String(values[name]) : match);
+  }
+
+  function updateDocumentTitle() {
+    document.title = originalDocumentTitle.split(' | ').map(part => {
+      if (articleTitleOverride && part === articleTitleOverride.original) return articleTitleOverride.current;
+      return translate(part);
+    }).join(' | ');
+  }
+
+  function applyText(node) {
+    if (!node.nodeValue.trim() || node.parentElement?.closest(`${SKIP_INTERFACE},textarea`)) return;
+    const previous = textSources.get(node);
+    const original = previous && previous.rendered === node.nodeValue ? previous.original : node.nodeValue;
+    const text = original.trim();
+    const rendered = original.replace(text, translate(text));
+    textSources.set(node, { original, rendered });
+    if (node.nodeValue !== rendered) node.nodeValue = rendered;
+  }
+
+  function applyAttributes(element) {
+    if (element.closest?.(SKIP_INTERFACE)) return;
+    const sources = attributeSources.get(element) || new Map();
+    for (const attribute of ['placeholder', 'aria-label', 'title']) {
+      const current = element.getAttribute(attribute);
+      if (current === null) {
+        sources.delete(attribute);
+        continue;
+      }
+      const previous = sources.get(attribute);
+      const original = previous && previous.rendered === current ? previous.original : current;
+      const rendered = translate(original);
+      sources.set(attribute, { original, rendered });
+      if (current !== rendered) element.setAttribute(attribute, rendered);
+    }
+    attributeSources.set(element, sources);
   }
 
   function applyTranslations(root) {
-    if (locale === 'zh-TW' || !root) return;
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-      acceptNode(node) {
-        if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-        if (node.parentElement?.closest('script,style,pre,code,[data-i18n-skip],.article-type-post:not(.article-index-card) .article-entry,.article-title')) return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    });
-    const nodes = [];
-    while (walker.nextNode()) nodes.push(walker.currentNode);
-    for (const node of nodes) {
-      const original = node.nodeValue.trim();
-      const replacement = translations[locale]?.[original];
-      if (replacement) node.nodeValue = node.nodeValue.replace(original, replacement);
+    if (!root) return;
+    if (root.nodeType === Node.TEXT_NODE) {
+      applyText(root);
+      return;
     }
-    const selector = 'input,textarea,[placeholder],[aria-label],[title]';
-    const elements = root.matches?.(selector) ? [root, ...root.querySelectorAll(selector)] : root.querySelectorAll?.(selector) || [];
-    for (const element of elements) {
-      for (const attribute of ['placeholder', 'aria-label', 'title']) {
-        const value = element.getAttribute(attribute);
-        if (value && translations[locale]?.[value]) element.setAttribute(attribute, translations[locale][value]);
-      }
-    }
+    if (![Node.ELEMENT_NODE, Node.DOCUMENT_FRAGMENT_NODE, Node.DOCUMENT_NODE].includes(root.nodeType)) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) applyText(walker.currentNode);
+    if (root.nodeType === Node.ELEMENT_NODE) applyAttributes(root);
+    root.querySelectorAll?.('[placeholder],[aria-label],[title]').forEach(applyAttributes);
   }
 
-  async function translateStaticArticle() {
-    if (locale === 'zh-TW' || !/^\/20[0-9]{2}\/[0-9]{2}\/[0-9]{2}\/[A-Za-z0-9%._~-]+\/$/.test(location.pathname)) return;
-    const article = document.querySelector('.article-entry');
-    const title = document.querySelector('.article-title');
-    if (!article || !title || article.dataset.machineTranslation === 'ready') return;
+  function initializeArticleTranslation() {
+    if (!/^\/20[0-9]{2}\/[0-9]{2}\/[0-9]{2}\/[A-Za-z0-9%._~-]+\/$/.test(location.pathname)) return;
+    const article = document.querySelector('.article-type-post:not(.article-index-card) .article-entry');
+    const title = document.querySelector('.article-type-post:not(.article-index-card) .article-title');
+    if (!article || !title || document.querySelector('.article-machine-translation')) return;
+    const sourceLocale = normalizeLocale(article.dataset.sourceLocale) || 'zh-TW';
+    const originalTitle = title.textContent.trim();
+    const titleNodes = collectTextNodes(title);
+    const cache = new Map();
+    const partCache = new Map();
+    let entries = [];
+    let chunks = [];
+    let completedParts = 0;
+    let state = 'original';
+    let timedOut = false;
+    let requestSequence = 0;
+    let controller = null;
 
-    const original = {
-      title: title.textContent.trim(),
-      html: article.innerHTML,
-      documentTitle: document.title
-    };
-    const copy = articleTranslationCopy(locale);
     const notice = document.createElement('aside');
-    notice.className = 'article-machine-translation loading';
-    notice.setAttribute('role', 'status');
-    notice.setAttribute('aria-live', 'polite');
-    notice.innerHTML = `<span class="translation-pulse" aria-hidden="true"></span><div class="translation-copy"><strong>${copy.loadingTitle}</strong><p>${copy.loadingBody}</p></div><div class="translation-actions"><button type="button" data-translation-toggle hidden>${copy.showOriginal}</button><button type="button" data-translation-retry hidden>${copy.retry}</button></div>`;
+    notice.className = 'article-machine-translation';
+    notice.setAttribute('data-i18n-skip', '');
+    const pulse = document.createElement('span');
+    pulse.className = 'translation-pulse';
+    pulse.setAttribute('aria-hidden', 'true');
+    const copy = document.createElement('div');
+    copy.className = 'translation-copy';
+    copy.setAttribute('role', 'status');
+    copy.setAttribute('aria-live', 'polite');
+    copy.setAttribute('aria-atomic', 'true');
+    const statusTitle = document.createElement('strong');
+    const statusBody = document.createElement('p');
+    copy.append(statusTitle, statusBody);
+    const actions = document.createElement('div');
+    actions.className = 'translation-actions';
+    const targetLabel = document.createElement('label');
+    targetLabel.className = 'translation-target';
+    const targetCopy = document.createElement('span');
+    const target = document.createElement('select');
+    target.setAttribute('data-translation-target', '');
+    SUPPORTED.filter(code => code !== sourceLocale).forEach(code => {
+      const option = document.createElement('option');
+      option.value = code;
+      option.lang = code;
+      option.textContent = LABELS[code][1];
+      target.appendChild(option);
+    });
+    target.value = locale !== sourceLocale ? locale : SUPPORTED.find(code => code !== sourceLocale);
+    targetLabel.append(targetCopy, target);
+    const translateButton = document.createElement('button');
+    translateButton.type = 'button';
+    translateButton.setAttribute('data-translation-request', '');
+    const originalButton = document.createElement('button');
+    originalButton.type = 'button';
+    originalButton.setAttribute('data-translation-toggle', '');
+    actions.append(targetLabel, translateButton, originalButton);
+    notice.append(pulse, copy, actions);
     article.before(notice);
+    article.lang = sourceLocale;
+    title.lang = sourceLocale;
+    articleTitleOverride = { original: originalTitle, current: originalTitle };
+    updateDocumentTitle();
 
-    const statusTitle = notice.querySelector('strong');
-    const statusBody = notice.querySelector('p');
-    const toggle = notice.querySelector('[data-translation-toggle]');
-    const retry = notice.querySelector('[data-translation-retry]');
-    let translated = null;
-    let responseWasCached = false;
-    let showingOriginal = false;
-    let requestInFlight = false;
+    function update() {
+      notice.classList.toggle('loading', state === 'loading');
+      notice.classList.toggle('error', state === 'error');
+      notice.setAttribute('aria-label', translate('文章翻譯'));
+      statusTitle.textContent = translate(state === 'loading' ? '正在翻譯文章（{done} / {total}）' : state === 'translated' ? '機器翻譯版本' : state === 'error' ? '翻譯未能完成' : '文章保留原文', { done: completedParts, total: chunks.length });
+      statusBody.textContent = translate(state === 'loading' ? '原文仍可閱讀。首次翻譯可能需要一些時間，也可以取消。' : state === 'translated' ? 'AI 翻譯可能有誤或不完整，請以原文為準。程式碼、連結與圖片保持原樣。' : state === 'error' ? timedOut ? '翻譯時間較長，已停止等待；原文仍可閱讀。' : '原文完整保留。請稍後再試。' : '介面語言不會自動翻譯文章。選擇目標語言並按下翻譯，才會將文章文字傳送到 Cloudflare AI。');
+      if (state === 'error' && chunks.length) statusBody.textContent += ` ${translate('已完成 {done} / {total} 個部分。原文完整保留；重新嘗試會接續已完成的部分。', { done: completedParts, total: chunks.length })}`;
+      targetCopy.textContent = translate('翻譯成');
+      translateButton.textContent = translate(state === 'error' ? '重新嘗試翻譯' : cache.has(target.value) ? '查看翻譯' : '翻譯這篇文章');
+      translateButton.disabled = state === 'loading' || state === 'translated';
+      originalButton.hidden = state !== 'loading' && state !== 'translated';
+      originalButton.textContent = translate(state === 'loading' ? '取消翻譯' : '查看原文');
+      article.dataset.machineTranslation = state === 'translated' ? 'ready' : state;
+    }
 
-    const requestTranslation = async () => {
-      const controller = new AbortController();
-      const timer = window.setTimeout(() => controller.abort(), 90_000);
-      const apiBase = window.BoyceApiConfig?.baseUrl || 'https://api.boycelab.com';
-      const description = document.querySelector('meta[name="description"]')?.content || '';
+    function restoreOriginal() {
+      requestSequence += 1;
+      controller?.abort();
+      controller = null;
+      entries.forEach(entry => { entry.node.nodeValue = entry.original; });
+      titleNodes.forEach(entry => { entry.node.nodeValue = entry.original; });
+      article.lang = sourceLocale;
+      title.lang = sourceLocale;
+      articleTitleOverride.current = originalTitle;
+      state = 'original';
+      updateDocumentTitle();
+      update();
+      notifyArticleChange();
+    }
+
+    function notifyArticleChange() {
+      window.dispatchEvent(new CustomEvent('boycelab:articletranslationchange', { detail: { state, locale: article.lang, targetLocale: target.value } }));
+    }
+
+    function showTranslation(translation, language) {
+      if (entries.some(entry => !article.contains(entry.node))) throw new Error('Article content changed');
+      entries.forEach((entry, index) => { entry.node.nodeValue = translation.text[index]; });
+      titleNodes.forEach((entry, index) => { entry.node.nodeValue = index === 0 ? translation.title : ''; });
+      article.lang = language;
+      title.lang = language;
+      articleTitleOverride.current = translation.title;
+      state = 'translated';
+      updateDocumentTitle();
+      update();
+      notifyArticleChange();
+    }
+
+    async function translateChunk(chunk, index, language, signal) {
+      const chunkController = new AbortController();
+      const cancel = () => chunkController.abort();
+      signal.addEventListener('abort', cancel, { once: true });
+      if (signal.aborted) cancel();
+      const timer = window.setTimeout(cancel, 90_000);
       try {
+        const description = index === 0 ? document.querySelector('meta[name="description"]')?.content || '' : '';
+        const apiBase = (window.BoyceApiConfig?.baseUrl || window.BoyceBackend?.baseUrl || 'https://api.boycelab.com').replace(/\/$/, '');
+        const path = `${location.pathname.replace(/\/$/, '')}--bl-part-${String(index + 1).padStart(3, '0')}/`;
         const response = await fetch(`${apiBase}/translate/article`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
-            article_key: `path:${location.pathname}`,
-            source_locale: 'zh-TW',
-            target_locale: locale,
-            title: original.title,
-            excerpt: description,
-            content_html: original.html,
-            seo_title: original.title,
-            seo_description: description
+            article_key: `path:${path}`, source_locale: sourceLocale, target_locale: language,
+            title: originalTitle, excerpt: description,
+            content_html: chunk.map(part => `<p>${escapeHtmlText(part.text)}</p>`).join(''),
+            seo_title: originalTitle, seo_description: description
           }),
-          credentials: 'omit',
-          referrerPolicy: 'strict-origin-when-cross-origin',
-          signal: controller.signal
+          credentials: 'omit', cache: 'no-store',
+          referrerPolicy: 'strict-origin-when-cross-origin', signal: chunkController.signal
         });
-        const payload = await response.json().catch(() => ({}));
-        if (!response.ok || !payload.translation?.content_html) throw new Error(payload.error || `Translation failed (${response.status})`);
-        return payload;
+        const payload = await response.json();
+        if (chunkController.signal.aborted) throw new DOMException('Translation cancelled', 'AbortError');
+        const result = payload?.translation;
+        if (!response.ok || result?.source_locale !== sourceLocale || result?.target_locale !== language || typeof result?.content_html !== 'string' || result.content_html.length > 1_500_000) throw new Error('Invalid translation response');
+        const template = document.createElement('template');
+        template.innerHTML = result.content_html;
+        const paragraphs = Array.from(template.content.childNodes).filter(node => node.nodeType !== Node.TEXT_NODE || node.nodeValue.trim());
+        if (paragraphs.length !== chunk.length || paragraphs.some(node => node.nodeType !== Node.ELEMENT_NODE || node.localName !== 'p' || node.attributes.length || Array.from(node.childNodes).some(child => child.nodeType !== Node.TEXT_NODE))) throw new Error('Translation structure changed');
+        return { title: typeof result.title === 'string' && result.title.trim() ? result.title : originalTitle, text: paragraphs.map(node => node.textContent) };
       } finally {
         window.clearTimeout(timer);
+        signal.removeEventListener('abort', cancel);
       }
-    };
+    }
 
-    const applyTranslated = () => {
-      const translatedTitle = translated.title || original.title;
-      title.textContent = translatedTitle;
-      article.innerHTML = translated.content_html;
-      hydrateTranslatedImages(article);
-      document.title = original.documentTitle.replace(original.title, translatedTitle);
-      toggle.textContent = copy.showOriginal;
-      statusTitle.textContent = copy.readyTitle;
-      statusBody.textContent = responseWasCached ? copy.cachedBody : copy.readyBody;
-      showingOriginal = false;
-    };
-    const applyOriginal = () => {
-      title.textContent = original.title;
-      article.innerHTML = original.html;
-      hydrateTranslatedImages(article);
-      document.title = original.documentTitle;
-      toggle.textContent = copy.showTranslation;
-      statusTitle.textContent = copy.originalTitle;
-      statusBody.textContent = copy.originalBody;
-      showingOriginal = true;
-    };
-    const runTranslation = async () => {
-      if (requestInFlight) return;
-      requestInFlight = true;
-      notice.classList.remove('error');
-      notice.classList.add('loading');
-      statusTitle.textContent = copy.loadingTitle;
-      statusBody.textContent = copy.loadingBody;
-      toggle.hidden = true;
-      retry.hidden = true;
-      retry.disabled = true;
+    async function requestTranslation() {
+      if (state === 'loading' || state === 'translated') return;
+      const language = target.value;
+      const sequence = ++requestSequence;
+      const activeController = new AbortController();
+      controller = activeController;
+      state = 'loading';
+      timedOut = false;
       try {
-        const payload = await requestTranslation();
-        translated = payload.translation;
-        responseWasCached = Boolean(payload.cached);
-        article.dataset.machineTranslation = 'ready';
-        notice.classList.remove('loading');
-        toggle.hidden = false;
-        applyTranslated();
+        if (!entries.length) {
+          entries = collectTextNodes(article, 'script,style,pre,code,kbd,samp,svg,math,form,button,input,textarea,select,iframe,[data-i18n-skip],[translate="no"],.highlight,.katex,.MathJax,.mermaid,.hbe-input,.hbe-data');
+          chunks = createTranslationChunks(article, entries);
+        }
+        if (!entries.length) throw new Error('No article text');
+        if (cache.has(language)) {
+          showTranslation(cache.get(language), language);
+          return;
+        }
+        const completed = partCache.get(language) || new Map();
+        partCache.set(language, completed);
+        completedParts = completed.size;
+        update();
+        let nextIndex = 0;
+        async function worker() {
+          while (nextIndex < chunks.length && !activeController.signal.aborted) {
+            const index = nextIndex++;
+            if (completed.has(index)) continue;
+            const translated = await translateChunk(chunks[index], index, language, activeController.signal);
+            if (sequence !== requestSequence || activeController.signal.aborted) return;
+            completed.set(index, translated);
+            completedParts = completed.size;
+            update();
+          }
+        }
+        await Promise.all(Array.from({ length: Math.min(2, chunks.length) }, worker));
+        if (sequence !== requestSequence || activeController.signal.aborted) return;
+        if (completed.size !== chunks.length) throw new Error('Incomplete article translation');
+        const text = entries.map(() => '');
+        chunks.forEach((chunk, index) => {
+          chunk.forEach((part, partIndex) => { text[part.entryIndex] += completed.get(index).text[partIndex]; });
+        });
+        const translation = { title: completed.get(0).title, text };
+        showTranslation(translation, language);
+        cache.set(language, translation);
       } catch (error) {
-        notice.classList.remove('loading');
-        notice.classList.add('error');
-        statusTitle.textContent = copy.errorTitle;
-        statusBody.textContent = error?.name === 'AbortError' ? copy.timeoutBody : copy.errorBody;
-        retry.hidden = false;
-        retry.disabled = false;
-        console.warn('Article translation unavailable', error);
+        if (sequence !== requestSequence) return;
+        activeController.abort();
+        state = 'error';
+        timedOut = error?.name === 'AbortError';
+        update();
       } finally {
-        requestInFlight = false;
+        if (sequence === requestSequence) controller = null;
       }
-    };
+    }
 
-    toggle.addEventListener('click', () => showingOriginal ? applyTranslated() : applyOriginal());
-    retry.addEventListener('click', runTranslation);
-    await runTranslation();
-  }
-
-  function hydrateTranslatedImages(root) {
-    root.querySelectorAll('img[data-original]').forEach(image => {
-      if (image.dataset.original) image.src = image.dataset.original;
+    translateButton.addEventListener('click', requestTranslation);
+    originalButton.addEventListener('click', restoreOriginal);
+    target.addEventListener('change', () => {
+      restoreOriginal();
+      requestTranslation();
     });
+    window.addEventListener('boycelab:languagechange', event => {
+      if (event.detail.previousLocale === null || event.detail.previousLocale === locale) return;
+      restoreOriginal();
+      target.value = locale !== sourceLocale ? locale : SUPPORTED.find(code => code !== sourceLocale);
+      update();
+      if (locale !== sourceLocale) requestTranslation();
+    });
+    update();
+    if (locale !== sourceLocale) requestTranslation();
   }
 
-  function articleTranslationCopy(activeLocale) {
-    return {
-      en: { loadingTitle: 'Translating this article', loadingBody: 'Cloudflare AI is preparing an English version. Longer articles can take a little longer the first time.', readyTitle: 'Machine-translated article', readyBody: 'Translated automatically by Cloudflare AI. Technical names and code are kept intact.', cachedBody: 'Loaded instantly from the edge translation cache.', showOriginal: 'View original', showTranslation: 'View translation', originalTitle: 'Original article', originalBody: 'You are reading the author’s original Traditional Chinese version.', errorTitle: 'Translation could not be completed', errorBody: 'The original article is still available. You can retry without leaving this page.', timeoutBody: 'This translation took longer than expected. The original remains available, and you can retry now.', retry: 'Retry translation' },
-      ja: { loadingTitle: '記事を翻訳しています', loadingBody: 'Cloudflare AIが日本語版を準備しています。長い記事の初回翻訳には少し時間がかかります。', readyTitle: '自動翻訳された記事', readyBody: 'Cloudflare AIによる自動翻訳です。技術名とコードは原文のまま保持します。', cachedBody: 'エッジ翻訳キャッシュからすぐに読み込みました。', showOriginal: '原文を見る', showTranslation: '翻訳を見る', originalTitle: '原文を表示中', originalBody: '作者が書いた繁体字中国語の原文を表示しています。', errorTitle: '翻訳を完了できませんでした', errorBody: '原文はそのまま閲覧できます。このページから再試行できます。', timeoutBody: '翻訳に通常より時間がかかりました。原文を読みながら、もう一度お試しいただけます。', retry: '翻訳を再試行' },
-      ko: { loadingTitle: '글을 번역하는 중입니다', loadingBody: 'Cloudflare AI가 한국어 버전을 준비하고 있습니다. 긴 글의 첫 번역은 조금 더 걸릴 수 있습니다.', readyTitle: '자동 번역된 글', readyBody: 'Cloudflare AI로 자동 번역했습니다. 기술 용어와 코드는 원문을 유지합니다.', cachedBody: '엣지 번역 캐시에서 바로 불러왔습니다.', showOriginal: '원문 보기', showTranslation: '번역 보기', originalTitle: '원문을 표시 중입니다', originalBody: '작성자의 번체 중국어 원문을 표시하고 있습니다.', errorTitle: '번역을 완료하지 못했습니다', errorBody: '원문은 계속 읽을 수 있으며 이 페이지에서 바로 다시 시도할 수 있습니다.', timeoutBody: '번역 시간이 예상보다 길어졌습니다. 원문을 읽으면서 다시 시도할 수 있습니다.', retry: '번역 다시 시도' }
-    }[activeLocale];
+  function collectTextNodes(root, skipSelector = '') {
+    const entries = [];
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (!node.nodeValue.trim() || (skipSelector && node.parentElement?.closest(skipSelector))) continue;
+      entries.push({ node, original: node.nodeValue });
+    }
+    return entries;
+  }
+
+  function createTranslationChunks(article, entries) {
+    const chunks = [];
+    let chunk = [];
+    let characters = 0;
+    let topLevelNodes = new Set();
+    entries.forEach((entry, entryIndex) => {
+      let topLevel = entry.node;
+      while (topLevel.parentNode && topLevel.parentNode !== article) topLevel = topLevel.parentNode;
+      const source = Array.from(entry.original);
+      let offset = 0;
+      while (offset < source.length) {
+        let end = Math.min(source.length, offset + 2000);
+        if (end < source.length) {
+          for (let boundary = end; boundary > offset + 1000; boundary -= 1) {
+            if (/[。！？.!?\s]/u.test(source[boundary - 1])) {
+              end = boundary;
+              break;
+            }
+          }
+        }
+        const text = source.slice(offset, end).join('');
+        if (chunk.length && (characters + text.length > 8000 || chunk.length >= 24 || (!topLevelNodes.has(topLevel) && topLevelNodes.size >= 8))) {
+          chunks.push(chunk);
+          chunk = [];
+          characters = 0;
+          topLevelNodes = new Set();
+        }
+        chunk.push({ entryIndex, text });
+        characters += text.length;
+        topLevelNodes.add(topLevel);
+        offset = end;
+      }
+    });
+    if (chunk.length) chunks.push(chunk);
+    return chunks;
+  }
+
+  function escapeHtmlText(value) {
+    return value.replace(/[&<>]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[character]);
   }
 })();

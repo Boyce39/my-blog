@@ -4,7 +4,7 @@
   <url>
     <loc>https://www.boycelab.com/changelog/index.html</loc>
     
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,16 +13,7 @@
   <url>
     <loc>https://www.boycelab.com/assistant/index.html</loc>
     
-    <lastmod>2026-10-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/anonymous/index.html</loc>
-    
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -30,6 +21,51 @@
   
   <url>
     <loc>https://www.boycelab.com/anonymous-replies/index.html</loc>
+    
+    <lastmod>2026-10-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/business/index.html</loc>
+    
+    <lastmod>2026-10-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/2026/10/13/pixel364-ordering-design/</loc>
+    
+    <lastmod>2026-10-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/2026/10/13/functional-websites-business-notes/</loc>
+    
+    <lastmod>2026-10-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/2026/10/13/fepphoto-functional-platform/</loc>
+    
+    <lastmod>2026-10-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/anonymous/index.html</loc>
     
     <lastmod>2026-10-05</lastmod>
     
@@ -157,7 +193,7 @@
 
   <url>
     <loc>https://www.boycelab.com/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -165,105 +201,189 @@
   
   <url>
     <loc>https://www.boycelab.com/tags/%E5%BF%83%E5%BE%97/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/%E9%9D%92%E5%B9%B4%E7%99%BE%E5%84%84/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/%E6%B5%B7%E5%A4%96%E8%A6%8B%E7%BF%92/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/AI/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/%E6%B0%B8%E7%BA%8C/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/tags/%E8%B3%87%E5%AE%89/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/%E7%A7%91%E5%B1%95/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/%E7%A0%94%E7%A9%B6/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/SITCON2026/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/FtO/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/%E9%96%8B%E6%BA%90/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/Civic-Tech/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/tags/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/tags/%E5%B0%88%E6%A1%88/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E9%9D%92%E5%B9%B4%E7%99%BE%E5%84%84/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E6%B5%B7%E5%A4%96%E8%A6%8B%E7%BF%92/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/AI/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E6%B0%B8%E7%BA%8C/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/FtO/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E9%96%8B%E6%BA%90/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/Civic-Tech/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/BoyceLab/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/FepPhoto/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E5%8A%9F%E8%83%BD%E5%9E%8B%E7%B6%B2%E7%AB%99/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/Cloudflare/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E5%B0%8F%E5%9E%8B%E5%95%86%E5%AE%B6/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E8%87%AA%E5%8B%95%E5%8C%96/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E7%94%A2%E5%93%81%E8%A8%AD%E8%A8%88/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E7%A7%91%E5%B1%95/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E7%A0%94%E7%A9%B6/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/Pixel364/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E9%BB%9E%E9%A4%90%E7%B3%BB%E7%B5%B1/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/React/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/tags/SITCON2026/</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/tags/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -272,140 +392,154 @@
   
   <url>
     <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/categories/%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/Writeup/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E8%B3%87%E5%AE%89/Writeup/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://www.boycelab.com/categories/%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://www.boycelab.com/categories/%E5%89%B5%E6%A5%AD%E7%AD%86%E8%A8%98/</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/Writeup/2025-AIS3-Junior/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E5%B0%88%E6%A1%88/%E6%8B%8D%E8%B2%BC/P-X/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/</loc>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/Prompt-Injection/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/Algorithm/C/%E7%AB%B6%E7%A8%8B/%E6%95%99%E5%AD%B8/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.boycelab.com/categories/%E5%BF%83%E5%BE%97/%E6%8A%80%E8%A1%93/AI/LLM/%E8%B3%87%E5%AE%89/Prompt-Injection/Alignment/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

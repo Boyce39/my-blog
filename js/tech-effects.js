@@ -15,6 +15,7 @@
     'a.project-card',
     'a.friend-card',
     'a.activity-card',
+    'a.portfolio-preview-card',
     'a.archive-post'
   ].join(',');
 
@@ -179,56 +180,6 @@
     });
     resize();
     draw();
-  }
-
-  function initSystemInterface() {
-    if (document.getElementById('tech-interface-layer')) return;
-
-    const interfaceLayer = document.createElement('div');
-    interfaceLayer.id = 'tech-interface-layer';
-    interfaceLayer.setAttribute('aria-hidden', 'true');
-    interfaceLayer.innerHTML = '<i class="tech-scan-beam"></i><i class="tech-pointer-field"></i>';
-    document.body.appendChild(interfaceLayer);
-
-    const hud = document.createElement('div');
-    hud.id = 'tech-hud';
-    hud.setAttribute('aria-hidden', 'true');
-    hud.innerHTML = `
-      <i class="tech-hud-corner top-left"></i>
-      <i class="tech-hud-corner top-right"></i>
-      <i class="tech-hud-corner bottom-left"></i>
-      <i class="tech-hud-corner bottom-right"></i>
-      <span class="tech-hud-label hud-status"><b></b> BOYCELAB / ONLINE</span>
-      <span class="tech-hud-label hud-coordinate">NCHU · AMATH · ${new Date().getFullYear()}</span>`;
-    document.body.appendChild(hud);
-
-    const telemetry = document.createElement('div');
-    telemetry.id = 'tech-telemetry-rail';
-    telemetry.setAttribute('aria-hidden', 'true');
-    telemetry.innerHTML = '<span>PYTHON</span><i></i><span>SECURITY</span><i></i><span>APPLIED MATH</span>';
-    document.body.appendChild(telemetry);
-
-    if (reducedMotion || !window.matchMedia('(pointer: fine)').matches) return;
-    let pointerFrame = 0;
-    window.addEventListener('pointermove', function (event) {
-      window.cancelAnimationFrame(pointerFrame);
-      pointerFrame = window.requestAnimationFrame(function () {
-        interfaceLayer.style.setProperty('--pointer-x', `${event.clientX}px`);
-        interfaceLayer.style.setProperty('--pointer-y', `${event.clientY}px`);
-      });
-    }, { passive: true });
-  }
-
-  function initSectionTelemetry() {
-    const sections = document.querySelectorAll('.landing-section, .community-hero, .reply-wall-panel');
-    sections.forEach(function (section, index) {
-      if (section.querySelector(':scope > .tech-section-label')) return;
-      const label = document.createElement('span');
-      label.className = 'tech-section-label';
-      label.setAttribute('aria-hidden', 'true');
-      label.textContent = `SECTION ${String(index + 1).padStart(2, '0')}`;
-      section.appendChild(label);
-    });
   }
 
   function initCopyButtons() {
