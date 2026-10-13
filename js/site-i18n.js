@@ -490,10 +490,11 @@
     function showTranslation(translation, language) {
       if (entries.some(entry => !article.contains(entry.node))) throw new Error('Article content changed');
       entries.forEach((entry, index) => { entry.node.nodeValue = translation.text[index]; });
-      titleNodes.forEach((entry, index) => { entry.node.nodeValue = index === 0 ? translation.title : ''; });
+      const translatedTitle = translations[language]?.[originalTitle] || translation.title;
+      titleNodes.forEach((entry, index) => { entry.node.nodeValue = index === 0 ? translatedTitle : ''; });
       article.lang = language;
       title.lang = language;
-      articleTitleOverride.current = translation.title;
+      articleTitleOverride.current = translatedTitle;
       state = 'translated';
       updateDocumentTitle();
       update();

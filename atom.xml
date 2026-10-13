@@ -46,35 +46,6 @@
   </entry>
   
   <entry>
-    <title>最近的興趣：用 BoyceLab 做小店真正用得上的功能型網站</title>
-    <link href="https://www.boycelab.com/2026/10/13/functional-websites-business-notes/"/>
-    <id>https://www.boycelab.com/2026/10/13/functional-websites-business-notes/</id>
-    <published>2026-10-12T16:00:00.000Z</published>
-    <updated>2026-10-13T12:31:09.673Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近我感興趣的，是網站能不能走出「展示作品」這個角色，成為小型商家每天用得上的工具。我以 BoyceLab 為品牌，透過 <a href="https://www.fepphoto.com/">FepPhoto</a> 與 <a href="https://www.pixel364.com/">Pixel364</a> 探索功能型網站與自動化。比起多放一段動畫，我更想知道：顧客完成操作後，店家是否真的接得住？</p><span id="more"></span><h2 id="功能型網站，從下一個動作開始"><a href="#功能型網站，從下一個動作開始" class="headerlink" title="功能型網站，從下一個動作開始"></a>功能型網站，從下一個動作開始</h2><p>形象網站回答「你是誰」，功能型網站還要回答「我現在能做什麼」。FepPhoto 的服務脈絡包含會員、預約、優惠券與底片處理；Pixel364 則把菜單、客製選項與點餐連在一起。顧客可從各自的公開網站接觸服務，實際可用項目以網站當下呈現為準。</p><p>兩個場景不同，卻讓我看見同一個問題：表單送出不是流程的終點。接下來由誰確認、如何交付、遇到例外怎麼辦，才是網站能否融入日常工作的關鍵。這也是我想繼續研究的方向，而不是先替每間店套上相同模板。</p><h2 id="先畫流程，再列功能"><a href="#先畫流程，再列功能" class="headerlink" title="先畫流程，再列功能"></a>先畫流程，再列功能</h2><p>如果要替小店規劃網站，我會先把一件常見工作拆開：顧客提出需求、店家接收、確認內容、完成服務。每一步都問三件事：</p><ul><li>哪些資訊是完成這一步真正需要的？</li><li>誰有權確認，顧客需要看見什麼狀態？</li><li>如果操作失敗，能否補救或改由人工接手？</li></ul><p>例如，預約送出不一定代表時段已確認，點餐送出也不等於付款完成。先說清楚這些差異，比先增加通知、報表或會員等級更重要。功能的價值應該回到具體情境，而不是只用清單長短衡量。</p><h2 id="自動化不是把人全部拿掉"><a href="#自動化不是把人全部拿掉" class="headerlink" title="自動化不是把人全部拿掉"></a>自動化不是把人全部拿掉</h2><p>我想探索的自動化，是把重複抄寫、狀態傳遞與固定提醒交給系統，讓人把注意力留給需要判斷的事情。但這是設計方向，不代表兩個專案已經把這些工作全部自動化。</p><p>遇到需求變更、付款疑問或設備故障，仍需要有人負責。我會把「誰接手失敗情境」放進規劃，而不是把例外藏起來。資料也應以完成服務所需為範圍；公開分享設計方法，不需要帶出顧客紀錄、交易內容或店內管理細節。</p><h2 id="我會如何界定下一步"><a href="#我會如何界定下一步" class="headerlink" title="我會如何界定下一步"></a>我會如何界定下一步</h2><p>對我而言，下一階段不是盲目增加功能，而是挑一段流程，確認它的輸入、完成條件與例外，再決定是否值得自動化。合作前也應談清楚功能範圍、後續維護與外部服務依賴，不能把「做得出介面」當成「已經可以承擔所有營運」。</p><p>目前這些專案是實作與學習的起點，不是營收提升或效率改善的成效報告。我沒有足夠證據宣稱它們替店家省下多少時間。若要評估價值，未來應先約定觀察方式，再用實際使用回饋檢查。比起先說服別人技術很厲害，我更想把一件小事做得清楚、可靠，而且願意長期維護。</p>]]></content>
-    
-    
-    <summary type="html">從 FepPhoto 與 Pixel364 出發，記錄我對小型商家網站與自動化的思考：先理解流程，再界定功能、例外與維護責任。</summary>
-    
-    
-    
-    <category term="創業筆記" scheme="https://www.boycelab.com/categories/%E5%89%B5%E6%A5%AD%E7%AD%86%E8%A8%98/"/>
-    
-    
-    <category term="BoyceLab" scheme="https://www.boycelab.com/tags/BoyceLab/"/>
-    
-    <category term="功能型網站" scheme="https://www.boycelab.com/tags/%E5%8A%9F%E8%83%BD%E5%9E%8B%E7%B6%B2%E7%AB%99/"/>
-    
-    <category term="小型商家" scheme="https://www.boycelab.com/tags/%E5%B0%8F%E5%9E%8B%E5%95%86%E5%AE%B6/"/>
-    
-    <category term="自動化" scheme="https://www.boycelab.com/tags/%E8%87%AA%E5%8B%95%E5%8C%96/"/>
-    
-    <category term="產品設計" scheme="https://www.boycelab.com/tags/%E7%94%A2%E5%93%81%E8%A8%AD%E8%A8%88/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Pixel364 點餐設計：從咖啡菜單到一張說得清楚的訂單</title>
     <link href="https://www.boycelab.com/2026/10/13/pixel364-ordering-design/"/>
     <id>https://www.boycelab.com/2026/10/13/pixel364-ordering-design/</id>
@@ -100,6 +71,35 @@
     <category term="React" scheme="https://www.boycelab.com/tags/React/"/>
     
     <category term="使用者體驗" scheme="https://www.boycelab.com/tags/%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>最近的興趣：用 BoyceLab 做小店真正用得上的功能型網站</title>
+    <link href="https://www.boycelab.com/2026/10/13/functional-websites-business-notes/"/>
+    <id>https://www.boycelab.com/2026/10/13/functional-websites-business-notes/</id>
+    <published>2026-10-12T16:00:00.000Z</published>
+    <updated>2026-10-13T12:31:09.673Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近我感興趣的，是網站能不能走出「展示作品」這個角色，成為小型商家每天用得上的工具。我以 BoyceLab 為品牌，透過 <a href="https://www.fepphoto.com/">FepPhoto</a> 與 <a href="https://www.pixel364.com/">Pixel364</a> 探索功能型網站與自動化。比起多放一段動畫，我更想知道：顧客完成操作後，店家是否真的接得住？</p><span id="more"></span><h2 id="功能型網站，從下一個動作開始"><a href="#功能型網站，從下一個動作開始" class="headerlink" title="功能型網站，從下一個動作開始"></a>功能型網站，從下一個動作開始</h2><p>形象網站回答「你是誰」，功能型網站還要回答「我現在能做什麼」。FepPhoto 的服務脈絡包含會員、預約、優惠券與底片處理；Pixel364 則把菜單、客製選項與點餐連在一起。顧客可從各自的公開網站接觸服務，實際可用項目以網站當下呈現為準。</p><p>兩個場景不同，卻讓我看見同一個問題：表單送出不是流程的終點。接下來由誰確認、如何交付、遇到例外怎麼辦，才是網站能否融入日常工作的關鍵。這也是我想繼續研究的方向，而不是先替每間店套上相同模板。</p><h2 id="先畫流程，再列功能"><a href="#先畫流程，再列功能" class="headerlink" title="先畫流程，再列功能"></a>先畫流程，再列功能</h2><p>如果要替小店規劃網站，我會先把一件常見工作拆開：顧客提出需求、店家接收、確認內容、完成服務。每一步都問三件事：</p><ul><li>哪些資訊是完成這一步真正需要的？</li><li>誰有權確認，顧客需要看見什麼狀態？</li><li>如果操作失敗，能否補救或改由人工接手？</li></ul><p>例如，預約送出不一定代表時段已確認，點餐送出也不等於付款完成。先說清楚這些差異，比先增加通知、報表或會員等級更重要。功能的價值應該回到具體情境，而不是只用清單長短衡量。</p><h2 id="自動化不是把人全部拿掉"><a href="#自動化不是把人全部拿掉" class="headerlink" title="自動化不是把人全部拿掉"></a>自動化不是把人全部拿掉</h2><p>我想探索的自動化，是把重複抄寫、狀態傳遞與固定提醒交給系統，讓人把注意力留給需要判斷的事情。但這是設計方向，不代表兩個專案已經把這些工作全部自動化。</p><p>遇到需求變更、付款疑問或設備故障，仍需要有人負責。我會把「誰接手失敗情境」放進規劃，而不是把例外藏起來。資料也應以完成服務所需為範圍；公開分享設計方法，不需要帶出顧客紀錄、交易內容或店內管理細節。</p><h2 id="我會如何界定下一步"><a href="#我會如何界定下一步" class="headerlink" title="我會如何界定下一步"></a>我會如何界定下一步</h2><p>對我而言，下一階段不是盲目增加功能，而是挑一段流程，確認它的輸入、完成條件與例外，再決定是否值得自動化。合作前也應談清楚功能範圍、後續維護與外部服務依賴，不能把「做得出介面」當成「已經可以承擔所有營運」。</p><p>目前這些專案是實作與學習的起點，不是營收提升或效率改善的成效報告。我沒有足夠證據宣稱它們替店家省下多少時間。若要評估價值，未來應先約定觀察方式，再用實際使用回饋檢查。比起先說服別人技術很厲害，我更想把一件小事做得清楚、可靠，而且願意長期維護。</p>]]></content>
+    
+    
+    <summary type="html">從 FepPhoto 與 Pixel364 出發，記錄我對小型商家網站與自動化的思考：先理解流程，再界定功能、例外與維護責任。</summary>
+    
+    
+    
+    <category term="創業筆記" scheme="https://www.boycelab.com/categories/%E5%89%B5%E6%A5%AD%E7%AD%86%E8%A8%98/"/>
+    
+    
+    <category term="BoyceLab" scheme="https://www.boycelab.com/tags/BoyceLab/"/>
+    
+    <category term="功能型網站" scheme="https://www.boycelab.com/tags/%E5%8A%9F%E8%83%BD%E5%9E%8B%E7%B6%B2%E7%AB%99/"/>
+    
+    <category term="小型商家" scheme="https://www.boycelab.com/tags/%E5%B0%8F%E5%9E%8B%E5%95%86%E5%AE%B6/"/>
+    
+    <category term="自動化" scheme="https://www.boycelab.com/tags/%E8%87%AA%E5%8B%95%E5%8C%96/"/>
+    
+    <category term="產品設計" scheme="https://www.boycelab.com/tags/%E7%94%A2%E5%93%81%E8%A8%AD%E8%A8%88/"/>
     
   </entry>
   
