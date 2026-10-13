@@ -17,7 +17,8 @@ body .hero-description { margin-top: 20px; }
 .case-symbol { display: grid; place-items: center; flex: 0 0 48px; width: 48px; height: 48px; border-radius: 14px; background: var(--lab-accent-soft); color: var(--lab-accent-strong); border: 1px solid var(--lab-border-strong); font: 700 1.4rem/1 system-ui; }
 .pixel-symbol { color: var(--lab-blue); border-color: var(--lab-border); background: rgba(116, 174, 232, .1); }
 
-body #footer { display: block; width: 100%; margin-top: 60px; border-top: 1px solid var(--lab-border); }
+body #footer { display: block; box-sizing: border-box; height: auto; min-height: 0; width: 100%; margin-top: 40px; padding: 0; border-top: 1px solid var(--lab-border); }
+body #footer-wrapper { height: auto; min-height: 0; }
 body #footer-info { box-sizing: border-box; width: 100%; max-width: 1120px; margin: auto; padding: 34px 24px 42px; }
 body .footer-row.footer-layout { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: start; text-align: left; justify-content: normal; font-size: .83rem; }
 .footer-brand { display: flex; align-items: start; gap: 14px; min-width: 0; }
@@ -62,7 +63,7 @@ body .case-heading h3 { margin: 6px 0 0; font-size: 1.3rem; }
 .case-details { margin: 18px 0; border-block: 1px solid var(--lab-border); }
 .case-details summary { padding: 14px 0; min-height: 44px; cursor: pointer; font-weight: 600; color: var(--lab-text); }
 .case-details p { font-size: .9rem; }
-.business-process { list-style: none; counter-reset: process; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0 !important; gap: 18px; }
+.business-process { list-style: none !important; counter-reset: process; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0 !important; gap: 18px; }
 .business-process li { counter-increment: process; border-top: 1px solid var(--lab-border-strong); padding-top: 14px; }
 .business-process li::before { content: '0' counter(process); display: block; font: .75rem/1.6 monospace; color: var(--lab-accent); margin-bottom: 10px; }
 .inquiry-section { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 42px; }
