@@ -61,13 +61,14 @@
     if (Object.keys(campaign).length || !stored) writeStored('boycelab_growth_source',{ landing_path:location.pathname.slice(0,200),campaign });
   }
   function referencePrefix() {
-    return selectedReference && form.elements.intent.value === 'project' ? '[參考版型：'+selectedReference.title[0]+']\n' : '';
+    return selectedReference && form.elements.intent.value === 'project' ? '[參考方向：'+selectedReference.title[0]+']\n' : '';
   }
   function updateReference() {
     const panel = document.getElementById('business-reference');
     if (!panel || !form) return;
     const active = Boolean(selectedReference && form.elements.intent.value === 'project');
     panel.hidden = !active;
+    form.elements.project_type.closest('label').hidden = active;
     panel.querySelectorAll('[data-reference-label]').forEach(label => { label.hidden = !active || label.dataset.referenceLabel !== selectedReference?.id; });
     form.elements.message.maxLength = 3000-referencePrefix().length;
   }
@@ -111,11 +112,11 @@
   if (form) {
     const params = new URLSearchParams(location.search);
     if (['audit','project','partner'].includes(params.get('intent'))) form.elements.intent.value=params.get('intent');
-    const requested = {brand:'business',app:'functional',booking:'functional',manufacturing:'business'}[params.get('service')];
+    const requested = {brand:'business',website:'business',app:'functional',booking:'functional',pos:'functional',tools:'automation',care:'automation',manufacturing:'business'}[params.get('service')];
     if (requested) form.elements.project_type.value=requested;
     try {
       const references = JSON.parse(document.getElementById('business-reference-data')?.textContent || '[]');
-      selectedReference = references.find(item => ['brand','booking','catalog'].includes(item.id) && item.id===params.get('reference')) || null;
+      selectedReference = references.find(item => ['brand','booking','catalog','website','pos','tools','care'].includes(item.id) && item.id===params.get('reference')) || null;
       if (selectedReference) form.elements.project_type.value=selectedReference.type;
     } catch {}
     document.getElementById('remove-business-reference')?.addEventListener('click',() => { selectedReference=null; updateReference(); });
