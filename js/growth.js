@@ -116,7 +116,7 @@
     if (requested) form.elements.project_type.value=requested;
     try {
       const references = JSON.parse(document.getElementById('business-reference-data')?.textContent || '[]');
-      selectedReference = references.find(item => ['brand','booking','catalog','website','pos','tools','care'].includes(item.id) && item.id===params.get('reference')) || null;
+      selectedReference = references.find(item => item.id===params.get('reference') && ['business','functional','automation'].includes(item.type) && Array.isArray(item.title)) || null;
       if (selectedReference) form.elements.project_type.value=selectedReference.type;
     } catch {}
     document.getElementById('remove-business-reference')?.addEventListener('click',() => { selectedReference=null; updateReference(); });
