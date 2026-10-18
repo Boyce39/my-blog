@@ -1,0 +1,179 @@
+
+  
+<!doctype html>
+<html lang="zh-TW" theme="dark" showBanner="false" hasBanner="false">
+<head>
+<script src="/js/color.global.min.js"></script><script src="/js/load-settings.js"></script>  <meta charset="utf-8">
+  
+    
+      
+
+        
+          <title>
+            
+              預約與詢價系統規劃・功能網站開發 | 
+                  BoyceLab
+          </title>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+          
+            <meta name="description"
+              content="將服務選擇、必要資料、人工確認、修改與取消流程串起來。清楚區分提出預約與確認成立，不只放上一個表單。">
+            
+                
+                    <meta name="keywords" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
+                    
+
+                      
+                      <link rel="canonical" href="https://www.boycelab.com/business/booking/">
+                      
+                      <meta name="google-site-verification" content="BjnRa5PrgPoCBv-2HSXBY9Lq8TY9-2kV_WeigOl1R2A" />
+
+                      <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font"
+                        type="font/ttf" crossorigin="anonymous">
+                      <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf"
+                        crossorigin="anonymous">
+
+                      <meta name="description" content="將服務選擇、必要資料、人工確認、修改與取消流程串起來。清楚區分提出預約與確認成立，不只放上一個表單。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="預約與詢價系統規劃・功能網站開發">
+<meta property="og:url" content="https://www.boycelab.com/business/booking/index.html">
+<meta property="og:site_name" content="BoyceLab">
+<meta property="og:description" content="將服務選擇、必要資料、人工確認、修改與取消流程串起來。清楚區分提出預約與確認成立，不只放上一個表單。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-10-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-17T16:00:00.000Z">
+<meta property="article:author" content="李柏毅 BoyceLab">
+<meta property="article:tag" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
+<meta name="twitter:card" content="summary">
+                        
+                          <link rel="alternate" href="/atom.xml" title="BoyceLab" type="application/atom+xml">
+                            
+                                  
+                                    <link rel="shortcut icon" href="/images/boycelab-mark.svg?v=6.0.0">
+                                      
+                                          
+                                            <script async
+                                              src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                                            
+                                              
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "首頁",
+        "item": "https://www.boycelab.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "預約與詢價系統規劃・功能網站開發",
+        "item": "https://www.boycelab.com/business/booking/index.html"
+      }
+    ]
+  }
+]
+</script>
+    
+                                                
+<link rel="stylesheet" href="/css/style.css">
+
+                                                  <link rel="stylesheet" href="/css/custom-tech.css">
+                                                  <link rel="stylesheet" href="/css/site-refresh.css?v=6.2.2">
+                                                  <link rel="stylesheet" href="/css/ux-refinement.css?v=5.4.0">
+                                                  <link rel="stylesheet" href="/css/lab-visual.css?v=5.4.0">
+                                                  <link rel="stylesheet" href="/css/major-refresh.css?v=6.0.1">
+                                                  <script src="/js/api-config.js?v=5.0.0"></script>
+                                                  <script src="/js/site-i18n.js?v=6.2.0" defer></script>
+                                                  <script src="/js/cms-posts.js?v=5.0.0" defer></script>
+
+<link rel="stylesheet" href="/css/studio-components.css?v=6.2.2"><link rel="stylesheet" href="/css/commercial.css?v=6.2.2">
+
+<script src="/js/growth.js?v=6.2.2" defer></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body class="growth-body">
+<a class="skip-link" href="#growth-main">跳到主要內容</a>
+
+<header class="growth-header" data-i18n-skip>
+  <div class="growth-header-inner">
+    <a class="growth-brand" href="/business/"><img class="no-lazy" src="/images/boycelab-mark.svg?v=6.0.0" width="34" height="34" alt=""><span>BoyceLab<small class="growth-brand-note">STUDIO</small></span></a>
+    <nav class="growth-nav" aria-label="Main">
+      <a href="/business/#work"><span data-growth-copy data-en="Selected work" data-ja="制作実績" data-ko="주요 작업">精選作品</span></a>
+      <a href="/business/#services"><span data-growth-copy data-en="Services" data-ja="サービス" data-ko="서비스">網站服務</span></a>
+      <a href="/"><span data-growth-copy data-en="Back to the blog" data-ja="ブログに戻る" data-ko="블로그로 돌아가기">回到部落格</span></a>
+    </nav>
+    <nav id="sub-nav" class="growth-tools" aria-label="Preferences">
+      <button id="theme-btn" class="nav-icon" type="button" aria-label="切換深淺色主題"><span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span><span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span></button>
+      <details class="growth-mobile-menu"><summary><span data-growth-copy data-en="Menu" data-ja="メニュー" data-ko="메뉴">選單</span></summary><nav><a href="/business/#work"><span data-growth-copy data-en="Selected work" data-ja="制作実績" data-ko="주요 작업">精選作品</span></a><a href="/business/#services"><span data-growth-copy data-en="Services" data-ja="サービス" data-ko="서비스">網站服務</span></a><a href="/"><span data-growth-copy data-en="Back to the blog" data-ja="ブログに戻る" data-ko="블로그로 돌아가기">回到部落格</span></a><a href="/business/website-audit/?intent=project#write-request"><span data-growth-copy data-en="Let's talk" data-ja="相談する" data-ko="상담하기">聊聊需求</span> ↗</a></nav></details>
+    </nav>
+  </div>
+</header>
+
+<main tabindex="-1" id="growth-main" class="growth" data-i18n-skip data-growth-page="booking">
+  <nav class="growth-breadcrumb" aria-label="Breadcrumb"><a href="/business/"><span data-growth-copy data-en="Website services" data-ja="ウェブ制作" data-ko="웹사이트 서비스">網站服務</span></a><span aria-hidden="true">/</span><span><span data-growth-copy data-en="Bookings &amp; inquiries" data-ja="予約・問い合わせ" data-ko="예약·문의 흐름">預約與詢價流程</span></span></nav>
+  <section class="growth-hero" aria-labelledby="growth-title">
+    <div class="growth-hero-copy">
+      <p class="growth-kicker"><span class="growth-dot" aria-hidden="true"></span><span data-growth-copy data-en="Bookings &amp; inquiries" data-ja="予約・問い合わせ" data-ko="예약·문의 흐름">預約與詢價流程</span></p>
+      <h1 id="growth-title"><span data-growth-copy data-en="Less back-and-forth. More clarity." data-ja="やり取りを減らし、必要事項を明確に。" data-ko="반복 질문은 줄이고 확인은 명확하게.">少一點來回問，多一點確認清楚。</span></h1>
+      <p class="growth-lead"><span data-growth-copy data-en="Booking is not just a calendar, and inquiries are not just forms. Separate a request from a confirmed reservation; define services, required information, human review and notifications." data-ja="予約はカレンダー、見積もりはフォームだけでは完結しません。申込と確定を区別し、必要情報、確認、通知を設計します。" data-ko="예약은 달력만, 문의는 양식만으로 완성되지 않습니다. 신청과 확정을 구분하고 필수 정보, 검토와 알림을 설계합니다.">預約不只是放行事曆，詢價也不只是加一個表單。先分清楚「提出需求」與「確認成立」，把可選服務、必要資料、人工確認與後續通知排好。</span></p>
+      <div class="growth-actions"><a class="growth-button" href="/business/website-audit/?intent=audit"><span data-growth-copy data-en="Get 3 free improvement ideas" data-ja="無料で3つの改善提案" data-ko="무료 개선 제안 3가지 받기">免費取得 3 點改善建議</span><span aria-hidden="true">↗</span></a><a class="growth-link" href="/business/website-audit/?intent=project&amp;service=booking#write-request"><span data-growth-copy data-en="Discuss a project" data-ja="具体的な制作相談" data-ko="프로젝트 상담">已有需求，討論專案</span> <span aria-hidden="true">→</span></a></div>
+      
+    </div>
+    
+    
+  </section>
+  
+  
+  
+  <section class="growth-section growth-detail-section" id="section-0" aria-labelledby="section-title-0">
+    <div class="growth-section-heading"><h2 id="section-title-0"><span data-growth-copy data-en="From request to confirmed arrangement." data-ja="申し込みから確定まで。" data-ko="신청에서 실제 확정까지.">從提出需求，到真的確認成立。</span></h2></div>
+    <div class="growth-detail-list"><article class="growth-detail-item"><h3><span data-growth-copy data-en="Clarify services and conditions" data-ja="サービスと条件を説明" data-ko="서비스와 조건을 먼저 설명">服務與條件先說明</span></h3><div><p><span data-growth-copy data-en="Explain eligibility, time, quantity, specifications and preparation. If pricing depends on review, say so instead of showing a misleading fixed price." data-ja="対象・時間・数量・仕様・準備物を説明。確認後に価格が決まる場合は、その条件を明記します。" data-ko="대상, 시간, 수량, 사양과 준비물을 설명하고 검토 후 가격이 정해진다면 조건을 명시합니다.">適用對象、所需時間、數量、規格與準備資料先整理。若報價依檔案或現場條件而變，不用虛假的固定價格催促下單。</span></p></div></article><article class="growth-detail-item"><h3><span data-growth-copy data-en="Availability and human confirmation" data-ja="空き時間と担当者の確認" data-ko="가능 시간과 담당자 확인">可用時段與人工確認</span></h3><div><p><span data-growth-copy data-en="Distinguish live availability from requested bookings. When staff or equipment approval is needed, show a pending state, not a guarantee." data-ja="即時予約と申込式を区別。人員・設備の確認が必要なら保留状態を明示します。" data-ko="실시간 예약과 신청 방식을 구분하고 인력·장비 확인이 필요하면 대기 상태로 표시합니다.">區分即時庫存與申請式預約。需要人員或設備確認時，顧客看到的是待確認，而不是以為一定保留成功。</span></p></div></article><article class="growth-detail-item"><h3><span data-growth-copy data-en="Reply, change and cancellation" data-ja="返信・変更・キャンセル" data-ko="답변·변경·취소">回覆、修改與取消</span></h3><div><p><span data-growth-copy data-en="Define notification channels, edit windows, cancellation rules and fallback contact. Do not claim unconnected payment or messaging features." data-ja="通知先・変更期限・取消条件・代替連絡を決めます。未接続の決済・通知は完成扱いにしません。" data-ko="알림 채널, 수정 기한, 취소 조건과 대체 연락처를 정하며 미연동 결제·알림을 완성으로 표시하지 않습니다.">確認通知寄到哪裡、何時可修改、取消規則與異常聯絡方式。未串接的金流或簡訊不當成已完成整合。</span></p></div></article></div>
+  </section>
+  <section class="growth-section growth-detail-section" id="section-1" aria-labelledby="section-title-1">
+    <div class="growth-section-heading"><h2 id="section-title-1"><span data-growth-copy data-en="What to prepare before planning." data-ja="相談前に準備したいこと。" data-ko="기획 전에 준비할 것.">開始規劃前，準備這些就夠了。</span></h2></div>
+    <div class="growth-detail-list"><article class="growth-detail-item"><h3><span data-growth-copy data-en="Your current process" data-ja="現在の受付方法" data-ko="현재 접수 방식">現在怎麼接單</span></h3><div><p><span data-growth-copy data-en="Describe one anonymized journey from inquiry to completion and the three questions you repeat most often." data-ja="個人情報を除いた例で、相談から完了までの手順と繰り返す質問を説明してください。" data-ko="개인정보 없는 사례로 문의부터 완료까지의 단계와 자주 반복하는 질문 세 가지를 알려 주세요.">用一個真實但不含個資的例子，說明從詢問、確認到完成的步驟，以及最常重複問的三個問題。</span></p></div></article><article class="growth-detail-item"><h3><span data-growth-copy data-en="Who needs which information" data-ja="誰が何を見るか" data-ko="누가 어떤 정보를 보는지">誰需要看到什麼</span></h3><div><p><span data-growth-copy data-en="Customers, staff and owners need different views. Decide who may change slots, view files, check status or export data." data-ja="顧客・担当者・管理者の情報を分け、変更・閲覧・出力の権限を確認します。" data-ko="고객·직원·관리자의 정보를 구분하고 변경, 조회와 내보내기 권한을 정합니다.">顧客、店員與管理者需要的資訊不同。確認誰可以改時段、看檔案、查詢狀態與匯出資料。</span></p></div></article><article class="growth-detail-item"><h3><span data-growth-copy data-en="How success will be checked" data-ja="使いやすさの確認方法" data-ko="사용성을 확인할 기준">先用什麼判斷好不好用</span></h3><div><p><span data-growth-copy data-en="Check completion, information quality and reduced back-and-forth. A booking counter alone does not prove the workflow works." data-ja="申込完了、情報の揃い方、やり取りの削減を確認。予約数の表示だけで完成とはしません。" data-ko="접수 완료, 정보의 충실도와 반복 연락 감소를 확인합니다. 예약 숫자만으로 완성이라 판단하지 않습니다.">先看顧客能不能完成提交、資料是否完整、回覆是否減少來回。不是只因為預約數字出現在畫面上就算完成。</span></p></div></article></div>
+  </section>
+  <section class="growth-section growth-detail-section" id="section-2" aria-labelledby="section-title-2">
+    <div class="growth-section-heading"><h2 id="section-title-2"><span data-growth-copy data-en="A clear agreement before development." data-ja="制作前に進め方を明確に。" data-ko="제작 전에 협업 방식을 명확하게.">先把合作講清楚，再開始製作。</span></h2></div>
+    <div class="growth-detail-list"><article class="growth-detail-item"><h3><span data-growth-copy data-en="01 | Clarify priorities" data-ja="01｜課題と優先順位" data-ko="01 | 문제와 우선순위">01｜釐清與取捨</span></h3><div><p><span data-growth-copy data-en="Define users, situations, required features and available resources. Start with the smallest useful scope." data-ja="利用者・場面・必須機能・素材を確認し、最小限の有用な範囲を決めます。" data-ko="사용자, 상황, 필수 기능과 자료를 확인하고 최소한의 유용한 범위를 정합니다.">確認客戶、操作情境、必要功能與現有資源。先定義最小可用範圍，不一次堆滿所有想法。</span></p></div></article><article class="growth-detail-item"><h3><span data-growth-copy data-en="02 | Scope and staged acceptance" data-ja="02｜範囲と段階的確認" data-ko="02 | 범위와 단계별 검수">02｜書面範圍與分段驗收</span></h3><div><p><span data-growth-copy data-en="Agree on deliverables, revision limits, acceptance, cost and timing. Include failure states and mobile operation." data-ja="成果物・修正・検収・費用・期間を合意。エラー時とスマホ操作も確認します。" data-ko="산출물, 수정 범위, 검수, 비용과 일정을 합의하고 오류 상황과 모바일 사용도 확인합니다.">確認交付物、修改次數、驗收條件、費用與時程後再開工。例外狀態與手機操作也算驗收，不只看截圖。</span></p></div></article><article class="growth-detail-item"><h3><span data-growth-copy data-en="03 | Launch and handover" data-ja="03｜公開と引き継ぎ" data-ko="03 | 배포와 인수인계">03｜上線、交接與後續</span></h3><div><p><span data-growth-copy data-en="Document ownership, operation, backups and maintenance. Additional features and ongoing support need a separate agreement." data-ja="所有権・操作・バックアップ・保守範囲を整理。追加機能と継続対応は別途相談します。" data-ko="소유권, 운영, 백업과 유지보수 범위를 정리하며 추가 기능과 지속 지원은 별도로 협의합니다.">整理帳號與資料歸屬、操作說明、備份與維護範圍。追加功能另確認，不把一次交付變成無限期免費維護。</span></p></div></article></div>
+  </section>
+  
+  
+
+  <section class="growth-section growth-faq" aria-labelledby="growth-faq-title"><div class="growth-section-heading"><h2 id="growth-faq-title"><span data-growth-copy data-en="A few things to clarify first." data-ja="始める前に確認すること。" data-ko="시작 전에 확인할 사항.">合作前，先講清楚。</span></h2></div><div><details><summary><span data-growth-copy data-en="How is pricing determined?" data-ja="費用はどう決まりますか？" data-ko="비용은 어떻게 정하나요?">費用怎麼算？有固定套餐嗎？</span></summary><p><span data-growth-copy data-en="Pricing follows agreed pages, content, features and maintenance responsibilities. Domains, external services, transaction fees and ongoing maintenance are specified separately." data-ja="ページ・内容・機能・保守範囲を確認して書面で見積もります。ドメイン、外部サービス、決済手数料、継続保守は区別します。" data-ko="페이지, 콘텐츠, 기능, 유지보수 범위를 확인한 후 서면 견적을 제공합니다. 도메인, 외부 서비스, 결제 수수료와 유지보수는 별도로 설명합니다.">先確認頁面、內容、功能、資料流與維護責任，再提供書面範圍與報價。網域、第三方服務、付款手續費與後續維護分開說明；預算選項不是對外售價。</span></p></details><details><summary><span data-growth-copy data-en="Are rankings or sales guaranteed?" data-ja="検索順位や売上を保証しますか？" data-ko="검색 순위나 매출을 보장하나요?">會保證 Google 第一名或一定增加訂單嗎？</span></summary><p><span data-growth-copy data-en="No. Readable content, mobile usability, search fundamentals and inquiry paths can be improved, but rankings and sales depend on the market and your operations. We evaluate real results." data-ja="保証しません。読みやすさ、スマホ対応、検索の基本設定、問い合わせ導線を整え、実際の反応を見て改善します。" data-ko="보장하지 않습니다. 콘텐츠, 모바일 사용성, 검색 기본 설정과 문의 경로를 개선하고 실제 결과에 따라 조정합니다.">不會。會把可讀內容、手機操作、搜尋基本設定與詢問路徑做好，但排名與成交受市場、內容、預算及營運影響。以實際曝光、有效詢問與報價結果逐步調整，不用虛構數字作保證。</span></p></details><details><summary><span data-growth-copy data-en="Can the website and data be handed over?" data-ja="公開後の引き継ぎはできますか？" data-ko="배포 후 인수인계가 가능한가요?">上線後資料與網站能交接嗎？</span></summary><p><span data-growth-copy data-en="Ownership, code and asset licenses, exports, training and maintenance boundaries are agreed before development. Personal data and transactions require explicit access and backup decisions." data-ja="着手前にアカウント所有、コード・素材の権利、データ出力、操作説明、保守範囲を確認します。個人情報や取引には権限とバックアップの設計が必要です。" data-ko="작업 전에 계정 소유권, 코드와 자료의 라이선스, 데이터 내보내기, 교육과 유지보수 범위를 협의합니다. 개인정보와 거래는 권한 및 백업 정책도 정합니다.">在開工前約定帳號歸屬、程式與素材授權、資料匯出、操作教學及維護邊界。涉及客戶個資或交易時，另確認權限、備份與保存方式，不把安全責任留到最後。</span></p></details></div></section>
+  <section class="growth-final"><div><h2><span data-growth-copy data-en="Have an idea?
+Let's make it real." data-ja="アイデアを、
+一緒に形に。" data-ko="아이디어가 있나요?
+함께 만들어 봐요.">有個想法？
+一起做出來。</span></h2><p><span data-growth-copy data-en="Start a conversation. It doesn't have to be fully figured out." data-ja="まだまとまっていなくても、まずはお話から。" data-ko="완벽하게 정리되지 않아도 괜찮아요.">先聊需求。還沒想清楚，也沒關係。</span></p></div><a class="growth-button" href="/business/website-audit/?intent=project#write-request"><span data-growth-copy data-en="Let's talk" data-ja="相談する" data-ko="상담하기">聊聊需求</span> <span aria-hidden="true">↗</span></a></section>
+  <nav class="growth-related" aria-label="Related pages"><a href="/business/web-apps/"><span data-growth-copy data-en="Custom applications" data-ja="業務機能開発" data-ko="맞춤 기능 개발">客製功能開發</span> →</a><a href="/business/work/fepphoto/"><span data-growth-copy data-en="FepPhoto case" data-ja="FepPhoto 制作例" data-ko="FepPhoto 사례">FepPhoto 案例</span> →</a><a href="/business/work/pixel364/"><span data-growth-copy data-en="Pixel364 case" data-ja="Pixel364 制作例" data-ko="Pixel364 사례">Pixel364 案例</span> →</a><a href="/business/website-audit/"><span data-growth-copy data-en="Free website review" data-ja="無料サイト診断" data-ko="무료 웹사이트 점검">免費網站健檢</span> →</a></nav>
+</main><footer id="footer" class="studio-footer" data-i18n-skip>
+  <div class="growth-footer-inner">
+    <div class="growth-footer-brand"><a href="/business/">BoyceLab <span>STUDIO</span></a><p><span data-growth-copy data-en="Useful websites for real needs." data-ja="本当の課題に、使えるサイトを。" data-ko="실제 필요에 맞춘 편리한 웹사이트.">為真實需求，設計好用網站。</span></p><small>© 2026 BoyceLab</small></div>
+    <nav class="growth-footer-links"><a href="/business/"><span data-growth-copy data-en="Overview" data-ja="サービス一覧" data-ko="서비스 소개">服務總覽</span></a><a href="/business/partners/"><span data-growth-copy data-en="Partnerships" data-ja="パートナー募集" data-ko="파트너십">合作夥伴</span></a><a href="/"><span data-growth-copy data-en="Back to the blog" data-ja="ブログに戻る" data-ko="블로그로 돌아가기">回到部落格</span> ↗</a><a href="mailto:inbox@boycelab.com">inbox@boycelab.com</a></nav>
+  </div>
+</footer>
+<script src="/js/light-dark-switch.js"></script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.boycelab.com/business/booking/#page","url":"https://www.boycelab.com/business/booking/","name":"少一點來回問，多一點確認清楚。","description":"將服務選擇、必要資料、人工確認、修改與取消流程串起來。清楚區分提出預約與確認成立，不只放上一個表單。","inLanguage":"zh-Hant","isPartOf":{"@type":"WebSite","name":"BoyceLab","url":"https://www.boycelab.com"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BoyceLab","item":"https://www.boycelab.com"},{"@type":"ListItem","position":2,"name":"少一點來回問，多一點確認清楚。","item":"https://www.boycelab.com/business/booking/"}]},{"@type":"Service","name":"少一點來回問，多一點確認清楚。","serviceType":"預約與詢價流程網站開發","url":"https://www.boycelab.com/business/booking/","provider":{"@type":"Person","name":"李柏毅","url":"https://www.boycelab.com"},"areaServed":{"@type":"Country","name":"Taiwan"}}]}</script>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body></html>
+
+    

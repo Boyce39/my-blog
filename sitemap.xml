@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/business-website/index.html</loc>
-    
-    <lastmod>2026-10-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.boycelab.com/business/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
@@ -29,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/booking-system/index.html</loc>
+    <loc>https://www.boycelab.com/business/websites/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
     
@@ -38,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/custom-web-app/index.html</loc>
+    <loc>https://www.boycelab.com/business/partners/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
     
@@ -47,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/partners/index.html</loc>
+    <loc>https://www.boycelab.com/business/website-audit/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
     
@@ -56,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/website-audit/index.html</loc>
+    <loc>https://www.boycelab.com/business/web-apps/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
     
@@ -65,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/guides/website-cost/index.html</loc>
+    <loc>https://www.boycelab.com/business/industries/manufacturing/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
     
@@ -74,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/guides/website-inquiries/index.html</loc>
+    <loc>https://www.boycelab.com/business/guides/website-cost/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
     
@@ -83,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/work/fepphoto/index.html</loc>
+    <loc>https://www.boycelab.com/business/work/pixel364/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
     
@@ -92,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/work/pixel364/index.html</loc>
+    <loc>https://www.boycelab.com/business/work/fepphoto/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
     
@@ -101,7 +92,16 @@
   </url>
   
   <url>
-    <loc>https://www.boycelab.com/industry/manufacturing/index.html</loc>
+    <loc>https://www.boycelab.com/business/guides/website-inquiries/index.html</loc>
+    
+    <lastmod>2026-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/business/booking/index.html</loc>
     
     <lastmod>2026-10-17</lastmod>
     

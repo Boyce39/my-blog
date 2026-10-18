@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const root = document.querySelector('[data-growth-page]');
-  if (!root) return;
+  if (!root || !location.pathname.startsWith('/business/')) return;
   const mobileMenu = document.querySelector('.growth-mobile-menu');
   if (mobileMenu) {
     document.addEventListener('click',event => {

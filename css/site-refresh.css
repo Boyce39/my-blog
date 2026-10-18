@@ -2021,7 +2021,7 @@ body.tech-modal-open {
   pointer-events: none;
 }
 
-body > :where(:not(#tech-canvas):not(#reading-progress-bar):not(#tech-interface-layer):not(#tech-hud):not(#tech-telemetry-rail):not(.tech-modal-overlay):not(.subscribe-submission-sink)) {
+body:where(:not(.growth-body)) > :where(:not(#tech-canvas):not(#reading-progress-bar):not(#tech-interface-layer):not(#tech-hud):not(#tech-telemetry-rail):not(.tech-modal-overlay):not(.subscribe-submission-sink)) {
   position: relative;
   z-index: 1;
 }
