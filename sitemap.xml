@@ -110,6 +110,33 @@
   </url>
   
   <url>
+    <loc>https://www.boycelab.com/business/examples/catalog/index.html</loc>
+    
+    <lastmod>2026-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/business/examples/booking/index.html</loc>
+    
+    <lastmod>2026-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.boycelab.com/business/examples/brand/index.html</loc>
+    
+    <lastmod>2026-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.boycelab.com/assistant/index.html</loc>
     
     <lastmod>2026-10-13</lastmod>

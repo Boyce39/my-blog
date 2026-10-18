@@ -1,9 +1,9 @@
 
   
 <!doctype html>
-<html lang="zh-TW" theme="dark" showBanner="false" hasBanner="false">
+<html lang="zh-TW" theme="light" showBanner="false" hasBanner="false">
 <head>
-<script src="/js/color.global.min.js"></script><script src="/js/load-settings.js"></script>  <meta charset="utf-8">
+<script src="/js/color.global.min.js"></script><script src="/js/load-settings.js"></script><script src="/js/business-theme.js?v=6.3.0"></script>  <meta charset="utf-8">
   
     
       
@@ -17,10 +17,6 @@
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
           
-            <meta name="description"
-              content="FepPhoto 遠東多媒體影像館網站開發案例：服務資訊、手機操作、下單與送件入口的設計思考，以及可公開的功能邊界。">
-            
-                
                     <meta name="keywords" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
                     
 
@@ -29,11 +25,6 @@
                       
                       <meta name="google-site-verification" content="BjnRa5PrgPoCBv-2HSXBY9Lq8TY9-2kV_WeigOl1R2A" />
 
-                      <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font"
-                        type="font/ttf" crossorigin="anonymous">
-                      <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf"
-                        crossorigin="anonymous">
-
                       <meta name="description" content="FepPhoto 遠東多媒體影像館網站開發案例：服務資訊、手機操作、下單與送件入口的設計思考，以及可公開的功能邊界。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="FepPhoto 開發案例｜影像服務與線上送件流程">
@@ -41,11 +32,13 @@
 <meta property="og:site_name" content="BoyceLab">
 <meta property="og:description" content="FepPhoto 遠東多媒體影像館網站開發案例：服務資訊、手機操作、下單與送件入口的設計思考，以及可公開的功能邊界。">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://www.boycelab.com/images/studio/fepphoto-public-v1.webp">
 <meta property="article:published_time" content="2026-10-17T16:00:00.000Z">
 <meta property="article:modified_time" content="2026-10-17T16:00:00.000Z">
 <meta property="article:author" content="李柏毅 BoyceLab">
 <meta property="article:tag" content="資安, 技術實驗室, BoyceLab, 李柏毅, 里肌肉, Cyber Security, Python, AI 助理, AIS3 筆記, CTF, 網頁開發, Hexo">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.boycelab.com/images/studio/fepphoto-public-v1.webp">
                         
                           <link rel="alternate" href="/atom.xml" title="BoyceLab" type="application/atom+xml">
                             
@@ -92,9 +85,9 @@
                                                   <script src="/js/site-i18n.js?v=6.2.0" defer></script>
                                                   <script src="/js/cms-posts.js?v=5.0.0" defer></script>
 
-<link rel="stylesheet" href="/css/studio-components.css?v=6.2.2"><link rel="stylesheet" href="/css/commercial.css?v=6.2.2">
+<link rel="stylesheet" href="/css/studio-components.css?v=6.3.0"><link rel="stylesheet" href="/css/commercial.css?v=6.3.0"><link rel="stylesheet" href="/css/business-examples.css?v=6.3.0">
 
-<script src="/js/growth.js?v=6.2.2" defer></script>
+<script src="/js/growth.js?v=6.3.0" defer></script>
 <meta name="generator" content="Hexo 8.1.1"></head>
 <body class="growth-body">
 <a class="skip-link" href="#growth-main">跳到主要內容</a>
@@ -104,17 +97,18 @@
     <a class="growth-brand" href="/business/"><img class="no-lazy" src="/images/boycelab-mark.svg?v=6.0.0" width="34" height="34" alt=""><span>BoyceLab<small class="growth-brand-note">STUDIO</small></span></a>
     <nav class="growth-nav" aria-label="Main">
       <a href="/business/#work"><span data-growth-copy data-en="Selected work" data-ja="制作実績" data-ko="주요 작업">精選作品</span></a>
-      <a href="/business/#services"><span data-growth-copy data-en="Services" data-ja="サービス" data-ko="서비스">網站服務</span></a>
+      <a href="/business/#examples"><span data-growth-copy data-en="Design ideas" data-ja="デザイン例" data-ko="디자인 예시">設計範例</span></a>
+      <a href="/business/#process"><span data-growth-copy data-en="Process" data-ja="制作の流れ" data-ko="진행 과정">合作流程</span></a>
       <a href="/"><span data-growth-copy data-en="Back to the blog" data-ja="ブログに戻る" data-ko="블로그로 돌아가기">回到部落格</span></a>
     </nav>
     <nav id="sub-nav" class="growth-tools" aria-label="Preferences">
       <button id="theme-btn" class="nav-icon" type="button" aria-label="切換深淺色主題"><span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span><span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span></button>
-      <details class="growth-mobile-menu"><summary><span data-growth-copy data-en="Menu" data-ja="メニュー" data-ko="메뉴">選單</span></summary><nav><a href="/business/#work"><span data-growth-copy data-en="Selected work" data-ja="制作実績" data-ko="주요 작업">精選作品</span></a><a href="/business/#services"><span data-growth-copy data-en="Services" data-ja="サービス" data-ko="서비스">網站服務</span></a><a href="/"><span data-growth-copy data-en="Back to the blog" data-ja="ブログに戻る" data-ko="블로그로 돌아가기">回到部落格</span></a><a href="/business/website-audit/?intent=project#write-request"><span data-growth-copy data-en="Let's talk" data-ja="相談する" data-ko="상담하기">聊聊需求</span> ↗</a></nav></details>
+      <details class="growth-mobile-menu"><summary><span data-growth-copy data-en="Menu" data-ja="メニュー" data-ko="메뉴">選單</span></summary><nav><a href="/business/#work"><span data-growth-copy data-en="Selected work" data-ja="制作実績" data-ko="주요 작업">精選作品</span></a><a href="/business/#examples"><span data-growth-copy data-en="Design ideas" data-ja="デザイン例" data-ko="디자인 예시">設計範例</span></a><a href="/business/#process"><span data-growth-copy data-en="Process" data-ja="制作の流れ" data-ko="진행 과정">合作流程</span></a><a href="/"><span data-growth-copy data-en="Back to the blog" data-ja="ブログに戻る" data-ko="블로그로 돌아가기">回到部落格</span></a><a href="/business/website-audit/?intent=project#write-request"><span data-growth-copy data-en="Let's talk" data-ja="相談する" data-ko="상담하기">聊聊需求</span> ↗</a></nav></details>
     </nav>
   </div>
 </header>
 
-<main tabindex="-1" id="growth-main" class="growth" data-i18n-skip data-growth-page="fep">
+<main tabindex="-1" id="growth-main" class="growth" data-i18n-skip data-growth-page="fep" data-browser-zh="FepPhoto 開發案例｜影像服務與線上送件流程" data-browser-en="FepPhoto: from imaging services to online submission." data-browser-ja="FepPhoto：写真サービスの紹介からオンライン受付へ。" data-browser-ko="FepPhoto: 사진 서비스 소개에서 온라인 접수까지.">
   <nav class="growth-breadcrumb" aria-label="Breadcrumb"><a href="/business/"><span data-growth-copy data-en="Website services" data-ja="ウェブ制作" data-ko="웹사이트 서비스">網站服務</span></a><span aria-hidden="true">/</span><span><span data-growth-copy data-en="FepPhoto case" data-ja="FepPhoto 制作例" data-ko="FepPhoto 사례">FepPhoto 案例</span></span></nav>
   <section class="growth-hero is-case" aria-labelledby="growth-title">
     <div class="growth-hero-copy">
@@ -148,15 +142,16 @@ Let's make it real." data-ja="アイデアを、
 함께 만들어 봐요.">有個想法？
 一起做出來。</span></h2><p><span data-growth-copy data-en="Start a conversation. It doesn't have to be fully figured out." data-ja="まだまとまっていなくても、まずはお話から。" data-ko="완벽하게 정리되지 않아도 괜찮아요.">先聊需求。還沒想清楚，也沒關係。</span></p></div><a class="growth-button" href="/business/website-audit/?intent=project#write-request"><span data-growth-copy data-en="Let's talk" data-ja="相談する" data-ko="상담하기">聊聊需求</span> <span aria-hidden="true">↗</span></a></section>
   <nav class="growth-related" aria-label="Related pages"><a href="/business/websites/"><span data-growth-copy data-en="Business websites" data-ja="企業・ブランドサイト" data-ko="기업·브랜드 사이트">公司與品牌網站</span> →</a><a href="/business/booking/"><span data-growth-copy data-en="Bookings &amp; inquiries" data-ja="予約・問い合わせ" data-ko="예약·문의 흐름">預約與詢價流程</span> →</a><a href="/business/web-apps/"><span data-growth-copy data-en="Custom applications" data-ja="業務機能開発" data-ko="맞춤 기능 개발">客製功能開發</span> →</a><a href="/business/website-audit/"><span data-growth-copy data-en="Free website review" data-ja="無料サイト診断" data-ko="무료 웹사이트 점검">免費網站健檢</span> →</a></nav>
+
 </main><footer id="footer" class="studio-footer" data-i18n-skip>
   <div class="growth-footer-inner">
     <div class="growth-footer-brand"><a href="/business/">BoyceLab <span>STUDIO</span></a><p><span data-growth-copy data-en="Useful websites for real needs." data-ja="本当の課題に、使えるサイトを。" data-ko="실제 필요에 맞춘 편리한 웹사이트.">為真實需求，設計好用網站。</span></p><small>© 2026 BoyceLab</small></div>
     <nav class="growth-footer-links"><a href="/business/"><span data-growth-copy data-en="Overview" data-ja="サービス一覧" data-ko="서비스 소개">服務總覽</span></a><a href="/business/partners/"><span data-growth-copy data-en="Partnerships" data-ja="パートナー募集" data-ko="파트너십">合作夥伴</span></a><a href="/"><span data-growth-copy data-en="Back to the blog" data-ja="ブログに戻る" data-ko="블로그로 돌아가기">回到部落格</span> ↗</a><a href="mailto:inbox@boycelab.com">inbox@boycelab.com</a></nav>
   </div>
 </footer>
-<script src="/js/light-dark-switch.js"></script>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.boycelab.com/business/work/fepphoto/#page","url":"https://www.boycelab.com/business/work/fepphoto/","name":"FepPhoto：從影像服務介紹，到線上送件的入口。","description":"FepPhoto 遠東多媒體影像館網站開發案例：服務資訊、手機操作、下單與送件入口的設計思考，以及可公開的功能邊界。","inLanguage":"zh-Hant","isPartOf":{"@type":"WebSite","name":"BoyceLab","url":"https://www.boycelab.com"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BoyceLab","item":"https://www.boycelab.com"},{"@type":"ListItem","position":2,"name":"FepPhoto：從影像服務介紹，到線上送件的入口。","item":"https://www.boycelab.com/business/work/fepphoto/"}]}]}</script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.boycelab.com/business/work/fepphoto/#page","url":"https://www.boycelab.com/business/work/fepphoto/","name":"FepPhoto：從影像服務介紹，到線上送件的入口。","description":"FepPhoto 遠東多媒體影像館網站開發案例：服務資訊、手機操作、下單與送件入口的設計思考，以及可公開的功能邊界。","inLanguage":"zh-Hant","primaryImageOfPage":{"@type":"ImageObject","url":"https://www.boycelab.com/images/studio/fepphoto-public-v1.webp"},"isPartOf":{"@type":"WebSite","name":"BoyceLab","url":"https://www.boycelab.com"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BoyceLab","item":"https://www.boycelab.com"},{"@type":"ListItem","position":2,"name":"網站服務","item":"https://www.boycelab.com/business/"},{"@type":"ListItem","position":3,"name":"FepPhoto 案例","item":"https://www.boycelab.com/business/work/fepphoto/"}]}]}</script>
 
         <style>
             [bg-lazy] {

@@ -4,3 +4,4 @@ Allow: /archives/
 Allow: /categories/
 Allow: /tags/
 Sitemap: https://www.boycelab.com/sitemap.xml
+Sitemap: https://www.boycelab.com/business/images.xml

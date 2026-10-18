@@ -22,6 +22,8 @@
     limited:['這段時間提交較多，請稍後再試，或來信 inbox@boycelab.com。輸入內容已保留。','Too many recent submissions. Please retry later or email inbox@boycelab.com. Your input is preserved.','送信回数が多いため、後ほど再試行するかメールでご連絡ください。入力は保持しています。','최근 제출이 많습니다. 잠시 후 다시 시도하거나 이메일로 연락해 주세요. 입력은 유지됩니다.']
   };
   const originals = new Map();
+  const altOriginals = new Map();
+  let selectedReference = null;
   let feedbackState = '';
   let busy = false;
   const form = document.getElementById('growth-form');
@@ -36,8 +38,19 @@
       if (!originals.has(element)) originals.set(element,element.textContent);
       element.textContent = language === 'zh-TW' ? originals.get(element) : element.dataset[language] || originals.get(element);
     });
+    document.querySelectorAll('[data-growth-alt]').forEach(element => {
+      if (!altOriginals.has(element)) altOriginals.set(element,element.alt);
+      element.alt = language === 'zh-TW' ? altOriginals.get(element) : element.getAttribute('data-alt-'+language) || altOriginals.get(element);
+    });
+    document.querySelectorAll('.growth-body a[href]').forEach(anchor => {
+      const destination = new URL(anchor.getAttribute('href'),location.href);
+      if (destination.origin !== location.origin || !['http:','https:'].includes(destination.protocol)) return;
+      if (!destination.pathname.endsWith('/') && !destination.pathname.endsWith('.html')) return;
+      destination.searchParams.set('lang',language);
+      anchor.setAttribute('href',destination.pathname+destination.search+destination.hash);
+    });
     const title = document.querySelector('#growth-title');
-    if (title) document.title = title.textContent + ' | BoyceLab';
+    if (title) document.title = (root.getAttribute('data-browser-'+(language==='zh-TW'?'zh':language)) || title.textContent) + ' | BoyceLab';
     if (feedback && feedbackState) { feedback.textContent = messages[feedbackState][index()]; feedback.dataset.state = feedbackState; }
   }
   function captureSource() {
@@ -47,11 +60,23 @@
     const stored = readStored('boycelab_growth_source');
     if (Object.keys(campaign).length || !stored) writeStored('boycelab_growth_source',{ landing_path:location.pathname.slice(0,200),campaign });
   }
+  function referencePrefix() {
+    return selectedReference && form.elements.intent.value === 'project' ? '[參考版型：'+selectedReference.title[0]+']\n' : '';
+  }
+  function updateReference() {
+    const panel = document.getElementById('business-reference');
+    if (!panel || !form) return;
+    const active = Boolean(selectedReference && form.elements.intent.value === 'project');
+    panel.hidden = !active;
+    panel.querySelectorAll('[data-reference-label]').forEach(label => { label.hidden = !active || label.dataset.referenceLabel !== selectedReference?.id; });
+    form.elements.message.maxLength = 3000-referencePrefix().length;
+  }
   function setIntent() {
     if (!form) return;
     const audit = form.elements.intent.value === 'audit';
     form.elements.website.required = audit;
     form.querySelector('.growth-project-fields').hidden = form.elements.intent.value !== 'project';
+    updateReference();
   }
   async function submit(event) {
     event.preventDefault();
@@ -61,12 +86,12 @@
     const storedSource = readStored('boycelab_growth_source') || {};
     const source = {};
     for (const key of campaignKeys) if (typeof storedSource.campaign?.[key] === 'string' && /^[A-Za-z0-9_.-]{1,80}$/.test(storedSource.campaign[key])) source[key] = storedSource.campaign[key];
-    const payload = { ...fields,consent:fields.consent==='on',project_type:fields.intent==='audit'?'review':fields.project_type,budget:fields.intent==='project'?fields.budget:'discuss',timeline:'flexible',locale:languages[index()],landing_path:/^\/[a-zA-Z0-9/_-]*$/.test(storedSource.landing_path || '')?storedSource.landing_path:location.pathname,campaign:source };
+    const payload = { ...fields,message:referencePrefix()+fields.message,consent:fields.consent==='on',project_type:fields.intent==='audit'?'review':fields.project_type,budget:fields.intent==='project'?fields.budget:'discuss',timeline:'flexible',locale:languages[index()],landing_path:/^\/[a-zA-Z0-9/_-]*$/.test(storedSource.landing_path || '')?storedSource.landing_path:location.pathname,campaign:source };
     form.querySelector('fieldset').disabled = true;
     form.setAttribute('aria-busy','true');
     feedbackState = 'sending'; apply();
     try {
-      const digest = await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(fields)));
+      const digest = await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify({...fields,reference:referencePrefix()})));
       const fingerprint = Array.from(new Uint8Array(digest),value=>value.toString(16).padStart(2,'0')).join('');
       const last = readStored('boycelab_growth_request');
       const submission = last?.fingerprint === fingerprint && typeof last.id==='string' ? last : {fingerprint,id:crypto.randomUUID()};
@@ -76,7 +101,7 @@
       const response = await fetch(base+'/project-inquiries',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),credentials:'omit',referrerPolicy:'no-referrer',signal:AbortSignal.timeout(22000)});
       const result = await response.json();
       if (!response.ok || result.success !== true) { const error = new Error('Unconfirmed'); error.status=response.status; throw error; }
-      form.reset(); setIntent(); writeStored('boycelab_growth_request',null);
+      form.reset(); selectedReference=null; setIntent(); writeStored('boycelab_growth_request',null);
       feedbackState = 'success';
       window.dispatchEvent(new CustomEvent('boycelab:inquirysaved',{detail:{intent:payload.intent,page:location.pathname}}));
     } catch (error) { feedbackState = error.status===429?'limited':'failure'; }
@@ -88,6 +113,12 @@
     if (['audit','project','partner'].includes(params.get('intent'))) form.elements.intent.value=params.get('intent');
     const requested = {brand:'business',app:'functional',booking:'functional',manufacturing:'business'}[params.get('service')];
     if (requested) form.elements.project_type.value=requested;
+    try {
+      const references = JSON.parse(document.getElementById('business-reference-data')?.textContent || '[]');
+      selectedReference = references.find(item => ['brand','booking','catalog'].includes(item.id) && item.id===params.get('reference')) || null;
+      if (selectedReference) form.elements.project_type.value=selectedReference.type;
+    } catch {}
+    document.getElementById('remove-business-reference')?.addEventListener('click',() => { selectedReference=null; updateReference(); });
     form.elements.intent.addEventListener('change',setIntent);
     form.addEventListener('submit',submit);
     setIntent();
