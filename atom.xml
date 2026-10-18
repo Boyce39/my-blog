@@ -147,11 +147,11 @@
     <category term="學習紀錄" scheme="https://www.boycelab.com/categories/%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/"/>
     
     
-    <category term="AI" scheme="https://www.boycelab.com/tags/AI/"/>
-    
     <category term="青年百億" scheme="https://www.boycelab.com/tags/%E9%9D%92%E5%B9%B4%E7%99%BE%E5%84%84/"/>
     
     <category term="海外見習" scheme="https://www.boycelab.com/tags/%E6%B5%B7%E5%A4%96%E8%A6%8B%E7%BF%92/"/>
+    
+    <category term="AI" scheme="https://www.boycelab.com/tags/AI/"/>
     
     <category term="永續" scheme="https://www.boycelab.com/tags/%E6%B0%B8%E7%BA%8C/"/>
     
@@ -176,9 +176,9 @@
     
     <category term="資安" scheme="https://www.boycelab.com/tags/%E8%B3%87%E5%AE%89/"/>
     
-    <category term="科展" scheme="https://www.boycelab.com/tags/%E7%A7%91%E5%B1%95/"/>
-    
     <category term="AI" scheme="https://www.boycelab.com/tags/AI/"/>
+    
+    <category term="科展" scheme="https://www.boycelab.com/tags/%E7%A7%91%E5%B1%95/"/>
     
     <category term="研究" scheme="https://www.boycelab.com/tags/%E7%A0%94%E7%A9%B6/"/>
     
