@@ -12,7 +12,10 @@
     const detail = { event, business_page:page, page_path:pathname, ...values };
     try {
       window.dataLayer = window.dataLayer || [];
-      if (typeof window.gtag === 'function') {
+      if (window.BoyceBusinessAnalytics) {
+        window.dataLayer.push(detail);
+        window.BoyceBusinessAnalytics.track(event,values);
+      } else if (typeof window.gtag === 'function') {
         const { event:name, ...parameters } = detail;
         window.gtag('event',name,{...parameters,page_location:location.origin+pathname,page_referrer:''});
       } else window.dataLayer.push(detail);
@@ -21,6 +24,10 @@
   }
   function intent() { return ['audit','project','partner'].includes(form?.elements.intent.value) ? form.elements.intent.value : 'project'; }
   emit('business_view');
+  window.addEventListener('boycelab:demoaction',event => {
+    const detail=event.detail;
+    if(['website','pos','tools'].includes(detail?.service)&&['preview','checkout','task_add','task_update','task_complete','task_delete','task_remove','cart_add','cart_update','cart_remove','cart_change','booking','inquiry','reset','style','device'].includes(detail.action))emit('business_demo_interaction',{service:detail.service,action:detail.action});
+  });
   document.addEventListener('click',event => {
     const anchor = event.target.closest('a[href]');
     if (!anchor || !anchor.closest('.growth-body')) return;

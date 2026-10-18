@@ -1,0 +1,11 @@
+.business-analytics-consent { display: flex; gap: 24px; align-items: center; justify-content: space-between; padding: 18px max(24px,calc((100vw - 1264px)/2)); background: var(--growth-panel); border-bottom: 1px solid var(--growth-border); scroll-margin-top: 110px; }
+.business-analytics-consent[hidden],#business-analytics-status[hidden],#business-analytics-status [hidden] { display: none; }
+.business-analytics-consent strong { font-size: 13px; }
+.business-analytics-consent p { font-size: 12px; margin: 4px 0 0; color: var(--growth-muted); max-width: 780px; line-height: 1.8; }
+.business-analytics-actions { display: flex; gap: 10px; flex: 0 0 auto; }
+.business-analytics-actions button { min-height: 44px; font: inherit; font-size: 12px; padding: 10px 16px; border: 1px solid var(--growth-border); border-radius: 7px; color: var(--growth-text); background: var(--growth-bg); cursor: pointer; }
+.business-analytics-actions button:hover { border-color: var(--growth-accent); }
+.business-analytics-actions button[data-analytics-choice=granted] { background: #245bd6; color: #fff; border-color: #245bd6; }
+.business-analytics-settings { border: 0; background: none; padding: 8px 0; color: inherit; font: inherit; font-size: 12px; cursor: pointer; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
+#business-analytics-status { color: var(--growth-muted); font-size: 11px; line-height: 1.8; max-width: 420px; }
+@media(max-width:760px) { .business-analytics-consent { flex-direction: column; align-items: stretch; padding: 14px 20px; gap: 12px; } .business-analytics-actions { justify-content: flex-end; } }
