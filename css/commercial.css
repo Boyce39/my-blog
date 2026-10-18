@@ -68,6 +68,30 @@ html[theme=dark] .growth-body>.growth-header { background: #122440ed; }
 .growth-hero-art { margin: 0 -24px 0 -4px; min-width: 0; pointer-events: none; }
 .growth-hero-art img { display: block; width: 100%; height: auto; aspect-ratio: 3/2; border-radius: 24px; box-shadow: 0 24px 65px #3876d414; }
 .growth-case-hero { margin: 0; min-width: 0; }
+.business-hero-proof { margin: 22px 0 0; font-size: 12px; }
+.business-hero-proof a { display: inline-flex; align-items: center; gap: 9px; color: var(--growth-muted); text-decoration: none; }
+.business-hero-proof a:hover { color: var(--growth-accent); text-decoration: underline; text-underline-offset: 4px; }
+.business-hero-proof a>span[aria-hidden] { color: var(--growth-accent); }
+.business-case-proof { margin: 0 0 20px; border-top: 1px solid var(--growth-border); }
+.business-case-proof>div { display: grid; grid-template-columns: 100px minmax(0,1fr); gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--growth-border); }
+.business-case-proof dt { font-size: 12px; font-weight: 650; }
+.business-case-proof dd { margin: 0; font-size: 13px; line-height: 1.8; color: var(--growth-muted); }
+.business-case-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--growth-border); }
+.business-case-cta p { margin: 0; font-size: 15px; }
+.business-review-steps { list-style: none; padding: 0; margin: 30px 0; }
+.business-review-steps li { display: flex; align-items: flex-start; gap: 18px; margin: 0 0 22px; }
+.business-review-steps li>span { display: grid; place-items: center; flex: 0 0 34px; height: 34px; font: 12px ui-monospace,monospace; border: 1px solid var(--growth-border); border-radius: 50%; color: var(--growth-accent); }
+.business-review-steps h3 { font-size: 15px; margin: 2px 0 5px; }
+.business-review-steps p { margin: 0; color: var(--growth-muted); font-size: 13px; line-height: 1.8; }
+.business-review-boundary { margin: 0 0 24px; font-size: 12px; }
+.business-review-boundary p { color: var(--growth-muted); line-height: 1.9; }
+.business-review-boundary summary,.business-form-more summary { cursor: pointer; min-height: 44px; align-content: center; }
+.business-form-more { border-top: 1px solid var(--growth-border); margin: 6px 0 18px; font-size: 13px; }
+.business-form-more[open] summary { margin-bottom: 12px; }
+.business-receipt { padding: 20px; background: var(--growth-bg); border: 1px solid var(--growth-border); border-radius: 9px; margin-top: 18px; }
+.business-receipt p,.business-receipt a { font-size: 13px; line-height: 1.8; }
+.growth [data-inquiry-mode][hidden] { display: none; }
+@media(max-width:480px) { .business-case-proof>div { grid-template-columns: 1fr; gap: 4px; } .business-case-cta { align-items: flex-start; flex-direction: column; } }
 .growth-case-hero img { width: 100%; height: auto; border-radius: 8px; }
 .growth-case-hero figcaption { color: var(--growth-muted); font-size: 11px; margin-top: 9px; }
 .growth-section { padding: 76px 0; border-top: 1px solid var(--growth-border); scroll-margin-top: 115px; }

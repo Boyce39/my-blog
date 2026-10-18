@@ -75,7 +75,8 @@
   function setIntent() {
     if (!form) return;
     const audit = form.elements.intent.value === 'audit';
-    form.elements.website.required = audit;
+    form.elements.website.required = false;
+    document.querySelectorAll('[data-inquiry-mode]').forEach(element => { element.hidden = element.dataset.inquiryMode === 'audit' ? !audit : audit; });
     form.querySelector('.growth-project-fields').hidden = form.elements.intent.value !== 'project';
     updateReference();
   }
@@ -87,10 +88,12 @@
     const storedSource = readStored('boycelab_growth_source') || {};
     const source = {};
     for (const key of campaignKeys) if (typeof storedSource.campaign?.[key] === 'string' && /^[A-Za-z0-9_.-]{1,80}$/.test(storedSource.campaign[key])) source[key] = storedSource.campaign[key];
-    const payload = { ...fields,message:referencePrefix()+fields.message,consent:fields.consent==='on',project_type:fields.intent==='audit'?'review':fields.project_type,budget:fields.intent==='project'?fields.budget:'discuss',timeline:'flexible',locale:languages[index()],landing_path:/^\/[a-zA-Z0-9/_-]*$/.test(storedSource.landing_path || '')?storedSource.landing_path:location.pathname,campaign:source };
+    const payload = { ...fields,message:referencePrefix()+fields.message,consent:fields.consent==='on',project_type:fields.intent==='audit'?'review':fields.project_type,budget:fields.intent==='project'?fields.budget:'discuss',timeline:fields.timeline||'flexible',locale:languages[index()],landing_path:/^\/[a-zA-Z0-9/_-]*$/.test(storedSource.landing_path || '')?storedSource.landing_path:location.pathname,campaign:source };
     form.querySelector('fieldset').disabled = true;
     form.setAttribute('aria-busy','true');
     feedbackState = 'sending'; apply();
+    const receipt = document.getElementById('business-receipt');
+    if (receipt) receipt.hidden = true;
     try {
       const digest = await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify({...fields,reference:referencePrefix()})));
       const fingerprint = Array.from(new Uint8Array(digest),value=>value.toString(16).padStart(2,'0')).join('');
@@ -104,7 +107,8 @@
       if (!response.ok || result.success !== true) { const error = new Error('Unconfirmed'); error.status=response.status; throw error; }
       form.reset(); selectedReference=null; setIntent(); writeStored('boycelab_growth_request',null);
       feedbackState = 'success';
-      window.dispatchEvent(new CustomEvent('boycelab:inquirysaved',{detail:{intent:payload.intent,page:location.pathname}}));
+      if (receipt) { receipt.hidden=false; receipt.querySelector('[data-audit-receipt]').hidden=payload.intent!=='audit'; }
+      window.dispatchEvent(new CustomEvent('boycelab:inquirysaved',{detail:{intent:payload.intent,page:location.pathname,submissionId:payload.client_id}}));
     } catch (error) { feedbackState = error.status===429?'limited':'failure'; }
     finally { busy=false; form.querySelector('fieldset').disabled=false; form.removeAttribute('aria-busy'); apply(); feedback.focus({preventScroll:true}); }
   }
@@ -121,6 +125,7 @@
     } catch {}
     document.getElementById('remove-business-reference')?.addEventListener('click',() => { selectedReference=null; updateReference(); });
     form.elements.intent.addEventListener('change',setIntent);
+    form.addEventListener('input',() => { const receipt=document.getElementById('business-receipt'); if(receipt)receipt.hidden=true; });
     form.addEventListener('submit',submit);
     setIntent();
   }
