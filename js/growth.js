@@ -2,6 +2,18 @@
   'use strict';
   const root = document.querySelector('[data-growth-page]');
   if (!root) return;
+  const mobileMenu = document.querySelector('.growth-mobile-menu');
+  if (mobileMenu) {
+    document.addEventListener('click',event => {
+      if (!mobileMenu.contains(event.target) || event.target.closest('a')) mobileMenu.open = false;
+    });
+    document.addEventListener('keydown',event => {
+      if (event.key === 'Escape' && mobileMenu.open) {
+        mobileMenu.open = false;
+        mobileMenu.querySelector('summary').focus();
+      }
+    });
+  }
   const languages = ['zh-TW','en','ja','ko'];
   const messages = {
     sending:['正在保存，請稍候…','Saving your inquiry…','保存しています…','상담 요청을 저장하고 있습니다…'],
@@ -20,7 +32,7 @@
   function index() { return Math.max(0, languages.indexOf(window.BoyceI18n?.locale || 'zh-TW')); }
   function apply() {
     const language = languages[index()];
-    root.querySelectorAll('[data-growth-copy]').forEach(element => {
+    document.querySelectorAll('[data-growth-copy]').forEach(element => {
       if (!originals.has(element)) originals.set(element,element.textContent);
       element.textContent = language === 'zh-TW' ? originals.get(element) : element.dataset[language] || originals.get(element);
     });

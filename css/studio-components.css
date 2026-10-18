@@ -1,0 +1,20 @@
+.studio-work-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 36px; }
+.studio-case { display: block; min-width: 0; color: inherit; text-decoration: none; }
+.studio-case-visual { overflow: hidden; padding: 28px 26px 0; border-radius: 10px; background: #e0e5df; }
+.studio-case-pixel { background: #dbd9cb; }
+.studio-browser-bar { display: flex; align-items: center; gap: 5px; border-radius: 6px 6px 0 0; padding: 9px 12px; background: #f4f5ef; color: #637065; }
+.studio-browser-bar i { width: 4px; height: 4px; border-radius: 50%; background: #acb6aa; }
+.studio-browser-bar>span { margin-left: auto; font: 9px/1.5 ui-monospace,monospace; }
+.studio-case-visual>img { display: block; width: 100%; height: auto; aspect-ratio: 1.88; object-fit: cover; object-position: top; transition: transform .35s ease; transform-origin: top center; }
+.studio-case:hover .studio-case-visual>img { transform: scale(1.025); }
+.studio-case-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between; margin-top: 22px; line-height: 1.6; }
+.studio-case-meta>span:first-child { font-size: 22px; font-weight: 650; letter-spacing: -.03em; }
+.studio-case-meta>span:last-child { color: var(--growth-muted,var(--lab-text-muted)); font-size: 11px; }
+.studio-case h3 { font-size: 15px; font-weight: 400; line-height: 1.9; margin: 10px 0 14px; color: var(--growth-muted,var(--lab-text-muted)); }
+.studio-case-link { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; }
+.studio-case-link>span[aria-hidden] { font-size: 18px; transition: transform .2s; }
+.studio-case:hover .studio-case-link>span[aria-hidden] { transform: translate(3px,-3px); }
+.studio-case:focus-visible { outline: 3px solid var(--growth-accent,var(--lab-accent)); outline-offset: 7px; border-radius: 6px; }
+@media(max-width:900px) { .studio-work-grid { gap: 24px; } .studio-case-visual { padding: 20px 18px 0; } .studio-case h3 { font-size: 14px; } }
+@media(max-width:600px) { .studio-work-grid { grid-template-columns: 1fr; gap: 36px; } .studio-case-visual { padding: 20px 20px 0; } .studio-case-meta { margin-top: 18px; } .studio-case-meta>span:first-child { font-size: 21px; } .studio-case h3 { font-size: 14px; margin-bottom: 10px; } }
+@media(prefers-reduced-motion:reduce) { .studio-case * { transition: none !important; transform: none !important; } }

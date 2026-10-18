@@ -1,11 +1,9 @@
 
-  <!DOCTYPE html>
+  
+<!doctype html>
 <html theme="dark" lang="zh-TW">
-
 <head>
-    <script src="/js/color.global.min.js"></script>
-    <script src="/js/load-settings.js"></script>
-      <meta charset="utf-8">
+<script src="/js/color.global.min.js"></script><script src="/js/load-settings.js"></script>  <meta charset="utf-8">
   
     
       
@@ -83,7 +81,7 @@
 <link rel="stylesheet" href="/css/style.css">
 
                                                   <link rel="stylesheet" href="/css/custom-tech.css">
-                                                  <link rel="stylesheet" href="/css/site-refresh.css?v=5.2.0">
+                                                  <link rel="stylesheet" href="/css/site-refresh.css?v=6.2.1">
                                                   <link rel="stylesheet" href="/css/ux-refinement.css?v=5.4.0">
                                                   <link rel="stylesheet" href="/css/lab-visual.css?v=5.4.0">
                                                   <link rel="stylesheet" href="/css/major-refresh.css?v=6.0.1">
@@ -91,964 +89,91 @@
                                                   <script src="/js/site-i18n.js?v=6.2.0" defer></script>
                                                   <script src="/js/cms-posts.js?v=5.0.0" defer></script>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <style>
-        .landing-page {
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .landing-header {
-            position: sticky;
-            top: 12px;
-            z-index: 100;
-            width: min(1120px, calc(100% - 28px));
-            margin: 12px auto 0;
-        }
-
-        .landing-header #navbar {
-            width: 100%;
-        }
-
-        .landing-shell {
-            position: relative;
-            width: min(1080px, calc(100% - 36px));
-            margin: 0 auto;
-            padding: clamp(56px, 8vw, 100px) 0 64px;
-        }
-
-        .landing-section {
-            position: relative;
-            margin-top: clamp(72px, 10vw, 120px);
-            padding-top: clamp(28px, 4vw, 42px);
-        }
-
-        .landing-section::before {
-            content: '';
-            position: absolute;
-            inset: 0 0 auto;
-            height: 1px;
-            background: linear-gradient(90deg, var(--lab-accent), rgba(116, 174, 232, 0.48) 34%, transparent 82%);
-            box-shadow: 0 0 18px rgba(69, 208, 191, 0.15);
-        }
-
-        .landing-section::after {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: 0;
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--lab-accent);
-            box-shadow: 0 0 0 6px var(--lab-accent-soft), 0 0 18px rgba(69, 208, 191, 0.4);
-        }
-
-        .landing-kicker {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 0 0 12px;
-            color: var(--lab-accent-strong);
-            font: 600 0.74rem/1.2 "Roboto Mono", monospace;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-        }
-
-        .landing-kicker::before {
-            content: '//';
-            color: var(--lab-blue);
-            opacity: 0.75;
-        }
-
-        .landing-heading {
-            max-width: 720px;
-            margin: 0;
-            color: var(--lab-text);
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            line-height: 1.16;
-            letter-spacing: -0.035em;
-            text-wrap: balance;
-        }
-
-        .landing-heading span {
-            color: var(--lab-accent-strong);
-        }
-
-        .landing-intro {
-            max-width: 680px;
-            margin: 16px 0 0;
-            color: var(--lab-text-muted);
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        .hero {
-            position: relative;
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 174px;
-            align-items: center;
-            gap: clamp(30px, 5vw, 56px);
-            min-height: min(610px, calc(100vh - 110px));
-        }
-
-        .hero-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            margin-bottom: 24px;
-            padding: 8px 12px;
-            border: 1px solid var(--lab-border);
-            border-radius: 999px;
-            color: var(--lab-text-muted);
-            background: linear-gradient(135deg, var(--lab-panel), rgba(69, 208, 191, 0.055));
-            font: 500 0.78rem/1 "Roboto Mono", monospace;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 12px 32px rgba(0, 0, 0, 0.08);
-        }
-
-        .hero-status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--lab-accent);
-            box-shadow: 0 0 0 5px var(--lab-accent-soft);
-            animation: hero-signal-pulse 2.2s ease-in-out infinite;
-        }
-
-        .hero-title {
-            margin: 0;
-            color: transparent;
-            font-size: clamp(3.1rem, 8vw, 5.8rem);
-            line-height: 0.92;
-            letter-spacing: -0.075em;
-            background: linear-gradient(105deg, #f6fcff 4%, #dff8f5 38%, var(--lab-accent-strong) 62%, var(--lab-blue) 92%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            filter: drop-shadow(0 12px 40px rgba(69, 208, 191, 0.08));
-        }
-
-        .hero-title span {
-            display: block;
-            margin-top: 12px;
-            color: var(--lab-accent-strong);
-            -webkit-text-fill-color: var(--lab-accent-strong);
-            font-size: 0.35em;
-            line-height: 1.15;
-            letter-spacing: 0.01em;
-        }
-
-        .hero-description {
-            max-width: 690px;
-            margin: 28px 0 0;
-            color: var(--lab-text-muted);
-            font-size: clamp(1rem, 2vw, 1.14rem);
-            line-height: 1.85;
-        }
-
-        .hero-description strong {
-            color: var(--lab-text);
-            font-weight: 650;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .hero-signal-rail {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 12px;
-            max-width: 640px;
-            margin-top: 18px;
-            padding: 10px 12px;
-            border-top: 1px solid var(--lab-border);
-            border-bottom: 1px solid var(--lab-border);
-            color: var(--lab-text-faint);
-            font: 600 0.68rem/1.4 "Roboto Mono", monospace;
-            letter-spacing: 0.08em;
-        }
-
-        .hero-signal-rail::before {
-            content: '';
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--lab-accent);
-            animation: hero-signal-pulse 2.2s ease-in-out infinite;
-        }
-
-        .hero-signal-links {
-            display: flex;
-            justify-content: flex-end;
-            gap: 14px;
-        }
-
-        .hero-signal-links a {
-            color: var(--lab-text-muted) !important;
-            text-decoration: none !important;
-        }
-
-        .hero-signal-links a:hover,
-        .hero-signal-links a:focus-visible {
-            color: var(--lab-accent-strong) !important;
-        }
-
-        .hero-profile {
-            position: relative;
-            width: 224px;
-            padding: 8px;
-            border: 1px solid var(--lab-border);
-            border-radius: 21px;
-            background: color-mix(in srgb, var(--lab-panel-solid) 92%, transparent);
-            box-shadow: 0 16px 42px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.035);
-            transition: transform 220ms ease, border-color 220ms ease;
-        }
-
-        .hero-profile::before {
-            content: '';
-            position: absolute;
-            inset: -7px;
-            z-index: -1;
-            border: 1px solid color-mix(in srgb, var(--lab-accent) 20%, transparent);
-            border-radius: 26px;
-            opacity: 0.7;
-        }
-
-        .hero-profile::after {
-            content: '';
-            position: absolute;
-            top: -1px;
-            right: 22px;
-            width: 48px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--lab-accent), var(--lab-blue));
-            box-shadow: 0 0 14px rgba(69, 208, 191, 0.4);
-        }
-
-        .hero-profile:hover {
-            transform: translateY(-3px);
-            border-color: var(--lab-border-strong);
-        }
-
-        .hero-profile img {
-            display: block;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1200 / 802;
-            object-fit: contain;
-            border-radius: 15px;
-            filter: saturate(0.94) contrast(1.02);
-        }
-
-        .hero-profile-meta {
-            display: grid;
-            gap: 8px;
-            padding: 12px 5px 4px;
-        }
-
-        .hero-profile-meta strong {
-            display: block;
-            color: var(--lab-text);
-            font-size: 0.88rem;
-        }
-
-        .hero-profile-meta span {
-            display: block;
-            margin-top: 4px;
-            color: var(--lab-text-faint);
-            font: 500 0.62rem/1.35 "Roboto Mono", monospace;
-        }
-
-        .profile-code {
-            color: var(--lab-accent-strong) !important;
-            white-space: nowrap;
-            margin-top: 0 !important;
-        }
-
-        .focus-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 30px;
-        }
-
-        .focus-card {
-            position: relative;
-            min-height: 230px;
-            padding: 24px;
-            border: 1px solid var(--lab-border);
-            border-radius: var(--lab-radius);
-            background: linear-gradient(145deg, var(--lab-panel), rgba(69, 208, 191, 0.035));
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025), 0 18px 45px rgba(0, 0, 0, 0.09);
-            overflow: hidden;
-            transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
-        }
-
-        .focus-card::before {
-            content: '';
-            position: absolute;
-            inset: 0 0 auto;
-            height: 2px;
-            background: linear-gradient(90deg, var(--lab-accent), var(--lab-blue), transparent 78%);
-            opacity: 0.65;
-        }
-
-        .focus-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--lab-border-strong);
-            box-shadow: 0 24px 62px rgba(0, 0, 0, 0.2), 0 0 36px rgba(69, 208, 191, 0.06);
-        }
-
-        .focus-number {
-            color: var(--lab-text-faint);
-            font: 500 0.72rem/1 "Roboto Mono", monospace;
-        }
-
-        .focus-icon {
-            display: grid;
-            place-items: center;
-            width: 42px;
-            height: 42px;
-            margin: 32px 0 18px;
-            border-radius: 12px;
-            color: var(--lab-accent-strong);
-            border: 1px solid rgba(69, 208, 191, 0.16);
-            background: linear-gradient(145deg, var(--lab-accent-soft), rgba(116, 174, 232, 0.08));
-            box-shadow: inset 0 0 18px rgba(69, 208, 191, 0.06), 0 8px 24px rgba(0, 0, 0, 0.1);
-        }
-
-        .focus-card h3 {
-            margin: 0 0 10px;
-            color: var(--lab-text);
-            font-size: 1.06rem;
-        }
-
-        .focus-card p {
-            margin: 0;
-            color: var(--lab-text-muted);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 30px;
-        }
-
-        .project-card {
-            position: relative;
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 18px;
-            min-height: 126px;
-            padding: 22px;
-            border: 1px solid var(--lab-border);
-            border-radius: var(--lab-radius);
-            color: inherit;
-            background: linear-gradient(130deg, var(--lab-panel), rgba(116, 174, 232, 0.035));
-            text-decoration: none;
-            transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--lab-border-strong);
-            background: var(--lab-panel-solid);
-            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18), 0 0 28px rgba(69, 208, 191, 0.055);
-        }
-
-        .project-icon {
-            display: grid;
-            place-items: center;
-            width: 46px;
-            height: 46px;
-            border-radius: 13px;
-            color: var(--lab-accent-strong);
-            background: var(--lab-accent-soft);
-        }
-
-        .project-card h3 {
-            margin: 0 0 6px;
-            color: var(--lab-text);
-            font-size: 1rem;
-        }
-
-        .project-card p {
-            margin: 0;
-            color: var(--lab-text-muted);
-            font-size: 0.86rem;
-            line-height: 1.6;
-        }
-
-        .project-arrow {
-            color: var(--lab-text-faint);
-            transition: color 160ms ease, transform 160ms ease;
-        }
-
-        .project-card:hover .project-arrow {
-            color: var(--lab-accent-strong);
-            transform: translateX(4px);
-        }
-
-        .achievement-list {
-            display: grid;
-            gap: 10px;
-            margin: 30px 0 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .achievement-item {
-            position: relative;
-            display: grid;
-            grid-template-columns: 74px 1fr auto;
-            align-items: center;
-            gap: 16px;
-            padding: 18px 20px;
-            border: 1px solid var(--lab-border);
-            border-radius: 14px;
-            background: linear-gradient(120deg, var(--lab-panel), rgba(69, 208, 191, 0.025));
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
-            transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-        }
-
-        .achievement-item:hover {
-            transform: translateX(5px);
-            border-color: var(--lab-border-strong);
-            box-shadow: 0 14px 38px rgba(0, 0, 0, 0.12);
-        }
-
-        .achievement-year {
-            color: var(--lab-accent-strong);
-            font: 600 0.78rem/1 "Roboto Mono", monospace;
-        }
-
-        .achievement-name {
-            color: var(--lab-text);
-            font-weight: 650;
-            line-height: 1.55;
-        }
-
-        .achievement-result {
-            color: var(--lab-text-muted);
-            font-size: 0.86rem;
-            text-align: right;
-            padding: 6px 10px;
-            border: 1px solid var(--lab-border);
-            border-radius: 999px;
-            background: var(--lab-accent-soft);
-        }
-
-        .contact-panel {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            gap: 30px;
-            margin-top: 30px;
-            padding: clamp(24px, 5vw, 42px);
-            border: 1px solid var(--lab-border-strong);
-            border-radius: 24px;
-            background:
-                radial-gradient(circle at 88% 16%, rgba(116, 174, 232, 0.12), transparent 34%),
-                radial-gradient(circle at 12% 100%, rgba(69, 208, 191, 0.1), transparent 38%),
-                var(--lab-panel);
-            box-shadow: var(--lab-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 0 60px rgba(69, 208, 191, 0.055);
-        }
-
-        .contact-panel h3 {
-            margin: 0 0 10px;
-            color: var(--lab-text);
-            font-size: clamp(1.35rem, 4vw, 2rem);
-        }
-
-        .contact-panel p {
-            max-width: 620px;
-            margin: 0;
-            color: var(--lab-text-muted);
-            line-height: 1.75;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 9px;
-        }
-
-        .social-link {
-            display: grid;
-            place-items: center;
-            width: 44px;
-            height: 44px;
-            border: 1px solid var(--lab-border);
-            border-radius: 12px;
-            color: var(--lab-text-muted);
-            background: var(--lab-bg-soft);
-            text-decoration: none;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
-            transition: transform 160ms ease, color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
-        }
-
-        .social-link:hover {
-            color: var(--lab-accent-strong);
-            border-color: var(--lab-border-strong);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14), 0 0 20px rgba(69, 208, 191, 0.08);
-        }
-
-        .subscribe-section {
-            padding: clamp(30px, 5vw, 48px);
-            border: 1px solid var(--lab-border-strong);
-            border-radius: 24px;
-            background:
-                linear-gradient(135deg, rgba(69, 208, 191, 0.065), transparent 42%),
-                radial-gradient(circle at 86% 18%, rgba(116, 174, 232, 0.12), transparent 30%),
-                var(--lab-panel);
-            box-shadow: var(--lab-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.035);
-            overflow: hidden;
-        }
-
-        .subscribe-section::before {
-            height: 2px;
-            background: linear-gradient(90deg, var(--lab-accent), var(--lab-blue), transparent);
-        }
-
-        .landing-subscribe {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: 12px;
-            max-width: 660px;
-            margin-top: 26px;
-        }
-
-        .landing-subscribe input {
-            min-width: 0;
-            height: 46px;
-            padding: 0 14px;
-            border: 1px solid var(--lab-border);
-            border-radius: 11px;
-            color: var(--lab-text);
-            background: var(--lab-panel);
-            font: inherit;
-        }
-
-        .landing-subscribe input:focus {
-            border-color: var(--lab-accent);
-            outline: none;
-            box-shadow: 0 0 0 3px var(--lab-accent-soft);
-        }
-
-        .landing-reveal {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 450ms ease, transform 450ms ease;
-        }
-
-        .landing-reveal.is-visible {
-            opacity: 1;
-            transform: none;
-        }
-
-        html[theme='light'] .hero-title {
-            background: linear-gradient(105deg, #12232e 5%, #174b50 50%, var(--lab-accent-strong) 82%);
-            background-clip: text;
-            -webkit-background-clip: text;
-        }
-
-        @keyframes hero-signal-pulse {
-            0%, 100% { box-shadow: 0 0 0 5px var(--lab-accent-soft), 0 0 0 rgba(69, 208, 191, 0); }
-            50% { box-shadow: 0 0 0 7px var(--lab-accent-soft), 0 0 18px rgba(69, 208, 191, 0.42); }
-        }
-
-        @media (max-width: 860px) {
-            .landing-header {
-                top: 8px;
-                width: calc(100% - 16px);
-                margin-top: 8px;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-
-            .hero-copy {
-                order: 1;
-            }
-
-            .hero-profile {
-                order: 2;
-                width: min(208px, 62vw);
-                margin: 8px 0 0 7px;
-            }
-
-            .hero-title {
-                font-size: clamp(3.6rem, 18vw, 6rem);
-            }
-
-            .focus-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .focus-card {
-                min-height: auto;
-            }
-
-            .focus-icon {
-                margin-top: 24px;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 620px) {
-            .landing-shell {
-                width: min(100% - 24px, 520px);
-                padding-top: 44px;
-            }
-
-            .hero-actions,
-            .contact-panel {
-                align-items: stretch;
-                flex-direction: column;
-            }
-
-            .hero-actions .lab-button {
-                width: 100%;
-            }
-
-            .hero-signal-rail {
-                grid-template-columns: auto minmax(0, 1fr);
-            }
-
-            .hero-signal-links {
-                grid-column: 1 / -1;
-                justify-content: flex-start;
-                padding-left: 19px;
-            }
-
-            .achievement-item {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .achievement-result {
-                text-align: left;
-            }
-
-            .contact-panel {
-                display: flex;
-            }
-
-            .landing-subscribe {
-                grid-template-columns: 1fr;
-            }
-
-            .landing-subscribe .lab-button {
-                width: 100%;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .landing-reveal {
-                opacity: 1;
-                transform: none;
-            }
-        }
-    </style>
+<link rel="stylesheet" href="/css/studio-components.css?v=6.2.1"><link rel="stylesheet" href="/css/commercial.css?v=6.2.1"><link rel="stylesheet" href="/css/home-visual.css?v=6.2.1">
+<link rel="preload" as="image" href="/images/studio/web-sculpture-v1.webp" imagesrcset="/images/studio/web-sculpture-mobile-v1.webp 768w, /images/studio/web-sculpture-v1.webp 1440w" imagesizes="(max-width:760px) 100vw, 52vw">
+<script src="/js/growth.js?v=6.2.1" defer></script>
 <meta name="generator" content="Hexo 8.1.1"></head>
+<body class="growth-body home-page">
+<a class="skip-link" href="#growth-main">跳到主要內容</a>
 
-<body class="landing-page">
-    <a class="skip-link" href="#hero-title">跳到主要內容</a>
-    <header id="landing-header" class="landing-header">
-        <navbar id="navbar">
-  <nav id="title-nav">
-    <a href="/">
-      <div id="vivia-logo">
-        <img class="site-mark" src="/images/loading.gif" data-original="/images/boycelab-mark.svg?v=6.0.0" alt="" width="32" height="32">
-      </div>
-      <div>BoyceLab</div>
-    </a>
-  </nav>
-  <nav id="main-nav">
-    
-      <a class="main-nav-link" href="/">
-        首頁
-      </a>
-      
-      <a class="main-nav-link" href="/blog/">
-        文章列表
-      </a>
-      
-      <a class="main-nav-link" href="/business/">
-        網站服務
-      </a>
-      
-      <a class="main-nav-link" href="/about/">
-        關於我
-      </a>
-      
-      <a class="main-nav-link" href="/archives/">
-        歸檔
-      </a>
-      
-      <a class="main-nav-link" href="/assistant/">
-        AI助理
-      </a>
-      
-      <a class="main-nav-link" href="/anonymous/">
-        匿名留言
-      </a>
-      
-      <a class="main-nav-link" href="/friends/">
-        友站
-      </a>
-      
-  </nav>
-  <nav id="sub-nav">
-    <button id="nav-search-btn" class="nav-icon" type="button" aria-label="搜尋文章" title="搜尋">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-    <button id="theme-btn" class="nav-icon" type="button" aria-label="切換深淺色主題">
-      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
-      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
-    </button>
-    
-        <button id="nav-menu-btn" class="nav-icon" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="nav-dropdown">
-          <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
-        </button>
-  </nav>
-</navbar>
-<div id="nav-dropdown" class="hidden">
-  <div id="dropdown-link-list">
-    
-      <a class="nav-dropdown-link" href="/">
-        首頁
-      </a>
-      
-      <a class="nav-dropdown-link" href="/blog/">
-        文章列表
-      </a>
-      
-      <a class="nav-dropdown-link" href="/business/">
-        網站服務
-      </a>
-      
-      <a class="nav-dropdown-link" href="/about/">
-        關於我
-      </a>
-      
-      <a class="nav-dropdown-link" href="/archives/">
-        歸檔
-      </a>
-      
-      <a class="nav-dropdown-link" href="/assistant/">
-        AI助理
-      </a>
-      
-      <a class="nav-dropdown-link" href="/anonymous/">
-        匿名留言
-      </a>
-      
-      <a class="nav-dropdown-link" href="/friends/">
-        友站
-      </a>
-      
-        
+<header class="growth-header" data-i18n-skip>
+  <div class="growth-header-inner">
+    <a class="growth-brand" href="/"><img class="no-lazy" src="/images/boycelab-mark.svg?v=6.0.0" width="34" height="34" alt=""><span>BoyceLab</span></a>
+    <nav class="growth-nav" aria-label="Main">
+      <a href="/business/#work"><span data-i18n-skip data-growth-copy data-en="Selected work" data-ja="制作実績" data-ko="주요 작업">精選作品</span></a>
+      <a href="/business/#services"><span data-i18n-skip data-growth-copy data-en="Services" data-ja="サービス" data-ko="서비스">網站服務</span></a>
+      <a href="/blog/"><span data-i18n-skip data-growth-copy data-en="Journal" data-ja="ノート" data-ko="글과 기록">文章筆記</span></a>
+    </nav>
+    <nav id="sub-nav" class="growth-tools" aria-label="Preferences">
+      <button id="theme-btn" class="nav-icon" type="button" aria-label="切換深淺色主題"><span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span><span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span></button>
+      <details class="growth-mobile-menu"><summary><span data-i18n-skip data-growth-copy data-en="Menu" data-ja="メニュー" data-ko="메뉴">選單</span></summary><nav><a href="/business/#work"><span data-i18n-skip data-growth-copy data-en="Selected work" data-ja="制作実績" data-ko="주요 작업">精選作品</span></a><a href="/business/#services"><span data-i18n-skip data-growth-copy data-en="Services" data-ja="サービス" data-ko="서비스">網站服務</span></a><a href="/blog/"><span data-i18n-skip data-growth-copy data-en="Journal" data-ja="ノート" data-ko="글과 기록">文章筆記</span></a><a href="/website-audit/?intent=project#write-request"><span data-i18n-skip data-growth-copy data-en="Let's talk" data-ja="相談する" data-ko="상담하기">聊聊需求</span> ↗</a></nav></details>
+    </nav>
   </div>
+</header>
+
+<main id="growth-main" class="growth growth-hub home-layout" data-growth-page="home">
+  <section class="growth-hero is-cover" aria-labelledby="hero-title" data-i18n-skip>
+    <div class="growth-hero-copy">
+      <p class="growth-kicker"><span class="growth-dot" aria-hidden="true"></span>BOYCELAB · BUILD / LEARN / EXPLORE</p>
+      <h1 id="hero-title"><span data-i18n-skip data-growth-copy data-en="Ideas are a start.
+Building makes them real." data-ja="アイデアで終わらせず、
+つくってみる。" data-ko="아이디어에서 멈추지 않고,
+직접 만들어 봅니다.">想法很多。
+做出來才算數。</span></h1>
+      <p class="growth-lead"><span data-i18n-skip data-growth-copy data-en="I'm Boyce, an applied mathematics student.
+I build websites and explore automation and security." data-ja="応用数学を学ぶBoyceです。
+Web制作、自動化、セキュリティを探究しています。" data-ko="응용수학을 공부하는 Boyce입니다.
+웹 개발, 자동화와 보안을 탐구합니다.">我是柏毅，應用數學系學生。
+做網站，也研究自動化與資安。</span></p>
+      <div class="growth-actions"><a class="growth-button" href="/business/"><span data-i18n-skip data-growth-copy data-en="See what I build" data-ja="つくったものを見る" data-ko="만든 것 살펴보기">看看我做了什麼</span> <span aria-hidden="true">↗</span></a><a class="growth-link" href="/blog/"><span data-i18n-skip data-growth-copy data-en="Notes &amp; updates" data-ja="技術と近況" data-ko="기술과 근황">技術與近況</span> →</a></div>
+      <a class="home-person" href="/about/"><img class="no-lazy" src="/images/boyce-avatar-2026.webp?v=4.4.0" width="120" height="80" alt="李柏毅 Boyce"><span><strong>李柏毅 Boyce</strong><small>NCHU · Applied Mathematics</small></span><span class="home-about-link"><span data-i18n-skip data-growth-copy data-en="About me" data-ja="プロフィール" data-ko="소개">關於我</span> ↗</span></a>
+    </div>
+    <figure class="growth-hero-art"><picture><source media="(max-width:760px)" srcset="/images/studio/web-sculpture-mobile-v1.webp"><img class="no-lazy" src="/images/studio/web-sculpture-v1.webp" srcset="/images/studio/web-sculpture-mobile-v1.webp 768w, /images/studio/web-sculpture-v1.webp 1440w" sizes="(max-width:760px) 100vw, 52vw" width="1440" height="960" alt="" fetchpriority="high" decoding="async"></picture></figure>
+  </section>
+  <section id="work" class="growth-section" aria-labelledby="work-preview-title">
+    <div class="home-section-heading"><div><p class="growth-kicker">SELECTED WORK / 01—02</p><h2 id="work-preview-title"><span data-i18n-skip data-growth-copy data-en="Let the work speak." data-ja="作品で、伝える。" data-ko="작업으로 이야기합니다.">讓作品自己說話。</span></h2></div><a class="growth-link" href="/business/"><span data-i18n-skip data-growth-copy data-en="Services" data-ja="サービス" data-ko="서비스">網站服務</span> ↗</a></div>
+    <div class="studio-work-grid">
+  
+  <a class="studio-case" href="/work/fepphoto/">
+    <div class="studio-case-visual studio-case-fep">
+      <div class="studio-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>fepphoto.com</span></div>
+      <img class="no-lazy" src="/images/studio/fepphoto-public-v1.webp" width="1200" height="650" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="studio-case-meta"><span>FepPhoto</span><span><span data-i18n-skip data-growth-copy data-en="Imaging services" data-ja="写真サービスサイト" data-ko="사진 서비스 사이트">影像服務網站</span></span></div>
+    <h3><span data-i18n-skip data-growth-copy data-en="Services, online ordering and file submission, connected." data-ja="サービス紹介から注文・ファイル受付まで。" data-ko="서비스 소개, 온라인 주문과 파일 접수를 연결합니다.">服務介紹、線上下單與送件，一次串起來。</span></h3>
+    <span class="studio-case-link"><span data-i18n-skip data-growth-copy data-en="Explore the case" data-ja="事例を見る" data-ko="사례 보기">探索案例</span><span aria-hidden="true">↗</span></span>
+  </a>
+  
+  <a class="studio-case" href="/work/pixel364/">
+    <div class="studio-case-visual studio-case-pixel">
+      <div class="studio-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>pixel364.com</span></div>
+      <img class="no-lazy" src="/images/studio/pixel364-public-v2.webp" width="1200" height="650" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="studio-case-meta"><span>Pixel364</span><span><span data-i18n-skip data-growth-copy data-en="Coffee-shop experience" data-ja="カフェの機能型サイト" data-ko="카페 기능형 사이트">咖啡店功能網站</span></span></div>
+    <h3><span data-i18n-skip data-growth-copy data-en="From browsing the menu to requesting a table." data-ja="メニューから予約まで、スマホの一歩を設計。" data-ko="메뉴 탐색부터 예약까지, 모바일 흐름을 설계합니다.">從看菜單到預約，為手機上的每一步設計。</span></h3>
+    <span class="studio-case-link"><span data-i18n-skip data-growth-copy data-en="Explore the case" data-ja="事例を見る" data-ko="사례 보기">探索案例</span><span aria-hidden="true">↗</span></span>
+  </a>
+  
 </div>
-<script>
-  let dropdownBtn = document.getElementById("nav-menu-btn");
-  let dropdownEle = document.getElementById("nav-dropdown");
-  dropdownBtn.onclick = function () {
-    dropdownEle.classList.toggle("hidden");
-    dropdownBtn.setAttribute('aria-expanded', String(!dropdownEle.classList.contains('hidden')));
-  }
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && !dropdownEle.classList.contains('hidden')) {
-      dropdownEle.classList.add('hidden');
-      dropdownBtn.setAttribute('aria-expanded', 'false');
-      dropdownBtn.focus();
-    }
-  });
-  document.addEventListener('click', function (event) {
-    if (!dropdownEle.classList.contains('hidden') && !dropdownEle.contains(event.target) && !dropdownBtn.contains(event.target)) {
-      dropdownEle.classList.add('hidden');
-      dropdownBtn.setAttribute('aria-expanded', 'false');
-    }
-  });
-  document.querySelectorAll('.main-nav-link, .nav-dropdown-link').forEach(function (link) {
-    if (new URL(link.href).pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')) link.setAttribute('aria-current', 'page');
-  });
-</script>
 
-    </header>
-
-    <main class="landing-shell">
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="lab-orbit" aria-hidden="true">
-                <svg viewBox="0 0 520 520" fill="none" focusable="false">
-                    <defs>
-                        <linearGradient id="lab-orbit-color" x1="70" y1="60" x2="460" y2="440" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#45d0bf"/><stop offset=".55" stop-color="#74aee8"/><stop offset="1" stop-color="#b59aff"/>
-                        </linearGradient>
-                        <radialGradient id="lab-orbit-halo"><stop stop-color="#45d0bf" stop-opacity=".16"/><stop offset="1" stop-color="#45d0bf" stop-opacity="0"/></radialGradient>
-                    </defs>
-                    <circle cx="260" cy="260" r="250" fill="url(#lab-orbit-halo)"/>
-                    <g stroke="url(#lab-orbit-color)" class="lab-orbit-outer">
-                        <circle cx="260" cy="260" r="218" stroke-dasharray="1 13" stroke-width="3"/>
-                        <path d="M260 24V58M260 462V496M24 260H58M462 260H496" stroke-width="2"/>
-                        <path d="M76 145A218 218 0 0 1 190 53M444 375A218 218 0 0 1 330 467" stroke-width="3"/>
-                    </g>
-                    <g stroke="url(#lab-orbit-color)" class="lab-orbit-inner">
-                        <ellipse cx="260" cy="260" rx="194" ry="94" transform="rotate(-35 260 260)"/>
-                        <ellipse cx="260" cy="260" rx="194" ry="94" transform="rotate(35 260 260)"/>
-                        <circle cx="260" cy="260" r="172" stroke-opacity=".25"/>
-                        <circle cx="419" cy="149" r="5" fill="#74aee8"/>
-                        <circle cx="101" cy="371" r="5" fill="#45d0bf"/>
-                    </g>
-                    <path d="M68 260H128L148 241L170 279L194 231L217 260H303L326 239L347 279L371 241L391 260H452" stroke="url(#lab-orbit-color)" stroke-opacity=".4"/>
-                </svg>
-            </div>
-            <div class="hero-copy">
-                <div class="hero-status"><span class="hero-status-dot"></span>NCHU · Applied Mathematics</div>
-                <h1 id="hero-title" class="hero-title">BoyceLab<span>把想法做成真正好用的網站。</span></h1>
-                <p class="hero-purpose">功能開發 × 商業流程 × 技術研究</p>
-                <p class="hero-description">
-                    目前為<strong>中興大學大一應用數學系（數據分析與計算組）學生</strong>。專注於 Python 自動化、資安研究與資料應用，把學習過程整理成能被理解、也能被延伸的作品與文章。
-                </p>
-                <div class="hero-actions">
-                    <a href="/business/" class="lab-button"><i class="fa-solid fa-layer-group" aria-hidden="true"></i>網站服務</a>
-                    <a href="/website-audit/" class="lab-button secondary">免費網站健檢</a>
-                    <a href="/blog/" class="lab-button secondary"><i class="fa-solid fa-book-open" aria-hidden="true"></i>閱讀技術文章</a>
-                </div>
-                <div class="hero-signal-rail" aria-label="匿名頻道快速入口">
-                    <span>想聊聊？</span>
-                    <span class="hero-signal-links"><a href="/anonymous-replies/">查看公開匿名牆 →</a><a href="/anonymous/">送出匿名訊息</a></span>
-                </div>
-            </div>
-
-            <aside class="hero-profile" aria-label="個人資料卡">
-                <img src="/images/loading.gif" data-original="/images/boyce-avatar-2026.webp?v=4.4.0" alt="李柏毅 Boyce 手持青年百億海外圓夢計畫成果分享會看板" width="1200" height="802">
-                <div class="hero-profile-meta">
-                    <div>
-                        <strong>李柏毅 Boyce</strong>
-                        <span>Python · Security · Data</span>
-                    </div>
-                    <span class="profile-code">NCHU / AMATH</span>
-                </div>
-            </aside>
-        </section>
-
-        <section class="landing-section portfolio-preview" aria-labelledby="work-preview-title">
-            <div class="section-title-row"><div><p class="landing-kicker">Built for real life</p><h2 id="work-preview-title" class="landing-heading">不只展示，<span>也解決問題。</span></h2></div><a class="text-link" href="/business/">看看作品與合作方式 →</a></div>
-            <p class="landing-intro">從網站、訂單與預約，到 API 串接與自動化；把實際需求整理成清楚、可使用的數位工具。</p>
-            <div class="portfolio-preview-grid">
-                <a class="portfolio-preview-card" href="/work/fepphoto/"><span class="case-symbol" aria-hidden="true">F</span><div><span class="case-eyebrow">FepPhoto</span><h3>影像服務的數位工作流程</h3><p>從服務介紹、線上下單到門市作業，串起不同的使用情境。</p><span class="text-link">了解功能與架構 →</span></div></a>
-                <a class="portfolio-preview-card" href="/work/pixel364/"><span class="case-symbol pixel-symbol" aria-hidden="true">P</span><div><span class="case-eyebrow">Pixel364</span><h3>咖啡店的線上點餐體驗</h3><p>菜單、客製選項、桌位 QR 與訂位流程，從手機操作開始設計。</p><span class="text-link">了解作品與功能 →</span></div></a>
-            </div>
-        </section>
-
-        <section class="landing-section landing-reveal activity-section" aria-labelledby="activity-title">
-            <div class="section-title-row">
-                <div><p class="landing-kicker">最近在做什麼</p><h2 id="activity-title" class="landing-heading">把經驗寫成<span>可以分享的故事</span></h2></div>
-                <a class="text-link" href="/blog/">看所有文章 →</a>
-            </div>
-            <p class="landing-intro">最近的開發筆記、研究與實作觀察；先從你有興趣的主題開始。</p>
-            <div class="activity-grid">
-                
-                <a class="activity-card" href="/2026/10/13/fepphoto-functional-platform/">
-                    <span class="activity-meta"><span>BoyceLab 實作筆記</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></span>
-                    <h3>FepPhoto 功能型平台：把顧客網站與門市流程接起來</h3>
-                    <p>從共用授權 API、Cloudflare Workers／D1／R2，到本機交易、付款通知與列印佇列，整理 FepPhoto 的公開架構與實作界線。</p>
-                    <span class="activity-read">閱讀這篇文章 <span aria-hidden="true">↗</span></span>
-                </a>
-                
-                <a class="activity-card" href="/2026/10/13/functional-websites-business-notes/">
-                    <span class="activity-meta"><span>BoyceLab 實作筆記</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></span>
-                    <h3>最近的興趣：用 BoyceLab 做小店真正用得上的功能型網站</h3>
-                    <p>從 FepPhoto 與 Pixel364 出發，記錄我對小型商家網站與自動化的思考：先理解流程，再界定功能、例外與維護責任。</p>
-                    <span class="activity-read">閱讀這篇文章 <span aria-hidden="true">↗</span></span>
-                </a>
-                
-                <a class="activity-card" href="/2026/10/13/pixel364-ordering-design/">
-                    <span class="activity-meta"><span>BoyceLab 實作筆記</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></span>
-                    <h3>Pixel364 點餐設計：從咖啡菜單到一張說得清楚的訂單</h3>
-                    <p>整理 Pixel364 的菜單、客製選項、桌邊 QR、外帶與預約設計，以及 React／Vite／TypeScript、Workers／D1 的分工和未完成整合。</p>
-                    <span class="activity-read">閱讀這篇文章 <span aria-hidden="true">↗</span></span>
-                </a>
-                
-            </div>
-        </section>
-
-        <section class="landing-section landing-reveal" aria-labelledby="focus-title">
-            <p class="landing-kicker">Current Focus</p>
-            <h2 id="focus-title" class="landing-heading">現在關注的三個<span>方向</span></h2>
-            <p class="landing-intro">不追求堆疊名詞，而是把每個主題做成可驗證的程式、研究筆記或完整專案。</p>
-            <div class="focus-grid">
-                <article class="focus-card">
-                    <span class="focus-number">01 / DATA</span>
-                    <div class="focus-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <h3>數據分析與計算</h3>
-                    <p>從應用數學出發，建立資料處理、分析建模與計算思維的基礎。</p>
-                    <a class="text-link" href="/about/#我的路線：從寫程式，到理解問題">為什麼選擇應用數學 →</a>
-                </article>
-                <article class="focus-card">
-                    <span class="focus-number">02 / SECURITY</span>
-                    <div class="focus-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>資安研究</h3>
-                    <p>持續參與 AIS3、CTF 與漏洞分析，並將解題過程整理成可重現的紀錄。</p>
-                    <a class="text-link" href="/tags/資安/">閱讀資安筆記 →</a>
-                </article>
-                <article class="focus-card">
-                    <span class="focus-number">03 / BUILD</span>
-                    <div class="focus-icon"><i class="fa-solid fa-code"></i></div>
-                    <h3>Python 自動化</h3>
-                    <p>用程式改善重複流程，實作 API 串接、資料處理、硬體整合與 AI 應用。</p>
-                    <a class="text-link" href="/categories/專案/">查看程式作品 →</a>
-                </article>
-            </div>
-        </section>
-
-        <section class="landing-section landing-reveal" aria-labelledby="projects-title">
-            <p class="landing-kicker">Selected Work</p>
-            <h2 id="projects-title" class="landing-heading">從筆記到作品的<span>實作紀錄</span></h2>
-            <div class="project-grid">
-                <a href="/categories/專案/" class="project-card">
-                    <span class="project-icon"><i class="fa-solid fa-microchip"></i></span>
-                    <span><h3>專案實作</h3><p>自動化、硬體整合與完整產品紀錄。</p></span>
-                    <i class="fa-solid fa-arrow-right project-arrow"></i>
-                </a>
-                <a href="/tags/資安/" class="project-card">
-                    <span class="project-icon"><i class="fa-solid fa-user-shield"></i></span>
-                    <span><h3>資安筆記</h3><p>CTF、課程紀錄與安全研究整理。</p></span>
-                    <i class="fa-solid fa-arrow-right project-arrow"></i>
-                </a>
-                <a href="/assistant/" class="project-card">
-                    <span class="project-icon"><i class="fa-solid fa-brain"></i></span>
-                    <span><h3>AI 助理</h3><p>和 AI 聊聊程式、學習或科技問題。</p></span>
-                    <i class="fa-solid fa-arrow-right project-arrow"></i>
-                </a>
-                <a href="/blog/" class="project-card">
-                    <span class="project-icon"><i class="fa-regular fa-folder-open"></i></span>
-                    <span><h3>所有文章</h3><p>依時間閱讀完整學習與成長軌跡。</p></span>
-                    <i class="fa-solid fa-arrow-right project-arrow"></i>
-                </a>
-            </div>
-        </section>
-
-        <section class="landing-section landing-reveal" aria-labelledby="achievements-title">
-            <p class="landing-kicker">Milestones</p>
-            <h2 id="achievements-title" class="landing-heading">部分<span>成就</span></h2>
-            <ul class="achievement-list">
+  </section>
+  <section class="growth-section home-journal" aria-labelledby="activity-title">
+    <div class="home-section-heading"><div><p class="growth-kicker">FIELD NOTES</p><h2 id="activity-title"><span data-i18n-skip data-growth-copy data-en="Latest builds &amp; thoughts." data-ja="最近の制作と気づき。" data-ko="최근 작업과 생각.">最近的實作與想法。</span></h2></div><button id="nav-search-btn" class="home-search" type="button" aria-label="搜尋文章"><span>搜尋文章</span> ↗</button></div>
+    <div class="home-notes">
+      
+      <a class="home-note" href="/2026/10/13/fepphoto-functional-platform/"><span class="home-note-meta"><span>BoyceLab 實作筆記</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></span><h3>FepPhoto 功能型平台：把顧客網站與門市流程接起來</h3><span aria-hidden="true">↗</span></a>
+      
+      <a class="home-note" href="/2026/10/13/functional-websites-business-notes/"><span class="home-note-meta"><span>BoyceLab 實作筆記</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></span><h3>最近的興趣：用 BoyceLab 做小店真正用得上的功能型網站</h3><span aria-hidden="true">↗</span></a>
+      
+      <a class="home-note" href="/2026/10/13/pixel364-ordering-design/"><span class="home-note-meta"><span>BoyceLab 實作筆記</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></span><h3>Pixel364 點餐設計：從咖啡菜單到一張說得清楚的訂單</h3><span aria-hidden="true">↗</span></a>
+      
+    </div>
+    <div class="growth-quiet-links"><a href="/blog/"><span>所有文章</span> →</a><a href="/tags/資安/"><span>資安筆記</span> →</a><a href="/assistant/"><span>AI 助理</span> →</a></div>
+  </section>
+  <section class="growth-section home-about-section" aria-labelledby="home-about-title">
+    <h2 id="home-about-title"><span data-i18n-skip data-growth-copy data-en="My interests &amp; more notes" data-ja="関心分野と学習記録" data-ko="관심 분야와 더 많은 기록">學習方向與更多紀錄</span></h2>
+    <div class="home-topic-links"><a href="/about/#我的路線：從寫程式，到理解問題"><span>數據分析與計算</span> ↗</a><a href="/tags/資安/"><span>資安研究</span> ↗</a><a href="/categories/專案/"><span>Python 自動化</span> ↗</a></div>
+    <details class="home-milestones"><summary><span data-i18n-skip data-growth-copy data-en="Milestones &amp; competitions" data-ja="コンテストと成長の記録" data-ko="대회와 성장 기록">比賽與成長紀錄</span></summary><ul class="achievement-list">
                 <li class="achievement-item">
                     <span class="achievement-year">2026</span>
                     <span class="achievement-name">第 66 屆第 6 分區中小學科學展覽會</span>
@@ -1084,14 +209,11 @@
                     <span class="achievement-name">全國 YIF 青少年生成式 AI 黑客松</span>
                     <span class="achievement-result">季軍</span>
                 </li>
-            </ul>
-        </section>
-
-        <section class="landing-section landing-reveal subscribe-section" aria-labelledby="subscribe-title">
-            <p class="landing-kicker">Occasional Notes</p>
-            <h2 id="subscribe-title" class="landing-heading">偶爾寄一封<span>技術近況</span></h2>
-            <p class="landing-intro">不定期分享新文章、研究筆記與專案進度，不發廣告信。</p>
-            <form id="sib-form-landing" class="landing-subscribe" method="POST"
+            </ul></details>
+  </section>
+  <section class="growth-section home-subscribe" aria-labelledby="subscribe-title">
+    <div><p class="growth-kicker">OCCASIONAL NOTES</p><h2 id="subscribe-title"><span>偶爾寄一封</span><span>技術近況</span></h2><p>不定期分享新文章、研究筆記與專案進度，不發廣告信。</p></div>
+    <form id="sib-form-landing" class="landing-subscribe" method="POST"
                 action="https://64b9c1a2.sibforms.com/serve/MUIFAHih7dp78TT_j2NgzBXNE31MsRjZhWFJuxtLaLCYbJdPxnACWZrfS4QDAAKnCttNxksTmt1yjImjB8ZsMnpEQT7odmsQ6CIHI92JK3a7Sn9sC3agHEGPeBdlT21J5zGmQPyk9Eyss7iKLR2tj9JkbYpFDv8F01BMlQEcpoa_SL4PGOHDS2HCrmdx1l-8R-wT8XrGJZjlW1vPtQ==">
                 <label class="honeypot-field" for="landing-email-check">請勿填寫</label>
                 <input id="landing-email-check" type="text" name="email_address_check" tabindex="-1" autocomplete="off" class="honeypot-field">
@@ -1100,30 +222,16 @@
                 <input type="hidden" name="locale" value="zh-TW">
                 <button class="lab-button" form="sib-form-landing" type="submit">訂閱更新</button>
             </form>
-        </section>
-
-        <section id="contact" class="landing-section landing-reveal" aria-labelledby="contact-title">
-            <p class="landing-kicker">Connect</p>
-            <h2 id="contact-title" class="landing-heading">保持<span>聯絡</span></h2>
-            <div class="contact-panel">
-                <div>
-                    <h3>交流技術、研究想法或單純打聲招呼。</h3>
-                    <p>可以透過 Email 或 GitHub 找到我；所有匿名問題統一從網站匿名版送出。</p>
-                </div>
-                <div class="social-links" aria-label="社群連結">
-                    <a class="social-link" href="mailto:inbox@boycelab.com" aria-label="寄信到 inbox@boycelab.com"><i class="fa-regular fa-envelope"></i></a>
-                    <a class="social-link" href="https://github.com/Boyce39" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a class="social-link" href="/anonymous/" aria-label="匿名留言"><i class="fa-solid fa-user-secret"></i></a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div id="footer-wrapper">
-        <footer id="footer">
+  </section>
+  <section id="contact" class="growth-final home-contact" aria-labelledby="contact-title">
+    <div><h2 id="contact-title"><span data-i18n-skip data-growth-copy data-en="An idea, or just a hello?" data-ja="アイデアの相談も、ご挨拶も。" data-ko="아이디어든, 가벼운 인사든.">有想法，或只是想聊聊？</span></h2><p><span data-i18n-skip data-growth-copy data-en="Send an email or leave an anonymous question." data-ja="メールでも、匿名の質問でもどうぞ。" data-ko="이메일이나 익명 질문으로 이야기해요.">來信交流，或到匿名版留個問題。</span></p></div>
+    <div class="home-contact-links"><a class="growth-button" href="mailto:inbox@boycelab.com">inbox@boycelab.com ↗</a><a class="growth-link" href="/anonymous-replies/">查看公開匿名牆 →</a><a class="growth-link" href="/anonymous/">送出匿名訊息</a></div>
+  </section>
+</main>
+<footer id="footer">
   <div id="footer-info" class="inner">
     <div class="footer-row footer-layout">
-      <div class="footer-brand"><img src="/images/loading.gif" data-original="/images/boycelab-mark.svg?v=6.0.0" alt="" width="36" height="36"><div><strong>BoyceLab</strong><p>用技術記錄探索，讓網站真正派上用場。</p><small>&copy; 2026 BoyceLab</small></div></div>
+      <div class="footer-brand"><img class="no-lazy" src="/images/boycelab-mark.svg?v=6.0.0" alt="" width="36" height="36"><div><strong>BoyceLab</strong><p>用技術記錄探索，讓網站真正派上用場。</p><small>&copy; 2026 BoyceLab</small></div></div>
       <div class="footer-directory">
         <nav class="footer-links" aria-label="網站服務"><span class="footer-label">BoyceLab</span><a href="/business/">網站服務</a><a href="/website-audit/">免費網站健檢</a><a href="/partners/">合作夥伴</a></nav>
         <nav class="footer-links" aria-label="探索網站"><span class="footer-label">探索</span><a href="/blog/">文章</a><a href="/friends/">友站</a><a href="/anonymous-replies/">公開回覆</a><a href="/changelog/">更新日誌</a><a href="https://github.com/Boyce39" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
@@ -1131,9 +239,7 @@
     </div>
   </div>
 </footer>
-
-    </div>
-    <div id="search-modal" class="hidden" role="dialog" aria-modal="true" aria-label="搜尋文章" aria-hidden="true">
+<div id="search-modal" class="hidden" role="dialog" aria-modal="true" aria-label="搜尋文章" aria-hidden="true">
     <div id="search-modal-content">
         <div id="search-modal-header">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -1146,32 +252,7 @@
     </div>
 </div>
 
-
-    <script src="/js/light-dark-switch.js"></script>
-    <script src="https://cdn.staticfile.org/fuse.js/6.6.2/fuse.min.js"></script>
-    <script src="/js/local-search.js?v=5.3.0"></script>
-    <script src="/js/tech-effects.js?v=6.0.0"></script>
-    <script src="/js/subscribe.js?v=5.3.0"></script>
-    <script src="/js/backend-wakeup.js?v=4.4.0"></script>
-    <script>
-        (function () {
-            const items = document.querySelectorAll('.landing-reveal');
-            if (!('IntersectionObserver' in window)) {
-                items.forEach(item => item.classList.add('is-visible'));
-                return;
-            }
-
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                });
-            }, { threshold: 0.12 });
-
-            items.forEach(item => observer.observe(item));
-        })();
-    </script>
+<script src="/js/light-dark-switch.js"></script><script src="/js/vendor/fuse-6.6.2.min.js"></script><script src="/js/local-search.js?v=5.3.0"></script><script src="/js/subscribe.js?v=5.3.0"></script>
 
         <style>
             [bg-lazy] {
@@ -1185,8 +266,6 @@
                 preloadRatio: 1,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
-
-</html>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body></html>
 
     
