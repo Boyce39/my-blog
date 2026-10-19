@@ -1,3 +1,8 @@
+.sd-hosted-cta { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:24px; margin-top:22px; border:1px solid var(--growth-border,#d6e3f4); border-radius:14px; background:var(--growth-panel,#fff); }
+.sd-hosted-cta strong { display:block; font-size:18px; line-height:1.6; }
+.sd-hosted-cta p { max-width:670px; font-size:13px; line-height:1.9; margin:8px 0 0; color:var(--growth-muted,#61728a); }
+.sd-hosted-cta>a { flex-shrink:0; text-align:center; }
+@media(max-width:760px) { .sd-hosted-cta { flex-direction:column; align-items:stretch; gap:18px; padding:20px; } .sd-hosted-cta strong { font-size:16px; } }
 [data-service-demo] {
   --sd-line: var(--growth-border, #d6e3f4);
   --sd-panel: var(--growth-panel, #fff);

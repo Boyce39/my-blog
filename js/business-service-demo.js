@@ -416,6 +416,17 @@
     }
 
     root.addEventListener('click', handleClick);
+    find('[data-demo-studio]')?.addEventListener('click', event => {
+      const link = event.currentTarget;
+      const destination = new URL('https://studio.boycelab.com/');
+      destination.searchParams.set('template', service);
+      destination.searchParams.set('lang', locale);
+      if (service === 'website') {
+        const seed = { brand: find('[data-demo-brand]')?.value || '', title: find('[data-demo-headline]')?.value || '', theme: website.style === 'botanical' ? 'sage' : 'blue' };
+        destination.hash = 'start=' + btoa(Array.from(new TextEncoder().encode(JSON.stringify(seed)), byte => String.fromCharCode(byte)).join(''));
+      }
+      link.href = destination.href;
+    });
     root.addEventListener('input', event => {
       if (service === 'website' && (event.target.matches('[data-demo-brand]') || event.target.matches('[data-demo-headline]'))) {
         if (event.target.matches('[data-demo-brand]')) website.brandEdited = true;
